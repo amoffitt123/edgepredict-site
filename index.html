@@ -3,98 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EdgePredict – AI Motor Health</title>
+    <title>EdgePredict – On-Prem Motor Fault Prediction</title>
+
+    <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet" />
+
+    <!-- Tailwind 3 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
-      body {
-        margin: 0;
-        font-family: "Inter", sans-serif;
-        color: #f9fafb;
-        background: #000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 4rem 1rem;
-      }
-      h1 {
-        font-size: 3rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-      }
-      p.lead {
-        font-size: 1.25rem;
-        max-width: 38rem;
-        margin: 0 auto 2rem;
-      }
-      .cta {
-        background: #06b6d4;
-        border: none;
-        padding: 0.75rem 2rem;
-        border-radius: 9999px;
-        font-size: 1rem;
-        font-weight: 600;
-        color: #000;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1.5rem;
-        margin-top: 4rem;
-        max-width: 60rem;
-        width: 100%;
-      }
-      .feature {
-        background: #111827;
-        padding: 1.5rem;
-        border-radius: 1rem;
-      }
-      .feature h2 {
-        margin-top: 0;
-        font-size: 1.25rem;
-      }
-      iframe {
-        margin-top: 3rem;
-        border: none;
-        max-width: 100%;
-        width: 560px;
-        height: 315px;
-      }
-      footer {
-        margin-top: 5rem;
-        font-size: 0.875rem;
-        color: #9ca3af;
+      body { font-family: "Inter", sans-serif; }
+      .hero-bg {
+        background: radial-gradient(ellipse at top, #0f172a 0%, #000 70%);
       }
     </style>
   </head>
-  <body>
-    <h1>EdgePredict™</h1>
-    <p class="lead">AI‑powered anomaly detection for industrial motors. Spot critical issues before they cause downtime.</p>
-    <a href="mailto:anderson@edgepredict.io" class="cta">Contact Us</a>
 
-    <div class="grid">
-      <div class="feature">
-        <h2>Plug‑and‑Play</h2>
-        <p>Tap existing CT leads or historian streams—no extra sensors required.</p>
-      </div>
-      <div class="feature">
-        <h2>Edge AI &lt; 3&nbsp;ms</h2>
-        <p>Runs on a $50 gateway or FPGA with sub‑millisecond inference.</p>
-      </div>
-      <div class="feature">
-        <h2>Live Dashboards</h2>
-        <p>Real‑time Grafana views and CMMS alerts keep teams ahead of failures.</p>
-      </div>
-    </div>
+  <body class="text-slate-100 bg-black">
+    <!-- HERO -->
+    <header class="hero-bg flex flex-col items-center text-center px-6 pt-24 pb-16">
+      <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+        Stop&nbsp;$15k/hr motor failures<br />
+        <span class="text-cyan-400">on-site edge&nbsp;AI</span> – installed in&nbsp;20&nbsp;minutes
+      </h1>
 
-    <iframe src="https://www.loom.com/embed/df22cf4a291c4406b578e90e60bcb3b9" allowfullscreen></iframe>
+      <p class="text-lg sm:text-xl mt-4 max-w-2xl">
+        EdgePredict clips onto spare CT leads, learns normal current signatures,
+        and alerts maintenance <em>before</em> downtime strikes. No PLC edits.
+        No cloud. No IT tickets.
+      </p>
 
-    <footer>&copy; <span id="year"></span> EdgePredict. All rights reserved.</footer>
+      <!-- Calendly button -->
+      <button
+        class="mt-8 bg-cyan-400 text-black font-semibold px-6 py-3 rounded-full hover:bg-cyan-300 transition"
+        onclick="Calendly.initPopupWidget({ url: 'https://calendly.com/andersonmoffitt/15min' }); return false;">
+        Book 15-min Intro Call
+      </button>
+    </header>
+
+    <!-- FEATURES -->
+    <section class="max-w-6xl mx-auto px-6 mt-16 grid gap-8 sm:grid-cols-3">
+      <div class="bg-slate-800 p-6 rounded-2xl shadow-inner">
+        <h2 class="text-xl font-semibold mb-2">Zero Downtime Install</h2>
+        <p>Clip-on split-core CTs inside the MCC. 20 min per motor cabinet.</p>
+      </div>
+      <div class="bg-slate-800 p-6 rounded-2xl shadow-inner">
+        <h2 class="text-xl font-semibold mb-2">
+          Edge&nbsp;AI <span class="whitespace-nowrap">&lt; 3 ms</span>
+        </h2>
+        <p>Sub-millisecond inference on a $50 gateway—runs even if WAN drops.</p>
+      </div>
+      <div class="bg-slate-800 p-6 rounded-2xl shadow-inner">
+        <h2 class="text-xl font-semibold mb-2">Actionable Alerts</h2>
+        <p>Email/SMS & CMMS webhook with plain-English fault reason and ROI counter.</p>
+      </div>
+    </section>
+
+    <!-- DEMO VIDEO -->
+    <section class="max-w-4xl mx-auto px-6 mt-20">
+      <div class="aspect-w-16 aspect-h-9">
+        <iframe
+          src="https://www.loom.com/embed/df22cf4a291c4406b578e90e60bcb3b9"
+          class="w-full h-full rounded-xl border-0"
+          allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <footer class="text-center text-sm text-slate-500 mt-24 mb-10">
+      &copy; <span id="year"></span> EdgePredict. All rights reserved.
+    </footer>
+
+    <!-- Calendly script -->
+    <script
+      src="https://assets.calendly.com/assets/external/widget.js"
+      type="text/javascript"></script>
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
