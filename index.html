@@ -38,11 +38,12 @@
       </p>
 
       <!-- Calendly button -->
-      <button
-        class="mt-8 bg-cyan-400 text-black font-semibold px-6 py-3 rounded-full hover:bg-cyan-300 transition"
-        onclick="Calendly.initPopupWidget({ url: 'https://calendly.com/andersonmoffitt/15min' }); return false;">
+      <a  href="https://calendly.com/andersonmoffitt/15min"
+        target="_blank" rel="noopener"
+        class="mt-8 bg-cyan-400 text-black font-semibold px-6 py-3 rounded-full
+             hover:bg-cyan-300 transition inline-block">
         Book 15-min Intro Call
-      </button>
+      </a>
     </header>
 
     <!-- FEATURES -->
@@ -76,11 +77,6 @@
     <footer class="text-center text-sm text-slate-500 mt-24 mb-10">
       &copy; <span id="year"></span> EdgePredict. All rights reserved.
     </footer>
-
-    <!-- Calendly script -->
-    <script
-      src="https://assets.calendly.com/assets/external/widget.js"
-      type="text/javascript"></script>
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
