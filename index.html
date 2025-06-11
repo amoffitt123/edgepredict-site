@@ -42,6 +42,53 @@
             animation: pulse 8s ease-in-out infinite alternate;
         }
 
+        /* Particle system */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.8) 0%, rgba(168, 85, 247, 0.4) 50%, transparent 100%);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        .particle.large {
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, rgba(147, 51, 234, 1) 0%, rgba(168, 85, 247, 0.6) 50%, transparent 100%);
+        }
+
+        .particle.glow {
+            box-shadow: 0 0 6px rgba(147, 51, 234, 0.8);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(var(--random-x)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         @keyframes pulse {
             0% { opacity: 0.3; }
             100% { opacity: 0.8; }
@@ -53,10 +100,17 @@
             top: 0;
             width: 100%;
             z-index: 1000;
+            padding: 1.5rem 2rem;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(147, 51, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
             padding: 1rem 2rem;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(10, 10, 15, 0.98);
+            border-bottom: 1px solid rgba(147, 51, 234, 0.4);
         }
 
         nav {
@@ -68,28 +122,64 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #a855f7, #9333ea);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
         }
 
         .cta-header {
             background: linear-gradient(135deg, #9333ea, #7c3aed);
-            padding: 0.75rem 1.5rem;
+            padding: 0.875rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             color: white;
             font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
-            border: 1px solid transparent;
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-header:hover::before {
+            left: 100%;
         }
 
         .cta-header:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.3);
+            box-shadow: 0 15px 40px rgba(147, 51, 234, 0.4);
+            border-color: rgba(147, 51, 234, 0.6);
         }
 
         /* Main sections */
@@ -407,6 +497,7 @@
 </head>
 <body>
     <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
     
     <header>
         <nav>
@@ -532,7 +623,7 @@
                 <div class="step scroll-reveal">
                     <div class="step-number">2</div>
                     <h3>Learn & Baseline</h3>
-                    <p>The AI spends 3-5 days learning your motors' normal operating patterns, establishing baseline behavior profiles.</p>
+                    <p>The AI spends 2-4 weeks learning your motors' normal operating patterns, establishing baseline behavior profiles.</p>
                 </div>
                 <div class="step scroll-reveal">
                     <div class="step-number">3</div>
@@ -560,6 +651,38 @@
     </section>
 
     <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random properties
+                const size = Math.random() > 0.7 ? 'large' : '';
+                const glow = Math.random() > 0.8 ? 'glow' : '';
+                particle.className += ` ${size} ${glow}`;
+                
+                // Random starting position
+                const startX = Math.random() * window.innerWidth;
+                const randomX = (Math.random() - 0.5) * 200; // drift amount
+                const duration = 15 + Math.random() * 20; // 15-35 seconds
+                const delay = Math.random() * 20; // random delay
+                
+                particle.style.left = startX + 'px';
+                particle.style.setProperty('--random-x', randomX + 'px');
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = delay + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+
         // Scroll reveal animation
         const observerOptions = {
             threshold: 0.1,
@@ -588,9 +711,18 @@
             });
         });
 
-        // Parallax effect for background
+        // Header scroll effect
         window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
             const scrolled = window.pageYOffset;
+            
+            if (scrolled > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Parallax effect for background
             const parallax = document.querySelector('.bg-animation');
             const speed = scrolled * 0.5;
             parallax.style.transform = `translateY(${speed}px)`;
