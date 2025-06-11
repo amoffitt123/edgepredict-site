@@ -1,85 +1,600 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EdgePredict – On-Prem Motor Fault Prediction</title>
-
-    <!-- Inter font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet" />
-
-    <!-- Tailwind 3 CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdgePredict - Predictive Motor Maintenance</title>
     <style>
-      body { font-family: "Inter", sans-serif; }
-      .hero-bg {
-        background: radial-gradient(ellipse at top, #0f172a 0%, #000 70%);
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0b2e 50%, #16213e 100%);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-header {
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.3);
+        }
+
+        /* Main sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding-top: 6rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 1rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(147, 51, 234, 0.4);
+        }
+
+        /* Problem section */
+        .problem {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            background: rgba(147, 51, 234, 0.1);
+            border-color: rgba(147, 51, 234, 0.3);
+        }
+
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        /* Solution section */
+        .solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .solution-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .solution-visual {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gateway-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .motor-box, .gateway-box, .cloud-box {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid #475569;
+            text-align: center;
+            width: 200px;
+            position: relative;
+        }
+
+        .gateway-box {
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            border-color: #a855f7;
+        }
+
+        .connection-line {
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(180deg, #9333ea, #7c3aed);
+            position: relative;
+        }
+
+        .connection-line::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -3px;
+            width: 8px;
+            height: 8px;
+            background: #9333ea;
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        /* Features section */
+        .features {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(147, 51, 234, 0.1);
+            border-color: rgba(147, 51, 234, 0.3);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        /* How it works */
+        .how-it-works {
+            text-align: center;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* CTA section */
+        .final-cta {
+            text-align: center;
+            background: rgba(147, 51, 234, 0.1);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(147, 51, 234, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .solution {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 2rem 1rem;
+            }
+            
+            .hero {
+                padding-top: 4rem;
+            }
+        }
+
+        /* Section headings */
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+        }
     </style>
-  </head>
-
-  <body class="text-slate-100 bg-black">
-    <!-- HERO -->
-    <header class="hero-bg flex flex-col items-center text-center px-6 pt-24 pb-16">
-      <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
-        Stop&nbsp;$15k/hr motor failures<br />
-        <span class="text-cyan-400">on-site edge&nbsp;AI</span> – installed in&nbsp;20&nbsp;minutes
-      </h1>
-
-      <p class="text-lg sm:text-xl mt-4 max-w-2xl">
-        EdgePredict clips onto spare CT leads, learns normal current signatures,
-        and alerts maintenance <em>before</em> downtime strikes. No PLC edits.
-        No cloud. No IT tickets.
-      </p>
-
-      <!-- Calendly button -->
-      <a  href="https://calendly.com/andersonmoffitt/15min"
-        target="_blank" rel="noopener"
-        class="mt-8 bg-cyan-400 text-black font-semibold px-6 py-3 rounded-full
-             hover:bg-cyan-300 transition inline-block">
-        Book 15-min Intro Call
-      </a>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">EdgePredict</div>
+            <a href="https://calendly.com/andersonmoffitt/15min?month=2025-06" class="cta-header" target="_blank">Schedule Demo</a>
+        </nav>
     </header>
 
-    <!-- FEATURES -->
-    <section class="max-w-6xl mx-auto px-6 mt-16 grid gap-8 sm:grid-cols-3">
-      <div class="bg-slate-800 p-6 rounded-2xl shadow-inner">
-        <h2 class="text-xl font-semibold mb-2">Zero Downtime Install</h2>
-        <p>Clip-on split-core CTs inside the MCC. 20 min per motor cabinet.</p>
-      </div>
-      <div class="bg-slate-800 p-6 rounded-2xl shadow-inner">
-        <h2 class="text-xl font-semibold mb-2">
-          Edge&nbsp;AI <span class="whitespace-nowrap">&lt; 3 ms</span>
-        </h2>
-        <p>Sub millisecond inference on a $50 gateway. Runs even if WAN drops.</p>
-      </div>
-      <div class="bg-slate-800 p-6 rounded-2xl shadow-inner">
-        <h2 class="text-xl font-semibold mb-2">Actionable Alerts</h2>
-        <p>Email/SMS & CMMS webhook with plain English fault reason and ROI counter.</p>
-      </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Predict Motor Failures Before They Happen</h1>
+            <p>Stop reactive maintenance. EdgePredict's AI learns your motors' behavior and alerts you days before failure, reducing downtime by up to 80%.</p>
+            <a href="https://calendly.com/andersonmoffitt/15min?month=2025-06" class="cta-primary" target="_blank">Get Your Free Assessment</a>
+        </div>
     </section>
 
-    <!-- DEMO VIDEO -->
-    <section class="max-w-4xl mx-auto px-6 mt-20">
-      <div class="aspect-w-16 aspect-h-9">
-        <iframe
-          src="https://www.loom.com/embed/df22cf4a291c4406b578e90e60bcb3b9"
-          class="w-full h-full rounded-xl border-0"
-          allowfullscreen></iframe>
-      </div>
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <h2>The Hidden Cost of Motor Failures</h2>
+            <div class="problem-grid">
+                <div class="problem-card scroll-reveal">
+                    <div class="problem-icon">⚠️</div>
+                    <h3>Unexpected Downtime</h3>
+                    <p>Motor failures bring production lines to a halt, costing manufacturers an average of $50,000 per hour in lost productivity.</p>
+                </div>
+                <div class="problem-card scroll-reveal">
+                    <div class="problem-icon">💰</div>
+                    <h3>Emergency Repairs</h3>
+                    <p>Rush orders for replacement parts and overtime labor costs 3-5x more than planned maintenance activities.</p>
+                </div>
+                <div class="problem-card scroll-reveal">
+                    <div class="problem-icon">🔧</div>
+                    <h3>Reactive Approach</h3>
+                    <p>Traditional maintenance schedules either waste money on premature replacements or miss critical failures.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer class="text-center text-sm text-slate-500 mt-24 mb-10">
-      &copy; <span id="year"></span> EdgePredict. All rights reserved.
-    </footer>
+    <!-- Solution Section -->
+    <section>
+        <div class="container">
+            <div class="solution">
+                <div class="solution-content scroll-reveal">
+                    <h2>Smart Monitoring, Smarter Decisions</h2>
+                    <p>EdgePredict deploys edge-based machine learning directly in your facility. Our gateway device continuously monitors motor behavior through your MCC or CT sensors, learning normal patterns and detecting anomalies before they become failures.</p>
+                    <p>Get 3-14 days advance warning of potential issues, allowing you to schedule maintenance during planned downtime and order parts in advance.</p>
+                    <a href="https://calendly.com/andersonmoffitt/15min?month=2025-06" class="cta-primary" target="_blank">See It In Action</a>
+                </div>
+                <div class="solution-visual scroll-reveal">
+                    <div class="gateway-diagram">
+                        <div class="motor-box">
+                            <h4>Your Motors</h4>
+                            <p>Pumps, Fans, Compressors</p>
+                        </div>
+                        <div class="connection-line"></div>
+                        <div class="gateway-box">
+                            <h4>EdgePredict Gateway</h4>
+                            <p>Raspberry Pi + ML</p>
+                        </div>
+                        <div class="connection-line"></div>
+                        <div class="cloud-box">
+                            <h4>Maintenance Alerts</h4>
+                            <p>Email, SMS, Dashboard</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Built for Plant Operations</h2>
+            <div class="features-grid">
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Edge AI Processing</h3>
+                    <p>All analysis happens locally on your Raspberry Pi gateway - no cloud dependency, faster response times, enhanced security.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Easy Installation</h3>
+                    <p>Connects to existing MCC or uses CT clamps. No rewiring, no production interruption. Up and running in under 2 hours.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">📊</div>
+                    <h3>Predictive Insights</h3>
+                    <p>Machine learning algorithms detect patterns invisible to traditional monitoring, providing 85%+ accuracy in failure prediction.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Smart Alerts</h3>
+                    <p>Customizable notifications via email, SMS, or integration with your CMMS. Get the right alert to the right person at the right time.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">💡</div>
+                    <h3>Self-Learning</h3>
+                    <p>The system continuously learns your equipment's unique signature, adapting to seasonal changes and operational variations.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">📈</div>
+                    <h3>ROI Tracking</h3>
+                    <p>Built-in dashboards track maintenance savings, downtime prevention, and equipment performance improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How EdgePredict Works</h2>
+            <div class="steps">
+                <div class="step scroll-reveal">
+                    <div class="step-number">1</div>
+                    <h3>Install & Connect</h3>
+                    <p>We install the EdgePredict gateway at your facility, connecting to your MCC or using CT clamps around motor cables.</p>
+                </div>
+                <div class="step scroll-reveal">
+                    <div class="step-number">2</div>
+                    <h3>Learn & Baseline</h3>
+                    <p>The AI spends 3-5 days learning your motors' normal operating patterns, establishing baseline behavior profiles.</p>
+                </div>
+                <div class="step scroll-reveal">
+                    <div class="step-number">3</div>
+                    <h3>Monitor & Predict</h3>
+                    <p>Continuous monitoring detects deviations from normal patterns, providing early warning of potential failures.</p>
+                </div>
+                <div class="step scroll-reveal">
+                    <div class="step-number">4</div>
+                    <h3>Alert & Maintain</h3>
+                    <p>Receive actionable alerts with sufficient lead time to schedule maintenance during planned downtime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section>
+        <div class="container">
+            <div class="final-cta scroll-reveal">
+                <h2>Ready to Eliminate Surprise Motor Failures?</h2>
+                <p>Join forward-thinking plant managers who've reduced emergency repairs by 70% and maintenance costs by 30%.</p>
+                <a href="https://calendly.com/andersonmoffitt/15min?month=2025-06" class="cta-primary" target="_blank">Schedule Your Free Consultation</a>
+            </div>
+        </div>
+    </section>
 
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Parallax effect for background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.bg-animation');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
     </script>
-  </body>
+</body>
 </html>
