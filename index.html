@@ -303,6 +303,10 @@
             background: #111111;
         }
 
+        .solution p {
+            color: #ffffff;
+        }
+
         .solution-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -464,7 +468,7 @@
 
         /* Technical Specs */
         .tech-specs {
-            background: white;
+            background: linear-gradient(135deg, #4c1d95 0%, #1f2937 100%);
         }
 
         .specs-grid {
@@ -683,15 +687,15 @@
                 </div>
                 <div class="form-group">
                     <label for="downtime-cost">Downtime Cost per Hour ($):</label>
-                    <input type="number" id="downtime-cost" placeholder="e.g., 50000">
+                    <input type="number" id="downtime-cost" placeholder="e.g., 10000">
                 </div>
                 <div class="form-group">
                     <label for="failures-year">Unplanned Failures per Year:</label>
-                    <input type="number" id="failures-year" placeholder="e.g., 8">
+                    <input type="number" id="failures-year" placeholder="e.g., 4">
                 </div>
                 <div class="form-group">
                     <label for="hours-failure">Average Hours per Failure:</label>
-                    <input type="number" id="hours-failure" placeholder="e.g., 6">
+                    <input type="number" id="hours-failure" placeholder="e.g., 2">
                 </div>
                 <button class="calculate-btn" onclick="calculateROI()">Calculate Savings</button>
                 <div class="roi-result" id="roi-result"></div>
@@ -778,7 +782,7 @@
                         <li><strong>CMMS:</strong> SAP, Maximo, Fiix compatible</li>
                         <li><strong>Protocols:</strong> Modbus, OPC-UA</li>
                         <li><strong>Dashboard:</strong> Web-based, mobile responsive</li>
-                        <li><strong>API:</strong> RESTful for custom integrations</li>
+                        <li><strong>API:</strong> Custom integrations available</li>
                         <li><strong>Security:</strong> TLS encryption, local processing</li>
                     </ul>
                 </div>
@@ -787,43 +791,81 @@
     </section>
 
     <!-- Contact Section -->
+    <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
             <h2 class="section-title">Request a Demo</h2>
-            <div class="contact-form">
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="company">Company:</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone:</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="motors-count">Number of Motors:</label>
-                        <input type="number" id="motors-count" name="motors-count">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Tell us about your facility:</label>
-                        <textarea id="message" name="message" placeholder="Describe your manufacturing process, current maintenance challenges, and what you'd like to achieve with predictive maintenance..."></textarea>
-                    </div>
-                    <button type="submit" class="calculate-btn">Request Demo</button>
-                    <div style="margin-top: 1rem; text-align: center;">
-                        <a href="https://calendly.com/andersonmoffitt/15min" target="_blank" style="color: #7c3aed; text-decoration: none; font-weight: bold;">Or schedule a quick 15-minute call →</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
+        <div class="contact-form">
+            <form
+            id="contact-form"
+             action="https://formspree.io/f/xanjozzq"
+             method="POST"
+          >
+          <!-- Disable Formspree spam check -->
+          <input type="hidden" name="_captcha" value="false" />
+          <!-- Redirect to a thank-you page after submit -->
+          <input
+            type="hidden"
+            name="_next"
+            value="https://edgepredict.io/thank-you.html"
+          />
+          <!-- Optional: customize the email subject -->
+          <input
+            type="hidden"
+            name="_subject"
+            value="🎉 New EdgePredict Demo Request"
+          />
+  
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+          <div class="form-group">
+            <label for="motors-count">Number of Motors:</label>
+            <input
+              type="number"
+              id="motors-count"
+              name="motors-count"
+              min="1"
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about your facility:</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Describe your manufacturing process, current maintenance challenges, and what you'd like to achieve with predictive maintenance..."
+              rows="4"
+              required
+            ></textarea>
+          </div>
+  
+          <button type="submit" class="calculate-btn">Request Demo</button>
+  
+          <div style="margin-top: 1rem; text-align: center;">
+            <a
+              href="https://calendly.com/andersonmoffitt/15min"
+              target="_blank"
+              style="color: #7c3aed; text-decoration: none; font-weight: bold;"
+              >Or schedule a quick 15-minute call →</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>  
 
     <!-- Footer -->
     <footer class="footer">
@@ -876,39 +918,48 @@
 
         // ROI Calculator
         function calculateROI() {
-            const motors = parseInt(document.getElementById('motors').value) || 0;
-            const downtimeCost = parseInt(document.getElementById('downtime-cost').value) || 0;
-            const failuresPerYear = parseInt(document.getElementById('failures-year').value) || 0;
-            const hoursPerFailure = parseInt(document.getElementById('hours-failure').value) || 0;
+            const motors         = parseInt(document.getElementById('motors').value) || 0;
+            const downtimeCost   = parseInt(document.getElementById('downtime-cost').value) || 0;
+            const failuresPerYr  = parseInt(document.getElementById('failures-year').value) || 0;
+            const hoursPerFail   = parseInt(document.getElementById('hours-failure').value) || 0;
+            const resultDiv      = document.getElementById('roi-result');
 
-            if (motors === 0 || downtimeCost === 0 || failuresPerYear === 0 || hoursPerFailure === 0) {
+            if (!motors || !downtimeCost || !failuresPerYr || !hoursPerFail) {
                 alert('Please fill in all fields');
                 return;
             }
 
-            // Calculate current annual cost
-            const currentAnnualCost = failuresPerYear * hoursPerFailure * downtimeCost;
-            
-            // EdgePredict reduces failures by 70%
-            const preventedFailures = failuresPerYear * 0.7;
-            const annualSavings = preventedFailures * hoursPerFailure * downtimeCost;
-            
-            // Estimate EdgePredict cost (rough estimate)
-            const edgePredictCost = motors * 2000; // $2000 per motor (hardware + software)
-            const roi = ((annualSavings - edgePredictCost) / edgePredictCost) * 100;
-            const paybackMonths = (edgePredictCost / annualSavings) * 12;
+            // 1) Current annual downtime cost
+            const currentAnnualCost = failuresPerYr * hoursPerFail * downtimeCost;
 
-            const resultDiv = document.getElementById('roi-result');
+            // 2) Savings (80% fewer failures)
+            const preventedFailures = failuresPerYr * 0.8;
+            const annualSavings     = preventedFailures * hoursPerFail * downtimeCost;
+
+            // 3) Gateway count & cost
+            const gateways    = Math.ceil(motors / 5);        // 1 gateway per up to 5 motors
+            const monthlyCost = gateways * 200;               // $200/mo each
+            const annualCost  = monthlyCost * 12;             // neglect hardware
+
+            // 4) ROI & payback
+            const roi           = ((annualSavings - annualCost) / annualCost) * 100;
+            const paybackMonths = (annualCost / annualSavings) * 12;
+
+            // 5) Render results
             resultDiv.innerHTML = `
-                <h3>Your Potential Savings</h3>
-                <p><strong>Current Annual Downtime Cost:</strong> $${currentAnnualCost.toLocaleString()}</p>
-                <p><strong>Estimated Annual Savings:</strong> $${Math.round(annualSavings).toLocaleString()}</p>
-                <p><strong>ROI:</strong> ${Math.round(roi)}%</p>
-                <p><strong>Payback Period:</strong> ${Math.round(paybackMonths)} months</p>
-                <p style="margin-top: 1rem; font-style: italic;">*Based on 70% reduction in unplanned failures</p>
+            <h3>Your Potential Savings</h3>
+            <p><strong>Gateways required:</strong> ${gateways}</p>
+            <p><strong>Monthly cost:</strong> $${monthlyCost.toLocaleString()}</p>
+            <p><strong>Annual cost:</strong> $${annualCost.toLocaleString()}</p>
+            <hr>
+            <p><strong>Current annual downtime cost:</strong> $${currentAnnualCost.toLocaleString()}</p>
+            <p><strong>Estimated annual savings:</strong> $${Math.round(annualSavings).toLocaleString()}</p>
+            <p><strong>ROI:</strong> ${Math.round(roi)} %</p>
+            <p><strong>Payback period:</strong> ${Math.round(paybackMonths)} months</p>
+            <p style="margin-top:1rem;font-style:italic;">*Based on 80% reduction in unplanned failures, figures are estimates and may vary</p>
             `;
             resultDiv.style.display = 'block';
-        }
+        }   
 
         // Contact form submission
         document.getElementById('contact-form').addEventListener('submit', function(e) {
