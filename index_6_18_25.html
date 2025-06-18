@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdgePredict - Predict Motor Failures Before They Happen</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0a0a0a;
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(10, 10, 10, 0.98);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.4);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #7c3aed;
+            font-family: 'JetBrains Mono', monospace;
+            text-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #e5e7eb;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #a855f7;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, #7c3aed, #a855f7);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #e5e7eb;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(124, 58, 237, 0.2);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4c1d95 0%, #1f2937 100%);
+            position: relative;
+            overflow: hidden;
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(124, 58, 237, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(124, 58, 237, 0.2) 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ffffff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+            border: 1px solid rgba(124, 58, 237, 0.5);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.6);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 13px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 0;
+            background: #0a0a0a;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: #111111;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #e5e7eb;
+            font-weight: 700;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            color: #e5e7eb;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+            border-color: rgba(124, 58, 237, 0.5);
+        }
+
+        .problem-card h3 {
+            color: #f87171;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: #111111;
+        }
+
+        .solution p {
+            color: #ffffff;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            color: #e5e7eb;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+            border-color: rgba(124, 58, 237, 0.5);
+        }
+
+        .feature-card h3 {
+            color: #a855f7;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* ROI Calculator */
+        .roi-calculator {
+            background: linear-gradient(135deg, #4c1d95 0%, #1f2937 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .calculator-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            padding: 2rem;
+            border-radius: 12px;
+            color: #e5e7eb;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            color: #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: #9ca3af;
+        }
+
+        .calculate-btn {
+            background: linear-gradient(45deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+        }
+
+        .roi-result {
+            margin-top: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            display: none;
+            color: #e5e7eb;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            background: #0a0a0a;
+        }
+
+        .case-study {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            color: #e5e7eb;
+        }
+
+        .case-study:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+
+        .case-study h3 {
+            color: #a855f7;
+            margin-bottom: 1rem;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .metric:hover {
+            border-color: rgba(124, 58, 237, 0.5);
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #22c55e;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Technical Specs */
+        .tech-specs {
+            background: linear-gradient(135deg, #4c1d95 0%, #1f2937 100%);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .spec-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .spec-card h3 {
+            color: #7c3aed;
+            margin-bottom: 1rem;
+        }
+
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .spec-list li:hover {
+            padding-left: 0.5rem;
+            color: #a855f7;
+        }
+
+        .spec-list li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-list li strong {
+            color: #22c55e;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Contact Form */
+        .contact {
+            background: linear-gradient(135deg, #4c1d95 0%, #1f2937 100%);
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            padding: 2rem;
+            border-radius: 12px;
+            color: #e5e7eb;
+        }
+
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            color: #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
+
+        .contact-form textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo">EdgePredict</div>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#solution">Solution</a></li>
+                    <li><a href="#roi">ROI Calculator</a></li>
+                    <li><a href="#case-studies">Case Studies</a></li>
+                    <li><a href="#specs">Specifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Predict Motor Failures Before They Happen</h1>
+            <p>Stop reactive maintenance. EdgePredict's AI learns your motors' behavior and alerts you days before failure, reducing downtime by up to 80%.</p>
+            <div style="margin-top: 2rem;">
+                <a href="#contact" class="cta-button">Request Demo</a>
+                <a href="https://calendly.com/andersonmoffitt/15min" target="_blank" class="cta-secondary">Schedule Call</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">The Cost of Reactive Maintenance</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>$50,000/Hour</h3>
+                    <p>Motor failures bring production lines to a halt, costing manufacturers an average of $50,000 per hour in lost productivity.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>3-5x Higher Costs</h3>
+                    <p>Rush orders for replacement parts and overtime labor costs 3-5x more than planned maintenance activities.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Inefficient Scheduling</h3>
+                    <p>Traditional maintenance schedules either waste money on premature replacements or miss critical failures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section solution" id="solution">
+        <div class="container">
+            <h2 class="section-title">EdgePredict Solution</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">
+                EdgePredict deploys edge-based machine learning directly in your facility. Our gateway device continuously monitors motor behavior through your MCC or CT sensors, learning normal patterns and detecting anomalies before they become failures.
+            </p>
+            <div class="solution-grid">
+                <div class="feature-card">
+                    <h3>🔧 Edge-Based AI</h3>
+                    <p>All analysis happens locally on your Raspberry Pi gateway - no cloud dependency, faster response times, enhanced security.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ Quick Installation</h3>
+                    <p>Connects to existing MCC or uses CT clamps. No rewiring, no production interruption. Up and running in under 2 hours.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎯 85%+ Accuracy</h3>
+                    <p>Machine learning algorithms detect patterns invisible to traditional monitoring, providing 85%+ accuracy in failure prediction.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📱 Smart Alerts</h3>
+                    <p>Customizable notifications via email, SMS, or integration with your CMMS. Get the right alert to the right person at the right time.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🧠 Adaptive Learning</h3>
+                    <p>The system continuously learns your equipment's unique signature, adapting to seasonal changes and operational variations.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Performance Tracking</h3>
+                    <p>Built-in dashboards track maintenance savings, downtime prevention, and equipment performance improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="section roi-calculator" id="roi">
+        <div class="container">
+            <h2 class="section-title">Calculate Your ROI</h2>
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="motors">Number of Motors:</label>
+                    <input type="number" id="motors" placeholder="e.g., 25">
+                </div>
+                <div class="form-group">
+                    <label for="downtime-cost">Downtime Cost per Hour ($):</label>
+                    <input type="number" id="downtime-cost" placeholder="e.g., 10000">
+                </div>
+                <div class="form-group">
+                    <label for="failures-year">Unplanned Failures per Year:</label>
+                    <input type="number" id="failures-year" placeholder="e.g., 4">
+                </div>
+                <div class="form-group">
+                    <label for="hours-failure">Average Hours per Failure:</label>
+                    <input type="number" id="hours-failure" placeholder="e.g., 2">
+                </div>
+                <button class="calculate-btn" onclick="calculateROI()">Calculate Savings</button>
+                <div class="roi-result" id="roi-result"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="section case-studies" id="case-studies">
+        <div class="container">
+            <h2 class="section-title">Success Stories</h2>
+            
+            <div class="case-study">
+                <h3>Large Food Processing Plant</h3>
+                <p>A 500,000 sq ft food processing facility implemented EdgePredict across 45 critical motors including pumps, conveyors, and packaging equipment. The system identified bearing degradation in their main conveyor motor 12 days before failure, allowing for planned maintenance during a scheduled weekend shutdown.</p>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">70%</div>
+                        <div>Reduction in Emergency Repairs</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">$240K</div>
+                        <div>Annual Savings</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">12 Days</div>
+                        <div>Average Warning Time</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3>Chemical Manufacturing Facility</h3>
+                <p>A specialty chemicals manufacturer deployed EdgePredict on 30 pump motors handling corrosive materials. The system detected unusual vibration patterns in a critical transfer pump, preventing a potential environmental incident and costly cleanup.</p>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">85%</div>
+                        <div>Reduction in Downtime</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">$180K</div>
+                        <div>Avoided Incident Cost</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">9 Days</div>
+                        <div>Failure Prediction Lead Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications -->
+    <section class="section tech-specs" id="specs">
+        <div class="container">
+            <h2 class="section-title">Technical Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h3>Hardware</h3>
+                    <ul class="spec-list">
+                        <li><strong>Gateway:</strong> Raspberry Pi 4 (4GB RAM)</li>
+                        <li><strong>Enclosure:</strong> Industrial IP65 rated</li>
+                        <li><strong>Sensors:</strong> CT clamps (30-1000A range)</li>
+                        <li><strong>Operating Temp:</strong> -20°C to +60°C</li>
+                        <li><strong>Power:</strong> 24VDC, 15W max</li>
+                        <li><strong>Connectivity:</strong> Ethernet, Wi-Fi, 4G optional</li>
+                    </ul>
+                </div>
+                <div class="spec-card">
+                    <h3>Software & AI</h3>
+                    <ul class="spec-list">
+                        <li><strong>Algorithms:</strong> Neural networks, anomaly detection</li>
+                        <li><strong>Sampling Rate:</strong> 1kHz per channel</li>
+                        <li><strong>Learning Period:</strong> 3-5 days typical</li>
+                        <li><strong>Prediction Accuracy:</strong> 85%+ validated</li>
+                        <li><strong>Update Frequency:</strong> Real-time analysis</li>
+                        <li><strong>Data Storage:</strong> 1 year local history</li>
+                    </ul>
+                </div>
+                <div class="spec-card">
+                    <h3>Integration</h3>
+                    <ul class="spec-list">
+                        <li><strong>Alerts:</strong> Email, SMS, webhook</li>
+                        <li><strong>CMMS:</strong> SAP, Maximo, Fiix compatible</li>
+                        <li><strong>Protocols:</strong> Modbus, OPC-UA</li>
+                        <li><strong>Dashboard:</strong> Web-based, mobile responsive</li>
+                        <li><strong>API:</strong> Custom integrations available</li>
+                        <li><strong>Security:</strong> TLS encryption, local processing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Request a Demo</h2>
+        <div class="contact-form">
+            <form
+            id="contact-form"
+             action="https://formspree.io/f/xanjozzq"
+             method="POST"
+          >
+          <!-- Disable Formspree spam check -->
+          <input type="hidden" name="_captcha" value="false" />
+          <!-- Optional: customize the email subject -->
+          <input
+            type="hidden"
+            name="_subject"
+            value="🎉 New EdgePredict Demo Request"
+          />
+  
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+          <div class="form-group">
+            <label for="motors-count">Number of Motors:</label>
+            <input
+              type="number"
+              id="motors-count"
+              name="motors-count"
+              min="1"
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about your facility:</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Describe your manufacturing process, current maintenance challenges, and what you'd like to achieve with predictive maintenance..."
+              rows="4"
+              required
+            ></textarea>
+          </div>
+  
+          <button type="submit" class="calculate-btn">Request Demo</button>
+  
+          <div style="margin-top: 1rem; text-align: center;">
+            <a
+              href="https://calendly.com/andersonmoffitt/15min"
+              target="_blank"
+              style="color: #7c3aed; text-decoration: none; font-weight: bold;"
+              >Or schedule a quick 15-minute call →</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>  
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 EdgePredict. All rights reserved. | Preventing failures, maximizing uptime.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ROI Calculator
+        function calculateROI() {
+            const motors         = parseInt(document.getElementById('motors').value) || 0;
+            const downtimeCost   = parseInt(document.getElementById('downtime-cost').value) || 0;
+            const failuresPerYr  = parseInt(document.getElementById('failures-year').value) || 0;
+            const hoursPerFail   = parseInt(document.getElementById('hours-failure').value) || 0;
+            const resultDiv      = document.getElementById('roi-result');
+
+            if (!motors || !downtimeCost || !failuresPerYr || !hoursPerFail) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // 1) Current annual downtime cost
+            const currentAnnualCost = failuresPerYr * hoursPerFail * downtimeCost;
+
+            // 2) Savings (80% fewer failures)
+            const preventedFailures = failuresPerYr * 0.8;
+            const annualSavings     = preventedFailures * hoursPerFail * downtimeCost;
+
+            // 3) Gateway count & cost
+            const gateways    = Math.ceil(motors / 5);        // 1 gateway per up to 5 motors
+            const monthlyCost = gateways * 200;               // $200/mo each
+            const annualCost  = monthlyCost * 12;             // neglect hardware
+
+            // 4) ROI & payback
+            const roi           = ((annualSavings - annualCost) / annualCost) * 100;
+            const paybackMonths = (annualCost / annualSavings) * 12;
+
+            // 5) Render results
+            resultDiv.innerHTML = `
+            <h3>Your Potential Savings</h3>
+            <p><strong>Gateways required:</strong> ${gateways}</p>
+            <p><strong>Monthly cost:</strong> $${monthlyCost.toLocaleString()}</p>
+            <p><strong>Annual cost:</strong> $${annualCost.toLocaleString()}</p>
+            <hr>
+            <p><strong>Current annual downtime cost:</strong> $${currentAnnualCost.toLocaleString()}</p>
+            <p><strong>Estimated annual savings:</strong> $${Math.round(annualSavings).toLocaleString()}</p>
+            <p><strong>ROI:</strong> ${Math.round(roi)} %</p>
+            <p><strong>Payback period:</strong> ${Math.round(paybackMonths)} months</p>
+            <p style="margin-top:1rem;font-style:italic;">*Based on 80% reduction in unplanned failures, figures are estimates and may vary</p>
+            `;
+            resultDiv.style.display = 'block';
+        }   
+
+        // Contact form submission
+        /*document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! We will contact you within 24 hours to schedule your demo.');
+            this.reset();
+        });*/
+    </script>
+    <script>
+            const form = document.getElementById('contact-form');
+
+            form.addEventListener('submit', async e => {
+                e.preventDefault(); // keep the JS path
+
+                // gather the form data
+                const data = new FormData(form);
+
+                try {
+                // send it to Formspree
+                const res = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' },
+                });
+
+                if (res.ok) {
+                    // optional: show your custom alert
+                    alert('Thanks! We’ll reach out within 24 hours.');
+
+                    // optional: redirect to your thank-you page
+                    window.location.href = form.querySelector('input[name="_next"]').value;
+                } else {
+                    console.error('Formspree error', await res.json());
+                    alert('Oops—something went wrong. Please try again.');
+                }
+                } 
+                /*catch (err) {
+                console.error(err);
+                alert('Network error. Please try later.');
+                }*/
+            });
+    </script>
+</body>
+</html>
