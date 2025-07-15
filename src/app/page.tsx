@@ -1,25 +1,36 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { PlayCircle, ArrowRight, X, ChevronLeft, ChevronRight, Menu, CheckCircle, Cog, Zap, Shield, Clock, Users, TrendingUp } from "lucide-react"
+import { useState } from "react"
 
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [topBarVisible, setTopBarVisible] = useState(true)
+
   return (
     <div className="min-h-screen bg-white">
       {/* Top Notification Bar */}
-      <div className="bg-[#7655d6] text-white px-4 py-3 text-sm relative">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex-1 text-center">
-            Transparent pricing: $149/month per equipment. No hidden fees, no long-term contracts.
+      {topBarVisible && (
+        <div className="bg-[#7655d6] text-white px-4 py-3 text-sm relative">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            <div className="flex-1 text-center">
+              Transparent pricing: $199/month per equipment. No hidden fees, no long-term contracts.
+            </div>
+            <a href="#contact" className="text-white hover:text-gray-300 ml-4 px-4 py-2 flex items-center text-sm font-medium transition-colors">
+              Start Your Pilot <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+            <button 
+              onClick={() => setTopBarVisible(false)}
+              className="ml-4 hover:opacity-70"
+            >
+              <X className="h-4 w-4" />
+            </button>
           </div>
-          <a href="#contact" className="text-white hover:text-gray-300 ml-4 px-4 py-2 flex items-center text-sm font-medium transition-colors">
-            Start Your Pilot <ArrowRight className="ml-2 h-4 w-4" />
-          </a>
-          <button className="ml-4 hover:opacity-70">
-            <X className="h-4 w-4" />
-          </button>
         </div>
-      </div>
+      )}
 
       {/* Header */}
       <header className="bg-white shadow-sm">
@@ -31,6 +42,8 @@ export default function Home() {
               className="h-16"
             />
           </div>
+          
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#platform" className="text-gray-600 hover:text-gray-900">Platform</a>
             <a href="#pricing" className="text-gray-600 hover:text-gray-900">Pricing</a>
@@ -40,10 +53,58 @@ export default function Home() {
               Start Your Pilot
             </a>
           </nav>
-          <button className="md:hidden">
-            <Menu className="h-6 w-6" />
+          
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-200">
+            <nav className="px-4 py-4 space-y-4">
+              <a 
+                href="#platform" 
+                className="block text-gray-600 hover:text-gray-900 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Platform
+              </a>
+              <a 
+                href="#pricing" 
+                className="block text-gray-600 hover:text-gray-900 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Pricing
+              </a>
+              <a 
+                href="#testimonials" 
+                className="block text-gray-600 hover:text-gray-900 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Resources
+              </a>
+              <a 
+                href="#contact" 
+                className="block text-gray-600 hover:text-gray-900 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
+              </a>
+              <a 
+                href="#contact" 
+                className="block px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors text-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Start Your Pilot
+              </a>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero Section */}
@@ -74,7 +135,7 @@ export default function Home() {
               />
               <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 max-w-xs">
                 <div className="text-sm font-semibold text-gray-900 mb-1">ROI in 30 days</div>
-                <div className="text-xs text-gray-600">Typical payback period with $149/month transparent pricing.</div>
+                <div className="text-xs text-gray-600">Typical payback period with $199/month transparent pricing.</div>
                 <a href="#pricing" className="text-[#7655d6] font-medium mt-2 flex items-center hover:underline">
                   See Pricing
                 </a>
@@ -278,7 +339,7 @@ export default function Home() {
                 <tr className="border-b">
                   <td className="p-4 font-medium">Initial Investment</td>
                   <td className="text-center p-4">$1K - $5K</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">$1K setup + $149/mo</td>
+                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">$1K setup + $199/mo</td>
                   <td className="text-center p-4">$100K - $500K</td>
                 </tr>
                 <tr className="border-b">
@@ -326,7 +387,7 @@ export default function Home() {
             <Card className="p-8 bg-white text-gray-900">
               <CardContent className="p-0">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-[#7655d6] mb-2">$149</div>
+                  <div className="text-4xl font-bold text-[#7655d6] mb-2">$199</div>
                   <div className="text-lg text-gray-600">per equipment/month</div>
                   <div className="text-sm text-gray-500">(billed annually)</div>
                 </div>
@@ -368,11 +429,11 @@ export default function Home() {
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    System configuration
+                    Integration with existing systems
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Integration with existing systems
+                    System configuration
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
