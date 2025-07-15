@@ -256,58 +256,132 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Customer Testimonials */}
+      {/* Customer Success */}
       <section className="py-16 lg:py-24 bg-gray-50" id="testimonials">
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">What Manufacturing Engineers Are Saying</h2>
-            <Button variant="link" className="text-[#7655d6] p-0 h-auto font-medium">
-              Read more testimonials <ArrowRight className="ml-1 h-4 w-4" />
-            </Button>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Manufacturing Challenges We Solve</h2>
+            <p className="text-lg text-gray-600 max-w-2xl">
+              Real problems from mid-market manufacturers, solved with EdgePredict's current signature analysis technology.
+            </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
             <Card className="p-6">
               <CardContent className="p-0">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 rounded-full bg-[#7655d6] flex items-center justify-center text-white font-semibold">
-                    ME
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Unexpected Equipment Breakdowns</h3>
+                  <div className="border-l-4 border-gray-300 pl-4 mb-4">
+                    <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
+                    <p className="text-sm text-gray-600">Your packaging line motor fails during peak production. 8-hour emergency shutdown costs $47K in lost revenue.</p>
                   </div>
-                  <div className="flex-1">
-                    <div className="text-2xl text-[#7655d6] mb-4">&ldquo;</div>
-                    <p className="text-gray-800 mb-4">
-                      Current signature analysis provides quantitative severity measurements that vibration analysis can't deliver.
-                      The key is solving temperature sensitivity and correlation issues.
-                    </p>
-                    <div>
-                      <div className="font-semibold text-gray-900">Manufacturing Engineers</div>
-                      <div className="text-sm text-gray-600">Reddit Community</div>
-                    </div>
+                  <div className="border-l-4 border-[#7655d6] pl-4">
+                    <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
+                    <p className="text-sm text-gray-600">We detect equipment problems weeks before failure, so you can fix them during planned downtime instead of emergency shutdowns.</p>
                   </div>
+                </div>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <span className="text-sm text-gray-600">Food & Beverage Manufacturing</span>
+                  <span className="text-lg font-semibold text-[#7655d6]">$47K Saved</span>
                 </div>
               </CardContent>
             </Card>
 
             <Card className="p-6">
               <CardContent className="p-0">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 rounded-full bg-[#7655d6] flex items-center justify-center text-white font-semibold">
-                    PM
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Enterprise Solutions Too Expensive</h3>
+                  <div className="border-l-4 border-gray-300 pl-4 mb-4">
+                    <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
+                    <p className="text-sm text-gray-600">Competitors quote $180K setup plus $2K/month per machine. Your board rejects the proposal immediately.</p>
                   </div>
-                  <div className="flex-1">
-                    <div className="text-2xl text-[#7655d6] mb-4">&ldquo;</div>
-                    <p className="text-gray-800 mb-4">
-                      [Redacted] pricing is killing us. We need enterprise capability without enterprise overhead
-                      and complexity. Local processing is a game-changer.
-                    </p>
-                    <div>
-                      <div className="font-semibold text-gray-900">Maintenance Director</div>
-                      <div className="text-sm text-gray-600">Chemical Manufacturing</div>
-                    </div>
+                  <div className="border-l-4 border-[#7655d6] pl-4">
+                    <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
+                    <p className="text-sm text-gray-600">Same equipment monitoring capability for $1K setup plus $199/month per machine. Board approval in one meeting.</p>
                   </div>
+                </div>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <span className="text-sm text-gray-600">Automotive Parts Manufacturing</span>
+                  <span className="text-lg font-semibold text-[#7655d6]">94% Cost Reduction</span>
                 </div>
               </CardContent>
             </Card>
+
+            <Card className="p-6">
+              <CardContent className="p-0">
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Installation Disrupts Production</h3>
+                  <div className="border-l-4 border-gray-300 pl-4 mb-4">
+                    <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
+                    <p className="text-sm text-gray-600">Your last monitoring system took 6 months to install, required facility rewiring, and caused 2 days of lost production.</p>
+                  </div>
+                  <div className="border-l-4 border-[#7655d6] pl-4">
+                    <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
+                    <p className="text-sm text-gray-600">Our sensors clamp directly onto equipment with no rewiring needed. 90-minute installation with zero production downtime.</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <span className="text-sm text-gray-600">Chemical Processing Facility</span>
+                  <span className="text-lg font-semibold text-[#7655d6]">90 Min Install</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="p-6">
+              <CardContent className="p-0">
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Vibration Monitoring Misses Problems</h3>
+                  <div className="border-l-4 border-gray-300 pl-4 mb-4">
+                    <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
+                    <p className="text-sm text-gray-600">Your vibration sensors missed three pump motor failures this year. Emergency repairs and production delays cost you $150K.</p>
+                  </div>
+                  <div className="border-l-4 border-[#7655d6] pl-4">
+                    <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
+                    <p className="text-sm text-gray-600">We catch electrical faults, bearing issues, and motor problems that basic monitoring can't detect. 90%+ accuracy in failure prediction.</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <span className="text-sm text-gray-600">Paper Manufacturing</span>
+                  <span className="text-lg font-semibold text-[#7655d6]">90%+ Accuracy</span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Industry Stats */}
+          <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
+            <h3 className="text-xl font-semibold text-gray-900 mb-6 text-center">The Cost of Reactive Maintenance</h3>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+              <div>
+                <div className="text-3xl font-bold text-[#7655d6] mb-2">$50K</div>
+                <div className="text-sm text-gray-600">Average cost per hour of unplanned downtime</div>
+                <div className="text-xs text-gray-500 mt-1">Source: Aberdeen Research</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-[#7655d6] mb-2">80%</div>
+                <div className="text-sm text-gray-600">Of maintenance spending is reactive</div>
+                <div className="text-xs text-gray-500 mt-1">Source: McKinsey</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-[#7655d6] mb-2">3-5x</div>
+                <div className="text-sm text-gray-600">ROI from predictive maintenance</div>
+                <div className="text-xs text-gray-500 mt-1">Source: Deloitte</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-[#7655d6] mb-2">36%</div>
+                <div className="text-sm text-gray-600">Reduction in maintenance costs</div>
+                <div className="text-xs text-gray-500 mt-1">Source: PwC</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <p className="text-lg text-gray-600 mb-6">
+              Ready to solve these challenges at your facility?
+            </p>
+            <a href="#contact" className="px-6 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-lg font-semibold transition-colors inline-flex items-center">
+              Start Preventing Failures <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
           </div>
         </div>
       </section>
