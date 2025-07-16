@@ -541,7 +541,7 @@ export default function Home() {
       Start Your Pilot <ArrowRight className="ml-2 h-5 w-5" />
 </a>
           <div className="mt-6 text-sm text-gray-500">
-            <a href="mailto:anderson@edgepredict.io" className="hover:text-[#7655d6]">anderson@edgepredict.io</a> |
+            <a href="mailto:contact@edgepredict.io" className="hover:text-[#7655d6]">contact@edgepredict.io</a> |
             <a href="tel:7034016262" className="hover:text-[#7655d6] ml-2">(703) 401-6262</a>
           </div>
         </div>
