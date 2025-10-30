@@ -126,8 +126,8 @@ export default function Home() {
               <span className="text-[#7655d6]">In every facility.</span>
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-lg">
-              Prevent six-figure downtime events with edge analytics that learn your assets and flag electrical
-              and mechanical faults before they stop production.
+              Prevent six-figure downtime events with edge analytics that learn your assets and flag electrical and
+              mechanical faults before they stop production.
             </p>
             <a
               href="#contact"
@@ -225,9 +225,9 @@ export default function Home() {
               A Better Way to Prevent Downtime Starts Here
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              We build intelligent monitoring solutions that learns your equipment&apos;s unique
-              patterns, providing insights that transform reactive maintenance into predictive optimization - without
-              the complexity and cost barriers of enterprise solutions.
+              We build intelligent monitoring solutions that learn your equipment&apos;s unique patterns, providing
+              insights that transform reactive maintenance into predictive optimization – without the complexity and
+              cost barriers of enterprise solutions.
             </p>
             <Button
               variant="outline"
@@ -381,13 +381,13 @@ export default function Home() {
                     <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
                     <p className="text-sm text-gray-600">
                       We catch electrical faults, bearing issues, and motor problems that basic monitoring can&apos;t
-                      detect. 90%+ accuracy in failure prediction.
+                      detect.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <span className="text-sm text-gray-600">Paper Manufacturing</span>
-                  <span className="text-lg font-semibold text-[#7655d6]">90%+ Accuracy</span>
+                  <span className="text-lg font-semibold text-[#7655d6]">Early Detection</span>
                 </div>
               </CardContent>
             </Card>
@@ -399,12 +399,11 @@ export default function Home() {
       <section className="py-16 lg:py-24 bg-white" id="faults">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              What EdgePredict Detects
-            </h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">What EdgePredict Detects</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Our edge node analyzes current and voltage signatures to reveal early electrical and mechanical faults
-              before they cause unplanned downtime. ESA identifies problems traditional vibration or thermal monitoring often miss.
+              before they cause unplanned downtime. ESA identifies problems traditional vibration or thermal monitoring
+              often miss.
             </p>
           </div>
 
@@ -428,7 +427,8 @@ export default function Home() {
             <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
               <h3 className="font-semibold text-gray-900 mb-2">Rotor bar &amp; stator faults</h3>
               <p className="text-gray-600 text-sm mb-4">
-                Detect broken rotor bars or shorted stator windings through harmonic distortion and current signature analysis.
+                Detect broken rotor bars or shorted stator windings through harmonic distortion and current signature
+                analysis.
               </p>
               <p className="text-xs text-gray-400">No disassembly required</p>
             </div>
@@ -452,7 +452,8 @@ export default function Home() {
             <div className="bg-gradient-to-br from-[#7655d6] to-[#5b39c2] rounded-xl p-6 text-white">
               <h3 className="font-semibold mb-2">Custom fault profiles</h3>
               <p className="text-sm mb-4">
-                We can tune detection thresholds or train on your facility’s data for specific motors, pumps, or production lines.
+                We can tune detection thresholds or train on your facility’s data for specific motors, pumps, or
+                production lines.
               </p>
               <a
                 href="#contact"
@@ -469,7 +470,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-
 
       {/* Industry stats (reactive maintenance) */}
       <section className="py-16 bg-gray-50">
@@ -544,27 +544,27 @@ export default function Home() {
                 </tr>
                 <tr className="border-b">
                   <td className="p-4 font-medium">Installation Time</td>
-                  <td className="text-center p-4">1-2 days</td>
+                  <td className="text-center p-4">1–2 days</td>
                   <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">&lt; 1 hour / asset</td>
-                  <td className="text-center p-4">2-6 months</td>
+                  <td className="text-center p-4">2–6 months</td>
                 </tr>
                 <tr className="border-b">
                   <td className="p-4 font-medium">Prediction Capability</td>
-                  <td className="text-center p-4">Basic Thresholds</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Early Fault Detection</td>
+                  <td className="text-center p-4">Basic thresholds</td>
+                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Early fault detection</td>
                   <td className="text-center p-4">Model-based, complex setup</td>
                 </tr>
                 <tr className="border-b">
                   <td className="p-4 font-medium">Learning Capability</td>
-                  <td className="text-center p-4">Static Thresholds</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Configurable Rules &amp; Signatures</td>
-                  <td className="text-center p-4">Generic Models</td>
+                  <td className="text-center p-4">Static thresholds</td>
+                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Configurable rules &amp; signatures</td>
+                  <td className="text-center p-4">Generic models</td>
                 </tr>
                 <tr>
                   <td className="p-4 font-medium">Implementation Risk</td>
-                  <td className="text-center p-4">Low - Basic Setup</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Low - Clamp &amp; Monitor</td>
-                  <td className="text-center p-4">High - Complex Integration</td>
+                  <td className="text-center p-4">Low – basic setup</td>
+                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Low – clamp &amp; monitor</td>
+                  <td className="text-center p-4">High – complex integration</td>
                 </tr>
               </tbody>
             </table>
@@ -592,11 +592,11 @@ export default function Home() {
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Edge Electrical Signature Analysis
+                    Edge electrical signature analysis
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    90%+ prediction accuracy
+                    Early fault detection on motors/pumps
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
@@ -604,7 +604,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    2-hour installation
+                    &lt; 1 hour / asset install
                   </li>
                 </ul>
                 <a
