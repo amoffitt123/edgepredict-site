@@ -282,7 +282,7 @@ export default function Home() {
           <div className="mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Manufacturing Challenges We Solve</h2>
             <p className="text-lg text-gray-600 max-w-2xl">
-              Real problems from mid-market manufacturers, solved with EdgePredict&apos;s current signature analysis
+              Real problems from small and mid-sized manufacturers, solved with EdgePredict&apos;s current signature analysis
               technology.
             </p>
           </div>
@@ -517,7 +517,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              The Smart Choice for Mid-Market Manufacturers
+              The Smart Choice for Small and Mid-Sized Manufacturers
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               EdgePredict delivers enterprise-grade results with transparent pricing and rapid deployment, positioning
@@ -696,7 +696,7 @@ export default function Home() {
                 className="h-8 mb-6 brightness-0 invert"
               />
               <p className="text-gray-300 text-sm">
-                Edge-based predictive maintenance for mid-market manufacturers.
+                Edge-based predictive maintenance for small and mid-sized manufacturers.
               </p>
             </div>
 
@@ -781,7 +781,7 @@ export default function Home() {
 
           <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-gray-400">
-              © 2025 EdgePredict. All rights reserved. | Built for mid-market manufacturers by engineers who understand
+              © 2025 EdgePredict. All rights reserved. | Built for small and mid-sized manufacturers by engineers who understand
               your challenges.
             </div>
             <div className="flex space-x-6 text-sm text-gray-400 mt-4 md:mt-0">

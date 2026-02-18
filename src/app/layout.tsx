@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EdgePredict - AI-Powered Predictive Maintenance for Mid-Market Manufacturers",
-  description: "Eliminate unexpected equipment failures with EdgePredict's AI-powered current signature analysis. Enterprise results at $149/month per equipment. 90%+ prediction accuracy, 2-hour installation.",
+  title: "EdgePredict - AI-Powered Predictive Maintenance for Small and Mid-Sized Manufacturers",
+  description: "Eliminate unexpected equipment failures with EdgePredict's AI-powered current signature analysis. Enterprise results at $200/month per equipment. enterprise-grade fault detection, 20-minute installation.",
   keywords: "predictive maintenance, current signature analysis, industrial equipment monitoring, manufacturing, AI, equipment failure prevention",
   authors: [{ name: "EdgePredict" }],
   creator: "EdgePredict",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "EdgePredict - AI-Powered Predictive Maintenance",
-    description: "Eliminate unexpected equipment failures with AI-powered monitoring. Enterprise results at mid-market prices - $149/month per equipment.",
+    description: "Eliminate unexpected equipment failures with AI-powered monitoring. Enterprise results at mid-market prices - $200/month per equipment.",
     url: 'https://www.edgepredict.io',
     siteName: 'EdgePredict',
     images: [
