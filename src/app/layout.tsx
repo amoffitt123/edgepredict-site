@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "EdgePredict - AI-Powered Predictive Maintenance for Small and Mid-Sized Manufacturers",
-  description: "Eliminate unexpected equipment failures with EdgePredict's AI-powered current signature analysis. Enterprise results at $200/month per equipment. enterprise-grade fault detection, 20-minute installation.",
+  description: "Non-invasive motor health monitoring for small and mid-sized manufacturers. Current signature analysis detects faults early. $200/month per motor. 20-minute installation. Free 60-day pilot.",
   keywords: "predictive maintenance, current signature analysis, industrial equipment monitoring, manufacturing, AI, equipment failure prevention",
   authors: [{ name: "EdgePredict" }],
   creator: "EdgePredict",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "EdgePredict - AI-Powered Predictive Maintenance",
-    description: "Eliminate unexpected equipment failures with AI-powered monitoring. Enterprise results at mid-market prices - $200/month per equipment.",
+    description: "Non-invasive motor health monitoring for small and mid-sized manufacturers. Current signature analysis detects faults early. $200/month per motor. 20-minute installation. Free 60-day pilot.",
     url: 'https://www.edgepredict.io',
     siteName: 'EdgePredict',
     images: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'EdgePredict - AI-Powered Predictive Maintenance',
-    description: 'Eliminate unexpected equipment failures with AI-powered monitoring. Enterprise results at mid-market prices.',
+    description: 'Non-invasive motor health monitoring for small and mid-sized manufacturers. Current signature analysis detects faults early. $200/month per motor. 20-minute installation. Free 60-day pilot.',
     images: ['https://www.edgepredict.io/og-image.jpg'], // Same image as OG
     creator: '@edgepredict', // Add your Twitter handle if you have one
   },
