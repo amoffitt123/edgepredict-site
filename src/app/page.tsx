@@ -119,22 +119,22 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Eliminate unexpected
+              Stop Running
               <br />
-              equipment failures.
-              <br />
-              <span className="text-[#7655d6]">In every facility.</span>
+              <span className="text-[#7655d6]">to Failure.</span>
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-lg">
-              Prevent costly unplanned downtime with edge analytics that learn your assets and flag electrical and
-              mechanical faults before they stop production.
+              Non-invasive motor health monitoring that installs in 20 minutes. No vibration sensors. No IT required.
+              Current signature analysis that catches bearing wear, phase imbalance, and load anomalies before they
+              cause downtime.
             </p>
             <a
               href="#contact"
               className="px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors"
             >
-              Start Your Pilot
+              Start Your Free Pilot
             </a>
+            <p className="text-sm text-gray-500 mt-4">$200/month per motor · 20-minute install · Free 60-day pilot</p>
           </div>
 
           <div className="relative">
@@ -221,20 +221,20 @@ export default function Home() {
           </div>
 
           <div>
+            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-wide mb-3">How It Works</p>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              A Better Way to Prevent Downtime Starts Here
+              Step 1 — INSTALL
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              We build intelligent monitoring solutions that learn your equipment&apos;s unique patterns, providing
-              insights that transform reactive maintenance into predictive optimization – without the complexity and
-              cost barriers of enterprise solutions.
+              Split-core CTs clamp onto your motor&apos;s supply conductors. No rewiring, no production downtime, no
+              IT involvement. A maintenance electrician installs it in 20 minutes.
             </p>
             <Button
               variant="outline"
               size="lg"
               className="border-[#7655d6] text-[#7655d6] hover:bg-[#7655d6] hover:text-white"
             >
-              Explore our platform <ArrowRight className="ml-2 h-5 w-5" />
+              See how it works <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
@@ -246,10 +246,10 @@ export default function Home() {
           <div>
             <div className="mb-6">
               <TrendingUp className="h-12 w-12 text-[#7655d6] mb-4" />
-              <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Equipment Health Intelligence</h3>
+              <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Step 2 — MONITOR</h3>
               <p className="text-gray-600 mb-6">
-                Predict and prevent equipment failures with edge-based electrical signature analysis that adapts to your
-                facility&apos;s unique operating conditions and provides actionable insights.
+                Our edge gateway analyzes 3-phase current signatures in real time using Adaptive Current Signature
+                Analysis (ACSA). All processing happens locally on the edge device — no cloud dependency required.
               </p>
               <Button variant="link" className="text-[#7655d6] p-0 h-auto font-medium">
                 Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -260,16 +260,16 @@ export default function Home() {
           <div>
             <div className="mb-6">
               <Clock className="h-12 w-12 text-[#7655d6] mb-4" />
-              <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Predictive Optimization</h3>
+              <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Step 3 — PREVENT</h3>
               <p className="text-gray-600 mb-6">
-                Transform time-based schedules and reactive maintenance into data-driven decisions with transparent
-                per-equipment pricing and rapid deployment that fits small and mid-sized manufacturer budgets.
+                Get alerts via dashboard, text, or email when developing faults are detected. Weekly health reports
+                show exactly which motors need attention and which are running healthy.
               </p>
               <a
-                href="#pricing"
+                href="#contact"
                 className="text-[#7655d6] p-0 h-auto font-medium text-sm underline-offset-4 hover:underline inline-flex items-center"
               >
-                See pricing <ArrowRight className="ml-1 h-4 w-4" />
+                Start your free pilot <ArrowRight className="ml-1 h-4 w-4" />
               </a>
             </div>
           </div>
@@ -295,15 +295,15 @@ export default function Home() {
                   <div className="border-l-4 border-gray-300 pl-4 mb-4">
                     <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
                     <p className="text-sm text-gray-600">
-                      Your packaging line motor fails during peak production. 8-hour emergency shutdown costs $37,000 in
-                      lost revenue.
+                      Your pump motor fails during a production run. Emergency shutdown, overtime labor, expedited
+                      parts, and lost production cost $37,000.
                     </p>
                   </div>
                   <div className="border-l-4 border-[#7655d6] pl-4">
                     <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
                     <p className="text-sm text-gray-600">
-                      Detect developing faults before they cause unplanned downtime, so you can fix them during planned
-                      maintenance instead of emergency shutdowns.
+                      EdgePredict detects the developing fault in the current signature. You schedule a $2,000 repair
+                      during planned downtime.
                     </p>
                   </div>
                 </div>
@@ -321,15 +321,14 @@ export default function Home() {
                   <div className="border-l-4 border-gray-300 pl-4 mb-4">
                     <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
                     <p className="text-sm text-gray-600">
-                      Competitors quote $180K setup plus $2K/month per machine. Your board rejects the proposal
-                      immediately.
+                      Enterprise monitoring systems quote $50K+ setup and $500–2,000/month per machine.
                     </p>
                   </div>
                   <div className="border-l-4 border-[#7655d6] pl-4">
                     <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
                     <p className="text-sm text-gray-600">
-                      Same equipment monitoring capability for $1,000 setup plus $200/month per machine. Board approval in
-                      one meeting.
+                      EdgePredict: $1,000 setup, $200/month per motor. Same fault detection through current signature
+                      analysis, built for plants with 2–50 motors.
                     </p>
                   </div>
                 </div>
@@ -347,15 +346,15 @@ export default function Home() {
                   <div className="border-l-4 border-gray-300 pl-4 mb-4">
                     <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
                     <p className="text-sm text-gray-600">
-                      Your last monitoring system took 6 months to install, required facility rewiring, and caused 2 days
-                      of lost production.
+                      Traditional monitoring systems require weeks of planning, IT coordination, and production
+                      shutdowns.
                     </p>
                   </div>
                   <div className="border-l-4 border-[#7655d6] pl-4">
                     <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
                     <p className="text-sm text-gray-600">
-                      Our sensors clamp directly onto equipment with no rewiring needed. 20-minute installation with
-                      zero production downtime.
+                      Our split-core CTs clamp onto existing motor wiring. 20-minute installation by your maintenance
+                      electrician. No rewiring, no IT ticket, no downtime.
                     </p>
                   </div>
                 </div>
@@ -373,15 +372,14 @@ export default function Home() {
                   <div className="border-l-4 border-gray-300 pl-4 mb-4">
                     <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
                     <p className="text-sm text-gray-600">
-                      Your vibration sensors missed three pump motor failures this year. Emergency repairs and production
-                      delays cost you $45,000.
+                      Basic vibration monitoring misses electrical faults — the #1 cause of motor failure.
                     </p>
                   </div>
                   <div className="border-l-4 border-[#7655d6] pl-4">
                     <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
                     <p className="text-sm text-gray-600">
-                      We catch electrical faults, bearing issues, and motor problems that basic monitoring can&apos;t
-                      detect.
+                      Current signature analysis detects bearing wear, phase imbalance, rotor bar faults, insulation
+                      degradation, and mechanical load issues that vibration sensors can&apos;t see.
                     </p>
                   </div>
                 </div>
@@ -517,57 +515,64 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              The Smart Choice for Small and Mid-Sized Manufacturers
+              Why Choose EdgePredict
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              EdgePredict delivers enterprise-grade results with transparent pricing and rapid deployment, positioning
-              perfectly between basic vibration sensors and overpriced enterprise solutions.
+              No sensor mounting. No 6-month deployment. No $50K+ contract. Current signature analysis through your
+              existing wiring — installed in 20 minutes, data flowing the same day.
             </p>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto mb-8">
             <table className="w-full bg-white rounded-lg shadow-sm">
               <thead>
                 <tr className="border-b">
                   <th className="text-left p-4 font-semibold">Feature</th>
-                  <th className="text-center p-4 font-semibold">Basic Vibration</th>
+                  <th className="text-center p-4 font-semibold">vs. Vibration Sensors</th>
                   <th className="text-center p-4 font-semibold bg-[#7655d6] text-white rounded-t-lg">EdgePredict</th>
-                  <th className="text-center p-4 font-semibold">Enterprise Solutions</th>
+                  <th className="text-center p-4 font-semibold">vs. Enterprise Systems</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b">
-                  <td className="p-4 font-medium">Initial Investment</td>
-                  <td className="text-center p-4">$1K - $5K</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Setup + $200/mo</td>
-                  <td className="text-center p-4">$100K - $500K</td>
+                  <td className="p-4 font-medium">Cost</td>
+                  <td className="text-center p-4">$1K–$5K sensors + quarterly visits</td>
+                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">$1K setup + $200/mo per motor</td>
+                  <td className="text-center p-4">$50K+ setup + $500–2K/mo</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 font-medium">Installation Time</td>
-                  <td className="text-center p-4">1–2 days</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">&lt; 1 hour / asset</td>
-                  <td className="text-center p-4">2–6 months</td>
+                  <td className="p-4 font-medium">Installation</td>
+                  <td className="text-center p-4">Sensor mounting, technician routes</td>
+                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">20 min — clamp on, no rewiring</td>
+                  <td className="text-center p-4">Weeks of planning + IT coordination</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 font-medium">Prediction Capability</td>
-                  <td className="text-center p-4">Basic thresholds</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Early fault detection</td>
-                  <td className="text-center p-4">Model-based, complex setup</td>
+                  <td className="p-4 font-medium">Fault Coverage</td>
+                  <td className="text-center p-4">Mechanical only — misses electrical</td>
+                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Electrical + mechanical via ACSA</td>
+                  <td className="text-center p-4">Broad — but complex &amp; expensive</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-4 font-medium">Learning Capability</td>
-                  <td className="text-center p-4">Static thresholds</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Configurable rules &amp; signatures</td>
-                  <td className="text-center p-4">Generic models</td>
+                  <td className="p-4 font-medium">IT / Cloud Required</td>
+                  <td className="text-center p-4">Often yes</td>
+                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">No — edge processes locally</td>
+                  <td className="text-center p-4">Yes — full integration project</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium">Implementation Risk</td>
-                  <td className="text-center p-4">Low – basic setup</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Low – clamp &amp; monitor</td>
-                  <td className="text-center p-4">High – complex integration</td>
+                  <td className="p-4 font-medium">Time to Value</td>
+                  <td className="text-center p-4">Days to weeks</td>
+                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Same day data flow</td>
+                  <td className="text-center p-4">6–12 months</td>
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <div className="bg-gray-50 rounded-lg p-6 text-center">
+            <p className="text-lg font-semibold text-gray-900 mb-2">vs. Doing Nothing</p>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              One prevented motor failure pays for 6+ years of monitoring. The question isn&apos;t cost — it&apos;s risk.
+            </p>
           </div>
         </div>
       </section>
@@ -586,25 +591,29 @@ export default function Home() {
               <CardContent className="p-0">
                 <div className="text-center mb-6">
                   <div className="text-4xl font-bold text-[#7655d6] mb-2">$200</div>
-                  <div className="text-lg text-gray-600">per equipment/month</div>
-                  <div className="text-sm text-gray-500">(billed annually)</div>
+                  <div className="text-lg text-gray-600">per motor / month</div>
+                  <div className="text-sm text-gray-500">No minimum contracts</div>
                 </div>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Edge electrical signature analysis
+                    Current signature analysis (ACSA)
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Early fault detection on motors/pumps
+                    Bearing, rotor, insulation &amp; phase fault detection
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Local edge processing
+                    Local edge processing — no cloud required
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    &lt; 1 hour / asset install
+                    20-minute installation per motor
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
+                    Volume discounts for 5+ motors
                   </li>
                 </ul>
                 <a
@@ -630,15 +639,15 @@ export default function Home() {
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Integration with existing systems
+                    Free 60-day pilot program
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    System configuration
+                    Send hardware back if it doesn&apos;t prove value
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Flexible pilot program
+                    System configuration &amp; dashboard setup
                   </li>
                 </ul>
                 <a
@@ -651,7 +660,7 @@ export default function Home() {
             </Card>
           </div>
 
-          <div className="mt-8 text-sm opacity-75">No minimum contracts • Proven ROI before you buy</div>
+          <div className="mt-8 text-sm opacity-75">No minimum contracts • Free 60-day pilot • Volume discounts for 5+ motors</div>
         </div>
       </section>
 
