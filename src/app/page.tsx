@@ -1,804 +1,439 @@
-"use client"
+import Link from "next/link";
+import { CheckCircle, ArrowRight, Zap, Activity, Bell, Shield, Clock, TrendingUp } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, ArrowRight, X, Menu, Cog, Shield, Zap, Users, Clock, TrendingUp } from "lucide-react"
-import { useState } from "react"
+export const metadata = {
+  title: "EdgePredict — Stop Unplanned Motor Downtime",
+  description:
+    "Non-invasive motor condition monitoring using Electrical Signature Analysis (ESA). Catch developing issues early. $200/month per motor. Free 60-day pilot.",
+};
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [topBarVisible, setTopBarVisible] = useState(true)
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* Top Notification Bar */}
-      {topBarVisible && (
-        <div className="bg-[#7655d6] text-white px-4 py-3 text-sm relative">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex-1 text-center">
-              Transparent pricing: $200/month per equipment. No hidden fees, no long-term contracts.
-            </div>
-            <a
-              href="#contact"
-              className="text-white hover:text-gray-300 ml-4 px-4 py-2 flex items-center text-sm font-medium transition-colors"
-            >
-              Start Your Pilot <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-            <button onClick={() => setTopBarVisible(false)} className="ml-4 hover:opacity-70">
-              <X className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-      )}
+    <main className="min-h-screen bg-white">
 
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <img
-              src="https://ext.same-assets.com/4220051708/2409708753.png"
-              alt="EdgePredict"
-              className="h-16"
-            />
-          </div>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#platform" className="text-gray-600 hover:text-gray-900">
-              Platform
-            </a>
-            <a href="#pricing" className="text-gray-600 hover:text-gray-900">
-              Pricing
-            </a>
-            <a href="#testimonials" className="text-gray-600 hover:text-gray-900">
-              Resources
-            </a>
-            <a href="#contact" className="text-gray-600 hover:text-gray-900">
-              Contact
-            </a>
-            <a
-              href="#contact"
-              className="px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors"
-            >
-              Start Your Pilot
-            </a>
-          </nav>
-
-          {/* Mobile Button */}
-          <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Nav */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
-            <nav className="px-4 py-4 space-y-4">
-              <a
-                href="#platform"
-                className="block text-gray-600 hover:text-gray-900 py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Platform
-              </a>
-              <a
-                href="#pricing"
-                className="block text-gray-600 hover:text-gray-900 py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Pricing
-              </a>
-              <a
-                href="#testimonials"
-                className="block text-gray-600 hover:text-gray-900 py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Resources
-              </a>
-              <a
-                href="#contact"
-                className="block text-gray-600 hover:text-gray-900 py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact
-              </a>
-              <a
-                href="#contact"
-                className="block px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors text-center"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Start Your Pilot
-              </a>
-            </nav>
-          </div>
-        )}
-      </header>
-
-      {/* Hero */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
           <div>
+            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-4">
+              Electrical Signature Analysis · ESA / MCSA
+            </p>
             <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Eliminate unexpected
+              Stop Unplanned
               <br />
-              equipment failures.
-              <br />
-              <span className="text-[#7655d6]">In every facility.</span>
+              <span className="text-[#7655d6]">Motor Downtime.</span>
             </h1>
-            <p className="text-lg text-gray-600 mb-8 max-w-lg">
-              Prevent costly unplanned downtime with edge analytics that learn your assets and flag electrical and
-              mechanical faults before they stop production.
+            <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
+              Non-invasive motor health monitoring using Electrical Signature Analysis (ESA).
+              Catch developing issues early — without rewiring, IT involvement, or vibration sensors.
             </p>
-            <a
-              href="#contact"
-              className="px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors"
-            >
-              Start Your Pilot
-            </a>
+
+            {/* Trust bullets */}
+            <ul className="space-y-2 mb-8">
+              {[
+                "$200/mo per motor",
+                "~20-min install by your electrician",
+                "Free 60-day pilot",
+                "Cellular option — no plant network required",
+              ].map((item) => (
+                <li key={item} className="flex items-center text-sm text-gray-700">
+                  <CheckCircle className="h-4 w-4 text-[#7655d6] mr-2 flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/pilot"
+                className="inline-flex items-center px-6 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded-lg font-semibold transition-colors"
+              >
+                Start Your Free Pilot <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+              <Link
+                href="/calculator"
+                className="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 hover:border-[#7655d6] hover:text-[#7655d6] rounded-lg font-semibold transition-colors"
+              >
+                Try the Downtime Calculator
+              </Link>
+            </div>
           </div>
 
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-lg">
-              <img
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                alt="Industrial maintenance engineer"
-                className="w-full h-96 object-cover rounded-lg"
-              />
-              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 max-w-xs">
-                <div className="text-sm font-semibold text-gray-900 mb-1">ROI in 30 days</div>
-                <div className="text-xs text-gray-600">
-                  Typical payback period with $200/month transparent pricing.
-                </div>
-                <a href="#pricing" className="text-[#7655d6] font-medium mt-2 flex items-center hover:underline">
-                  See Pricing
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-12 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl font-bold text-[#7655d6] mb-2">$50K</div>
-              <div className="text-sm text-gray-600">Typical unplanned downtime cost</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#7655d6] mb-2">&lt; 1 hr</div>
-              <div className="text-sm text-gray-600">Install time per equipment, no rewiring</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#7655d6] mb-2">Retrofit</div>
-              <div className="text-sm text-gray-600">Clamps onto existing motors &amp; panels</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#7655d6] mb-2">Transparent</div>
-              <div className="text-sm text-gray-600">$200 / equipment / month</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries */}
-      <section className="py-12 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Trusted by manufacturers across industries</h3>
-          </div>
-          <div className="flex items-center justify-center space-x-8 lg:space-x-16 opacity-60">
-            <div className="flex flex-col items-center">
-              <Cog className="h-8 w-8 mb-2" />
-              <span className="text-sm">Food &amp; Beverage</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <Shield className="h-8 w-8 mb-2" />
-              <span className="text-sm">Chemical</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <Zap className="h-8 w-8 mb-2" />
-              <span className="text-sm">Panel Distributors</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <Users className="h-8 w-8 mb-2" />
-              <span className="text-sm">Paper Mills</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Platform / hero 2 */}
-      <section className="py-16 lg:py-24 bg-gray-50" id="platform">
-        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1652211955967-99c892925469?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Manufacturing team collaboration"
-              className="w-full h-96 object-cover rounded-lg"
+              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Maintenance electrician working on motor panel"
+              className="w-full h-[420px] object-cover rounded-xl"
             />
+            {/* Stat chip */}
+            <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 shadow-lg">
+              <div className="text-xs text-gray-500 mb-1 font-medium uppercase tracking-wide">Monitoring cost</div>
+              <div className="text-2xl font-bold text-[#7655d6]">$200</div>
+              <div className="text-xs text-gray-600">per motor / month · no contracts</div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              A Better Way to Prevent Downtime Starts Here
+      {/* ── PROBLEM ──────────────────────────────────────────── */}
+      <section className="py-20 bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="max-w-3xl mb-12">
+            <p className="text-sm font-semibold text-[#a78fe8] uppercase tracking-widest mb-3">The Problem</p>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              Most motor failures are detected too late — or not at all.
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              We build intelligent monitoring solutions that learn your equipment&apos;s unique patterns, providing
-              insights that transform reactive maintenance into predictive optimization – without the complexity and
-              cost barriers of enterprise solutions.
-            </p>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-[#7655d6] text-[#7655d6] hover:bg-[#7655d6] hover:text-white"
-            >
-              Explore our platform <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Two feature blocks */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16">
-          <div>
-            <div className="mb-6">
-              <TrendingUp className="h-12 w-12 text-[#7655d6] mb-4" />
-              <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Equipment Health Intelligence</h3>
-              <p className="text-gray-600 mb-6">
-                Predict and prevent equipment failures with edge-based electrical signature analysis that adapts to your
-                facility&apos;s unique operating conditions and provides actionable insights.
-              </p>
-              <Button variant="link" className="text-[#7655d6] p-0 h-auto font-medium">
-                Learn more <ArrowRight className="ml-1 h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-
-          <div>
-            <div className="mb-6">
-              <Clock className="h-12 w-12 text-[#7655d6] mb-4" />
-              <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Predictive Optimization</h3>
-              <p className="text-gray-600 mb-6">
-                Transform time-based schedules and reactive maintenance into data-driven decisions with transparent
-                per-equipment pricing and rapid deployment that fits small and mid-sized manufacturer budgets.
-              </p>
-              <a
-                href="#pricing"
-                className="text-[#7655d6] p-0 h-auto font-medium text-sm underline-offset-4 hover:underline inline-flex items-center"
-              >
-                See pricing <ArrowRight className="ml-1 h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Customer Success / challenges */}
-      <section className="py-16 lg:py-24 bg-gray-50" id="testimonials">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Manufacturing Challenges We Solve</h2>
-            <p className="text-lg text-gray-600 max-w-2xl">
-              Real problems from small and mid-sized manufacturers, solved with EdgePredict&apos;s current signature analysis
-              technology.
+            <p className="text-gray-400 text-lg leading-relaxed">
+              Motors fail without warning. Emergency shutdowns, expedited parts, overtime labor, and lost
+              production add up to tens of thousands of dollars per event. Reactive maintenance keeps your
+              team in crisis mode.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 mb-16">
-            <Card className="p-6">
-              <CardContent className="p-0">
-                <div className="mb-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Unexpected Equipment Breakdowns</h3>
-                  <div className="border-l-4 border-gray-300 pl-4 mb-4">
-                    <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
-                    <p className="text-sm text-gray-600">
-                      Your packaging line motor fails during peak production. 8-hour emergency shutdown costs $37,000 in
-                      lost revenue.
-                    </p>
-                  </div>
-                  <div className="border-l-4 border-[#7655d6] pl-4">
-                    <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
-                    <p className="text-sm text-gray-600">
-                      Detect developing faults before they cause unplanned downtime, so you can fix them during planned
-                      maintenance instead of emergency shutdowns.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                  <span className="text-sm text-gray-600">Food &amp; Beverage Manufacturing</span>
-                  <span className="text-lg font-semibold text-[#7655d6]">$37,000 Saved</span>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6">
-              <CardContent className="p-0">
-                <div className="mb-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Enterprise Solutions Too Expensive</h3>
-                  <div className="border-l-4 border-gray-300 pl-4 mb-4">
-                    <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
-                    <p className="text-sm text-gray-600">
-                      Competitors quote $180K setup plus $2K/month per machine. Your board rejects the proposal
-                      immediately.
-                    </p>
-                  </div>
-                  <div className="border-l-4 border-[#7655d6] pl-4">
-                    <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
-                    <p className="text-sm text-gray-600">
-                      Same equipment monitoring capability for $1,000 setup plus $200/month per machine. Board approval in
-                      one meeting.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                  <span className="text-sm text-gray-600">Automotive Parts Manufacturing</span>
-                  <span className="text-lg font-semibold text-[#7655d6]">94% Cost Reduction</span>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6">
-              <CardContent className="p-0">
-                <div className="mb-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Installation Disrupts Production</h3>
-                  <div className="border-l-4 border-gray-300 pl-4 mb-4">
-                    <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
-                    <p className="text-sm text-gray-600">
-                      Your last monitoring system took 6 months to install, required facility rewiring, and caused 2 days
-                      of lost production.
-                    </p>
-                  </div>
-                  <div className="border-l-4 border-[#7655d6] pl-4">
-                    <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
-                    <p className="text-sm text-gray-600">
-                      Our sensors clamp directly onto equipment with no rewiring needed. 20-minute installation with
-                      zero production downtime.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                  <span className="text-sm text-gray-600">Chemical Processing Facility</span>
-                  <span className="text-lg font-semibold text-[#7655d6]">20 Min Install</span>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6">
-              <CardContent className="p-0">
-                <div className="mb-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Vibration Monitoring Misses Problems</h3>
-                  <div className="border-l-4 border-gray-300 pl-4 mb-4">
-                    <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
-                    <p className="text-sm text-gray-600">
-                      Your vibration sensors missed three pump motor failures this year. Emergency repairs and production
-                      delays cost you $45,000.
-                    </p>
-                  </div>
-                  <div className="border-l-4 border-[#7655d6] pl-4">
-                    <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
-                    <p className="text-sm text-gray-600">
-                      We catch electrical faults, bearing issues, and motor problems that basic monitoring can&apos;t
-                      detect.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                  <span className="text-sm text-gray-600">Paper Manufacturing</span>
-                  <span className="text-lg font-semibold text-[#7655d6]">Early Detection</span>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <TrendingUp className="h-6 w-6" />,
+                stat: "Tens of thousands",
+                label: "Typical cost per unplanned motor failure event",
+              },
+              {
+                icon: <Activity className="h-6 w-6" />,
+                stat: "Run-to-failure",
+                label: "The default strategy at most plants — reactive and expensive",
+              },
+              {
+                icon: <Clock className="h-6 w-6" />,
+                stat: "Hours to days",
+                label: "Downtime waiting for parts and emergency repair crew",
+              },
+            ].map((item) => (
+              <div key={item.label} className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                <div className="text-[#7655d6] mb-3">{item.icon}</div>
+                <div className="text-2xl font-bold text-white mb-2">{item.stat}</div>
+                <div className="text-gray-400 text-sm leading-relaxed">{item.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* What EdgePredict Detects */}
-      <section className="py-16 lg:py-24 bg-white" id="faults">
+      {/* ── HOW IT WORKS ─────────────────────────────────────── */}
+      <section className="py-20" id="how-it-works">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">What EdgePredict Detects</h2>
+          <div className="text-center mb-14">
+            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">How It Works</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              Three steps. No plant disruption.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "01",
+                title: "INSTALL",
+                icon: <Zap className="h-7 w-7" />,
+                body: "Split-core CTs clamp onto motor supply conductors — at the input side of a VFD or directly on line-fed motors. No rewiring, no production downtime. A maintenance electrician completes the install in ~20 minutes.",
+              },
+              {
+                step: "02",
+                title: "MONITOR",
+                icon: <Activity className="h-7 w-7" />,
+                body: "The edge gateway captures 3-phase current data and runs Electrical Signature Analysis (ESA/MCSA) locally. Trends, health scores, and anomaly alerts are displayed on a web-based monitoring dashboard. Weekly summaries land in your inbox.",
+              },
+              {
+                step: "03",
+                title: "PREVENT",
+                icon: <Bell className="h-7 w-7" />,
+                body: "When developing issues are detected, alerts are sent via dashboard, email, or text. Your maintenance team investigates and schedules a planned repair — before an unplanned shutdown forces your hand.",
+              },
+            ].map((s) => (
+              <div key={s.step} className="relative">
+                <div className="flex items-center mb-5">
+                  <span className="text-5xl font-bold text-gray-100 mr-4 leading-none">{s.step}</span>
+                  <div className="text-[#7655d6]">{s.icon}</div>
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3 tracking-wide">{s.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT IT DETECTS ──────────────────────────────────── */}
+      <section className="py-20 bg-gray-50" id="detection">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-14">
+            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">Detection Capabilities</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">What EdgePredict monitors</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Our edge node analyzes current and voltage signatures to reveal early electrical and mechanical faults
-              before they cause unplanned downtime. ESA identifies problems traditional vibration or thermal monitoring
-              often miss.
+              Core capabilities work with current sensing alone. Optional voltage reference input
+              unlocks enhanced power-quality and supply analytics.
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">Bearing wear &amp; misalignment</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Detect subtle torque and load imbalances that indicate early bearing wear or shaft misalignment.
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Current-only */}
+            <div className="bg-white rounded-xl p-8 border border-gray-200">
+              <div className="flex items-center mb-6">
+                <div className="w-2 h-2 rounded-full bg-[#7655d6] mr-3" />
+                <h3 className="font-bold text-gray-900">Current Sensing — Standard</h3>
+              </div>
+              <ul className="space-y-3">
+                {[
+                  "Phase imbalance / current unbalance",
+                  "Phase loss and single-phasing indicators",
+                  "Load instability — binding, belt slip, cavitation-like anomalies",
+                  "Overload and near-stall conditions",
+                  "Indicators consistent with developing mechanical issues (bearing, coupling)",
+                  "Indicators consistent with developing electrical faults (rotor/stator)*",
+                ].map((item) => (
+                  <li key={item} className="flex items-start text-sm text-gray-700">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-gray-400 mt-5 leading-relaxed">
+                * Indicators require maintenance confirmation. Harmonic and sideband features are used
+                as indicators; resolution depends on installation and operating conditions.
               </p>
-              <p className="text-xs text-gray-400">Lead time: days to weeks before vibration rises</p>
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">Current imbalance &amp; phase loss</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Identify unbalanced loads, single phasing, or uneven current draw that shorten motor life.
+            {/* Voltage reference enhanced */}
+            <div className="bg-white rounded-xl p-8 border border-[#7655d6]/30">
+              <div className="flex items-center mb-6">
+                <div className="w-2 h-2 rounded-full bg-[#7655d6] mr-3" />
+                <h3 className="font-bold text-gray-900">Enhanced — Optional Voltage Reference</h3>
+                <span className="ml-auto text-xs bg-[#7655d6]/10 text-[#7655d6] px-2 py-1 rounded font-medium">
+                  Add-on
+                </span>
+              </div>
+              <ul className="space-y-3">
+                {[
+                  "Voltage unbalance and undervoltage detection",
+                  "Frequency drift monitoring",
+                  "Power factor (PF) and kVAR anomalies",
+                  "Real power (kW) trending and load factor",
+                  "Supply quality anomalies",
+                ].map((item) => (
+                  <li key={item} className="flex items-start text-sm text-gray-700">
+                    <CheckCircle className="h-4 w-4 text-[#7655d6] mr-2 mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-gray-400 mt-5 leading-relaxed">
+                Voltage reference: plug-in transformer tap. Improves power/PF analytics and supply-quality
+                anomaly detection. Not required for core motor health monitoring.
               </p>
-              <p className="text-xs text-gray-400">Flagged instantly by edge processing</p>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">Rotor bar &amp; stator faults</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Detect broken rotor bars or shorted stator windings through harmonic distortion and current signature
-                analysis.
-              </p>
-              <p className="text-xs text-gray-400">No disassembly required</p>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">Mechanical load issues</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Spot coupling wear, belt slippage, or jammed equipment by tracking torque and slip variations over time.
-              </p>
-              <p className="text-xs text-gray-400">Correlates mechanical drag with electrical behavior</p>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">Insulation degradation</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Track rising current leakage and unbalanced phase impedance to catch failing insulation early.
-              </p>
-              <p className="text-xs text-gray-400">Prevents unplanned motor replacements</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-[#7655d6] to-[#5b39c2] rounded-xl p-6 text-white">
-              <h3 className="font-semibold mb-2">Custom fault profiles</h3>
-              <p className="text-sm mb-4">
-                We can tune detection thresholds or train on your facility’s data for specific motors, pumps, or
-                production lines.
-              </p>
-              <a
-                href="#contact"
-                className="inline-flex items-center text-sm font-medium underline underline-offset-4"
-              >
-                Talk to us about your equipment
-                <span className="ml-1">→</span>
-              </a>
             </div>
           </div>
-
-          <p className="text-center mt-10 text-sm text-gray-500">
-            Flow: edge node → local processing → custom dashboards &amp; alerts.
-          </p>
         </div>
       </section>
 
-      {/* Industry stats (reactive maintenance) */}
-      <section className="py-16 bg-gray-50">
+      {/* ── WHY EDGEPREDICT ──────────────────────────────────── */}
+      <section className="py-20" id="why">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
-            <h3 className="text-xl font-semibold text-gray-900 mb-6 text-center">The Cost of Reactive Maintenance</h3>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-[#7655d6] mb-2">$50K</div>
-                <div className="text-sm text-gray-600">Average cost per hour of unplanned downtime</div>
-                <div className="text-xs text-gray-500 mt-1">Source: Aberdeen Research</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#7655d6] mb-2">80%</div>
-                <div className="text-sm text-gray-600">Of maintenance spending is reactive</div>
-                <div className="text-xs text-gray-500 mt-1">Source: McKinsey</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#7655d6] mb-2">3-5x</div>
-                <div className="text-sm text-gray-600">ROI from predictive maintenance</div>
-                <div className="text-xs text-gray-500 mt-1">Source: Deloitte</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#7655d6] mb-2">36%</div>
-                <div className="text-sm text-gray-600">Reduction in maintenance costs</div>
-                <div className="text-xs text-gray-500 mt-1">Source: PwC</div>
-              </div>
-            </div>
+          <div className="text-center mb-14">
+            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">Why EdgePredict</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              Why not just vibration sensors? Or enterprise systems?
+            </h2>
           </div>
 
-          <div className="text-center">
-            <p className="text-lg text-gray-600 mb-6">Ready to solve these challenges at your facility?</p>
-            <a
-              href="#contact"
-              className="px-6 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-lg font-semibold transition-colors inline-flex items-center"
-            >
-              Start Preventing Failures <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "vs. Vibration Sensors Only",
+                body: "No sensor mounting, no technician routes, no quarterly site visits. ESA reads fault indicators through existing motor wiring — non-invasive and sensitive to electrical faults that vibration can't see.",
+                cta: null,
+              },
+              {
+                title: "vs. Enterprise Systems",
+                body: "No 6-month deployment project, no IT integration, no $50K+ contract. Install in ~20 minutes, data flowing the same day. Built for plants with 2–50 critical motors, not enterprise-scale complexity.",
+                cta: null,
+              },
+              {
+                title: "vs. Doing Nothing",
+                body: "One prevented motor failure typically pays for more than a year of monitoring. Early warning lets you schedule repairs during planned maintenance — not at 2 AM on a Sunday.",
+                cta: { label: "See the math", href: "/calculator" },
+              },
+            ].map((card) => (
+              <div key={card.title} className="bg-gray-50 rounded-xl p-8 border border-gray-200">
+                <h3 className="font-bold text-gray-900 mb-4">{card.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">{card.body}</p>
+                {card.cta && (
+                  <Link
+                    href={card.cta.href}
+                    className="text-[#7655d6] text-sm font-medium inline-flex items-center hover:underline"
+                  >
+                    {card.cta.label} <ArrowRight className="ml-1 h-3 w-3" />
+                  </Link>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Comparison */}
-      <section className="py-16 lg:py-24">
+      {/* ── PILOT CALLOUT ────────────────────────────────────── */}
+      <section className="py-20 bg-[#7655d6]" id="pilot">
+        <div className="max-w-5xl mx-auto px-4 text-center text-white">
+          <p className="text-sm font-semibold text-purple-200 uppercase tracking-widest mb-3">Free 60-Day Pilot</p>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+            Try it on your motors. Walk away if it doesn&apos;t prove value.
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 text-left">
+            {[
+              { label: "Pre-configured kit", body: "We ship everything you need. No sourcing hardware separately." },
+              { label: "No plant network required", body: "Cellular option available for pilots — keeps IT out of the loop." },
+              { label: "Weekly health summaries", body: "Plus real-time alerts when developing issues are detected." },
+              { label: "60-day walk-away", body: "If no value in 60 days, return the hardware. No questions." },
+            ].map((item) => (
+              <div key={item.label} className="bg-white/10 rounded-lg p-4">
+                <div className="text-sm font-semibold text-white mb-1">{item.label}</div>
+                <div className="text-purple-200 text-xs leading-relaxed">{item.body}</div>
+              </div>
+            ))}
+          </div>
+          <Link
+            href="/pilot"
+            className="inline-flex items-center px-8 py-4 bg-white text-[#7655d6] hover:bg-gray-100 rounded-lg text-lg font-bold transition-colors"
+          >
+            Start Your Free Pilot <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+          <p className="text-purple-200 text-sm mt-4">$200/month per motor after pilot · $1,000 one-time install per site</p>
+        </div>
+      </section>
+
+      {/* ── DASHBOARD PREVIEW ────────────────────────────────── */}
+      <section className="py-20 bg-gray-50" id="dashboard">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              The Smart Choice for Small and Mid-Sized Manufacturers
+            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">Monitoring Dashboard</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              Clear visibility into every motor
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              EdgePredict delivers enterprise-grade results with transparent pricing and rapid deployment, positioning
-              perfectly between basic vibration sensors and overpriced enterprise solutions.
+            <p className="text-gray-600 mt-3 max-w-xl mx-auto">
+              Web-based dashboard with real-time status, trend charts, and alert history. No specialized software to install.
             </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-lg shadow-sm">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left p-4 font-semibold">Feature</th>
-                  <th className="text-center p-4 font-semibold">Basic Vibration</th>
-                  <th className="text-center p-4 font-semibold bg-[#7655d6] text-white rounded-t-lg">EdgePredict</th>
-                  <th className="text-center p-4 font-semibold">Enterprise Solutions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="p-4 font-medium">Initial Investment</td>
-                  <td className="text-center p-4">$1K - $5K</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Setup + $200/mo</td>
-                  <td className="text-center p-4">$100K - $500K</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="p-4 font-medium">Installation Time</td>
-                  <td className="text-center p-4">1–2 days</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">&lt; 1 hour / asset</td>
-                  <td className="text-center p-4">2–6 months</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="p-4 font-medium">Prediction Capability</td>
-                  <td className="text-center p-4">Basic thresholds</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Early fault detection</td>
-                  <td className="text-center p-4">Model-based, complex setup</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="p-4 font-medium">Learning Capability</td>
-                  <td className="text-center p-4">Static thresholds</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Configurable rules &amp; signatures</td>
-                  <td className="text-center p-4">Generic models</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium">Implementation Risk</td>
-                  <td className="text-center p-4">Low – basic setup</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Low – clamp &amp; monitor</td>
-                  <td className="text-center p-4">High – complex integration</td>
-                </tr>
-              </tbody>
-            </table>
+          {/* Mock dashboard */}
+          <div className="max-w-4xl mx-auto bg-gray-900 rounded-xl overflow-hidden shadow-2xl border border-gray-700">
+            {/* Titlebar */}
+            <div className="bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 rounded-full bg-red-500" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                <div className="w-3 h-3 rounded-full bg-green-500" />
+                <span className="ml-3 text-xs text-gray-400 font-mono">EdgePredict · Monitoring Dashboard</span>
+              </div>
+              <div className="flex items-center text-xs text-green-400">
+                <div className="w-2 h-2 rounded-full bg-green-400 mr-1 animate-pulse" />
+                Live
+              </div>
+            </div>
+
+            {/* KPI row */}
+            <div className="grid grid-cols-4 border-b border-gray-800">
+              {[
+                { label: "Fleet Health", value: "87", unit: "/100", color: "text-green-400" },
+                { label: "Motors Online", value: "8", unit: "/8", color: "text-white" },
+                { label: "Max Unbalance", value: "2.1", unit: "%", color: "text-yellow-400" },
+                { label: "Open Alerts", value: "1", unit: "", color: "text-yellow-400" },
+              ].map((kpi) => (
+                <div key={kpi.label} className="p-4 border-r border-gray-800 last:border-r-0">
+                  <div className="text-xs text-gray-500 mb-1 font-mono uppercase tracking-wide">{kpi.label}</div>
+                  <div className={`text-2xl font-bold ${kpi.color} font-mono`}>
+                    {kpi.value}<span className="text-sm text-gray-500">{kpi.unit}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Motor table */}
+            <div className="p-4">
+              <div className="text-xs text-gray-500 font-mono uppercase tracking-wide mb-3">Motor Status</div>
+              <div className="space-y-2">
+                {[
+                  { name: "Pump-3 · 75 HP", status: "Normal", health: 94, color: "bg-green-500" },
+                  { name: "Fan-1 · 40 HP", status: "Normal", health: 91, color: "bg-green-500" },
+                  { name: "Conveyor-2 · 60 HP", status: "Watch", health: 71, color: "bg-yellow-500" },
+                  { name: "Compressor-1 · 100 HP", status: "Normal", health: 88, color: "bg-green-500" },
+                ].map((motor) => (
+                  <div key={motor.name} className="flex items-center space-x-3 bg-gray-800 rounded px-3 py-2">
+                    <div className={`w-2 h-2 rounded-full ${motor.color} flex-shrink-0`} />
+                    <span className="text-xs text-gray-300 font-mono w-44 flex-shrink-0">{motor.name}</span>
+                    <div className="flex-1 bg-gray-700 rounded-full h-1.5">
+                      <div
+                        className={`h-1.5 rounded-full ${motor.color}`}
+                        style={{ width: `${motor.health}%` }}
+                      />
+                    </div>
+                    <span className="text-xs text-gray-400 font-mono w-8 text-right">{motor.health}%</span>
+                    <span
+                      className={`text-xs font-mono px-2 py-0.5 rounded flex-shrink-0 ${
+                        motor.status === "Normal"
+                          ? "text-green-400 bg-green-400/10"
+                          : "text-yellow-400 bg-yellow-400/10"
+                      }`}
+                    >
+                      {motor.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Alert */}
+              <div className="mt-4 border-t border-gray-800 pt-3">
+                <div className="text-xs text-gray-500 font-mono uppercase tracking-wide mb-2">Recent Alerts</div>
+                <div className="flex items-start space-x-2 text-xs text-yellow-400 bg-yellow-400/5 rounded px-3 py-2 border border-yellow-400/20">
+                  <span className="mt-0.5 flex-shrink-0">⚠</span>
+                  <span>
+                    <span className="font-semibold">Conveyor-2</span> — Current unbalance elevated (2.1%). Recommend inspection during next planned maintenance window.
+                  </span>
+                  <span className="text-gray-500 ml-auto flex-shrink-0">2h ago</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-16 lg:py-24 bg-[#7655d6]" id="pricing">
-        <div className="max-w-7xl mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Transparent Pricing. No Hidden Fees.</h2>
-          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-            While competitors hide behind &quot;request a quote,&quot; we believe in upfront, honest pricing that helps you
-            make informed decisions.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="p-8 bg-white text-gray-900">
-              <CardContent className="p-0">
-                <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-[#7655d6] mb-2">$200</div>
-                  <div className="text-lg text-gray-600">per equipment/month</div>
-                  <div className="text-sm text-gray-500">(billed annually)</div>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Edge electrical signature analysis
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Early fault detection on motors/pumps
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Local edge processing
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    &lt; 1 hour / asset install
-                  </li>
-                </ul>
-                <a
-                  href="#contact"
-                  className="px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors"
-                >
-                  Start Your Pilot
-                </a>
-              </CardContent>
-            </Card>
-
-            <Card className="p-8 bg-white text-gray-900">
-              <CardContent className="p-0">
-                <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-[#7655d6] mb-2">$1K</div>
-                  <div className="text-lg text-gray-600">one-time installation fee</div>
-                  <div className="text-sm text-gray-500">per facility</div>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    On-site installation &amp; training
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Integration with existing systems
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    System configuration
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    Flexible pilot program
-                  </li>
-                </ul>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors border border-[#7655d6] bg-background text-[#7655d6] shadow-sm hover:bg-[#7655d6] hover:text-white h-9 px-4 py-2 w-full"
-                >
-                  Contact Sales
-                </a>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="mt-8 text-sm opacity-75">No minimum contracts • Proven ROI before you buy</div>
-        </div>
-      </section>
-
-      {/* Contact / CTA */}
-      <section className="py-16 lg:py-24" id="contact">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-            Ready to Prevent Your Next Equipment Failure?
+      {/* ── FINAL CTA ────────────────────────────────────────── */}
+      <section className="py-20">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            Ready to catch issues before they become failures?
           </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Join our pilot program and see EdgePredict in action at your facility. Baseline evaluation with transparent
-            pricing and no long-term commitment.
+          <p className="text-gray-600 mb-8">
+            Start a free 60-day pilot on your critical motors. No plant network required.
           </p>
-          <a
-            href="https://calendly.com/andersonmoffitt/15min?month=2025-07"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center bg-[#7655d6] hover:bg-[#5d3db8] text-white px-8 py-3 mr-4 mb-4 rounded-lg text-lg font-semibold transition-colors"
-          >
-            Start Your Pilot <ArrowRight className="ml-2 h-5 w-5" />
-          </a>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              href="/pilot"
+              className="inline-flex items-center px-8 py-4 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded-lg text-lg font-bold transition-colors"
+            >
+              Start Your Free Pilot <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center px-8 py-4 border border-gray-300 text-gray-700 hover:border-[#7655d6] hover:text-[#7655d6] rounded-lg text-lg font-semibold transition-colors"
+            >
+              Talk to an Engineer
+            </Link>
+          </div>
           <div className="mt-6 text-sm text-gray-500">
-            <a href="mailto:contact@edgepredict.io" className="hover:text-[#7655d6]">
-              contact@edgepredict.io
-            </a>{" "}
-            |{" "}
-            <a href="mailto:anderson@edgepredict.io" className="hover:text-[#7655d6]">
-              anderson@edgepredict.io
-            </a>{" "}
-            |
-            <a href="tel:7034016262" className="hover:text-[#7655d6] ml-2">
-              (703) 401-6262
-            </a>
+            <a href="mailto:anderson@edgepredict.io" className="hover:text-[#7655d6]">anderson@edgepredict.io</a>
+            {" · "}
+            <a href="tel:7034016262" className="hover:text-[#7655d6]">(703) 401-6262</a>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-              <img
-                src="https://ext.same-assets.com/4220051708/2409708753.png"
-                alt="EdgePredict"
-                className="h-8 mb-6 brightness-0 invert"
-              />
-              <p className="text-gray-300 text-sm">
-                Edge-based predictive maintenance for small and mid-sized manufacturers.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Platform</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Equipment Health
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Predictive Analytics
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Edge Processing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Integrations
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Industries</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Food &amp; Beverage
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Chemical Processing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Paper Mills
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Panel Distributors
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>
-                  <a href="#" className="hover:text-white">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Pilot Program
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Support
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm text-gray-400">
-              © 2025 EdgePredict. All rights reserved. | Built for small and mid-sized manufacturers by engineers who understand
-              your challenges.
-            </div>
-            <div className="flex space-x-6 text-sm text-gray-400 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-white">
-                Terms of Service
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
+    </main>
+  );
 }
