@@ -16,7 +16,7 @@ export default function Home() {
         <div className="bg-[#7655d6] text-white px-4 py-3 text-sm relative">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex-1 text-center">
-              Transparent pricing: $199/month per equipment. No hidden fees, no long-term contracts.
+              Transparent pricing: $200/month per equipment. No hidden fees, no long-term contracts.
             </div>
             <a
               href="#contact"
@@ -126,7 +126,7 @@ export default function Home() {
               <span className="text-[#7655d6]">In every facility.</span>
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-lg">
-              Prevent six-figure downtime events with edge analytics that learn your assets and flag electrical and
+              Prevent costly unplanned downtime with edge analytics that learn your assets and flag electrical and
               mechanical faults before they stop production.
             </p>
             <a
@@ -147,7 +147,7 @@ export default function Home() {
               <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 max-w-xs">
                 <div className="text-sm font-semibold text-gray-900 mb-1">ROI in 30 days</div>
                 <div className="text-xs text-gray-600">
-                  Typical payback period with $199/month transparent pricing.
+                  Typical payback period with $200/month transparent pricing.
                 </div>
                 <a href="#pricing" className="text-[#7655d6] font-medium mt-2 flex items-center hover:underline">
                   See Pricing
@@ -176,7 +176,7 @@ export default function Home() {
             </div>
             <div>
               <div className="text-3xl font-bold text-[#7655d6] mb-2">Transparent</div>
-              <div className="text-sm text-gray-600">$199 / equipment / month</div>
+              <div className="text-sm text-gray-600">$200 / equipment / month</div>
             </div>
           </div>
         </div>
@@ -263,7 +263,7 @@ export default function Home() {
               <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Predictive Optimization</h3>
               <p className="text-gray-600 mb-6">
                 Transform time-based schedules and reactive maintenance into data-driven decisions with transparent
-                per-equipment pricing and rapid deployment that fits mid-market budgets.
+                per-equipment pricing and rapid deployment that fits small and mid-sized manufacturer budgets.
               </p>
               <a
                 href="#pricing"
@@ -282,7 +282,7 @@ export default function Home() {
           <div className="mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Manufacturing Challenges We Solve</h2>
             <p className="text-lg text-gray-600 max-w-2xl">
-              Real problems from mid-market manufacturers, solved with EdgePredict&apos;s current signature analysis
+              Real problems from small and mid-sized manufacturers, solved with EdgePredict&apos;s current signature analysis
               technology.
             </p>
           </div>
@@ -295,21 +295,21 @@ export default function Home() {
                   <div className="border-l-4 border-gray-300 pl-4 mb-4">
                     <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
                     <p className="text-sm text-gray-600">
-                      Your packaging line motor fails during peak production. 8-hour emergency shutdown costs $47K in
+                      Your packaging line motor fails during peak production. 8-hour emergency shutdown costs $37,000 in
                       lost revenue.
                     </p>
                   </div>
                   <div className="border-l-4 border-[#7655d6] pl-4">
                     <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
                     <p className="text-sm text-gray-600">
-                      We detect equipment problems weeks before failure, so you can fix them during planned downtime
-                      instead of emergency shutdowns.
+                      Detect developing faults before they cause unplanned downtime, so you can fix them during planned
+                      maintenance instead of emergency shutdowns.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <span className="text-sm text-gray-600">Food &amp; Beverage Manufacturing</span>
-                  <span className="text-lg font-semibold text-[#7655d6]">$47K Saved</span>
+                  <span className="text-lg font-semibold text-[#7655d6]">$37,000 Saved</span>
                 </div>
               </CardContent>
             </Card>
@@ -328,7 +328,7 @@ export default function Home() {
                   <div className="border-l-4 border-[#7655d6] pl-4">
                     <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
                     <p className="text-sm text-gray-600">
-                      Same equipment monitoring capability for $1K setup plus $199/month per machine. Board approval in
+                      Same equipment monitoring capability for $1,000 setup plus $200/month per machine. Board approval in
                       one meeting.
                     </p>
                   </div>
@@ -354,14 +354,14 @@ export default function Home() {
                   <div className="border-l-4 border-[#7655d6] pl-4">
                     <p className="text-sm font-medium text-[#7655d6] mb-1">How EdgePredict Helps</p>
                     <p className="text-sm text-gray-600">
-                      Our sensors clamp directly onto equipment with no rewiring needed. 90-minute installation with
+                      Our sensors clamp directly onto equipment with no rewiring needed. 20-minute installation with
                       zero production downtime.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <span className="text-sm text-gray-600">Chemical Processing Facility</span>
-                  <span className="text-lg font-semibold text-[#7655d6]">90 Min Install</span>
+                  <span className="text-lg font-semibold text-[#7655d6]">20 Min Install</span>
                 </div>
               </CardContent>
             </Card>
@@ -374,7 +374,7 @@ export default function Home() {
                     <p className="text-sm font-medium text-gray-700 mb-1">The Challenge</p>
                     <p className="text-sm text-gray-600">
                       Your vibration sensors missed three pump motor failures this year. Emergency repairs and production
-                      delays cost you $150K.
+                      delays cost you $45,000.
                     </p>
                   </div>
                   <div className="border-l-4 border-[#7655d6] pl-4">
@@ -517,7 +517,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              The Smart Choice for Mid-Market Manufacturers
+              The Smart Choice for Small and Mid-Sized Manufacturers
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               EdgePredict delivers enterprise-grade results with transparent pricing and rapid deployment, positioning
@@ -539,7 +539,7 @@ export default function Home() {
                 <tr className="border-b">
                   <td className="p-4 font-medium">Initial Investment</td>
                   <td className="text-center p-4">$1K - $5K</td>
-                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Setup + $199/mo</td>
+                  <td className="text-center p-4 bg-[#7655d6]/10 font-semibold">Setup + $200/mo</td>
                   <td className="text-center p-4">$100K - $500K</td>
                 </tr>
                 <tr className="border-b">
@@ -585,7 +585,7 @@ export default function Home() {
             <Card className="p-8 bg-white text-gray-900">
               <CardContent className="p-0">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-[#7655d6] mb-2">$199</div>
+                  <div className="text-4xl font-bold text-[#7655d6] mb-2">$200</div>
                   <div className="text-lg text-gray-600">per equipment/month</div>
                   <div className="text-sm text-gray-500">(billed annually)</div>
                 </div>
@@ -620,7 +620,7 @@ export default function Home() {
               <CardContent className="p-0">
                 <div className="text-center mb-6">
                   <div className="text-4xl font-bold text-[#7655d6] mb-2">$1K</div>
-                  <div className="text-lg text-gray-600">one-time setup fee</div>
+                  <div className="text-lg text-gray-600">one-time installation fee</div>
                   <div className="text-sm text-gray-500">per facility</div>
                 </div>
                 <ul className="space-y-3 mb-8">
@@ -677,6 +677,10 @@ export default function Home() {
             <a href="mailto:contact@edgepredict.io" className="hover:text-[#7655d6]">
               contact@edgepredict.io
             </a>{" "}
+            |{" "}
+            <a href="mailto:anderson@edgepredict.io" className="hover:text-[#7655d6]">
+              anderson@edgepredict.io
+            </a>{" "}
             |
             <a href="tel:7034016262" className="hover:text-[#7655d6] ml-2">
               (703) 401-6262
@@ -696,7 +700,7 @@ export default function Home() {
                 className="h-8 mb-6 brightness-0 invert"
               />
               <p className="text-gray-300 text-sm">
-                Edge-based predictive maintenance for mid-market manufacturers.
+                Edge-based predictive maintenance for small and mid-sized manufacturers.
               </p>
             </div>
 
@@ -781,7 +785,7 @@ export default function Home() {
 
           <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-gray-400">
-              © 2025 EdgePredict. All rights reserved. | Built for mid-market manufacturers by engineers who understand
+              © 2025 EdgePredict. All rights reserved. | Built for small and mid-sized manufacturers by engineers who understand
               your challenges.
             </div>
             <div className="flex space-x-6 text-sm text-gray-400 mt-4 md:mt-0">

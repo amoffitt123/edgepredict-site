@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EdgePredict - AI-Powered Predictive Maintenance for Mid-Market Manufacturers",
-  description: "Eliminate unexpected equipment failures with EdgePredict's AI-powered current signature analysis. Enterprise results at $149/month per equipment. 90%+ prediction accuracy, 2-hour installation.",
+  title: "EdgePredict - AI-Powered Predictive Maintenance for Small and Mid-Sized Manufacturers",
+  description: "Non-invasive motor health monitoring for small and mid-sized manufacturers. Current signature analysis detects faults early. $200/month per motor. 20-minute installation. Free 60-day pilot.",
   keywords: "predictive maintenance, current signature analysis, industrial equipment monitoring, manufacturing, AI, equipment failure prevention",
   authors: [{ name: "EdgePredict" }],
   creator: "EdgePredict",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "EdgePredict - AI-Powered Predictive Maintenance",
-    description: "Eliminate unexpected equipment failures with AI-powered monitoring. Enterprise results at mid-market prices - $149/month per equipment.",
+    description: "Non-invasive motor health monitoring for small and mid-sized manufacturers. Current signature analysis detects faults early. $200/month per motor. 20-minute installation. Free 60-day pilot.",
     url: 'https://www.edgepredict.io',
     siteName: 'EdgePredict',
     images: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'EdgePredict - AI-Powered Predictive Maintenance',
-    description: 'Eliminate unexpected equipment failures with AI-powered monitoring. Enterprise results at mid-market prices.',
+    description: 'Non-invasive motor health monitoring for small and mid-sized manufacturers. Current signature analysis detects faults early. $200/month per motor. 20-minute installation. Free 60-day pilot.',
     images: ['https://www.edgepredict.io/og-image.jpg'], // Same image as OG
     creator: '@edgepredict', // Add your Twitter handle if you have one
   },
