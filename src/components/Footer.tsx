@@ -6,11 +6,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div>
-            <img
-              src="https://ext.same-assets.com/4220051708/2409708753.png"
-              alt="EdgePredict"
-              className="h-8 mb-4 brightness-0 invert"
-            />
+            <div className="mb-4 text-xl font-bold tracking-tight">
+              <span className="text-purple-400">Edge</span><span className="text-white">Predict</span>
+            </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Non-invasive motor condition monitoring using Electrical Signature Analysis.
               Built for reliability engineers and maintenance managers.
