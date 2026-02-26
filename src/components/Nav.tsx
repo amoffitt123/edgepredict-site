@@ -20,9 +20,9 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <img
-            src="https://ext.same-assets.com/4220051708/2409708753.png"
+            src="/og-image.jpg"
             alt="EdgePredict"
-            className="h-12"
+            className="h-12 w-auto"
           />
         </Link>
 
