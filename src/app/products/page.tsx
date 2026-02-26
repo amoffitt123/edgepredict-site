@@ -102,10 +102,6 @@ export default function ProductsPage() {
                 </li>
               ))}
             </ul>
-            <div className="border border-gray-700 rounded-lg p-6 inline-block">
-              <p className="text-gray-400 text-sm mb-1">One-time installation fee per site</p>
-              <p className="text-2xl font-bold text-white">$1,000</p>
-            </div>
           </div>
         </div>
       </section>

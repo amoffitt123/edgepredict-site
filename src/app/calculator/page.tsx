@@ -391,7 +391,7 @@ export default function CalculatorPage() {
                   </span>
                 </div>
                 <p className="text-xs text-gray-400 mt-2">
-                  Includes $1,000 one-time install fee and 5 years of EdgePredict monitoring.
+                  Includes 5 years of EdgePredict monitoring.
                   Based on {fmtPct(r.preventablePct * 100)} avoidable loss reduction.
                 </p>
               </div>
