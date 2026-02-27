@@ -22,7 +22,7 @@ export default function Nav() {
           <img
             src="/og-image.jpg"
             alt="EdgePredict"
-            className="h-12 w-auto"
+            className="h-14 w-auto"
           />
         </Link>
 

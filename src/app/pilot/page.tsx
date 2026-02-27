@@ -149,16 +149,11 @@ export default function PilotPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">Pricing After the Pilot</h2>
-            <div className="grid sm:grid-cols-2 gap-6 mb-8">
-              <div className="border border-gray-700 rounded-lg p-6">
+            <div className="mb-8">
+              <div className="border border-gray-700 rounded-lg p-6 inline-block">
                 <p className="text-gray-400 text-sm mb-2">Monthly subscription</p>
                 <p className="text-3xl font-bold text-white">$200</p>
                 <p className="text-gray-400 text-sm mt-1">per motor / month</p>
-              </div>
-              <div className="border border-gray-700 rounded-lg p-6">
-                <p className="text-gray-400 text-sm mb-2">One-time installation fee</p>
-                <p className="text-3xl font-bold text-white">$1,000</p>
-                <p className="text-gray-400 text-sm mt-1">per site</p>
               </div>
             </div>
             <ul className="space-y-2 text-gray-400 text-sm">

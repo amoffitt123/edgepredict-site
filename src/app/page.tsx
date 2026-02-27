@@ -151,7 +151,7 @@ export default function Home() {
             ].map((s) => (
               <div key={s.step} className="relative">
                 <div className="flex items-center mb-5">
-                  <span className="text-5xl font-bold text-gray-100 mr-4 leading-none">{s.step}</span>
+                  <span className="text-5xl font-bold text-[#7655d6]/25 mr-4 leading-none">{s.step}</span>
                   <div className="text-[#7655d6]">{s.icon}</div>
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-3 tracking-wide">{s.title}</h3>
@@ -305,7 +305,7 @@ export default function Home() {
           >
             Start Your Free Pilot <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
-          <p className="text-purple-200 text-sm mt-4">$200/month per motor after pilot · $1,000 one-time install per site</p>
+          <p className="text-purple-200 text-sm mt-4">$200/month per motor after pilot · No long-term contract</p>
         </div>
       </section>
 

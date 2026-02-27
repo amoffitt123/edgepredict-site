@@ -47,18 +47,16 @@ function calcResults(i: Inputs) {
   const avoidableLoss = annualRisk * preventablePct;
 
   const epAnnualCost = i.numMotors * 200 * 12;
-  const installFee = 1000;
-  const epFirstYearCost = epAnnualCost + installFee;
 
   const netBenefit = avoidableLoss - epAnnualCost;
   const roi = epAnnualCost > 0 ? (avoidableLoss / epAnnualCost) * 100 : 0;
   const paybackMonths =
-    avoidableLoss > 0 ? Math.ceil((epFirstYearCost / avoidableLoss) * 12) : 999;
+    avoidableLoss > 0 ? Math.ceil((epAnnualCost / avoidableLoss) * 12) : 999;
 
   // 5-year
   const fiveYrNoAction = annualRisk * 5;
   const fiveYrWithEP =
-    annualRisk * (1 - preventablePct) * 5 + epAnnualCost * 5 + installFee;
+    annualRisk * (1 - preventablePct) * 5 + epAnnualCost * 5;
   const fiveYrSavings = fiveYrNoAction - fiveYrWithEP;
 
   // Cost breakdown (annual)
@@ -72,7 +70,6 @@ function calcResults(i: Inputs) {
     avoidableLoss,
     preventablePct,
     epAnnualCost,
-    epFirstYearCost,
     netBenefit,
     roi,
     paybackMonths,
@@ -391,7 +388,7 @@ export default function CalculatorPage() {
                   </span>
                 </div>
                 <p className="text-xs text-gray-400 mt-2">
-                  Includes $1,000 one-time install fee and 5 years of EdgePredict monitoring.
+                  Includes 5 years of EdgePredict monitoring.
                   Based on {fmtPct(r.preventablePct * 100)} avoidable loss reduction.
                 </p>
               </div>
