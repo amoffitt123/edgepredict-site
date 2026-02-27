@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 function fmt(n: number) {
   return n >= 1_000_000
     ? `$${(n / 1_000_000).toFixed(2)}M`
@@ -17,6 +15,8 @@ export async function POST(request: NextRequest) {
     if (!name || !company || !email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     const reportText = `
 EdgePredict — Downtime Cost Estimate for ${company}
