@@ -55,24 +55,23 @@ To start a free 60-day pilot: https://edgepredict.io/pilot
 Questions? anderson@edgepredict.io · (703) 401-6262
 `.trim();
 
-    await Promise.all([
-      // Notify Anderson
-      resend.emails.send({
-        from: "EdgePredict <noreply@edgepredict.io>",
-        to: ["anderson@edgepredict.io"],
-        replyTo: email,
-        subject: `Calculator report request — ${name} at ${company}`,
-        text: `New report request from ${name} (${email}) at ${company}.\n\n${reportText}`,
-      }),
-      // Send report to the user
-      resend.emails.send({
-        from: "EdgePredict <noreply@edgepredict.io>",
-        to: [email],
-        replyTo: "anderson@edgepredict.io",
-        subject: `Your EdgePredict downtime estimate for ${company}`,
-        text: `Hi ${name},\n\nHere's the downtime cost summary you ran on the EdgePredict calculator.\n\n${reportText}\n\nReply to this email or reach us directly at anderson@edgepredict.io if you'd like to talk through the numbers.\n\n— Anderson Moffitt\nFounder & CTO, EdgePredict`,
-      }),
-    ]);
+    // Notify Anderson
+    await resend.emails.send({
+      from: "EdgePredict <noreply@edgepredict.io>",
+      to: ["anderson@edgepredict.io"],
+      replyTo: email,
+      subject: `Calculator report request — ${name} at ${company}`,
+      text: `New report request from ${name} (${email}) at ${company}.\n\n${reportText}`,
+    });
+
+    // Send report to the user — best-effort, don't fail the request if this errors
+    resend.emails.send({
+      from: "EdgePredict <noreply@edgepredict.io>",
+      to: [email],
+      replyTo: "anderson@edgepredict.io",
+      subject: `Your EdgePredict downtime estimate for ${company}`,
+      text: `Hi ${name},\n\nHere's the downtime cost summary you ran on the EdgePredict calculator.\n\n${reportText}\n\nReply to this email or reach us directly at anderson@edgepredict.io if you'd like to talk through the numbers.\n\n— Anderson Moffitt\nFounder & CTO, EdgePredict`,
+    }).catch((err: unknown) => console.error("User copy failed:", err));
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
