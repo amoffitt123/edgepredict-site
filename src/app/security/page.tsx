@@ -35,7 +35,7 @@ export default function SecurityPage() {
     <main className="bg-white text-gray-900">
 
       {/* Hero */}
-      <section className="py-20 bg-gray-950 text-white">
+      <section className="py-20 text-white" style={{ background: 'linear-gradient(135deg, #1a0f2e 0%, #2d1b5e 50%, #1a0f2e 100%)' }}>
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Security &amp; IT Overview
@@ -192,9 +192,10 @@ export default function SecurityPage() {
       {/* Quick Reference Table */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">Quick Reference</h2>
+          <div className="max-w-xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Quick Reference</h2>
           <div className="overflow-x-auto">
-            <table className="w-full max-w-xl border-collapse text-left text-sm">
+            <table className="w-full border-collapse text-left text-sm">
               <tbody>
                 {quickRef.map((row, i) => (
                   <tr key={row.label} className={i % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
@@ -213,6 +214,7 @@ export default function SecurityPage() {
                 ))}
               </tbody>
             </table>
+          </div>
           </div>
         </div>
       </section>

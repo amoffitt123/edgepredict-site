@@ -52,7 +52,7 @@ export default function ProductsPage() {
     <main className="bg-white text-gray-900">
 
       {/* Hero */}
-      <section className="py-20 bg-gray-950 text-white">
+      <section className="py-20 text-white" style={{ background: 'linear-gradient(135deg, #1a0f2e 0%, #2d1b5e 50%, #1a0f2e 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Motor Condition Monitoring
@@ -171,45 +171,47 @@ export default function ProductsPage() {
       {/* Section 5: Detection Table */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">What Gets Detected</h2>
-          <p className="text-gray-600 mb-8">
-            Electrical Signature Analysis (ESA) and MCSA methods applied locally on the edge device.
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full max-w-2xl border-collapse text-left text-sm">
-              <thead>
-                <tr className="border-b-2 border-gray-200">
-                  <th className="py-3 pr-6 text-gray-900 font-semibold">Detection</th>
-                  <th className="py-3 px-4 text-center font-semibold" style={{ color: '#7655d6' }}>
-                    Current Only
-                  </th>
-                  <th className="py-3 px-4 text-center font-semibold" style={{ color: '#7655d6' }}>
-                    With Voltage Reference
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {detectionTable.map((row, i) => (
-                  <tr key={row.label} className={i % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                    <td className="py-3 pr-6 text-gray-700">{row.label}</td>
-                    <td className="py-3 px-4 text-center text-lg">
-                      {row.current
-                        ? <span style={{ color: '#7655d6' }}>✓</span>
-                        : <span className="text-gray-300">—</span>}
-                    </td>
-                    <td className="py-3 px-4 text-center text-lg">
-                      {row.voltage
-                        ? <span style={{ color: '#7655d6' }}>✓</span>
-                        : <span className="text-gray-300">—</span>}
-                    </td>
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-center">What Gets Detected</h2>
+            <p className="text-gray-600 mb-8 text-center">
+              Electrical Signature Analysis (ESA) and MCSA methods applied locally on the edge device.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b-2 border-gray-200">
+                    <th className="py-3 pr-6 text-gray-900 font-semibold">Detection</th>
+                    <th className="py-3 px-4 text-center font-semibold" style={{ color: '#7655d6' }}>
+                      Current Only
+                    </th>
+                    <th className="py-3 px-4 text-center font-semibold" style={{ color: '#7655d6' }}>
+                      With Voltage Reference
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {detectionTable.map((row, i) => (
+                    <tr key={row.label} className={i % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                      <td className="py-3 pr-6 text-gray-700">{row.label}</td>
+                      <td className="py-3 px-4 text-center text-lg">
+                        {row.current
+                          ? <span style={{ color: '#7655d6' }}>✓</span>
+                          : <span className="text-gray-300">—</span>}
+                      </td>
+                      <td className="py-3 px-4 text-center text-lg">
+                        {row.voltage
+                          ? <span style={{ color: '#7655d6' }}>✓</span>
+                          : <span className="text-gray-300">—</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-gray-500 mt-4">
+              * Indicators consistent with bearing or rotor faults require maintenance confirmation.
+            </p>
           </div>
-          <p className="text-sm text-gray-500 mt-4">
-            * Indicators consistent with bearing or rotor faults require maintenance confirmation.
-          </p>
         </div>
       </section>
 

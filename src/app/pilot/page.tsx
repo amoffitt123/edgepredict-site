@@ -147,12 +147,12 @@ export default function PilotPage() {
       {/* Pricing After the Pilot */}
       <section className="py-20 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Pricing After the Pilot</h2>
-            <div className="mb-8">
-              <div className="border border-gray-700 rounded-lg p-6 inline-block">
+            <div className="mb-8 flex justify-center">
+              <div className="border border-gray-700 rounded-lg p-8">
                 <p className="text-gray-400 text-sm mb-2">Monthly subscription</p>
-                <p className="text-3xl font-bold text-white">$200</p>
+                <p className="text-4xl font-bold text-white">$200</p>
                 <p className="text-gray-400 text-sm mt-1">per motor / month</p>
               </div>
             </div>
