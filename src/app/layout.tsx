@@ -3,6 +3,7 @@ import "./globals.css";
 import ClientBody from "./ClientBody";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "EdgePredict — Motor Condition Monitoring for Industrial Facilities",
@@ -74,6 +75,7 @@ export default function RootLayout({
           <Nav />
           {children}
           <Footer />
+          <Analytics />
         </ClientBody>
       </body>
     </html>
