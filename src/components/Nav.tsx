@@ -5,7 +5,9 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "Product", href: "/products" },
+  { label: "Platform", href: "/platform" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Monitoring", href: "/products" },
   { label: "Pilot Program", href: "/pilot" },
   { label: "Calculator", href: "/calculator" },
   { label: "Security", href: "/security" },
@@ -37,12 +39,12 @@ export default function Nav() {
               {l.label}
             </Link>
           ))}
-          <Link
-            href="/pilot"
+          <a
+            href="https://tools.edgepredict.io/signup"
             className="px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors"
           >
-            Start Your Free Pilot
-          </Link>
+            Start Free
+          </a>
         </nav>
 
         {/* Mobile toggle */}
@@ -69,13 +71,13 @@ export default function Nav() {
                 {l.label}
               </Link>
             ))}
-            <Link
-              href="/pilot"
+            <a
+              href="https://tools.edgepredict.io/signup"
               className="block mt-3 px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors text-center"
               onClick={() => setMobileOpen(false)}
             >
-              Start Your Free Pilot
-            </Link>
+              Start Free
+            </a>
           </nav>
         </div>
       )}

@@ -24,17 +24,17 @@ export default function Home() {
               <span className="text-[#7655d6]">Motor Downtime.</span>
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-              Non-invasive motor health monitoring using Electrical Signature Analysis (ESA).
-              Catch developing issues early — without rewiring, IT involvement, or vibration sensors.
+              Free maintenance management platform with PM scheduling, work orders, and asset tracking.
+              Add non-invasive motor monitoring when you&apos;re ready.
             </p>
 
             {/* Trust bullets */}
             <ul className="space-y-2 mb-8">
               {[
-                "$200/mo per motor",
-                "~20-min install by your electrician",
-                "Free 60-day pilot",
-                "Cellular option — no plant network required",
+                "Free PM planner — no credit card required",
+                "$200/mo per motor for live monitoring",
+                "~20-min sensor install by your electrician",
+                "Cellular — no plant network required",
               ].map((item) => (
                 <li key={item} className="flex items-center text-sm text-gray-700">
                   <CheckCircle className="h-4 w-4 text-[#7655d6] mr-2 flex-shrink-0" />
@@ -44,17 +44,17 @@ export default function Home() {
             </ul>
 
             <div className="flex flex-wrap gap-3">
-              <Link
-                href="/pilot"
+              <a
+                href="https://tools.edgepredict.io/signup"
                 className="inline-flex items-center px-6 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded-lg font-semibold transition-colors"
               >
-                Start Your Free Pilot <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+                Start Free <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
               <Link
-                href="/calculator"
+                href="/products"
                 className="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 hover:border-[#7655d6] hover:text-[#7655d6] rounded-lg font-semibold transition-colors"
               >
-                Try the Downtime Calculator
+                See How Monitoring Works
               </Link>
             </div>
           </div>
@@ -70,6 +70,79 @@ export default function Home() {
               <div className="text-xs text-gray-500 mb-1 font-medium uppercase tracking-wide">Monitoring cost</div>
               <div className="text-2xl font-bold text-[#7655d6]">$200</div>
               <div className="text-xs text-gray-600">per motor / month · no contracts</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PLATFORM PREVIEW ─────────────────────────────────── */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">
+              How It&apos;s Structured
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              One platform. Three tiers. Start free.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Planner */}
+            <div className="bg-white rounded-xl p-8 border border-gray-200">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-bold text-gray-900 text-lg">Planner</h3>
+                <span className="text-xs font-semibold bg-green-100 text-green-700 px-2.5 py-1 rounded-full">
+                  Free
+                </span>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                PM scheduling, work orders, asset management. Everything a small plant needs.
+              </p>
+              <a
+                href="https://tools.edgepredict.io/signup"
+                className="inline-flex items-center text-sm font-semibold text-[#7655d6] hover:underline"
+              >
+                Start Free <ArrowRight className="ml-1 h-3 w-3" />
+              </a>
+            </div>
+
+            {/* Pro */}
+            <div className="bg-white rounded-xl p-8 border border-gray-200">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-bold text-gray-900 text-lg">Pro <span className="text-gray-400 font-normal text-base">$99/mo</span></h3>
+                <span className="text-xs font-semibold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full">
+                  Coming Soon
+                </span>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                Multi-user, advanced reporting, parts inventory. For plants with teams.
+              </p>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center text-sm font-semibold text-gray-500 hover:text-[#7655d6] hover:underline"
+              >
+                See details <ArrowRight className="ml-1 h-3 w-3" />
+              </Link>
+            </div>
+
+            {/* Monitor */}
+            <div className="bg-white rounded-xl p-8 border border-[#7655d6]/40 shadow-[0_0_0_1px_rgba(118,85,214,0.15)]">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-bold text-gray-900 text-lg">Monitor <span className="text-gray-400 font-normal text-base">$200/mo</span></h3>
+                <span className="text-xs font-semibold bg-[#7655d6]/10 text-[#7655d6] px-2.5 py-1 rounded-full">
+                  Sensors
+                </span>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                Live sensor data, dynamic PM, automated alerts. Predictive maintenance.
+              </p>
+              <Link
+                href="/pilot"
+                className="inline-flex items-center text-sm font-semibold text-[#7655d6] hover:underline"
+              >
+                Start Pilot <ArrowRight className="ml-1 h-3 w-3" />
+              </Link>
             </div>
           </div>
         </div>
