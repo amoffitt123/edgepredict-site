@@ -1,3 +1,4 @@
+// shadcn/ui scaffold component — not currently used by any page
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 

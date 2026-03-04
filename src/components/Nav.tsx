@@ -6,11 +6,9 @@ import Link from "next/link";
 
 const navLinks = [
   { label: "Platform", href: "/platform" },
-  { label: "Pricing", href: "/pricing" },
   { label: "Monitoring", href: "/products" },
-  { label: "Pilot Program", href: "/pilot" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Calculator", href: "/calculator" },
-  { label: "Security", href: "/security" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -39,6 +37,12 @@ export default function Nav() {
               {l.label}
             </Link>
           ))}
+          <a
+            href="https://tools.edgepredict.io/login"
+            className="text-sm text-gray-600 hover:text-[#7655d6] transition-colors"
+          >
+            Log In
+          </a>
           <a
             href="https://tools.edgepredict.io/signup"
             className="px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors"
@@ -71,9 +75,17 @@ export default function Nav() {
                 {l.label}
               </Link>
             ))}
+            <div className="border-t border-gray-200 my-3" />
+            <a
+              href="https://tools.edgepredict.io/login"
+              className="block text-gray-600 hover:text-[#7655d6] py-2 text-sm transition-colors"
+              onClick={() => setMobileOpen(false)}
+            >
+              Log In
+            </a>
             <a
               href="https://tools.edgepredict.io/signup"
-              className="block mt-3 px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors text-center"
+              className="block mt-2 px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors text-center"
               onClick={() => setMobileOpen(false)}
             >
               Start Free

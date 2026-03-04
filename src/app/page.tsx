@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CheckCircle, ArrowRight, Zap, Activity, Bell, Shield, Clock, TrendingUp } from "lucide-react";
+import { CheckCircle, ArrowRight, Zap, Activity, Bell, Clock, TrendingUp } from "lucide-react";
 
 export const metadata = {
   title: "EdgePredict — Stop Unplanned Motor Downtime",
@@ -379,6 +379,12 @@ export default function Home() {
             Start Your Free Pilot <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
           <p className="text-purple-200 text-sm mt-4">$200/month per motor after pilot · No long-term contract</p>
+          <p className="text-purple-200 text-xs mt-3">
+            Not ready for sensors yet?{" "}
+            <Link href="/platform" className="underline hover:text-white transition-colors">
+              Start with our free maintenance platform →
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -481,26 +487,34 @@ export default function Home() {
       <section className="py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Ready to catch issues before they become failures?
+            Ready to take control of your maintenance?
           </h2>
           <p className="text-gray-600 mb-8">
-            Start a free 60-day pilot on your critical motors. No plant network required.
+            Start with our free platform. Add sensors when you need them.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href="/pilot"
+            <a
+              href="https://tools.edgepredict.io/signup"
               className="inline-flex items-center px-8 py-4 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded-lg text-lg font-bold transition-colors"
             >
-              Start Your Free Pilot <ArrowRight className="ml-2 h-5 w-5" />
+              Start Free <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
+            <Link
+              href="/pilot"
+              className="inline-flex items-center px-8 py-4 border border-gray-300 text-gray-700 hover:border-[#7655d6] hover:text-[#7655d6] rounded-lg text-lg font-semibold transition-colors"
+            >
+              Start Your Free Pilot
             </Link>
+          </div>
+          <div className="mt-5">
             <Link
               href="/contact"
-              className="inline-flex items-center px-8 py-4 border border-gray-300 text-gray-700 hover:border-[#7655d6] hover:text-[#7655d6] rounded-lg text-lg font-semibold transition-colors"
+              className="text-sm text-gray-500 hover:text-[#7655d6] transition-colors"
             >
               Talk to an Engineer
             </Link>
           </div>
-          <div className="mt-6 text-sm text-gray-500">
+          <div className="mt-4 text-sm text-gray-500">
             <a href="mailto:anderson@edgepredict.io" className="hover:text-[#7655d6]">anderson@edgepredict.io</a>
             {" · "}
             <a href="tel:7034016262" className="hover:text-[#7655d6]">(703) 401-6262</a>

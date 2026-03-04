@@ -6,11 +6,11 @@ import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "EdgePredict — Motor Condition Monitoring for Industrial Facilities",
+  title: "EdgePredict — Maintenance Management & Motor Monitoring",
   description:
-    "Non-invasive motor health monitoring using Electrical Signature Analysis (ESA). $200/month per motor. ~20-minute install. Free 60-day pilot. No plant network required.",
+    "Free maintenance platform with PM scheduling, work orders, and asset management. Add non-invasive motor monitoring with ESA for $200/mo per motor. Free 60-day pilot.",
   keywords:
-    "motor condition monitoring, electrical signature analysis, MCSA, ESA, predictive maintenance, motor health, phase imbalance, current unbalance, industrial motors",
+    "motor condition monitoring, electrical signature analysis, MCSA, ESA, predictive maintenance, motor health, phase imbalance, current unbalance, industrial motors, CMMS, maintenance management, preventive maintenance software, work order management, PM scheduling",
   authors: [{ name: "EdgePredict" }],
   creator: "EdgePredict",
   publisher: "EdgePredict",
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "EdgePredict — Motor Condition Monitoring",
+    title: "EdgePredict — Maintenance Management & Motor Monitoring",
     description:
-      "Non-invasive motor health monitoring using Electrical Signature Analysis (ESA). $200/month per motor. Free 60-day pilot. No plant network required.",
+      "Free maintenance platform with PM scheduling, work orders, and asset management. Add non-invasive motor monitoring with ESA for $200/mo per motor. Free 60-day pilot.",
     url: "https://www.edgepredict.io",
     siteName: "EdgePredict",
     images: [

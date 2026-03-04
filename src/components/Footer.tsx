@@ -64,9 +64,10 @@ export default function Footer() {
           <div className="text-sm text-gray-500">
             &copy; {new Date().getFullYear()} EdgePredict. All rights reserved. | edgepredict.io
           </div>
+          {/* TODO: Create dedicated privacy and terms pages */}
           <div className="flex space-x-6 text-sm text-gray-500 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <Link href="/contact" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/contact" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

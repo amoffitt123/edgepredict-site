@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { CheckCircle, ArrowRight } from 'lucide-react'
 
 export const metadata = {
-  title: "Product — EdgePredict Motor Condition Monitoring",
+  title: "Motor Monitoring — EdgePredict",
   description: "Motor condition monitoring using ESA/MCSA. $200/month per motor. Split-core CT installation. Cellular option. Optional voltage reference.",
 }
 

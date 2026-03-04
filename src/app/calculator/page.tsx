@@ -398,8 +398,7 @@ export default function CalculatorPage() {
             <div className="bg-[#7655d6] rounded-xl p-6 text-white">
               <h2 className="font-bold text-lg mb-2">Get this report by email</h2>
               <p className="text-purple-200 text-sm mb-5">
-                We&apos;ll send a formatted PDF summary of your numbers — including a one-page
-                overview you can share with your team.
+                We&apos;ll send a summary of your numbers by email.
               </p>
 
               {reportStatus === "sent" ? (
