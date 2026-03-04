@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   allowedDevOrigins: ["*.preview.same-app.com"],
+  webpack(config) {
+    config.resolve.alias["same-runtime"] = require.resolve("react");
+    config.resolve.alias["same-runtime/dist/jsx-runtime"] = require.resolve("react/jsx-runtime");
+    config.resolve.alias["same-runtime/jsx-runtime"] = require.resolve("react/jsx-runtime");
+    return config;
+  },
   images: {
     unoptimized: true,
     domains: [
