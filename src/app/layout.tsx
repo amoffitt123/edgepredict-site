@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Free maintenance platform with PM scheduling, work orders, and asset management. Add non-invasive motor monitoring with ESA for $200/mo per motor. Free 60-day pilot.",
   keywords:
-    "motor condition monitoring, electrical signature analysis, MCSA, ESA, predictive maintenance, motor health, phase imbalance, current unbalance, industrial motors, CMMS, maintenance management, preventive maintenance software, work order management, PM scheduling",
+    "motor condition monitoring, electrical signature analysis, MCSA, ESA, predictive maintenance, motor health, phase imbalance, current unbalance, industrial motors, CMMS, maintenance management, preventive maintenance software, work order management, PM scheduling, free CMMS",
   authors: [{ name: "EdgePredict" }],
   creator: "EdgePredict",
   publisher: "EdgePredict",

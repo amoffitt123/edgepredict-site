@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CheckCircle, ArrowRight } from 'lucide-react'
+import { CheckCircle, ArrowRight, Package, Wifi, Monitor, Wrench, BarChart, Shield } from 'lucide-react'
 
 export const metadata = {
   title: "Motor Monitoring — EdgePredict",
@@ -18,12 +18,12 @@ const included = [
 ]
 
 const pilotKit = [
-  "Pre-configured edge gateway (plug-in, no IT setup)",
-  "Split-core CTs for motor feeder conductors",
-  "Cellular connectivity option for pilots",
-  "Dashboard access from day one",
-  "Weekly health report emails",
-  "Support from an engineer, not a ticketing system",
+  { icon: Package, text: "Pre-configured edge gateway (plug-in, no IT setup)" },
+  { icon: Wrench, text: "Split-core CTs for motor feeder conductors" },
+  { icon: Wifi, text: "Cellular connectivity option for pilots" },
+  { icon: Monitor, text: "Dashboard access from day one" },
+  { icon: BarChart, text: "Weekly health report emails" },
+  { icon: Shield, text: "Support from an engineer, not a ticketing system" },
 ]
 
 const voltageAdds = [
@@ -67,21 +67,23 @@ export default function ProductsPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-2">Motor Monitoring Subscription</h2>
-            <p className="text-3xl font-bold mt-4 mb-2" style={{ color: '#7655d6' }}>
-              $200<span className="text-lg font-normal text-gray-500">/month per motor</span>
-            </p>
-            <p className="text-gray-600 mb-10">
-              Everything you need to monitor motor health continuously — no hidden fees.
-            </p>
-            <ul className="space-y-4">
-              {included.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 mt-0.5 shrink-0" style={{ color: '#7655d6' }} />
-                  <span className="text-gray-700">{item}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="bg-white rounded-xl p-8 border border-gray-200 border-l-4 border-l-[#7655d6] shadow-sm">
+              <h2 className="text-3xl font-bold text-center mb-4">Motor Monitoring Subscription</h2>
+              <p className="text-4xl font-bold mt-4 mb-2 text-[#7655d6]">
+                $200<span className="text-lg font-normal text-gray-500">/month per motor</span>
+              </p>
+              <p className="text-gray-600 mb-10">
+                Everything you need to monitor motor health continuously — no hidden fees.
+              </p>
+              <ul className="space-y-4">
+                {included.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 mt-0.5 shrink-0" style={{ color: '#7655d6' }} />
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -90,15 +92,15 @@ export default function ProductsPage() {
       <section className="py-20 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-2">Pilot Kit — What&apos;s Included</h2>
-            <p className="text-gray-400 mb-10">
+            <h2 className="text-3xl font-bold mb-2 text-center">Pilot Kit — What&apos;s Included</h2>
+            <p className="text-gray-400 mb-10 text-center">
               Everything ships pre-configured. Your maintenance electrician handles the clamp-on install in about 20 minutes.
             </p>
             <ul className="space-y-4 mb-10">
-              {pilotKit.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 mt-0.5 shrink-0" style={{ color: '#7655d6' }} />
-                  <span className="text-gray-200">{item}</span>
+              {pilotKit.map(({ icon: Icon, text }) => (
+                <li key={text} className="flex items-start gap-3">
+                  <Icon className="w-5 h-5 mt-0.5 shrink-0 text-[#a78fe8]" />
+                  <span className="text-gray-200">{text}</span>
                 </li>
               ))}
             </ul>
@@ -109,30 +111,32 @@ export default function ProductsPage() {
       {/* Section 3: Optional Voltage Reference */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">Optional Voltage Reference</h2>
-          <p className="text-gray-600 mb-10 max-w-2xl">
-            Current-only monitoring catches the majority of motor fault indicators. Adding a voltage reference unlocks additional supply-side visibility.
-          </p>
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-lg font-semibold mb-4" style={{ color: '#7655d6' }}>What It Adds</h3>
-              <ul className="space-y-3">
-                {voltageAdds.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 mt-0.5 shrink-0" style={{ color: '#7655d6' }} />
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4" style={{ color: '#7655d6' }}>How It Works</h3>
-              <p className="text-gray-600 mb-4">
-                A plug-in transformer tap connects to a 120V panel circuit near the monitoring point. It is an optional add-on — it does not replace current-only monitoring and is not required for the pilot.
-              </p>
-              <p className="text-gray-600">
-                Most pilot customers start with current-only monitoring and evaluate whether voltage reference is warranted for their specific facility.
-              </p>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-center">Optional Voltage Reference</h2>
+            <p className="text-gray-600 mb-10 text-center">
+              Current-only monitoring catches the majority of motor fault indicators. Adding a voltage reference unlocks additional supply-side visibility.
+            </p>
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <h3 className="text-lg font-semibold mb-4" style={{ color: '#7655d6' }}>What It Adds</h3>
+                <ul className="space-y-3">
+                  {voltageAdds.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 mt-0.5 shrink-0" style={{ color: '#7655d6' }} />
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-4" style={{ color: '#7655d6' }}>How It Works</h3>
+                <p className="text-gray-600 mb-4">
+                  A plug-in transformer tap connects to a 120V panel circuit near the monitoring point. It is an optional add-on — it does not replace current-only monitoring and is not required for the pilot.
+                </p>
+                <p className="text-gray-600">
+                  Most pilot customers start with current-only monitoring and evaluate whether voltage reference is warranted for their specific facility.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -142,8 +146,8 @@ export default function ProductsPage() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-4">Connectivity</h2>
-            <p className="text-gray-600 mb-8">
+            <h2 className="text-3xl font-bold mb-4 text-center">Connectivity</h2>
+            <p className="text-gray-600 mb-8 text-center">
               No plant network access required. The edge gateway operates on cellular during pilots — no IT ticket, no network diagram, no approval process.
             </p>
             <ul className="space-y-4">
@@ -171,12 +175,12 @@ export default function ProductsPage() {
       {/* Section 5: Detection Table */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">What Gets Detected</h2>
-          <p className="text-gray-600 mb-8">
+          <h2 className="text-3xl font-bold mb-4 text-center">What Gets Detected</h2>
+          <p className="text-gray-600 mb-8 text-center max-w-2xl mx-auto">
             Electrical Signature Analysis (ESA) and MCSA methods applied locally on the edge device.
           </p>
           <div className="overflow-x-auto">
-            <table className="w-full max-w-2xl border-collapse text-left text-sm">
+            <table className="w-full max-w-2xl mx-auto border-collapse text-left text-sm">
               <thead>
                 <tr className="border-b-2 border-gray-200">
                   <th className="py-3 pr-6 text-gray-900 font-semibold">Detection</th>
@@ -207,7 +211,7 @@ export default function ProductsPage() {
               </tbody>
             </table>
           </div>
-          <p className="text-sm text-gray-500 mt-4">
+          <p className="text-sm text-gray-500 mt-4 text-center max-w-2xl mx-auto">
             * Indicators consistent with bearing or rotor faults require maintenance confirmation.
           </p>
         </div>
@@ -232,7 +236,7 @@ export default function ProductsPage() {
               href="/calculator"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg border border-gray-600 text-white font-semibold hover:border-gray-400 transition-colors"
             >
-              See the Downtime Calculator <ArrowRight className="w-4 h-4" />
+              Try the Downtime Calculator <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

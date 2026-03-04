@@ -4,7 +4,15 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
-const navLinks = [
+const desktopLinks = [
+  { label: "Home", href: "/" },
+  { label: "Platform", href: "/platform" },
+  { label: "Monitoring", href: "/products" },
+  { label: "Pricing", href: "/pricing" },
+];
+
+const mobileLinks = [
+  { label: "Home", href: "/" },
   { label: "Platform", href: "/platform" },
   { label: "Monitoring", href: "/products" },
   { label: "Pricing", href: "/pricing" },
@@ -28,7 +36,7 @@ export default function Nav() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((l) => (
+          {desktopLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -37,18 +45,20 @@ export default function Nav() {
               {l.label}
             </Link>
           ))}
-          <a
-            href="https://tools.edgepredict.io/login"
-            className="text-sm text-gray-600 hover:text-[#7655d6] transition-colors"
-          >
-            Log In
-          </a>
-          <a
-            href="https://tools.edgepredict.io/signup"
-            className="px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors"
-          >
-            Start Free
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://tools.edgepredict.io/login"
+              className="bg-white border border-gray-300 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:border-[#7655d6] hover:text-[#7655d6] transition"
+            >
+              Log In
+            </a>
+            <a
+              href="https://tools.edgepredict.io/signup"
+              className="bg-[#7655d6] text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-[#5d3db8] transition"
+            >
+              Get Started
+            </a>
+          </div>
         </nav>
 
         {/* Mobile toggle */}
@@ -65,7 +75,7 @@ export default function Nav() {
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <nav className="px-4 py-4 space-y-1">
-            {navLinks.map((l) => (
+            {mobileLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
@@ -75,20 +85,20 @@ export default function Nav() {
                 {l.label}
               </Link>
             ))}
-            <div className="border-t border-gray-200 my-3" />
+            <div className="border-t border-gray-200 my-2" />
             <a
               href="https://tools.edgepredict.io/login"
-              className="block text-gray-600 hover:text-[#7655d6] py-2 text-sm transition-colors"
+              className="block w-full text-center bg-white border border-gray-300 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:border-[#7655d6] hover:text-[#7655d6] transition"
               onClick={() => setMobileOpen(false)}
             >
               Log In
             </a>
             <a
               href="https://tools.edgepredict.io/signup"
-              className="block mt-2 px-4 py-2 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded text-sm font-medium transition-colors text-center"
+              className="block w-full text-center bg-[#7655d6] text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-[#5d3db8] transition mt-2"
               onClick={() => setMobileOpen(false)}
             >
-              Start Free
+              Get Started
             </a>
           </nav>
         </div>

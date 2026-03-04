@@ -1,76 +1,68 @@
 import Link from "next/link";
-import { Calendar, ClipboardList, Database, Zap, Bell, Activity, CheckCircle, ArrowRight } from "lucide-react";
+import { Calendar, ClipboardList, Database, Sparkles, Send, Activity } from "lucide-react";
 
 export const metadata = {
-  title: "Free Maintenance Platform — EdgePredict",
+  title: "Maintenance Platform — EdgePredict",
   description:
-    "PM scheduling, work orders, asset management, and AI-generated maintenance plans — free for small plants. Add sensors when you're ready.",
+    "PM scheduling, work orders, asset management, and AI-generated maintenance plans in one platform. Add sensors when you're ready for predictive maintenance.",
 };
 
 const features = [
   {
     icon: <Calendar className="h-6 w-6" />,
     title: "PM Scheduling",
-    body: "Add your equipment, get auto-generated preventive maintenance schedules based on asset type and criticality. Calendar view shows what's due, what's overdue, and what's coming.",
-    badge: "free",
+    body: "Add your equipment once. Get maintenance schedules generated automatically based on asset type, criticality, and industry standards. The calendar color-codes by risk — red for overdue, amber for due soon, green for on track.",
   },
   {
     icon: <ClipboardList className="h-6 w-6" />,
     title: "Work Orders",
-    body: "Create, assign, and track maintenance work from request to completion. Full audit trail, checklists, labor and parts tracking.",
-    badge: "free",
+    body: "Create work orders manually or from PM events. Track status from open to completed with full audit trail. Attach checklists, log labor hours and parts used. Every change is recorded.",
   },
   {
     icon: <Database className="h-6 w-6" />,
     title: "Asset Management",
-    body: "Register every motor, pump, compressor, and conveyor. Bulk CSV import. Risk scoring on every asset.",
-    badge: "free",
+    body: "Register motors, pumps, compressors, conveyors — anything with a nameplate. Bulk import via CSV. Every asset gets a risk score calculated from criticality, failure frequency, spare availability, and age.",
   },
   {
-    icon: <Zap className="h-6 w-6" />,
+    icon: <Sparkles className="h-6 w-6" />,
     title: "AI Work Order Generator",
-    body: "Type field notes in plain English. Get a structured work order with procedure steps, parts needed, and priority — generated in seconds.",
-    badge: "free",
+    body: "Type maintenance notes in plain English — 'pump 3 making a grinding noise, bearings probably need replacement' — and get a structured work order with procedure steps, parts list, and priority.",
   },
   {
-    icon: <Bell className="h-6 w-6" />,
+    icon: <Send className="h-6 w-6" />,
     title: "Maintenance Requests",
-    body: "Technicians submit requests. Supervisors approve. Requests convert to work orders automatically. Full approval workflow.",
-    badge: "free",
+    body: "Operators submit requests. Supervisors review and approve. Approved requests convert to work orders with one click. Full history from submission to completion.",
   },
   {
     icon: <Activity className="h-6 w-6" />,
     title: "Sensor Integration",
-    body: "Connect EdgePredict monitoring hardware to any asset. Live motor health data feeds directly into your maintenance plans. PM schedules adjust dynamically based on actual equipment condition.",
-    badge: "monitor",
+    body: "Connect EdgePredict monitoring hardware to any asset. Live motor health data feeds into your asset records. PM schedules adjust automatically based on actual equipment condition.",
   },
 ];
 
 const steps = [
   {
     number: "01",
-    title: "Sign up free. Add your equipment.",
-    body: "Create an account in seconds. Add assets manually or import your full equipment list via CSV. No credit card required.",
+    title: "Add your equipment",
+    body: "Sign up, create your plant profile, and register your assets. Import from a CSV or add them one at a time. Takes about 10 minutes for a typical plant.",
   },
   {
     number: "02",
-    title: "Get PM schedules. Manage work orders daily.",
-    body: "Auto-generated preventive maintenance schedules appear immediately. Create work orders, assign technicians, and track completion from a single dashboard.",
+    title: "Follow your schedule",
+    body: "PM schedules generate automatically. Open the calendar each morning, see what's due, create work orders, track completion. It becomes your daily routine.",
   },
   {
     number: "03",
-    title: "Add sensors when you're ready.",
-    body: "When you want live condition data, connect EdgePredict monitoring hardware. Motor health feeds directly into your maintenance plans and PM schedules adjust dynamically.",
+    title: "Go predictive when ready",
+    body: "Add monitoring sensors to your most critical motors. Time-based schedules become condition-based — driven by real electrical signature data from the motor itself.",
   },
 ];
 
-// ── Mocked dashboard data ─────────────────────────────────────────────────────
-
 const pmItems = [
-  { asset: "Pump-3 · 75 HP", interval: "Monthly", lastDone: "May 15", nextDue: "Jun 15", risk: "on-track" },
-  { asset: "Fan-1 · 40 HP", interval: "Quarterly", lastDone: "Mar 1", nextDue: "Jun 1", risk: "overdue" },
-  { asset: "Conveyor-2 · 60 HP", interval: "Weekly", lastDone: "Jun 2", nextDue: "Jun 9", risk: "due-soon" },
-  { asset: "Compressor-1 · 100 HP", interval: "Monthly", lastDone: "May 20", nextDue: "Jun 20", risk: "on-track" },
+  { asset: "Pump-3 · 75 HP", nextDue: "Jun 15", risk: "on-track" },
+  { asset: "Fan-1 · 40 HP", nextDue: "Jun 1", risk: "overdue" },
+  { asset: "Conveyor-2 · 60 HP", nextDue: "Jun 9", risk: "due-soon" },
+  { asset: "Compressor-1 · 100 HP", nextDue: "Jun 20", risk: "on-track" },
 ];
 
 const workOrders = [
@@ -98,29 +90,28 @@ export default function PlatformPage() {
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="py-20 bg-gray-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-sm font-semibold text-[#a78fe8] uppercase tracking-widest mb-4">
-            Free Maintenance Platform
+        <div className="max-w-7xl mx-auto px-6">
+          <p className="text-sm font-medium text-[#a78fe8] uppercase tracking-wider mb-4">
+            Maintenance Management
           </p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Your entire maintenance program.
-            <br />
-            <span className="text-[#a78fe8]">One platform.</span>
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+            The system your plant has been missing.
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            PM scheduling, work orders, asset management, and AI-generated maintenance plans —
-            free for small plants. Add sensors when you&apos;re ready.
+          <p className="text-gray-400 text-lg mt-4 max-w-2xl leading-relaxed">
+            Most small plants manage maintenance with spreadsheets, whiteboards, or nothing at all.
+            EdgePredict gives you PM scheduling, work orders, and asset tracking in one platform built
+            for the way maintenance actually works.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="https://tools.edgepredict.io/signup"
-              className="inline-flex items-center px-8 py-4 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded-lg text-lg font-bold transition-colors"
+              className="px-6 py-3 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors"
             >
-              Start Free <ArrowRight className="ml-2 h-5 w-5" />
+              Get Started
             </a>
             <Link
               href="/pricing"
-              className="inline-flex items-center px-8 py-4 border border-gray-600 text-gray-200 hover:border-gray-400 hover:text-white rounded-lg text-lg font-semibold transition-colors"
+              className="px-6 py-3 border border-gray-600 text-gray-300 hover:border-white hover:text-white rounded-lg transition-colors"
             >
               See Pricing
             </Link>
@@ -128,39 +119,23 @@ export default function PlatformPage() {
         </div>
       </section>
 
-      {/* ── FEATURE GRID ─────────────────────────────────────────── */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* ── FEATURE DEEP DIVE ─────────────────────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
-            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">
-              Everything Included
+            <p className="text-sm font-medium text-[#7655d6] uppercase tracking-wider mb-3">
+              What&apos;s Inside
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-              Built for maintenance teams, not enterprise IT.
+              Built for maintenance teams, not enterprise IT departments.
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((card) => (
-              <div
-                key={card.title}
-                className="relative bg-white rounded-xl p-8 border border-gray-200"
-              >
-                {/* Badge */}
-                <div className="absolute top-4 right-4">
-                  {card.badge === "free" ? (
-                    <span className="text-xs font-semibold bg-green-100 text-green-700 px-2.5 py-1 rounded-full">
-                      Free
-                    </span>
-                  ) : (
-                    <span className="text-xs font-semibold bg-[#7655d6]/10 text-[#7655d6] px-2.5 py-1 rounded-full">
-                      Monitor Tier
-                    </span>
-                  )}
-                </div>
-
-                <div className="text-[#7655d6] mb-4">{card.icon}</div>
-                <h3 className="font-bold text-gray-900 text-lg mb-3">{card.title}</h3>
+              <div key={card.title} className="bg-white rounded-xl p-6 border border-gray-200">
+                <div className="text-[#7655d6] mb-3">{card.icon}</div>
+                <h3 className="font-semibold text-gray-900 mb-2">{card.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{card.body}</p>
               </div>
             ))}
@@ -169,11 +144,11 @@ export default function PlatformPage() {
       </section>
 
       {/* ── HOW IT WORKS ─────────────────────────────────────────── */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
-            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">
-              How It Works
+            <p className="text-sm font-medium text-[#7655d6] uppercase tracking-wider mb-3">
+              Getting Started
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
               Up and running in minutes.
@@ -182,12 +157,10 @@ export default function PlatformPage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {steps.map((s) => (
-              <div key={s.number} className="relative">
-                <div className="flex items-center mb-5">
-                  <span className="text-5xl font-bold text-[#7655d6]/25 mr-4 leading-none">
-                    {s.number}
-                  </span>
-                </div>
+              <div key={s.number}>
+                <span className="text-5xl font-bold text-[#7655d6]/25 leading-none block mb-5">
+                  {s.number}
+                </span>
                 <h3 className="text-lg font-bold text-gray-900 mb-3">{s.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{s.body}</p>
               </div>
@@ -197,18 +170,15 @@ export default function PlatformPage() {
       </section>
 
       {/* ── DASHBOARD MOCK ───────────────────────────────────────── */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">
-              Maintenance Dashboard
+            <p className="text-sm font-medium text-[#7655d6] uppercase tracking-wider mb-3">
+              Daily View
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-              Everything in one view
+              Everything in one place.
             </h2>
-            <p className="text-gray-600 mt-3 max-w-xl mx-auto">
-              PM schedule, open work orders, and asset health — visible at a glance. No specialized software to install.
-            </p>
           </div>
 
           <div className="max-w-5xl mx-auto bg-gray-900 rounded-xl overflow-hidden shadow-2xl border border-gray-700">
@@ -229,16 +199,12 @@ export default function PlatformPage() {
             </div>
 
             {/* Tab row */}
-            <div className="flex border-b border-gray-800 bg-gray-850">
+            <div className="flex border-b border-gray-800">
               <div className="px-5 py-2.5 text-xs font-mono text-[#a78fe8] border-b-2 border-[#7655d6] bg-gray-800">
                 PM Schedule
               </div>
-              <div className="px-5 py-2.5 text-xs font-mono text-gray-500">
-                Work Orders
-              </div>
-              <div className="px-5 py-2.5 text-xs font-mono text-gray-500">
-                Assets
-              </div>
+              <div className="px-5 py-2.5 text-xs font-mono text-gray-500">Work Orders</div>
+              <div className="px-5 py-2.5 text-xs font-mono text-gray-500">Assets</div>
             </div>
 
             <div className="p-5 grid lg:grid-cols-2 gap-5">
@@ -254,7 +220,6 @@ export default function PlatformPage() {
                   </span>
                 </div>
 
-                {/* Column headers */}
                 <div className="grid grid-cols-4 text-xs text-gray-600 font-mono uppercase tracking-wide mb-2 px-2">
                   <span className="col-span-2">Asset</span>
                   <span className="text-center">Next Due</span>
@@ -275,9 +240,7 @@ export default function PlatformPage() {
                         <span className="text-xs text-gray-500 font-mono text-center">
                           {item.nextDue}
                         </span>
-                        <span
-                          className={`text-xs font-mono px-2 py-0.5 rounded text-right ml-auto ${risk.classes}`}
-                        >
+                        <span className={`text-xs font-mono px-2 py-0.5 rounded text-right ml-auto ${risk.classes}`}>
                           {risk.label}
                         </span>
                       </div>
@@ -353,13 +316,9 @@ export default function PlatformPage() {
                               {wo.title}
                             </span>
                           </div>
-                          <div className="text-xs text-gray-600 font-mono">
-                            {wo.assignee}
-                          </div>
+                          <div className="text-xs text-gray-600 font-mono">{wo.assignee}</div>
                         </div>
-                        <span
-                          className={`text-xs font-mono px-2 py-0.5 rounded flex-shrink-0 ${st.classes}`}
-                        >
+                        <span className={`text-xs font-mono px-2 py-0.5 rounded flex-shrink-0 ${st.classes}`}>
                           {st.label}
                         </span>
                       </div>
@@ -386,68 +345,25 @@ export default function PlatformPage() {
         </div>
       </section>
 
-      {/* ── FREE TIER CALLOUTS ────────────────────────────────────── */}
-      <section className="py-20">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">
-              Free Tier
-            </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-              What&apos;s included for free — no limits on time.
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              "Unlimited assets",
-              "Unlimited work orders",
-              "PM scheduling & calendar",
-              "AI work order generation",
-              "Maintenance request workflow",
-              "CSV asset import",
-              "Email notifications",
-              "Multi-user access",
-              "Full audit trail",
-            ].map((item) => (
-              <div key={item} className="flex items-center gap-3 bg-gray-50 rounded-lg px-4 py-3 border border-gray-200">
-                <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                <span className="text-sm text-gray-700">{item}</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-sm text-gray-500 mt-8">
-            Sensor integration requires the Monitor Tier.{" "}
-            <Link href="/pricing" className="text-[#7655d6] hover:underline">
-              See pricing →
-            </Link>
-          </p>
-        </div>
-      </section>
-
       {/* ── CTA ──────────────────────────────────────────────────── */}
-      <section className="py-20 bg-[#7655d6]">
-        <div className="max-w-3xl mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Start managing your maintenance program today.
-          </h2>
-          <p className="text-purple-200 text-lg mb-10">
-            No credit card. No setup fee. No time limit on the free tier.
-          </p>
+      <section className="py-16 bg-gray-950 text-white text-center">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-3xl font-bold">Start managing your maintenance program.</h2>
+          <p className="text-gray-400 mt-3">No credit card required. No time limit.</p>
           <a
             href="https://tools.edgepredict.io/signup"
-            className="inline-flex items-center px-10 py-4 bg-white text-[#7655d6] hover:bg-gray-100 rounded-lg text-lg font-bold transition-colors"
+            className="mt-8 inline-block px-8 py-3 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors"
           >
-            Create Free Account <ArrowRight className="ml-2 h-5 w-5" />
+            Create Your Account
           </a>
-          <p className="text-purple-300 text-sm mt-6">
-            Already have an account?{" "}
+          <div className="mt-4">
             <a
               href="https://tools.edgepredict.io/login"
-              className="text-white hover:underline font-medium"
+              className="text-gray-500 text-sm hover:text-white transition-colors"
             >
-              Sign in →
+              Already have an account? Log in →
             </a>
-          </p>
+          </div>
         </div>
       </section>
 
