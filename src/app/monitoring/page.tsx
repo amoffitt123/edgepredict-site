@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CheckCircle, ArrowRight, Package, Wifi, Monitor, Wrench, BarChart, Shield } from 'lucide-react'
+import { CheckCircle, ArrowRight, Package, Wifi, Monitor, Wrench, BarChart, Shield, XCircle, Activity, Zap, X } from 'lucide-react'
 
 export const metadata = {
   title: "Motor Monitoring — EdgePredict",
@@ -172,7 +172,92 @@ export default function MonitoringPage() {
         </div>
       </section>
 
-      {/* Section 5: Detection Table */}
+      {/* Section 5: Comparison */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">How It Compares</p>
+          <h2 className="text-3xl font-bold text-gray-900">Current analysis vs. vibration vs. nothing.</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto mt-4">
+            Most plants either use vibration sensors, run to failure, or have enterprise systems they can&apos;t afford. Here&apos;s how electrical signature analysis stacks up.
+          </p>
+          <div className="grid md:grid-cols-3 gap-8 mt-12 text-left">
+
+            {/* Column 1: No Monitoring */}
+            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+              <XCircle className="text-red-400 w-8 h-8 mb-3" />
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Run to Failure</h3>
+              <ul className="space-y-3">
+                {[
+                  "No warning before failure",
+                  "Emergency repairs at 3-5x cost",
+                  "Unplanned downtime kills production",
+                  "PM schedules based on guesswork",
+                  "No data on equipment health",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
+                    <X className="w-4 h-4 mt-0.5 shrink-0 text-red-400" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-gray-400 mt-4">This is where 85% of small plants are today.</p>
+            </div>
+
+            {/* Column 2: Vibration */}
+            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+              <Activity className="text-amber-400 w-8 h-8 mb-3" />
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Vibration Sensors</h3>
+              <ul className="space-y-3">
+                {[
+                  { text: "Detects bearing wear and misalignment", good: true },
+                  { text: "Established technology", good: true },
+                  { text: "Requires mounting on equipment", good: false },
+                  { text: "Cannot detect electrical faults", good: false },
+                  { text: "Cannot detect phase imbalance or loss", good: false },
+                  { text: "Cannot detect supply quality issues", good: false },
+                  { text: "Often requires plant network access", good: false },
+                  { text: "Typical setup: $50K+ capital project", good: false },
+                ].map((item) => (
+                  <li key={item.text} className="flex items-start gap-3 text-sm text-gray-600">
+                    {item.good
+                      ? <CheckCircle className="w-4 h-4 mt-0.5 shrink-0 text-green-500" />
+                      : <X className="w-4 h-4 mt-0.5 shrink-0 text-red-400" />}
+                    {item.text}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-gray-400 mt-4">Good for mechanical faults. Blind to electrical ones.</p>
+            </div>
+
+            {/* Column 3: EdgePredict ESA */}
+            <div className="bg-[#7655d6]/5 rounded-xl p-6 border border-[#7655d6]/30">
+              <Zap className="text-[#7655d6] w-8 h-8 mb-3" />
+              <h3 className="text-lg font-bold text-[#7655d6] mb-4">Current Signature Analysis</h3>
+              <ul className="space-y-3">
+                {[
+                  "Phase imbalance and phase loss detection",
+                  "Overload and load instability",
+                  "Mechanical fault indicators from current",
+                  "Supply quality and power factor monitoring",
+                  "Non-invasive clamp-on install in 20 minutes",
+                  "Cellular connectivity, no plant network",
+                  "No capital project, $200/mo per motor",
+                  "Adaptive baseline learning per motor",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-gray-700">
+                    <CheckCircle className="w-4 h-4 mt-0.5 shrink-0 text-green-500" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-[#7655d6] font-medium mt-4">Sees electrical AND mechanical faults from the current alone.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: Detection Table */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center">What Gets Detected</h2>
