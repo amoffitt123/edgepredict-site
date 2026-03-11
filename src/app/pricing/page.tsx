@@ -4,10 +4,8 @@ import { CheckCircle, ArrowRight } from "lucide-react";
 export const metadata = {
   title: "Pricing — EdgePredict",
   description:
-    "Simple, transparent pricing. Free maintenance planning platform. $200/mo per motor for live sensor monitoring. Start free, upgrade when you're ready.",
+    "Simple, transparent pricing. Free maintenance management platform with unlimited users and work orders. $99/mo for Pro. $200/mo per motor for sensor monitoring.",
 };
-
-// ── Tier data ─────────────────────────────────────────────────────────────────
 
 const tiers = [
   {
@@ -15,21 +13,21 @@ const tiers = [
     badge: { label: "Free", classes: "bg-green-100 text-green-700" },
     price: "$0",
     priceSub: "Free forever",
-    description: "Everything a small plant needs to run a real maintenance program.",
+    description: "Unlimited users. Unlimited assets and work orders. 3 attachments per WO. No trial period. Free forever.",
     cardClasses: "border-gray-200",
     features: [
-      "Asset management (unlimited)",
-      "Auto-generated PM schedules",
-      "PM calendar with risk scoring",
-      "Work order management",
-      "Maintenance request workflow",
+      "Unlimited users",
+      "Unlimited assets & work orders",
+      "PM scheduling",
+      "Inspections with auto-WO creation",
       "AI work order generator",
+      "Parts inventory",
+      "3 attachments per work order",
       "CSV import / export",
-      "Single user",
     ],
     checkColor: "text-green-500",
     cta: {
-      label: "Start Free",
+      label: "Get Started",
       href: "https://tools.edgepredict.io/signup",
       external: true,
       classes: "bg-[#7655d6] hover:bg-[#5d3db8] text-white",
@@ -37,49 +35,51 @@ const tiers = [
   },
   {
     name: "Pro",
-    badge: { label: "Coming Soon", classes: "bg-amber-100 text-amber-700" },
+    badge: { label: "Most Popular", classes: "bg-[#7655d6]/10 text-[#7655d6]" },
     price: "$99",
     priceSub: "/mo per site",
-    description: "For plants with maintenance teams that need collaboration.",
-    cardClasses: "border-gray-200",
+    description: "Unlimited attachments. All features unlocked. Billed monthly, cancel anytime.",
+    cardClasses: "border-[#7655d6]/40 shadow-[0_0_0_1px_rgba(118,85,214,0.15)]",
     featuresPrefix: "Everything in Planner, plus:",
     features: [
-      "Multi-user with role-based access",
-      "6 roles (admin, supervisor, planner, scheduler, technician, requestor)",
-      "Advanced reporting and analytics",
-      "Parts inventory management",
-      "Technician mobile view",
+      "Unlimited attachments",
+      "Drag-and-drop scheduling",
+      "AI scheduling suggestions",
+      "Advanced reporting & analytics",
+      "Purchase orders",
+      "Workflow automation",
+      "Custom fields",
       "Priority support",
     ],
     checkColor: "text-green-500",
     cta: {
-      label: "Join Waitlist",
-      href: "/contact",
-      external: false,
-      classes: "border border-gray-300 text-gray-700 hover:border-[#7655d6] hover:text-[#7655d6]",
+      label: "Get Started",
+      href: "https://tools.edgepredict.io/signup",
+      external: true,
+      classes: "bg-[#7655d6] hover:bg-[#5d3db8] text-white",
     },
   },
   {
     name: "Monitor",
-    badge: { label: "Sensor Tier", classes: "bg-[#7655d6]/10 text-[#7655d6]" },
+    badge: { label: "Sensors", classes: "bg-[#7655d6]/10 text-[#7655d6]" },
     price: "$200",
     priceSub: "/mo per motor",
-    description: "Live motor health monitoring that makes your PM program predictive.",
-    cardClasses: "border-[#7655d6]/40 shadow-[0_0_0_1px_rgba(118,85,214,0.2)]",
+    description: "Includes all Pro features. Hardware ships pre-configured. 60-day pilot is truly free.",
+    cardClasses: "border-[#7655d6]/40 bg-gray-950 text-white shadow-[0_0_0_1px_rgba(118,85,214,0.2)]",
     featuresPrefix: "Everything in Pro, plus:",
     features: [
       "Sensor hardware kit included",
-      "Real-time current signature analysis",
-      "Live dashboard with phase currents and health scores",
-      "Dynamic PM scheduling (sensor-driven)",
-      "Automated alerts and work order generation",
-      "Cellular connectivity — no IT required",
+      "Real-time ESA monitoring",
+      "Condition-based PM triggers",
+      "Dynamic PM scheduling",
+      "Cellular connectivity, no IT required",
       "20-minute non-invasive install",
       "60-day free pilot",
+      "Engineer-level support",
     ],
-    checkColor: "text-[#7655d6]",
+    checkColor: "text-[#a78fe8]",
     cta: {
-      label: "Start Your Free Pilot",
+      label: "Start Free Pilot",
       href: "/pilot",
       external: false,
       classes: "bg-[#7655d6] hover:bg-[#5d3db8] text-white",
@@ -89,20 +89,28 @@ const tiers = [
 
 const faqs = [
   {
-    q: "Is the free tier really free?",
-    a: "Yes. No credit card required, no time limit, no feature throttling. We built it because most small plants have nothing — and something free is infinitely better than nothing.",
+    q: "Is the free plan really free?",
+    a: "Yes. No credit card required, no time limit, no feature throttling. Unlimited users, unlimited work orders, unlimited assets. We built it because most small plants have nothing. Something genuinely free is infinitely better than a 30-day trial.",
+  },
+  {
+    q: "What's the difference between free and Pro?",
+    a: "Free includes unlimited users, work orders, PM scheduling, inspections, parts inventory, AI work order generation, and 3 attachments per work order. Pro adds unlimited attachments, drag-and-drop scheduling with AI suggestions, advanced reporting, purchase orders, workflow automation, and custom fields.",
+  },
+  {
+    q: "Do I need sensors to use the platform?",
+    a: "No. The management platform works completely standalone. Sensors are an optional upgrade that change time-based PM schedules to condition-based, driven by real electrical signature data from the motor itself. Start free, add sensors when you're ready.",
   },
   {
     q: "What happens after the 60-day pilot?",
-    a: "If the sensors prove value, you continue at $200/mo per motor. If not, send the hardware back. No obligation.",
+    a: "If the sensors prove value, you continue at $200/mo per motor. If not, send the hardware back. No obligation, no contract, no pressure. The pilot is genuinely free.",
   },
   {
     q: "Can I start free and add sensors later?",
-    a: "That's exactly how we designed it. Start with the planner, get your PM program organized, then add monitoring on your most critical motors when you're ready.",
+    a: "That's exactly how we designed it. Start with the free Planner tier, get your PM program organized, track your failures, see which motors are critical, then add monitoring on the ones that matter most.",
   },
   {
-    q: "Do I need IT involvement?",
-    a: "No. The sensor kit uses cellular connectivity. No plant network access, no firewall rules, no IT tickets.",
+    q: "How does EdgePredict compare to MaintainX or UpKeep?",
+    a: "MaintainX starts at $16/user/month and UpKeep at $20/user/month, and neither builds sensors. EdgePredict's free tier has unlimited users and more features than their paid tiers. And we're the only platform that also does motor monitoring as part of the same system. The CMMS + sensor integration doesn't exist anywhere else.",
   },
 ];
 
@@ -117,7 +125,7 @@ export default function PricingPage() {
             Simple, transparent pricing.
           </h1>
           <p className="text-xl text-gray-300 max-w-xl mx-auto">
-            Start free. Upgrade when you need more.
+            Start free. Add sensors when you&apos;re ready.
           </p>
         </div>
       </section>
@@ -129,11 +137,11 @@ export default function PricingPage() {
             {tiers.map((tier) => (
               <div
                 key={tier.name}
-                className={`relative bg-white rounded-xl border p-8 ${tier.cardClasses}`}
+                className={`relative rounded-xl border p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ${tier.cardClasses} ${tier.name === 'Monitor' ? '' : 'bg-white'}`}
               >
                 {/* Badge */}
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-bold text-gray-900">{tier.name}</h2>
+                  <h2 className={`text-xl font-bold ${tier.name === 'Monitor' ? 'text-white' : 'text-gray-900'}`}>{tier.name}</h2>
                   <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${tier.badge.classes}`}>
                     {tier.badge.label}
                   </span>
@@ -141,12 +149,12 @@ export default function PricingPage() {
 
                 {/* Price */}
                 <div className="mb-2">
-                  <span className="text-5xl font-bold text-gray-900">{tier.price}</span>
+                  <span className={`text-5xl font-bold ${tier.name === 'Monitor' ? 'text-white' : 'text-gray-900'}`}>{tier.price}</span>
                 </div>
-                <p className="text-sm text-gray-500 mb-4">{tier.priceSub}</p>
+                <p className={`text-sm mb-4 ${tier.name === 'Monitor' ? 'text-gray-400' : 'text-gray-500'}`}>{tier.priceSub}</p>
 
                 {/* Description */}
-                <p className="text-sm text-gray-600 mb-8 leading-relaxed">{tier.description}</p>
+                <p className={`text-sm mb-8 leading-relaxed ${tier.name === 'Monitor' ? 'text-gray-400' : 'text-gray-600'}`}>{tier.description}</p>
 
                 {/* CTA */}
                 {tier.cta.external ? (
@@ -168,7 +176,7 @@ export default function PricingPage() {
                 {/* Features */}
                 <div>
                   {tier.featuresPrefix && (
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-4">
+                    <p className={`text-xs font-semibold uppercase tracking-wide mb-4 ${tier.name === 'Monitor' ? 'text-gray-500' : 'text-gray-500'}`}>
                       {tier.featuresPrefix}
                     </p>
                   )}
@@ -176,7 +184,7 @@ export default function PricingPage() {
                     {tier.features.map((f) => (
                       <li key={f} className="flex items-start gap-3">
                         <CheckCircle className={`h-4 w-4 mt-0.5 flex-shrink-0 ${tier.checkColor}`} />
-                        <span className="text-sm text-gray-700">{f}</span>
+                        <span className={`text-sm ${tier.name === 'Monitor' ? 'text-gray-300' : 'text-gray-700'}`}>{f}</span>
                       </li>
                     ))}
                   </ul>
@@ -187,8 +195,51 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* ── COMPARISON TABLE ─────────────────────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">Comparison</p>
+            <h2 className="text-3xl font-bold text-gray-900">How we stack up</h2>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-gray-200">
+                  <th className="text-left py-3 pr-4 text-gray-500 font-medium w-40">Feature</th>
+                  <th className="text-center py-3 px-4 font-bold text-white bg-[#7655d6] rounded-t-lg">EdgePredict Free</th>
+                  <th className="text-center py-3 px-4 text-gray-600 font-medium">MaintainX Essential<br /><span className="text-xs font-normal text-gray-400">($16/user/mo)</span></th>
+                  <th className="text-center py-3 px-4 text-gray-600 font-medium">UpKeep Starter<br /><span className="text-xs font-normal text-gray-400">($20/user/mo)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { feature: "Work Orders", ep: "Unlimited", mx: "Limited", up: "Limited" },
+                  { feature: "PM Scheduling", ep: "✓", mx: "✓", up: "✓" },
+                  { feature: "AI Work Orders", ep: "✓", mx: "✗", up: "✗" },
+                  { feature: "Asset Management", ep: "Unlimited", mx: "Limited", up: "✓" },
+                  { feature: "Inspections", ep: "✓", mx: "Add-on", up: "Add-on" },
+                  { feature: "Parts Inventory", ep: "✓", mx: "Add-on", up: "Add-on" },
+                  { feature: "Built-in Sensors", ep: "Monitor tier", mx: "3rd party", up: "3rd party" },
+                  { feature: "Condition-Based PM", ep: "Monitor tier", mx: "✗", up: "✗" },
+                  { feature: "Users", ep: "Unlimited", mx: "Per-user pricing", up: "Per-user pricing" },
+                  { feature: "Attachments", ep: "3 per WO (unlimited Pro)", mx: "Limited", up: "Limited" },
+                ].map((row, i) => (
+                  <tr key={row.feature} className={`border-b border-gray-100 ${i % 2 === 0 ? '' : 'bg-gray-50/50'}`}>
+                    <td className="py-3 pr-4 text-gray-700 font-medium">{row.feature}</td>
+                    <td className="py-3 px-4 text-center font-medium bg-[#7655d6]/5 text-[#5d3db8]">{row.ep}</td>
+                    <td className={`py-3 px-4 text-center ${row.mx === '✗' ? 'text-gray-300' : 'text-gray-600'}`}>{row.mx}</td>
+                    <td className={`py-3 px-4 text-center ${row.up === '✗' ? 'text-gray-300' : 'text-gray-600'}`}>{row.up}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ ──────────────────────────────────────────────────── */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4">
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">FAQ</p>
@@ -197,7 +248,7 @@ export default function PricingPage() {
 
           <div className="space-y-8">
             {faqs.map((faq) => (
-              <div key={faq.q} className="border-b border-gray-100 pb-8 last:border-0 last:pb-0">
+              <div key={faq.q} className="border-b border-gray-200 pb-8 last:border-0 last:pb-0">
                 <h3 className="font-bold text-gray-900 mb-3">{faq.q}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
               </div>

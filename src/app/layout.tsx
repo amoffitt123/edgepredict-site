@@ -4,13 +4,16 @@ import ClientBody from "./ClientBody";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "EdgePredict — Maintenance Management & Motor Monitoring",
   description:
-    "Free maintenance platform with PM scheduling, work orders, and asset management. Add non-invasive motor monitoring with ESA for $200/mo per motor. Free 60-day pilot.",
+    "The only platform where your CMMS and your sensors are one system. Free maintenance management with optional motor monitoring sensors. PM scheduling, work orders, asset tracking, ESA monitoring.",
   keywords:
-    "motor condition monitoring, electrical signature analysis, MCSA, ESA, predictive maintenance, motor health, phase imbalance, current unbalance, industrial motors, CMMS, maintenance management, preventive maintenance software, work order management, PM scheduling, free CMMS",
+    "CMMS, maintenance management, motor monitoring, predictive maintenance, preventive maintenance software, work order management, PM scheduling, electrical signature analysis, free CMMS, MaintainX alternative",
   authors: [{ name: "EdgePredict" }],
   creator: "EdgePredict",
   publisher: "EdgePredict",
@@ -21,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "EdgePredict — Maintenance Management & Motor Monitoring",
     description:
-      "Free maintenance platform with PM scheduling, work orders, and asset management. Add non-invasive motor monitoring with ESA for $200/mo per motor. Free 60-day pilot.",
+      "The only platform where your CMMS and your sensors are one system. Free maintenance management with optional motor monitoring sensors. PM scheduling, work orders, asset tracking, ESA monitoring.",
     url: "https://www.edgepredict.io",
     siteName: "EdgePredict",
     images: [
@@ -37,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "EdgePredict — Motor Condition Monitoring",
+    title: "EdgePredict — Maintenance Management & Motor Monitoring",
     description:
-      "Non-invasive motor health monitoring using ESA. $200/month per motor. Free 60-day pilot. No plant network required.",
+      "The only platform where your CMMS and your sensors are one system. Free maintenance management with optional motor monitoring sensors.",
     images: ["https://www.edgepredict.io/og-image.jpg"],
   },
   robots: {
@@ -70,7 +73,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning className="antialiased">
+      <body suppressHydrationWarning className={`antialiased ${inter.className}`}>
         <ClientBody>
           <Nav />
           {children}

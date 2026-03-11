@@ -5,17 +5,17 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 const desktopLinks = [
-  { label: "Home", href: "/" },
   { label: "Platform", href: "/platform" },
-  { label: "Monitoring", href: "/products" },
+  { label: "Monitoring", href: "/monitoring" },
   { label: "Pricing", href: "/pricing" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const mobileLinks = [
-  { label: "Home", href: "/" },
   { label: "Platform", href: "/platform" },
-  { label: "Monitoring", href: "/products" },
+  { label: "Monitoring", href: "/monitoring" },
   { label: "Pricing", href: "/pricing" },
+  { label: "Blog", href: "/blog" },
   { label: "Calculator", href: "/calculator" },
   { label: "Contact", href: "/contact" },
 ];

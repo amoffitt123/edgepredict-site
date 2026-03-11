@@ -10,8 +10,7 @@ export default function Footer() {
               <span className="text-purple-400">Edge</span><span className="text-white">Predict</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Non-invasive motor condition monitoring using Electrical Signature Analysis.
-              Built for reliability engineers and maintenance managers.
+              Maintenance management and motor monitoring — built as one platform by engineers who&apos;ve been on the plant floor.
             </p>
           </div>
 
@@ -19,7 +18,7 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wide">Product</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li><Link href="/platform" className="hover:text-white transition-colors">Platform</Link></li>
-              <li><Link href="/products" className="hover:text-white transition-colors">Motor Monitoring</Link></li>
+              <li><Link href="/monitoring" className="hover:text-white transition-colors">Motor Monitoring</Link></li>
               <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
               <li><Link href="/pilot" className="hover:text-white transition-colors">Pilot Program</Link></li>
               <li><Link href="/security" className="hover:text-white transition-colors">Security &amp; IT</Link></li>
@@ -29,8 +28,8 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wide">Resources</h4>
             <ul className="space-y-2 text-sm text-gray-400">
+              <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               <li><Link href="/calculator" className="hover:text-white transition-colors">Downtime Calculator</Link></li>
-              <li><Link href="/security" className="hover:text-white transition-colors">Security Overview</Link></li>
               <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
               <li><a href="https://tools.edgepredict.io/login" className="hover:text-white transition-colors">Log In</a></li>
               <li><a href="https://tools.edgepredict.io/signup" className="hover:text-white transition-colors">Get Started</a></li>

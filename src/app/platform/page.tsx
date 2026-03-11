@@ -1,60 +1,62 @@
 import Link from "next/link";
-import { Calendar, ClipboardList, Database, Sparkles, Send, Activity } from "lucide-react";
+import {
+  Calendar,
+  ClipboardList,
+  Database,
+  Sparkles,
+  Users,
+  BarChart,
+  Settings,
+  FileText,
+  ArrowRight,
+} from "lucide-react";
 
 export const metadata = {
   title: "Maintenance Platform — EdgePredict",
   description:
-    "PM scheduling, work orders, asset management, and AI-generated maintenance plans in one platform. Add sensors when you're ready for predictive maintenance.",
+    "PM scheduling, work orders, asset management, inspections, parts inventory, reporting, and AI-generated work orders. Free for any plant size.",
 };
 
 const features = [
   {
-    icon: <Calendar className="h-6 w-6" />,
-    title: "PM Scheduling",
-    body: "Add your equipment once. Get maintenance schedules generated automatically based on asset type, criticality, and industry standards. The calendar color-codes by risk — red for overdue, amber for due soon, green for on track.",
-  },
-  {
-    icon: <ClipboardList className="h-6 w-6" />,
+    icon: ClipboardList,
     title: "Work Orders",
-    body: "Create work orders manually or from PM events. Track status from open to completed with full audit trail. Attach checklists, log labor hours and parts used. Every change is recorded.",
+    body: "Full lifecycle tracking from open to completed. Checklists, labor hours, parts used, full audit trail. Every change recorded.",
   },
   {
-    icon: <Database className="h-6 w-6" />,
+    icon: Calendar,
+    title: "PM Scheduling",
+    body: "Add equipment once, get maintenance schedules generated automatically. Calendar color-coded by risk: red for overdue, amber for due soon.",
+  },
+  {
+    icon: FileText,
+    title: "Inspections",
+    body: "Pass/fail checklists that auto-create corrective work orders when something fails. Auto-scheduled by frequency. Never miss one.",
+  },
+  {
+    icon: Database,
     title: "Asset Management",
-    body: "Register motors, pumps, compressors, conveyors — anything with a nameplate. Bulk import via CSV. Every asset gets a risk score calculated from criticality, failure frequency, spare availability, and age.",
+    body: "Register every motor, pump, compressor. Bulk import via CSV. Each asset gets a risk score from criticality, failure history, and spares.",
   },
   {
-    icon: <Sparkles className="h-6 w-6" />,
-    title: "AI Work Order Generator",
-    body: "Type maintenance notes in plain English — 'pump 3 making a grinding noise, bearings probably need replacement' — and get a structured work order with procedure steps, parts list, and priority.",
+    icon: Settings,
+    title: "Parts & Inventory",
+    body: "Track stock levels, reorder points, and usage per work order. Purchase orders. Know what you have before you need it.",
   },
   {
-    icon: <Send className="h-6 w-6" />,
-    title: "Maintenance Requests",
-    body: "Operators submit requests. Supervisors review and approve. Approved requests convert to work orders with one click. Full history from submission to completion.",
+    icon: BarChart,
+    title: "Reporting",
+    body: "MTTR, PM compliance, downtime by asset and cause. The numbers that tell you where your maintenance program actually stands.",
   },
   {
-    icon: <Activity className="h-6 w-6" />,
-    title: "Sensor Integration",
-    body: "Connect EdgePredict monitoring hardware to any asset. Live motor health data feeds into your asset records. PM schedules adjust automatically based on actual equipment condition.",
-  },
-];
-
-const steps = [
-  {
-    number: "01",
-    title: "Add your equipment",
-    body: "Sign up, create your plant profile, and register your assets. Import from a CSV or add them one at a time. Takes about 10 minutes for a typical plant.",
+    icon: Users,
+    title: "Team Management",
+    body: "6 RBAC roles: admin, supervisor, planner, scheduler, technician, requestor. Every person sees exactly what they need.",
   },
   {
-    number: "02",
-    title: "Follow your schedule",
-    body: "PM schedules generate automatically. Open the calendar each morning, see what's due, create work orders, track completion. It becomes your daily routine.",
-  },
-  {
-    number: "03",
-    title: "Go predictive when ready",
-    body: "Add monitoring sensors to your most critical motors. Time-based schedules become condition-based — driven by real electrical signature data from the motor itself.",
+    icon: Sparkles,
+    title: "AI + Automation",
+    body: "AI work order generator turns field notes into structured work orders in 3 seconds. Drag-and-drop scheduling with AI suggestions. Automation rules. Custom fields.",
   },
 ];
 
@@ -88,30 +90,30 @@ export default function PlatformPage() {
   return (
     <main className="bg-white text-gray-900">
 
-      {/* ── HERO ─────────────────────────────────────────────────── */}
+      {/* ── SECTION 1: HERO ─────────────────────────────────────── */}
       <section className="py-20 bg-gray-950 text-white">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-sm font-medium text-[#a78fe8] uppercase tracking-wider mb-4">
+          <p className="text-sm font-semibold text-[#a78fe8] uppercase tracking-wider mb-4">
             Maintenance Management
           </p>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-            The system your plant has been missing.
+            A real CMMS.<br />
+            <span className="text-[#a78fe8]">Not a compromise.</span>
           </h1>
-          <p className="text-gray-400 text-lg mt-4 max-w-2xl leading-relaxed">
-            Most small plants manage maintenance with spreadsheets, whiteboards, or nothing at all.
-            EdgePredict gives you PM scheduling, work orders, and asset tracking in one platform built
-            for the way maintenance actually works.
+          <p className="text-gray-400 text-lg mt-6 max-w-2xl leading-relaxed">
+            We&apos;ve seen the whiteboards, the sticky notes, the spreadsheets that nobody updates.
+            This is the CMMS we wish existed when we were on the floor.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="https://tools.edgepredict.io/signup"
-              className="px-6 py-3 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors"
+              className="px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               Get Started
             </a>
             <Link
               href="/pricing"
-              className="px-6 py-3 border border-gray-600 text-gray-300 hover:border-white hover:text-white rounded-lg transition-colors"
+              className="px-6 py-3 border border-gray-600 text-gray-300 hover:border-white hover:text-white rounded-lg transition-colors font-semibold"
             >
               See Pricing
             </Link>
@@ -119,22 +121,25 @@ export default function PlatformPage() {
         </div>
       </section>
 
-      {/* ── FEATURE DEEP DIVE ─────────────────────────────────────── */}
+      {/* ── SECTION 2: FEATURE GRID ─────────────────────────────── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
-            <p className="text-sm font-medium text-[#7655d6] uppercase tracking-wider mb-3">
+            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-wider mb-3">
               What&apos;s Inside
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-              Built for maintenance teams, not enterprise IT departments.
+              Built for maintenance teams, not enterprise IT.
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((card) => (
-              <div key={card.title} className="bg-white rounded-xl p-6 border border-gray-200">
-                <div className="text-[#7655d6] mb-3">{card.icon}</div>
+              <div
+                key={card.title}
+                className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              >
+                <card.icon className="w-6 h-6 text-[#7655d6] mb-3" />
                 <h3 className="font-semibold text-gray-900 mb-2">{card.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{card.body}</p>
               </div>
@@ -143,37 +148,11 @@ export default function PlatformPage() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ─────────────────────────────────────────── */}
+      {/* ── SECTION 3: DASHBOARD MOCK ───────────────────────────── */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <p className="text-sm font-medium text-[#7655d6] uppercase tracking-wider mb-3">
-              Getting Started
-            </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-              Up and running in minutes.
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {steps.map((s) => (
-              <div key={s.number}>
-                <span className="text-5xl font-bold text-[#7655d6]/25 leading-none block mb-5">
-                  {s.number}
-                </span>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">{s.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{s.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── DASHBOARD MOCK ───────────────────────────────────────── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="text-sm font-medium text-[#7655d6] uppercase tracking-wider mb-3">
+            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-wider mb-3">
               Daily View
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
@@ -208,7 +187,6 @@ export default function PlatformPage() {
             </div>
 
             <div className="p-5 grid lg:grid-cols-2 gap-5">
-
               {/* PM Schedule panel */}
               <div>
                 <div className="flex items-center justify-between mb-3">
@@ -246,45 +224,6 @@ export default function PlatformPage() {
                       </div>
                     );
                   })}
-                </div>
-
-                {/* Mini calendar strip */}
-                <div className="mt-4 border-t border-gray-800 pt-3">
-                  <div className="text-xs text-gray-500 font-mono uppercase tracking-wide mb-2">
-                    This Week
-                  </div>
-                  <div className="grid grid-cols-7 gap-1">
-                    {["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"].map((d) => (
-                      <div key={d} className="text-center text-xs text-gray-600 font-mono mb-1">
-                        {d}
-                      </div>
-                    ))}
-                    {[
-                      { day: "3", dot: null },
-                      { day: "4", dot: null },
-                      { day: "5", dot: "amber" },
-                      { day: "6", dot: null },
-                      { day: "7", dot: "green" },
-                      { day: "8", dot: null },
-                      { day: "9", dot: "red" },
-                    ].map(({ day, dot }) => (
-                      <div key={day} className="flex flex-col items-center">
-                        <div
-                          className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-mono ${
-                            dot === "red"
-                              ? "bg-red-500/20 text-red-400"
-                              : dot === "amber"
-                              ? "bg-yellow-500/20 text-yellow-400"
-                              : dot === "green"
-                              ? "bg-green-500/20 text-green-400"
-                              : "text-gray-500"
-                          }`}
-                        >
-                          {day}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
 
@@ -345,21 +284,48 @@ export default function PlatformPage() {
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────────────── */}
-      <section className="py-16 bg-gray-950 text-white text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl font-bold">Start managing your maintenance program.</h2>
-          <p className="text-gray-400 mt-3">No credit card required. No time limit.</p>
+      {/* ── SECTION 4: SENSOR CONNECTION ────────────────────────── */}
+      <section className="py-16 bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-sm font-semibold text-[#a78fe8] uppercase tracking-wider mb-4">
+            Better Together
+          </p>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+            Add sensors. Watch your CMMS get smarter.
+          </h2>
+          <p className="text-gray-400 max-w-xl mx-auto leading-relaxed mb-8">
+            When you connect EdgePredict motor monitoring sensors, your time-based PM schedules
+            become condition-based. Your PM interval adjusts from real motor health data, not a
+            fixed calendar. When a motor degrades, a work order creates itself.
+          </p>
+          <Link
+            href="/monitoring"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-gray-600 text-gray-300 hover:border-[#a78fe8] hover:text-[#a78fe8] rounded-lg font-semibold transition-colors"
+          >
+            Learn About Monitoring <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* ── SECTION 5: CTA ──────────────────────────────────────── */}
+      <section className="py-20 bg-white text-center">
+        <div className="max-w-2xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-gray-900">
+            Start running your maintenance program.
+          </h2>
+          <p className="text-gray-500 mt-3 leading-relaxed">
+            No credit card. No time limit. Built by engineers who&apos;ve been where you are.
+          </p>
           <a
             href="https://tools.edgepredict.io/signup"
-            className="mt-8 inline-block px-8 py-3 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors"
+            className="mt-8 inline-block px-8 py-4 bg-[#7655d6] hover:bg-[#5d3db8] text-white font-semibold rounded-xl transition-colors"
           >
-            Create Your Account
+            Get Started Free
           </a>
           <div className="mt-4">
             <a
               href="https://tools.edgepredict.io/login"
-              className="text-gray-500 text-sm hover:text-white transition-colors"
+              className="text-gray-400 text-sm hover:text-[#7655d6] transition-colors"
             >
               Already have an account? Log in →
             </a>
