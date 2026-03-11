@@ -10,7 +10,7 @@ export default function Footer() {
               <span className="text-purple-400">Edge</span><span className="text-white">Predict</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Maintenance management and motor monitoring — built as one platform by engineers who&apos;ve been on the plant floor.
+              Maintenance management and motor monitoring, built as one platform by engineers who&apos;ve been on the plant floor.
             </p>
           </div>
 

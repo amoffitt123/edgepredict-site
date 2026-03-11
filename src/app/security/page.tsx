@@ -41,7 +41,7 @@ export default function SecurityPage() {
             Security &amp; IT Overview
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl">
-            For IT managers and OT engineers evaluating EdgePredict for your facility. Plain language — no marketing.
+            For IT managers and OT engineers evaluating EdgePredict for your facility. Plain language. No marketing.
           </p>
         </div>
       </section>
@@ -97,7 +97,7 @@ export default function SecurityPage() {
                 <div>
                   <span className="font-medium text-gray-900">Cellular option (4G LTE) available</span>
                   <p className="text-gray-600 mt-1 text-sm">
-                    The system can operate entirely on cellular — no plant Wi-Fi or OT network connection required. This is the default configuration for pilot deployments.
+                    The system can operate entirely on cellular. No plant Wi-Fi or OT network connection required. This is the default configuration for pilot deployments.
                   </p>
                 </div>
               </li>
@@ -222,7 +222,7 @@ export default function SecurityPage() {
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Questions for Your IT or OT Team?</h2>
           <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-            We are happy to get on a call with your IT or OT security team — provide a one-pager, answer questions, whatever is useful.
+            We are happy to get on a call with your IT or OT security team. One-pager available, questions answered, whatever is useful.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <a

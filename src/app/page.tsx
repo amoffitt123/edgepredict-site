@@ -419,7 +419,7 @@ export default function Home() {
               },
               {
                 title: "Built by People Who've Done the Work",
-                body: "Our founder designed the sensor PCB, wrote the ESP32 firmware, and deployed the first pilot at a pharmaceutical plant by hand. The team includes reliability professionals. We built this because we were on the floor and couldn't find it.",
+                body: "Our team designed the sensor PCB, wrote the ESP32 firmware, and deployed our first pilot by hand. We're electrical engineers and reliability professionals, not just developers. We built EdgePredict because we needed it on the plant floor and couldn't find it.",
                 highlight: false,
               },
             ].map((card) => (

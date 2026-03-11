@@ -289,8 +289,8 @@ export default function CalculatorPage() {
                   onChange={(e) => setInput("strategy", e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#7655d6]"
                 >
-                  <option value="reactive">Reactive — run to failure</option>
-                  <option value="preventive">Preventive — time-based PM</option>
+                  <option value="reactive">Reactive: run to failure</option>
+                  <option value="preventive">Preventive: time-based PM</option>
                   <option value="predictive">Some Predictive monitoring</option>
                 </select>
               </div>

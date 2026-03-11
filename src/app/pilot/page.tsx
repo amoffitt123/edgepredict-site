@@ -17,7 +17,7 @@ const steps = [
   {
     number: "01",
     title: "Choose your motors",
-    body: "Pick 2–5 critical motors — pumps, fans, compressors, conveyors. Let us know horsepower, whether each is VFD-driven or line-fed, and their location in the facility.",
+    body: "Pick 2–5 critical motors: pumps, fans, compressors, conveyors. Let us know horsepower, whether each is VFD-driven or line-fed, and their location in the facility.",
   },
   {
     number: "02",
@@ -27,7 +27,7 @@ const steps = [
   {
     number: "03",
     title: "Install in ~20 minutes",
-    body: "Your maintenance electrician clamps the CTs onto motor feeder conductors — VFD input side, or line-fed conductors. Plug in the gateway. Done. No IT involvement required.",
+    body: "Your maintenance electrician clamps the CTs onto motor feeder conductors (VFD input side, or line-fed conductors). Plug in the gateway. Done. No IT involvement required.",
   },
   {
     number: "04",
@@ -37,7 +37,7 @@ const steps = [
   {
     number: "05",
     title: "Decision at 60 days",
-    body: "We review findings with you — what the data showed, any anomalies flagged, any maintenance recommendations. Continue at $200/month per motor, or return the hardware. No hard sell.",
+    body: "We review findings with you: what the data showed, any anomalies flagged, any maintenance recommendations. Continue at $200/month per motor, or return the hardware. No hard sell.",
   },
 ]
 
@@ -50,7 +50,7 @@ const requirements = [
 
 const successCriteria = [
   "At least one actionable early warning during the pilot period",
-  "Fewer surprises — visibility into which motors are running abnormally",
+  "Fewer surprises. Visibility into which motors are running abnormally.",
   "Prioritized maintenance work orders based on condition data, not guesswork",
   "Team comfortable reading and acting on the weekly health summaries",
 ]
@@ -130,7 +130,7 @@ export default function PilotPage() {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-4">Success Criteria</h2>
             <p className="text-gray-600 mb-8">
-              Here is what a successful pilot looks like — we measure these together at 60 days.
+              Here is what a successful pilot looks like. We measure these together at 60 days.
             </p>
             <ul className="space-y-4">
               {successCriteria.map((item) => (
@@ -169,7 +169,7 @@ export default function PilotPage() {
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Get Your Pilot Started</h2>
           <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-            Reach out directly — you will speak with an engineer, not a sales queue.
+            Reach out directly. You will speak with an engineer, not a sales queue.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <a

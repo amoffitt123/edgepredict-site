@@ -204,7 +204,7 @@ export default function ContactPage() {
               <h3 className="font-bold text-gray-900">Good questions to ask us:</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 {[
-                  "Can my motors be monitored — VFD or line-fed?",
+                  "Can my motors be monitored, VFD or line-fed?",
                   "Will this work without connecting to our plant network?",
                   "What does a typical pilot install look like?",
                   "How do we prioritize which motors to monitor first?",
