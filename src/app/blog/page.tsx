@@ -5,6 +5,12 @@ export const metadata = {
   title: "Blog — EdgePredict",
   description:
     "Maintenance engineering insights, product updates, and the thinking behind EdgePredict.",
+  openGraph: {
+    title: "Blog — EdgePredict",
+    description:
+      "Maintenance engineering insights, product updates, and the thinking behind EdgePredict.",
+    type: "website",
+  },
 };
 
 const categoryColors: Record<string, string> = {

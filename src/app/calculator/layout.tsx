@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Downtime Cost Calculator — EdgePredict",
   description:
-    "Calculate what reactive motor maintenance is costing your facility. Free interactive tool with instant results.",
+    "Calculate the true cost of unplanned motor failures and see how monitoring pays for itself. Free interactive tool.",
 };
 
 export default function CalculatorLayout({

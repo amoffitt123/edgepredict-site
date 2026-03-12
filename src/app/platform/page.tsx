@@ -70,7 +70,7 @@ const pmItems = [
 const workOrders = [
   { id: "WO-042", title: "Inspect Fan-1 bearings", assignee: "J. Torres", status: "open" },
   { id: "WO-041", title: "Replace Conveyor-2 belt", assignee: "M. Davis", status: "in-progress" },
-  { id: "WO-040", title: "Quarterly PM — Compressor-1", assignee: "J. Torres", status: "completed" },
+  { id: "WO-040", title: "Quarterly PM: Compressor-1", assignee: "J. Torres", status: "completed" },
   { id: "WO-039", title: "Lubricate Pump-3 bearings", assignee: "R. Singh", status: "completed" },
 ];
 
@@ -191,7 +191,7 @@ export default function PlatformPage() {
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <div className="text-xs text-gray-500 font-mono uppercase tracking-wide">
-                    PM Schedule — June 2025
+                    PM Schedule | March 2026
                   </div>
                   <span className="text-xs text-yellow-400 font-mono bg-yellow-400/10 px-2 py-0.5 rounded">
                     1 overdue

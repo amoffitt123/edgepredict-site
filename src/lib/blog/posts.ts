@@ -14,7 +14,7 @@ export const posts: BlogPost[] = [
     title: 'We Built a Free CMMS. Here\'s What\'s In It.',
     excerpt: 'EdgePredict is a full maintenance management platform: work orders, PM scheduling, inspections, asset management, parts inventory, reporting, and AI-generated work orders. The base plan is free. Not a trial. Free.',
     category: 'Company',
-    date: '2026-03-10',
+    date: '2026-03-03',
     readingTime: 5,
     content: `EdgePredict is a full maintenance management platform. Work orders, PM scheduling, inspections, asset management, parts inventory, reporting, AI-generated work orders. The base plan is free. Not a trial. Not "free for 30 days." Free.
 
@@ -31,7 +31,7 @@ When you're ready to go further, connect our motor monitoring sensors. Your PM s
     title: 'Type Field Notes. Get a Work Order.',
     excerpt: 'Every maintenance manager we\'ve talked to says the same thing: technicians don\'t fill out work orders because it takes too long. EdgePredict\'s AI work order generator fixes this.',
     category: 'Product',
-    date: '2026-03-11',
+    date: '2026-03-04',
     readingTime: 4,
     content: `Every maintenance manager we've talked to says the same thing: technicians don't fill out work orders because it takes too long.
 
@@ -46,7 +46,7 @@ The AI also learns from corrections. Change the estimated hours for a specific p
     title: 'The $40,000 Motor Failure',
     excerpt: 'The math on one unplanned motor failure. 75 HP pump, bearing seizure. 8 hours of production downtime. One failure, one motor, one bad day.',
     category: 'Industry',
-    date: '2026-03-12',
+    date: '2026-03-05',
     readingTime: 3,
     content: `Let's do the math on one unplanned motor failure. A 75 HP pump, bearing seizure.
 
@@ -63,7 +63,7 @@ Most plants don't think they have a $40,000 problem. They do. They just haven't 
     title: 'Tribal Knowledge Is Not a Maintenance Strategy',
     excerpt: 'How does preventive maintenance work at most small plants? Someone remembers. Or they don\'t. "We grease the bearings every... I think Jim does that quarterly. Jim retired last year."',
     category: 'Product',
-    date: '2026-03-13',
+    date: '2026-03-06',
     readingTime: 4,
     content: `How does preventive maintenance actually work at most small plants?
 
@@ -80,7 +80,7 @@ Connect a sensor and your time-based schedules become condition-based. Grease wh
     title: 'Your Monday Morning Scheduling Meeting Just Got Shorter',
     excerpt: 'A maintenance supervisor spends about 2 hours every Monday morning figuring out who does what. EdgePredict\'s schedule board replaces most of that with a 10-second button click.',
     category: 'Product',
-    date: '2026-03-14',
+    date: '2026-03-07',
     readingTime: 3,
     content: `A maintenance supervisor spends about 2 hours every Monday morning figuring out who does what. This is not a great use of anyone's time.
 
@@ -97,7 +97,7 @@ The scheduler also tracks break-in work. Over time you can see exactly how much 
     title: 'What Electrical Signature Analysis Actually Detects',
     excerpt: 'ESA reads the current flowing through your motor leads. Three clamp-on CTs, no rewiring, no shaft access, no accelerometer mounting on hot rotating equipment.',
     category: 'Engineering',
-    date: '2026-03-17',
+    date: '2026-03-08',
     readingTime: 5,
     content: `ESA reads the current flowing through your motor leads. Three clamp-on CTs. No rewiring. No shaft access. No accelerometer mounting on hot rotating equipment.
 
@@ -114,7 +114,7 @@ The motor's current is already carrying information about its health. We built h
     title: 'When an Inspection Fails, What Happens Next?',
     excerpt: 'At most plants, inspections go like this: clipboard, check boxes, find a problem, tell someone, hope they create a work order, hope it gets assigned, hope it gets done.',
     category: 'Product',
-    date: '2026-03-18',
+    date: '2026-03-09',
     readingTime: 3,
     content: `Here's how inspections work at most plants. Clipboard. Check boxes. Find a problem. Tell someone. Hope they create a work order. Hope it gets assigned. Hope it gets done.
 
@@ -131,7 +131,7 @@ Inspections aren't a formality. They're the first line of your maintenance progr
     title: '85% of Small Plants Have No Maintenance System',
     excerpt: 'Less than 15% of small and mid-size manufacturing plants use any CMMS. The other 85% run on whiteboards, spreadsheets, and tribal knowledge.',
     category: 'Industry',
-    date: '2026-03-19',
+    date: '2026-03-10',
     readingTime: 4,
     content: `Less than 15% of small and mid-size manufacturing plants use any CMMS. The other 85% run on whiteboards, spreadsheets, and tribal knowledge.
 
@@ -146,7 +146,7 @@ EdgePredict was built for the 85%. Not the plants with enterprise budgets. The o
     title: '100,000 Plants in the Monitoring Gap',
     excerpt: 'The motor monitoring market has three tiers: enterprise systems starting at $500-2,000/month per asset, nothing, and the gap. Plants that know they should be monitoring but can\'t justify enterprise prices.',
     category: 'Industry',
-    date: '2026-03-20',
+    date: '2026-03-11',
     readingTime: 4,
     content: `The motor monitoring market has three tiers.
 
@@ -165,7 +165,7 @@ The gap isn't a market failure. It's a market that enterprise vendors are too ex
     title: 'Why Our CMMS Is Free (The Honest Answer)',
     excerpt: 'We make money on sensors. $200/month per motor for hardware that monitors equipment and feeds condition data into maintenance schedules. But nobody buys sensors for a problem they don\'t know they have.',
     category: 'Company',
-    date: '2026-03-21',
+    date: '2026-03-12',
     readingTime: 4,
     content: `We make money on sensors. $200/month per motor for hardware that monitors equipment and feeds condition data back into the maintenance schedule.
 
