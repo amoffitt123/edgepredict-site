@@ -1,630 +1,668 @@
 import Link from "next/link";
-import {
-  CheckCircle,
-  Zap,
-  ClipboardList,
-  Activity,
-  ArrowRight,
-} from "lucide-react";
+import { CheckCircle, Zap, ArrowRight, ClipboardList, Activity } from "lucide-react";
+import HeroDashboard from "@/components/HeroDashboard";
+import FadeIn from "@/components/FadeIn";
 
 export const metadata = {
   title: "EdgePredict — Maintenance Management & Motor Monitoring",
   description:
-    "The only platform where your CMMS and your sensors are one system. Free maintenance management with optional motor monitoring sensors.",
+    "The only platform where your CMMS and your sensors are one system. Free maintenance management. $200/mo motor monitoring. Built by the engineers who designed the hardware.",
 };
 
-export default function Home() {
+/* ── Comparison table data ────────────────────────────────────────────── */
+type Cell = string;
+const TABLE_ROWS: { feature: string; ep0: Cell; ep99: Cell; mx: Cell; up: Cell; fiix: Cell; aug: Cell }[] = [
+  { feature: "Users",                   ep0: "Unlimited", ep99: "Unlimited",    mx: "Per-user",    up: "Per-user",    fiix: "Per-user",    aug: "Per-user"    },
+  { feature: "Work Orders",             ep0: "Unlimited", ep99: "Unlimited",    mx: "Limited",     up: "Limited",     fiix: "✓",           aug: "✗"           },
+  { feature: "PM Scheduling",           ep0: "✓",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
+  { feature: "Inspections",             ep0: "✓",         ep99: "✓",            mx: "Add-on",      up: "Add-on",      fiix: "Add-on",      aug: "✗"           },
+  { feature: "Parts Inventory",         ep0: "✓",         ep99: "✓",            mx: "Add-on",      up: "Add-on",      fiix: "✓",           aug: "✗"           },
+  { feature: "AI Work Orders",          ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
+  { feature: "AI Scheduling",           ep0: "✗",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
+  { feature: "Drag-and-Drop Schedule",  ep0: "✗",         ep99: "✓",            mx: "✗",           up: "✓",           fiix: "✗",           aug: "✗"           },
+  { feature: "Team Chat",               ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
+  { feature: "SOPs Library",            ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
+  { feature: "Vendor Portal",           ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
+  { feature: "QR / NFC Scanning",       ep0: "✓",         ep99: "✓",            mx: "Add-on",      up: "✓",           fiix: "✗",           aug: "✗"           },
+  { feature: "Floor Plans",             ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
+  { feature: "Custom Fields",           ep0: "✗",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
+  { feature: "Workflow Automation",     ep0: "✗",         ep99: "✓",            mx: "Add-on",      up: "Add-on",      fiix: "✓",           aug: "✗"           },
+  { feature: "Reporting / KPIs",        ep0: "Basic",     ep99: "Full",         mx: "Basic",       up: "Basic",       fiix: "✓",           aug: "✗"           },
+  { feature: "QuickBooks Integration",  ep0: "✗",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
+  { feature: "Mobile App",              ep0: "✓",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
+  { feature: "Offline Mode",            ep0: "✓",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✗",           aug: "✗"           },
+  { feature: "Motor Monitoring Sensors",ep0: "✗",         ep99: "✗",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✓"           },
+  { feature: "Built-in Sensor Integration",ep0:"Monitor", ep99:"Monitor",       mx: "✗",           up: "✗",           fiix: "✗",           aug: "N/A"         },
+  { feature: "Condition-Based PM",      ep0: "Monitor",   ep99: "Monitor",      mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
+  { feature: "Edge-Computed Health Score",ep0:"Monitor",  ep99:"Monitor",       mx: "✗",           up: "✗",           fiix: "✗",           aug: "Cloud only"  },
+  { feature: "Price for 10 users",      ep0: "$0",        ep99: "$99/mo",       mx: "$160/mo",     up: "$200/mo",     fiix: "Contact",     aug: "N/A"         },
+];
+
+function cellStyle(val: Cell, col: "ep" | "other") {
+  if (col === "ep") return "text-[#5d3db8] font-semibold";
+  if (val === "✓") return "text-green-600 font-semibold";
+  if (val === "✗") return "text-slate-300";
+  if (val === "Add-on" || val === "Contact" || val === "N/A") return "text-slate-400 text-xs";
+  return "text-slate-600";
+}
+
+/* ── Bridge flow items ──────────────────────────────────────────────── */
+const FLOWS = [
+  {
+    steps: ["Sensor detects load anomaly", "Work order creates itself", "Technician gets notified"],
+  },
+  {
+    steps: ["Health score drops below 75", "PM schedule adjusts frequency", "Parts pre-ordered"],
+  },
+  {
+    steps: ["Repair completed", "Sensor verifies baseline restored", "Event logged with timestamp"],
+  },
+];
+
+/* ── Management features ────────────────────────────────────────────── */
+const MGMT_FEATURES = [
+  "Work orders with 10-status lifecycle + full audit trail",
+  "PM scheduling with auto-generated templates and risk scoring",
+  "Inspections with auto-corrective work orders on failure",
+  "Asset management: hierarchy, BOM, floor plans, QR codes",
+  "Parts inventory with PO lifecycle and stock tracking",
+  "AI work order generator (Gemini): field notes to structured WO in 3 seconds",
+  "Drag-and-drop scheduling with AI optimization",
+  "Team chat, SOPs library, vendor management",
+  "6 roles, 46 permissions, multi-tenant orgs",
+  "Reporting: KPIs, OEE, Pulse reports, maintenance playbooks",
+  "Email + in-app notifications with automation rules",
+  "Mobile app with offline sync",
+  "QuickBooks integration",
+  "CSV import / export for everything",
+];
+
+/* ── Monitoring features ────────────────────────────────────────────── */
+const MON_FEATURES = [
+  "Non-invasive 3-phase current monitoring via split-core CTs",
+  "Electrical Signature Analysis (ESA) at the edge",
+  "Health score computed locally every 2 seconds",
+  "Bucketed baselines for VFD-driven and line-fed motors",
+  "Phase loss, overcurrent, and load instability detection",
+  "Transition lockout to prevent false alarms during start/stop",
+  "20-minute clamp-on install, no rewiring",
+  "Cellular connectivity, no IT involvement",
+  "Live web dashboard with historical trending",
+  "Alerts that automatically create CMMS work orders",
+];
+
+/* ── Pricing tiers ──────────────────────────────────────────────────── */
+const TIERS = [
+  {
+    name: "Planner",
+    badge: "Free",
+    badgeClass: "bg-green-100 text-green-700",
+    price: "$0",
+    priceSub: "free forever",
+    desc: "Not a trial. Not limited. A real CMMS with unlimited users and unlimited work orders. Because 85% of plants have nothing, and something free is infinitely better than a 30-day trial.",
+    features: ["Unlimited users", "Unlimited assets & WOs", "PM scheduling", "Inspections", "AI work order generation", "3 attachments per WO"],
+    cta: { label: "Get Started Free", href: "https://tools.edgepredict.io/signup", external: true },
+    dark: false,
+  },
+  {
+    name: "Pro",
+    badge: "Most Popular",
+    badgeClass: "bg-[#7655d6]/10 text-[#7655d6]",
+    price: "$99",
+    priceSub: "/mo per site",
+    desc: "Everything unlocked. Scheduling, automation, advanced reporting, QuickBooks. One price. No per-user fees. No surprises.",
+    features: ["Everything in Planner", "Unlimited attachments", "Drag-and-drop scheduling", "AI scheduling suggestions", "Advanced reporting", "Workflow automation", "Custom fields", "Priority support"],
+    cta: { label: "Get Started", href: "https://tools.edgepredict.io/signup", external: true },
+    dark: false,
+  },
+  {
+    name: "Monitor",
+    badge: "Sensors",
+    badgeClass: "bg-[#7655d6] text-white",
+    price: "$200",
+    priceSub: "/mo per motor",
+    desc: "Hardware included. 20-minute install. Cellular. 60-day pilot is truly free. If we don't find anything useful, return the hardware.",
+    features: ["Sensor hardware included", "Real-time ESA monitoring", "Condition-based PM triggers", "Dynamic PM scheduling", "Cellular connectivity", "60-day free pilot"],
+    cta: { label: "Start Free Pilot", href: "/pilot", external: false },
+    dark: true,
+  },
+];
+
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="bg-white text-slate-900">
 
-      {/* ── SECTION 1: HERO ─────────────────────────────────────── */}
-      <section className="bg-white py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+      {/* ── 1. HERO ───────────────────────────────────────────────────── */}
+      <section className="bg-[#0a0a0f] py-24 lg:py-32 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
 
-          {/* Left column */}
+          {/* Left */}
           <div>
-            <p className="text-[#a78fe8] text-sm font-semibold uppercase tracking-wider mb-4">
+            <p className="text-sm uppercase tracking-widest font-semibold text-[#a78fe8] mb-5">
               Maintenance Management + Motor Monitoring
             </p>
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-[1.1]">
-              Manage your maintenance.<br />
-              <span className="text-[#7655d6]">Monitor your motors.</span>
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] mb-6">
+              Stop guessing.<br />
+              <span className="text-[#7655d6]">Start knowing.</span>
             </h1>
-            <p className="text-lg lg:text-xl text-gray-600 mt-6 max-w-lg leading-relaxed">
-              Built by engineers who&apos;ve been on the plant floor. We designed the sensors, wrote
-              the firmware, and built the platform. We couldn&apos;t find a tool that worked the way
-              maintenance actually works, so we built it ourselves.
+            <p className="text-lg text-slate-400 leading-relaxed max-w-lg mb-10">
+              The only platform where your CMMS and your sensors are one system.
+              Free maintenance management. $200/mo motor monitoring. Built by the
+              engineers who designed the hardware.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
+
+            <div className="flex flex-wrap gap-4 mb-10">
               <a
                 href="https://tools.edgepredict.io/signup"
-                className="bg-[#7655d6] text-white px-8 py-4 rounded-xl text-base font-semibold hover:bg-[#5d3db8] transition shadow-lg shadow-[#7655d6]/25"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#7655d6] text-white font-semibold rounded-xl hover:bg-[#5d3db8] transition-all duration-200 hover:shadow-xl hover:shadow-[#7655d6]/30 hover:scale-[1.02]"
               >
-                Get Started
+                Get Started Free
               </a>
               <a
-                href="#demo"
-                className="bg-white border-2 border-gray-200 text-gray-700 px-8 py-4 rounded-xl text-base font-semibold hover:border-[#7655d6] hover:text-[#7655d6] transition"
+                href="https://tools.edgepredict.io/login"
+                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-700 text-white font-semibold rounded-xl hover:border-[#a78fe8] hover:text-[#a78fe8] transition-all duration-200"
               >
-                See the Dashboard
+                Explore Demo
               </a>
             </div>
-            <div className="mt-8 flex flex-col md:flex-row flex-wrap gap-x-8 gap-y-2">
+
+            {/* Trust bar */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-x-6 gap-y-2">
               {[
-                "Free plan available",
-                "No credit card required",
-                "Built by maintenance engineers",
+                "Free forever, no credit card",
+                "158+ API endpoints",
+                "Live pilot at Fortune 500 manufacturer",
+                "Built by Engineers, not MBAs",
               ].map((item) => (
-                <span key={item} className="flex items-center gap-2 text-sm text-gray-500 font-medium min-w-0">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                <span key={item} className="flex items-center gap-2 text-sm text-slate-500 font-medium">
+                  <CheckCircle className="w-4 h-4 text-[#7655d6] flex-shrink-0" />
                   {item}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Right column — split-panel card */}
-          <div className="hover:shadow-[0_25px_50px_-12px_rgba(118,85,214,0.1)] transition-all duration-300">
-            <div className="rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
-              {/* Management half */}
-              <div className="bg-white p-6 flex-1">
-                <p className="text-xs font-bold tracking-wider text-gray-400 mb-3">MANAGEMENT</p>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />
-                      <span className="text-xs text-gray-700 truncate">PM-042: Pump bearing grease</span>
-                    </div>
-                    <span className="text-xs font-medium bg-green-100 text-green-700 px-2 py-0.5 rounded-full flex-shrink-0">On Time</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-amber-500 flex-shrink-0" />
-                      <span className="text-xs text-gray-700 truncate">WO-108: Fan belt replacement</span>
-                    </div>
-                    <span className="text-xs font-medium bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full flex-shrink-0">Due Tomorrow</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
-                      <span className="text-xs text-gray-700 truncate">WO-091: Compressor inspection</span>
-                    </div>
-                    <span className="text-xs font-medium bg-red-100 text-red-700 px-2 py-0.5 rounded-full flex-shrink-0">Overdue</span>
-                  </div>
-                </div>
-                <p className="text-xs text-gray-400 mt-4 pt-3 border-t border-gray-100">3 items need attention today</p>
-              </div>
-
-              {/* Divider — vertical on md+, horizontal on mobile */}
-              <div className="relative flex items-center justify-center md:flex-col">
-                <div className="hidden md:block w-0.5 bg-[#7655d6] h-full absolute" />
-                <div className="block md:hidden h-0.5 bg-[#7655d6] w-full absolute" />
-                <div className="relative z-10 w-8 h-8 rounded-full bg-[#7655d6] flex items-center justify-center">
-                  <Zap className="w-4 h-4 text-white" />
-                </div>
-              </div>
-
-              {/* Monitoring half */}
-              <div className="bg-gray-900 p-6 flex-1">
-                <p className="text-xs font-bold tracking-wider text-gray-500 mb-3">MONITORING</p>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-xs text-gray-300 truncate">Pump P-101</span>
-                    <div className="flex items-center gap-2 flex-shrink-0">
-                      <div className="w-16 bg-gray-700 rounded-full h-1.5">
-                        <div className="h-1.5 rounded-full bg-green-500" style={{ width: '98%' }} />
-                      </div>
-                      <span className="text-xs text-green-400 font-mono w-8">98%</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-xs text-gray-300 truncate">Fan F-201</span>
-                    <div className="flex items-center gap-2 flex-shrink-0">
-                      <div className="w-16 bg-gray-700 rounded-full h-1.5">
-                        <div className="h-1.5 rounded-full bg-green-500" style={{ width: '87%' }} />
-                      </div>
-                      <span className="text-xs text-green-400 font-mono w-8">87%</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-xs text-gray-300 truncate">Compressor AC-401</span>
-                    <div className="flex items-center gap-2 flex-shrink-0">
-                      <div className="w-16 bg-gray-700 rounded-full h-1.5">
-                        <div className="h-1.5 rounded-full bg-amber-500" style={{ width: '71%' }} />
-                      </div>
-                      <span className="text-xs text-amber-400 font-mono w-8">71%</span>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-800">3 motors online · 0 alerts</p>
-              </div>
-            </div>
+          {/* Right: animated dashboard */}
+          <div className="w-full">
+            <HeroDashboard />
           </div>
-
         </div>
       </section>
 
-      {/* ── SECTION 2: SOCIAL PROOF BAR ─────────────────────────── */}
-      <section className="bg-gray-50 py-6">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-sm text-gray-400">
-            Built by maintenance engineers and electrical engineers. Deployed at pharmaceutical, manufacturing, and industrial facilities.
-          </p>
+      {/* ── 2. SOCIAL PROOF BAR ───────────────────────────────────────── */}
+      <section className="bg-white border-b border-slate-100 py-5">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+          <p>Currently monitoring motors at pharmaceutical and manufacturing facilities.</p>
+          <div className="flex items-center gap-4 text-slate-400 font-mono text-xs">
+            {["InfluxDB", "Supabase", "Next.js", "React Native", "Stripe"].map((t) => (
+              <span key={t}>{t}</span>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── SECTION 3: THE TWO SIDES ────────────────────────────── */}
-      <section className="bg-white py-20">
+      {/* ── 3. THE TWO SIDES ──────────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-6">
-            <p className="text-[#a78fe8] text-sm font-semibold uppercase tracking-wider mb-3">
+          <FadeIn className="text-center mb-16">
+            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
               One Platform. Two Superpowers.
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-              Management and monitoring, built as one.
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Management and monitoring. Built as one system.
             </h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed">
-              Most plants use separate tools for maintenance management and equipment monitoring. Most use nothing at all. EdgePredict is the only platform where both sides share data, share context, and make each other smarter.
+            <p className="text-base md:text-lg text-slate-600 mt-4 max-w-2xl mx-auto leading-relaxed">
+              Most plants use separate tools. Most use nothing at all. EdgePredict is the only
+              platform where both sides share data, share context, and make each other smarter.
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="grid lg:grid-cols-2 gap-8 mt-16">
+          <div className="grid lg:grid-cols-2 gap-8">
             {/* Management card */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <FadeIn delay={1} className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
+              <div className="w-10 h-1 rounded-full bg-[#7655d6] mb-6" />
               <ClipboardList className="w-8 h-8 text-[#7655d6] mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Maintenance Management</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-2">
+                Maintenance Management
+              </h3>
               <ul className="space-y-2 mt-4 mb-6">
-                {[
-                  "Work orders with full lifecycle tracking",
-                  "PM scheduling with auto-generated templates",
-                  "Inspections with pass/fail checklists",
-                  "Asset management with risk scoring",
-                  "Parts inventory & purchase orders",
-                  "AI work order generator",
-                  "Drag-and-drop scheduling with AI suggestions",
-                  "Reporting: MTTR, PM compliance, downtime",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
+                {MGMT_FEATURES.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm text-slate-700">
                     <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
                     {f}
                   </li>
                 ))}
               </ul>
               <Link
-                href="/platform"
-                className="text-[#7655d6] text-sm font-semibold inline-flex items-center gap-1 hover:underline"
+                href="/features"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-[#7655d6] hover:underline"
               >
-                Explore the Platform <ArrowRight className="w-4 h-4" />
+                Explore Features <ArrowRight className="w-4 h-4" />
               </Link>
-            </div>
+            </FadeIn>
 
             {/* Monitoring card */}
-            <div className="bg-gray-900 rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-              <Activity className="w-8 h-8 text-[#a78fe8] mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Motor Monitoring</h3>
+            <FadeIn delay={2} className="bg-[#0a0a0f] rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 border border-slate-800">
+              <div className="w-10 h-1 rounded-full bg-cyan-500 mb-6" />
+              <Activity className="w-8 h-8 text-cyan-400 mb-4" />
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">
+                Motor Monitoring
+              </h3>
               <ul className="space-y-2 mt-4 mb-6">
-                {[
-                  "Phase imbalance detection",
-                  "Phase loss, caught instantly",
-                  "Load instability monitoring",
-                  "Overload & near-stall conditions",
-                  "Mechanical fault indicators",
-                  "Baseline learning per motor",
-                  "Real-time health dashboard",
-                  "Cellular connectivity, no IT required",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-gray-400">
-                    <CheckCircle className="w-4 h-4 text-[#a78fe8] flex-shrink-0 mt-0.5" />
+                {MON_FEATURES.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm text-slate-400">
+                    <CheckCircle className="w-4 h-4 text-cyan-500 flex-shrink-0 mt-0.5" />
                     {f}
                   </li>
                 ))}
               </ul>
               <Link
                 href="/monitoring"
-                className="text-[#a78fe8] text-sm font-semibold inline-flex items-center gap-1 hover:underline"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-cyan-400 hover:underline"
               >
                 Learn About Monitoring <ArrowRight className="w-4 h-4" />
               </Link>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 4: THE BRIDGE ───────────────────────────────── */}
-      <section className="bg-[#7655d6] py-16">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="flex justify-center mb-6">
-            <Zap className="w-12 h-12 text-white" />
-          </div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6 max-w-2xl mx-auto">
-            When your sensors talk to your CMMS, everything changes.
-          </h2>
-          <p className="text-white/80 max-w-2xl mx-auto leading-relaxed">
-            Other platforms manage maintenance OR monitor equipment. EdgePredict does both and
-            connects them. When a sensor detects rising current imbalance, your PM schedule adjusts
-            automatically. When a condition trigger fires, a work order creates itself. That&apos;s
-            not integration. That&apos;s one system.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
-            {[
-              { label: "Condition → PM", desc: "Sensor data updates your maintenance schedule in real time" },
-              { label: "Alert → Work Order", desc: "Fault detected? Work order created automatically" },
-              { label: "Complete → Verified", desc: "Maintenance completion confirms sensor baseline" },
-            ].map((stat) => (
-              <div key={stat.label} className="bg-white/10 backdrop-blur rounded-xl p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                <div className="text-lg font-bold text-white mb-2">{stat.label}</div>
-                <div className="text-sm text-white/70">{stat.desc}</div>
+      {/* ── 4. THE BRIDGE ─────────────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-[#0a0a0f] relative overflow-hidden">
+        {/* Subtle gradient accent */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 50% 100%, rgba(118,85,214,0.12) 0%, transparent 70%)",
+          }}
+        />
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <FadeIn className="text-center mb-14">
+            <div className="flex justify-center mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-[#7655d6]/20 flex items-center justify-center">
+                <Zap className="w-6 h-6 text-[#a78fe8]" />
               </div>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white max-w-2xl mx-auto">
+              When your sensors talk to your CMMS, everything changes.
+            </h2>
+          </FadeIn>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {FLOWS.map((flow, fi) => (
+              <FadeIn key={fi} delay={(fi + 1) as 1 | 2 | 3}>
+                <div className="bg-white/5 backdrop-blur rounded-2xl p-6 border border-white/10 hover:bg-white/8 hover:-translate-y-1 transition-all duration-200">
+                  {flow.steps.map((step, si) => (
+                    <div key={si}>
+                      <p className={`text-sm font-medium ${si === 0 ? "text-slate-300" : si === 1 ? "text-[#a78fe8]" : "text-green-400"}`}>
+                        {step}
+                      </p>
+                      {si < flow.steps.length - 1 && (
+                        <div className="flex items-center gap-1 my-2 pl-1">
+                          <div className="w-3 h-px bg-slate-700" />
+                          <ArrowRight className="w-3 h-3 text-slate-600" />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
             ))}
           </div>
+
+          <FadeIn className="mt-12 text-center">
+            <p className="text-slate-500 text-base max-w-2xl mx-auto leading-relaxed">
+              This is not integration. This is one system. No middleware. No third-party
+              connectors. No data silos.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
-      {/* ── SECTION 5: DASHBOARD MOCK ───────────────────────────── */}
-      <section className="bg-gray-50 py-20" id="demo">
+      {/* ── 5. COMPETITOR COMPARISON ──────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <p className="text-[#7655d6] text-sm font-semibold uppercase tracking-wider mb-3">
-              See It In Action
+          <FadeIn className="text-center mb-14">
+            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
+              The Honest Comparison
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-              Your daily view. Management and monitoring together.
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              We checked. Nobody else does this.
             </h2>
+            <p className="text-base md:text-lg text-slate-600 mt-4 max-w-xl mx-auto">
+              Named competitors because buyers are already comparing. We have nothing to hide.
+            </p>
+          </FadeIn>
+
+          {/* Scroll wrapper for mobile sticky column */}
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+            <table className="w-full text-sm border-collapse min-w-[780px]">
+              <thead>
+                <tr className="border-b border-slate-200">
+                  <th className="sticky left-0 bg-white text-left py-4 px-4 text-slate-500 font-medium w-44">
+                    Feature
+                  </th>
+                  <th className="py-4 px-4 text-center font-bold text-white bg-[#7655d6] min-w-[120px]">
+                    EdgePredict<br />
+                    <span className="font-normal text-purple-200 text-xs">Free</span>
+                  </th>
+                  <th className="py-4 px-4 text-center font-bold text-white bg-[#5d3db8] min-w-[120px]">
+                    EdgePredict<br />
+                    <span className="font-normal text-purple-200 text-xs">Pro $99/mo</span>
+                  </th>
+                  <th className="py-4 px-4 text-center text-slate-600 font-medium min-w-[110px]">
+                    MaintainX<br />
+                    <span className="text-slate-400 font-normal text-xs">$16/user/mo</span>
+                  </th>
+                  <th className="py-4 px-4 text-center text-slate-600 font-medium min-w-[110px]">
+                    UpKeep<br />
+                    <span className="text-slate-400 font-normal text-xs">$20/user/mo</span>
+                  </th>
+                  <th className="py-4 px-4 text-center text-slate-600 font-medium min-w-[90px]">
+                    Fiix<br />
+                    <span className="text-slate-400 font-normal text-xs">Enterprise</span>
+                  </th>
+                  <th className="py-4 px-4 text-center text-slate-600 font-medium min-w-[100px]">
+                    Augury<br />
+                    <span className="text-slate-400 font-normal text-xs">$500+/motor</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {TABLE_ROWS.map((row, i) => (
+                  <tr
+                    key={row.feature}
+                    className={`border-b border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
+                  >
+                    <td className="sticky left-0 bg-inherit py-3 px-4 font-medium text-slate-700">
+                      {row.feature}
+                    </td>
+                    <td className={`py-3 px-4 text-center bg-[#7655d6]/5 ${cellStyle(row.ep0, "ep")}`}>
+                      {row.ep0}
+                    </td>
+                    <td className={`py-3 px-4 text-center bg-[#7655d6]/8 ${cellStyle(row.ep99, "ep")}`}>
+                      {row.ep99}
+                    </td>
+                    <td className={`py-3 px-4 text-center ${cellStyle(row.mx, "other")}`}>
+                      {row.mx}
+                    </td>
+                    <td className={`py-3 px-4 text-center ${cellStyle(row.up, "other")}`}>
+                      {row.up}
+                    </td>
+                    <td className={`py-3 px-4 text-center ${cellStyle(row.fiix, "other")}`}>
+                      {row.fiix}
+                    </td>
+                    <td className={`py-3 px-4 text-center ${cellStyle(row.aug, "other")}`}>
+                      {row.aug}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
-          {/* Browser window mock */}
-          <div className="max-w-5xl mx-auto rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
-            {/* Browser chrome */}
-            <div className="bg-gray-100 px-4 py-3 flex items-center gap-3 border-b border-gray-200">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-400" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                <div className="w-3 h-3 rounded-full bg-green-400" />
-              </div>
-              <div className="flex-1 bg-white rounded-md px-3 py-1 text-xs text-gray-400 font-mono max-w-sm mx-auto text-center">
-                tools.edgepredict.io
-              </div>
-            </div>
-
-            {/* Two panels */}
-            <div className="grid lg:grid-cols-2">
-              {/* Left — management */}
-              <div className="bg-white p-5 border-r border-gray-200">
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-sm font-bold text-gray-900">Today&apos;s Maintenance</h4>
-                  <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded-full font-medium">Live</span>
-                </div>
-                {/* KPI row */}
-                <div className="grid grid-cols-4 gap-2 mb-4">
-                  {[
-                    { label: "Open WOs", value: "7", color: "text-blue-600" },
-                    { label: "Due Today", value: "3", color: "text-amber-600" },
-                    { label: "Overdue", value: "1", color: "text-red-600" },
-                    { label: "Completed", value: "24", color: "text-green-600" },
-                  ].map((kpi) => (
-                    <div key={kpi.label} className="text-center bg-gray-50 rounded-lg p-2">
-                      <div className={`text-lg font-bold ${kpi.color}`}>{kpi.value}</div>
-                      <div className="text-xs text-gray-400 leading-tight mt-0.5">{kpi.label}</div>
-                    </div>
-                  ))}
-                </div>
-                {/* WO list */}
-                <div className="space-y-2">
-                  {[
-                    { id: "WO-112", title: "Pump P-101 bearing grease", status: "Due Today", sc: "text-amber-600 bg-amber-50" },
-                    { id: "WO-111", title: "Fan F-201 belt inspection", status: "In Progress", sc: "text-blue-600 bg-blue-50" },
-                    { id: "WO-110", title: "Compressor quarterly PM", status: "Overdue", sc: "text-red-600 bg-red-50" },
-                    { id: "WO-109", title: "Conveyor lubrication", status: "Open", sc: "text-gray-600 bg-gray-100" },
-                  ].map((wo) => (
-                    <div key={wo.id} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2">
-                      <div>
-                        <span className="text-xs text-gray-400 font-mono mr-2">{wo.id}</span>
-                        <span className="text-xs text-gray-700">{wo.title}</span>
-                      </div>
-                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0 ${wo.sc}`}>{wo.status}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right — monitoring */}
-              <div className="bg-gray-900 p-5">
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-sm font-bold text-white">Motor Fleet Health</h4>
-                  <div className="flex items-center gap-1 text-xs text-green-400">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                    Live
-                  </div>
-                </div>
-                {/* KPI row */}
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                  {[
-                    { label: "Fleet Score", value: "87/100", color: "text-green-400" },
-                    { label: "Online", value: "8/8", color: "text-white" },
-                    { label: "Alerts", value: "1", color: "text-amber-400" },
-                  ].map((kpi) => (
-                    <div key={kpi.label} className="text-center bg-gray-800 rounded-lg p-2">
-                      <div className={`text-sm font-bold font-mono ${kpi.color}`}>{kpi.value}</div>
-                      <div className="text-xs text-gray-500 mt-0.5">{kpi.label}</div>
-                    </div>
-                  ))}
-                </div>
-                {/* Motor list */}
-                <div className="space-y-2">
-                  {[
-                    { name: "Pump P-101", health: 98, color: "bg-green-500", tc: "text-green-400" },
-                    { name: "Fan F-201", health: 87, color: "bg-green-500", tc: "text-green-400" },
-                    { name: "Compressor AC-301", health: 91, color: "bg-green-500", tc: "text-green-400" },
-                    { name: "Conveyor C-301", health: 71, color: "bg-amber-500", tc: "text-amber-400" },
-                  ].map((m) => (
-                    <div key={m.name} className="flex items-center gap-3 bg-gray-800 rounded-lg px-3 py-2">
-                      <div className={`w-2 h-2 rounded-full ${m.color} flex-shrink-0`} />
-                      <span className="text-xs text-gray-300 flex-1 truncate">{m.name}</span>
-                      <div className="w-20 bg-gray-700 rounded-full h-1.5 flex-shrink-0">
-                        <div className={`h-1.5 rounded-full ${m.color}`} style={{ width: `${m.health}%` }} />
-                      </div>
-                      <span className={`text-xs font-mono ${m.tc} w-8 text-right flex-shrink-0`}>{m.health}%</span>
-                    </div>
-                  ))}
-                </div>
-                {/* Alert bar */}
-                <div className="mt-3 flex items-start gap-2 text-xs text-amber-400 bg-amber-400/10 rounded-lg px-3 py-2 border border-amber-400/20">
-                  <span>⚠</span>
-                  <span><span className="font-semibold">Conveyor C-301:</span> current imbalance elevated. Review during next PM.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-500 mb-4">This is sample data. Sign up to explore with your own equipment.</p>
+          <FadeIn className="mt-8 text-center">
+            <p className="text-slate-500 text-sm mb-4">
+              Still comparing? Try the live demo. No signup required.
+            </p>
             <a
-              href="https://tools.edgepredict.io/signup"
-              className="inline-flex items-center px-6 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded-xl font-semibold text-sm transition-colors shadow-lg shadow-[#7655d6]/25"
+              href="https://tools.edgepredict.io/login"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#7655d6] text-white font-semibold rounded-xl hover:bg-[#5d3db8] transition-all duration-200 hover:shadow-lg hover:shadow-[#7655d6]/25 hover:scale-[1.02]"
             >
-              Get Started
+              Explore Demo <ArrowRight className="w-4 h-4" />
             </a>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* ── SECTION 6: WHY EDGEPREDICT ──────────────────────────── */}
-      <section className="bg-white py-20">
+      {/* ── 6. LIVE DATA PREVIEW ──────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-[#0a0a0f]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <p className="text-[#7655d6] text-sm font-semibold uppercase tracking-wider mb-3">
-              Why EdgePredict
+          <FadeIn className="text-center mb-14">
+            <p className="text-sm uppercase tracking-widest font-semibold text-[#a78fe8] mb-3">
+              Real Data. Real Factory.
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-              What makes this different.
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              Live motor health monitoring from a manufacturing facility.
             </h2>
-          </div>
+          </FadeIn>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
-            {[
-              {
-                title: "vs. CMMS-Only Tools",
-                body: "MaintainX and UpKeep charge per user and don't have sensors. You get maintenance management, but your PM schedules are still time-based guesswork. No condition data. No integration. No sensor tier at any price.",
-                highlight: false,
-              },
-              {
-                title: "vs. Monitoring-Only Systems",
-                body: "Augury, Tractian, and enterprise systems start at $500-2,000/motor with $50-100K setup costs. They'll tell you a motor is degrading. They won't create the work order, schedule the repair, or track completion. That's a different system you have to buy separately.",
-                highlight: false,
-              },
-              {
-                title: "EdgePredict: Both, as One",
-                body: "One platform. Sensors and CMMS built together. When a motor degrades, your PM schedule updates, a work order creates itself, and the repair gets tracked to completion. Nothing falls through the cracks because everything is the same system.",
-                highlight: true,
-              },
-              {
-                title: "Built by People Who've Done the Work",
-                body: "Our team designed the sensor PCB, wrote the ESP32 firmware, and deployed our first pilot by hand. We're electrical engineers and reliability professionals, not just developers. We built EdgePredict because we needed it on the plant floor and couldn't find it.",
-                highlight: false,
-              },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className={`rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ${
-                  card.highlight
-                    ? "bg-[#7655d6] text-white"
-                    : "bg-gray-50 border border-gray-200"
-                }`}
-              >
-                <h3 className={`font-bold text-lg mb-4 ${card.highlight ? "text-white" : "text-gray-900"}`}>
-                  {card.title}
-                </h3>
-                <p className={`text-sm leading-relaxed ${card.highlight ? "text-white/80" : "text-gray-600"}`}>
-                  {card.body}
+          <FadeIn>
+            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+              {/* Health score card */}
+              <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+                <p className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-4">
+                  Pump P-101 Health Score
+                </p>
+                <div className="flex items-end gap-3 mb-4">
+                  <span className="text-5xl font-bold font-mono text-green-400">100.0</span>
+                  <span className="text-green-500 text-sm font-semibold mb-1">/ 100</span>
+                </div>
+                <div className="h-2 bg-slate-800 rounded-full overflow-hidden mb-3">
+                  <div className="h-full bg-green-500 rounded-full" style={{ width: "100%" }} />
+                </div>
+                <div className="grid grid-cols-3 gap-3 mt-4">
+                  {[
+                    { label: "Load Dev", value: "0.24 sigma", good: true },
+                    { label: "Phase Bal", value: "0.31%", good: true },
+                    { label: "Status", value: "NORMAL", good: true },
+                  ].map((s) => (
+                    <div key={s.label} className="bg-slate-800 rounded-lg p-2.5 text-center">
+                      <div className={`text-xs font-mono font-semibold ${s.good ? "text-green-400" : "text-red-400"}`}>
+                        {s.value}
+                      </div>
+                      <div className="text-xs text-slate-500 mt-0.5">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Load cycling card */}
+              <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+                <p className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-4">
+                  Daily Load Pattern
+                </p>
+                <div className="space-y-2">
+                  {[
+                    { time: "00:00-06:00", load: 31, label: "Night idle" },
+                    { time: "06:00-08:00", load: 68, label: "Startup ramp" },
+                    { time: "08:00-16:00", load: 100, label: "Full production" },
+                    { time: "16:00-18:00", load: 72, label: "Wind-down" },
+                    { time: "18:00-00:00", load: 40, label: "Evening idle" },
+                  ].map((row) => (
+                    <div key={row.time} className="flex items-center gap-3">
+                      <span className="text-xs font-mono text-slate-500 w-28 flex-shrink-0">
+                        {row.time}
+                      </span>
+                      <div className="flex-1 h-5 bg-slate-800 rounded overflow-hidden">
+                        <div
+                          className="h-full bg-[#7655d6] rounded transition-all"
+                          style={{ width: `${row.load}%` }}
+                        />
+                      </div>
+                      <span className="text-xs text-slate-500 w-28 text-right">{row.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-slate-600 mt-4 font-mono">
+                  Baseline established from 14 days of normal operation.
                 </p>
               </div>
-            ))}
-          </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn className="mt-10 text-center">
+            <p className="text-slate-500 text-sm mb-6">
+              This is real data from a live sensor deployment. Not a demo. Not a simulation.
+            </p>
+            <Link
+              href="/pilot"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#7655d6] text-white font-semibold rounded-xl hover:bg-[#5d3db8] transition-all duration-200 hover:shadow-xl hover:shadow-[#7655d6]/30 hover:scale-[1.02]"
+            >
+              Start Your Free Pilot <ArrowRight className="w-4 h-4" />
+            </Link>
+          </FadeIn>
         </div>
       </section>
 
-      {/* ── SECTION 7: PRICING PREVIEW ──────────────────────────── */}
-      <section className="bg-gray-50 py-20">
+      {/* ── 7. PRICING PREVIEW ────────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <p className="text-[#7655d6] text-sm font-semibold uppercase tracking-wider mb-3">
+          <FadeIn className="text-center mb-14">
+            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
               Pricing
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
               Start free. Add sensors when you&apos;re ready.
             </h2>
-          </div>
+          </FadeIn>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Planner */}
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative">
-              <span className="absolute top-4 right-4 text-xs font-semibold bg-green-100 text-green-700 px-2.5 py-1 rounded-full">
-                Free
-              </span>
-              <h3 className="text-xl font-bold text-gray-900">Planner</h3>
-              <div className="mt-3 mb-2">
-                <span className="text-4xl font-bold text-gray-900">$0</span>
-                <span className="text-sm text-gray-500 ml-1">forever</span>
-              </div>
-              <p className="text-sm text-gray-500 mb-6">
-                Unlimited users. Unlimited assets and work orders. 3 attachments per WO. No trial period. Free forever.
-              </p>
-              <ul className="space-y-2 mb-6">
-                {["Unlimited users", "Unlimited assets & WOs", "PM scheduling", "Inspections", "AI work order generation", "3 attachments per WO"].map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
-                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="https://tools.edgepredict.io/signup"
-                className="block w-full text-center px-4 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded-xl text-sm font-semibold transition-colors"
-              >
-                Get Started
-              </a>
-            </div>
-
-            {/* Pro */}
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative">
-              <span className="absolute top-4 right-4 text-xs font-semibold bg-[#7655d6]/10 text-[#7655d6] px-2.5 py-1 rounded-full">
-                Most Popular
-              </span>
-              <h3 className="text-xl font-bold text-gray-900">Pro</h3>
-              <div className="mt-3 mb-2">
-                <span className="text-4xl font-bold text-gray-900">$99</span>
-                <span className="text-sm text-gray-500 ml-1">/mo per site</span>
-              </div>
-              <p className="text-sm text-gray-500 mb-6">
-                Unlimited attachments. All features unlocked. Billed monthly, cancel anytime.
-              </p>
-              <ul className="space-y-2 mb-6">
-                {["Everything in Planner", "Unlimited attachments", "Drag-and-drop scheduling", "AI scheduling suggestions", "Advanced reporting", "Workflow automation", "Custom fields", "Priority support"].map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
-                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="https://tools.edgepredict.io/signup"
-                className="block w-full text-center px-4 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded-xl text-sm font-semibold transition-colors"
-              >
-                Get Started
-              </a>
-            </div>
-
-            {/* Monitor */}
-            <div className="bg-gray-900 rounded-2xl p-8 border border-[#7655d6] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative">
-              <span className="absolute top-4 right-4 text-xs font-semibold bg-[#7655d6] text-white px-2.5 py-1 rounded-full">
-                Sensors
-              </span>
-              <h3 className="text-xl font-bold text-white">Monitor</h3>
-              <div className="mt-3 mb-2">
-                <span className="text-4xl font-bold text-white">$200</span>
-                <span className="text-sm text-gray-400 ml-1">/mo per motor</span>
-              </div>
-              <p className="text-sm text-gray-400 mb-6">
-                Includes all Pro features. Hardware ships pre-configured. 60-day pilot is truly free.
-              </p>
-              <ul className="space-y-2 mb-6">
-                {["Sensor hardware included", "ESA monitoring", "Condition-based PM", "Dynamic PM scheduling", "Cellular connectivity", "60-day free pilot"].map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-gray-400">
-                    <CheckCircle className="w-4 h-4 text-[#a78fe8] flex-shrink-0 mt-0.5" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/pilot"
-                className="block w-full text-center px-4 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded-xl text-sm font-semibold transition-colors"
-              >
-                Start Free Pilot
-              </Link>
-            </div>
+            {TIERS.map((tier, ti) => (
+              <FadeIn key={tier.name} delay={(ti + 1) as 1 | 2 | 3}>
+                <div
+                  className={`rounded-2xl border p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 h-full flex flex-col ${
+                    tier.dark
+                      ? "bg-[#0a0a0f] border-[#7655d6]/40"
+                      : "bg-white border-slate-200"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className={`text-xl font-bold ${tier.dark ? "text-white" : "text-slate-900"}`}>
+                      {tier.name}
+                    </h3>
+                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${tier.badgeClass}`}>
+                      {tier.badge}
+                    </span>
+                  </div>
+                  <div className="mb-2">
+                    <span className={`text-4xl font-bold ${tier.dark ? "text-white" : "text-slate-900"}`}>
+                      {tier.price}
+                    </span>
+                    <span className={`text-sm ml-1 ${tier.dark ? "text-slate-400" : "text-slate-500"}`}>
+                      {tier.priceSub}
+                    </span>
+                  </div>
+                  <p className={`text-sm leading-relaxed mb-6 ${tier.dark ? "text-slate-400" : "text-slate-600"}`}>
+                    {tier.desc}
+                  </p>
+                  <ul className="space-y-2 mb-8 flex-1">
+                    {tier.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-sm">
+                        <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${tier.dark ? "text-[#a78fe8]" : "text-green-500"}`} />
+                        <span className={tier.dark ? "text-slate-300" : "text-slate-700"}>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {tier.cta.external ? (
+                    <a
+                      href={tier.cta.href}
+                      className="block w-full text-center px-4 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#7655d6]/25 hover:scale-[1.01]"
+                    >
+                      {tier.cta.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={tier.cta.href}
+                      className="block w-full text-center px-4 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#7655d6]/25 hover:scale-[1.01]"
+                    >
+                      {tier.cta.label}
+                    </Link>
+                  )}
+                </div>
+              </FadeIn>
+            ))}
           </div>
 
           <p className="text-sm text-center mt-8">
             <Link href="/pricing" className="text-[#7655d6] hover:underline font-medium">
-              See full pricing details →
+              See full pricing details and comparison table
             </Link>
           </p>
         </div>
       </section>
 
-      {/* ── SECTION 8: HOW IT WORKS ─────────────────────────────── */}
-      <section className="bg-white py-20">
+      {/* ── 8. HOW IT WORKS ───────────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <p className="text-[#7655d6] text-sm font-semibold uppercase tracking-wider mb-3">
+          <FadeIn className="text-center mb-16">
+            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
               Getting Started
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
               Three steps to a better maintenance program.
             </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          </FadeIn>
+
+          <div className="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto">
             {[
               {
                 n: "01",
-                title: "Sign up and add equipment",
-                body: "Create your account, register your assets, and get PM schedules generated automatically. Takes about 10 minutes for a typical plant.",
+                title: "Sign up and add your equipment",
+                body: "Create your account, register assets, and get PM schedules generated automatically. About 10 minutes to a working CMMS.",
               },
               {
                 n: "02",
                 title: "Run your maintenance program",
-                body: "Work orders, PM scheduling, inspections: everything in one place. Your team stops running on whiteboards and starts running on data.",
+                body: "Work orders, PM scheduling, inspections, scheduling. Your team stops running on whiteboards and starts running on data.",
               },
               {
                 n: "03",
-                title: "Add sensors when ready",
-                body: "Connect our motor monitoring sensors to your most critical equipment. Time-based maintenance becomes condition-based, driven by real electrical signature data.",
+                title: "Add sensors when the data tells you where",
+                body: "Your CMMS shows you which assets fail most. Add monitoring to those first. Time-based maintenance becomes condition-based.",
               },
-            ].map((s) => (
-              <div key={s.n}>
-                <span className="text-5xl font-bold text-[#7655d6]/20 leading-none block mb-4">
-                  {s.n}
-                </span>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">{s.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{s.body}</p>
-              </div>
+            ].map((s, si) => (
+              <FadeIn key={s.n} delay={(si + 1) as 1 | 2 | 3}>
+                <div>
+                  <span className="text-6xl font-bold text-[#7655d6]/15 leading-none block mb-4 font-mono">
+                    {s.n}
+                  </span>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-3">{s.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{s.body}</p>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 9: FINAL CTA ─────────────────────────────────── */}
-      <section className="bg-gray-900 py-20">
+      {/* ── 9. FINAL CTA ──────────────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-[#0a0a0f]">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white">
-            Your plant deserves better than guesswork.
-          </h2>
-          <p className="text-lg text-gray-400 mt-4 leading-relaxed">
-            Built by engineers. Used by maintenance teams. Designed for the plants that everyone else ignores.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-10">
-            <a
-              href="https://tools.edgepredict.io/signup"
-              className="inline-flex items-center px-8 py-4 bg-[#7655d6] hover:bg-[#5d3db8] text-white rounded-xl font-semibold transition-colors"
-            >
-              Get Started
-            </a>
-            <Link
-              href="/pilot"
-              className="inline-flex items-center px-8 py-4 border-2 border-gray-600 text-white hover:border-[#a78fe8] hover:text-[#a78fe8] rounded-xl font-semibold transition-colors"
-            >
-              Start Free Pilot
-            </Link>
-          </div>
-          <div className="mt-8 text-sm text-gray-500">
-            <a href="mailto:anderson@edgepredict.io" className="hover:text-white transition-colors">
-              anderson@edgepredict.io
-            </a>
-            {" · "}
-            <a href="tel:7034016262" className="hover:text-white transition-colors">
-              (703) 401-6262
-            </a>
-          </div>
+          <FadeIn>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Your plant deserves better than guesswork.
+            </h2>
+            <p className="text-base md:text-lg text-slate-400 leading-relaxed mb-10">
+              Built by electrical engineers. Deployed at manufacturing facilities.
+              Designed for the plants that everyone else ignores.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 mb-10">
+              <a
+                href="https://tools.edgepredict.io/signup"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#7655d6] text-white font-semibold rounded-xl hover:bg-[#5d3db8] transition-all duration-200 hover:shadow-xl hover:shadow-[#7655d6]/30 hover:scale-[1.02]"
+              >
+                Get Started Free
+              </a>
+              <Link
+                href="/pilot"
+                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-700 text-white font-semibold rounded-xl hover:border-[#a78fe8] hover:text-[#a78fe8] transition-all duration-200"
+              >
+                Start Free Pilot
+              </Link>
+            </div>
+            <p className="text-sm text-slate-600">
+              <a href="mailto:anderson@edgepredict.io" className="hover:text-white transition-colors">
+                anderson@edgepredict.io
+              </a>
+              {" · "}
+              <a href="tel:+17034016262" className="hover:text-white transition-colors">
+                (703) 401-6262
+              </a>
+            </p>
+          </FadeIn>
         </div>
       </section>
 

@@ -81,6 +81,21 @@ export default function PilotPage() {
         </div>
       </section>
 
+      {/* Live Deployment */}
+      <section className="py-10 bg-white border-b border-slate-100">
+        <div className="max-w-3xl mx-auto px-4 flex items-center gap-4">
+          <span className="w-3 h-3 rounded-full bg-green-400 flex-shrink-0 animate-live-dot" />
+          <div>
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-0.5">
+              Currently Piloting At
+            </p>
+            <p className="text-slate-900 font-semibold">
+              Fortune 500 medical device manufacturer, Knoxville, TN
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* How the Pilot Works */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">

@@ -71,3 +71,44 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ── EdgePredict custom animations ──────────────────────────────────── */
+
+@keyframes wave-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes count-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes live-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+.animate-live-dot {
+  animation: live-dot 1.8s ease-in-out infinite;
+}
+
+/* Fade-in-on-scroll utility (toggled by IntersectionObserver) */
+.ep-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.ep-fade.ep-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ep-fade-d1 { transition-delay: 0.1s; }
+.ep-fade-d2 { transition-delay: 0.2s; }
+.ep-fade-d3 { transition-delay: 0.3s; }
+.ep-fade-d4 { transition-delay: 0.4s; }
