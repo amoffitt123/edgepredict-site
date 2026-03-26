@@ -286,8 +286,8 @@ const TABLE_ROWS: {
   },
   {
     feature: "Motor Monitoring Sensors",
-    ep0: "✗",
-    ep99: "✗",
+    ep0: "✓",
+    ep99: "✓",
     mx: "✗",
     up: "✗",
     fiix: "✗",

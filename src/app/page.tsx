@@ -31,7 +31,7 @@ const TABLE_ROWS: { feature: string; ep0: Cell; ep99: Cell; mx: Cell; up: Cell; 
   { feature: "QuickBooks Integration",  ep0: "✗",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
   { feature: "Mobile App",              ep0: "✓",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
   { feature: "Offline Mode",            ep0: "✓",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✗",           aug: "✗"           },
-  { feature: "Motor Monitoring Sensors",ep0: "✗",         ep99: "✗",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✓"           },
+  { feature: "Motor Monitoring Sensors",ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✓"           },
   { feature: "Built-in Sensor Integration",ep0:"Monitor", ep99:"Monitor",       mx: "✗",           up: "✗",           fiix: "✗",           aug: "N/A"         },
   { feature: "Condition-Based PM",      ep0: "Monitor",   ep99: "Monitor",      mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
   { feature: "Edge-Computed Health Score",ep0:"Monitor",  ep99:"Monitor",       mx: "✗",           up: "✗",           fiix: "✗",           aug: "Cloud only"  },
@@ -171,7 +171,7 @@ export default function HomePage() {
               {[
                 "Free forever, no credit card",
                 "158+ API endpoints",
-                "Live pilot at Fortune 500 manufacturer",
+                "Live pilots at manufacturers",
                 "Built by Engineers, not MBAs",
               ].map((item) => (
                 <span key={item} className="flex items-center gap-2 text-sm text-slate-500 font-medium">
@@ -191,13 +191,18 @@ export default function HomePage() {
 
       {/* ── 2. SOCIAL PROOF BAR ───────────────────────────────────────── */}
       <section className="bg-white border-b border-slate-100 py-5">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-          <p>Currently monitoring motors at pharmaceutical and manufacturing facilities.</p>
-          <div className="flex items-center gap-4 text-slate-400 font-mono text-xs">
-            {["InfluxDB", "Supabase", "Next.js", "React Native", "Stripe"].map((t) => (
-              <span key={t}>{t}</span>
-            ))}
-          </div>
+        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-slate-500">
+          {[
+            "Free forever, no credit card",
+            "Live pilots at manufacturers",
+            "Built by engineers, not MBAs",
+            "158+ API endpoints",
+          ].map((item) => (
+            <span key={item} className="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-[#7655d6] flex-shrink-0" />
+              {item}
+            </span>
+          ))}
         </div>
       </section>
 
@@ -212,7 +217,7 @@ export default function HomePage() {
               Management and monitoring. Built as one system.
             </h2>
             <p className="text-base md:text-lg text-slate-600 mt-4 max-w-2xl mx-auto leading-relaxed">
-              Most plants use separate tools. Most use nothing at all. EdgePredict is the only
+              Most plants use separate tools. Many use nothing at all. EdgePredict is the only
               platform where both sides share data, share context, and make each other smarter.
             </p>
           </FadeIn>
@@ -417,86 +422,48 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 6. LIVE DATA PREVIEW ──────────────────────────────────────── */}
+      {/* ── 6. WHY IT MATTERS ─────────────────────────────────────────── */}
       <section className="py-20 md:py-28 bg-[#0a0a0f]">
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn className="text-center mb-14">
             <p className="text-sm uppercase tracking-widest font-semibold text-[#a78fe8] mb-3">
-              Real Data. Real Factory.
+              The Cost of Not Knowing
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Live motor health monitoring from a manufacturing facility.
+              Unplanned downtime is 3 to 5 times more expensive than planned maintenance.
             </h2>
           </FadeIn>
 
-          <FadeIn>
-            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
-              {/* Health score card */}
-              <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6">
-                <p className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-4">
-                  Pump P-101 Health Score
-                </p>
-                <div className="flex items-end gap-3 mb-4">
-                  <span className="text-5xl font-bold font-mono text-green-400">100.0</span>
-                  <span className="text-green-500 text-sm font-semibold mb-1">/ 100</span>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {[
+              {
+                stat: "85%",
+                label: "of small plants run motors with no condition monitoring at all",
+                color: "text-red-400",
+              },
+              {
+                stat: "3-5x",
+                label: "higher repair cost for emergency failures vs. planned maintenance",
+                color: "text-amber-400",
+              },
+              {
+                stat: "20 min",
+                label: "to install a sensor. No rewiring. No IT ticket. No downtime.",
+                color: "text-green-400",
+              },
+            ].map((item) => (
+              <FadeIn key={item.stat}>
+                <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6 text-center">
+                  <div className={`text-5xl font-bold font-mono mb-3 ${item.color}`}>
+                    {item.stat}
+                  </div>
+                  <p className="text-slate-400 text-sm leading-relaxed">{item.label}</p>
                 </div>
-                <div className="h-2 bg-slate-800 rounded-full overflow-hidden mb-3">
-                  <div className="h-full bg-green-500 rounded-full" style={{ width: "100%" }} />
-                </div>
-                <div className="grid grid-cols-3 gap-3 mt-4">
-                  {[
-                    { label: "Load Dev", value: "0.24 sigma", good: true },
-                    { label: "Phase Bal", value: "0.31%", good: true },
-                    { label: "Status", value: "NORMAL", good: true },
-                  ].map((s) => (
-                    <div key={s.label} className="bg-slate-800 rounded-lg p-2.5 text-center">
-                      <div className={`text-xs font-mono font-semibold ${s.good ? "text-green-400" : "text-red-400"}`}>
-                        {s.value}
-                      </div>
-                      <div className="text-xs text-slate-500 mt-0.5">{s.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Load cycling card */}
-              <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6">
-                <p className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-4">
-                  Daily Load Pattern
-                </p>
-                <div className="space-y-2">
-                  {[
-                    { time: "00:00-06:00", load: 31, label: "Night idle" },
-                    { time: "06:00-08:00", load: 68, label: "Startup ramp" },
-                    { time: "08:00-16:00", load: 100, label: "Full production" },
-                    { time: "16:00-18:00", load: 72, label: "Wind-down" },
-                    { time: "18:00-00:00", load: 40, label: "Evening idle" },
-                  ].map((row) => (
-                    <div key={row.time} className="flex items-center gap-3">
-                      <span className="text-xs font-mono text-slate-500 w-28 flex-shrink-0">
-                        {row.time}
-                      </span>
-                      <div className="flex-1 h-5 bg-slate-800 rounded overflow-hidden">
-                        <div
-                          className="h-full bg-[#7655d6] rounded transition-all"
-                          style={{ width: `${row.load}%` }}
-                        />
-                      </div>
-                      <span className="text-xs text-slate-500 w-28 text-right">{row.label}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-slate-600 mt-4 font-mono">
-                  Baseline established from 14 days of normal operation.
-                </p>
-              </div>
-            </div>
-          </FadeIn>
+              </FadeIn>
+            ))}
+          </div>
 
           <FadeIn className="mt-10 text-center">
-            <p className="text-slate-500 text-sm mb-6">
-              This is real data from a live sensor deployment. Not a demo. Not a simulation.
-            </p>
             <Link
               href="/pilot"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#7655d6] text-white font-semibold rounded-xl hover:bg-[#5d3db8] transition-all duration-200 hover:shadow-xl hover:shadow-[#7655d6]/30 hover:scale-[1.02]"
@@ -636,7 +603,7 @@ export default function HomePage() {
               Your plant deserves better than guesswork.
             </h2>
             <p className="text-base md:text-lg text-slate-400 leading-relaxed mb-10">
-              Built by electrical engineers. Deployed at manufacturing facilities.
+              Built by engineers. Deployed at manufacturing facilities.
               Designed for the plants that everyone else ignores.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-10">
