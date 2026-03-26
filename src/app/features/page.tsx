@@ -3,12 +3,16 @@ import { CheckCircle, ArrowRight } from "lucide-react";
 import FeatureSidebar from "@/components/FeatureSidebar";
 
 export const metadata = {
-  title: "Features — EdgePredict",
+  title: "Features — EdgePredict CMMS",
   description:
-    "158 API endpoints. 40+ pages. Every feature a maintenance team needs. Work orders, PM scheduling, inspections, scheduling, assets, parts, AI, motor monitoring, and more.",
+    "158 API endpoints. Work orders, PM scheduling, inspections, asset management, parts inventory, AI work order generation, motor monitoring, and more. Free for any plant size.",
+  alternates: {
+    canonical: "https://www.edgepredict.io/features",
+  },
   openGraph: {
-    title: "Features — EdgePredict",
-    description: "158 API endpoints. Every feature a maintenance team needs. Free.",
+    title: "Features — EdgePredict CMMS",
+    description: "158 API endpoints. Every feature a maintenance team needs. Free for any plant size.",
+    url: "https://www.edgepredict.io/features",
     type: "website",
   },
 };

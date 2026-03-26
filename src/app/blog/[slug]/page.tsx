@@ -41,12 +41,17 @@ export async function generateMetadata({
   return {
     title: `${post.title} — EdgePredict Blog`,
     description: post.excerpt,
+    alternates: {
+      canonical: `https://www.edgepredict.io/blog/${post.slug}`,
+    },
     openGraph: {
       title: `${post.title} — EdgePredict Blog`,
       description: post.excerpt,
+      url: `https://www.edgepredict.io/blog/${post.slug}`,
       type: "article",
       publishedTime: post.date,
       authors: ["EdgePredict Team"],
+      siteName: "EdgePredict",
     },
     twitter: {
       card: "summary_large_image",
@@ -67,8 +72,36 @@ export default async function BlogPostPage({
 
   const paragraphs = post.content.trim().split(/\n\n+/);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Organization",
+      name: "EdgePredict",
+      url: "https://www.edgepredict.io",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "EdgePredict",
+      url: "https://www.edgepredict.io",
+    },
+    url: `https://www.edgepredict.io/blog/${post.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.edgepredict.io/blog/${post.slug}`,
+    },
+  };
+
   return (
     <main className="bg-white text-gray-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Category color banner */}
       <div className={`h-2 w-full bg-gradient-to-r ${categoryBanners[post.category]}`} />
 

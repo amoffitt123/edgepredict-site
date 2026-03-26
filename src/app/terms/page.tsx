@@ -2,7 +2,16 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Terms of Service — EdgePredict",
-  description: "EdgePredict terms of service.",
+  description: "EdgePredict terms of service. Free tier, Pro subscription, and motor monitoring pilot program terms for the EdgePredict platform.",
+  alternates: {
+    canonical: "https://www.edgepredict.io/terms",
+  },
+  openGraph: {
+    title: "Terms of Service — EdgePredict",
+    description: "Terms of service for the EdgePredict maintenance management and motor monitoring platform.",
+    url: "https://www.edgepredict.io/terms",
+    type: "website",
+  },
 };
 
 export default function TermsPage() {

@@ -4,11 +4,15 @@ import { getSortedPosts } from "@/lib/blog/posts";
 export const metadata = {
   title: "Blog — EdgePredict",
   description:
-    "Maintenance engineering insights, product updates, and the thinking behind EdgePredict.",
+    "Maintenance engineering insights, predictive maintenance strategy, motor monitoring, and product updates from EdgePredict.",
+  alternates: {
+    canonical: "https://www.edgepredict.io/blog",
+  },
   openGraph: {
     title: "Blog — EdgePredict",
     description:
-      "Maintenance engineering insights, product updates, and the thinking behind EdgePredict.",
+      "Maintenance engineering insights, predictive maintenance strategy, and product updates from EdgePredict.",
+    url: "https://www.edgepredict.io/blog",
     type: "website",
   },
 };

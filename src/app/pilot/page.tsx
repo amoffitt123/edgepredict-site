@@ -3,9 +3,19 @@ import { CheckCircle, ArrowRight, AlertTriangle, Package, Zap } from "lucide-rea
 import FadeIn from "@/components/FadeIn";
 
 export const metadata = {
-  title: "Free 60-Day Pilot — EdgePredict",
+  title: "Free 60-Day Motor Monitoring Pilot — EdgePredict",
   description:
-    "60 days of motor condition monitoring on your critical assets. Hardware included. $0 upfront. If we don't surface useful data, ship the hardware back. No contract, no pressure.",
+    "Start a free 60-day motor condition monitoring pilot. Hardware included, $0 upfront. If we don't surface useful condition data, ship it back. No contract, no sales pressure.",
+  alternates: {
+    canonical: "https://www.edgepredict.io/pilot",
+  },
+  openGraph: {
+    title: "Free 60-Day Motor Monitoring Pilot — EdgePredict",
+    description:
+      "Hardware included. $0 upfront. 60 days of motor condition monitoring on your critical assets. Return it if we don't prove value.",
+    url: "https://www.edgepredict.io/pilot",
+    type: "website",
+  },
 };
 
 export default function PilotPage() {
@@ -63,17 +73,6 @@ export default function PilotPage() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── LIVE DEPLOYMENT ──────────────────────────────────────────── */}
-      <section className="py-6 bg-white border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 flex items-center justify-center gap-3">
-          <span className="w-2.5 h-2.5 rounded-full bg-green-400 flex-shrink-0 animate-live-dot" />
-          <p className="text-sm text-slate-500">
-            <span className="font-semibold text-slate-700">Currently piloting at:</span>{" "}
-            Fortune 500 medical device manufacturer, Knoxville, TN
-          </p>
         </div>
       </section>
 

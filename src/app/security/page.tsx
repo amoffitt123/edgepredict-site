@@ -3,7 +3,17 @@ import { CheckCircle, ArrowRight, XCircle } from 'lucide-react'
 
 export const metadata = {
   title: "Security & IT Overview — EdgePredict",
-  description: "Plain-English security overview for plant IT and OT teams. Read-only monitoring. No control signals. Cellular option requires no plant network access.",
+  description: "Plain-English security overview for plant IT and OT teams. Read-only current monitoring. No control signals, no OT network access, no inbound firewall rules required.",
+  alternates: {
+    canonical: "https://www.edgepredict.io/security",
+  },
+  openGraph: {
+    title: "Security & IT Overview — EdgePredict",
+    description:
+      "Read-only motor monitoring. No control signals, no OT network access, no inbound firewall rules. Plain-English security overview for IT and OT teams.",
+    url: "https://www.edgepredict.io/security",
+    type: "website",
+  },
 }
 
 const doesDo = [

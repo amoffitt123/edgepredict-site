@@ -2,9 +2,19 @@ import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Pricing — EdgePredict",
+  title: "Pricing — EdgePredict CMMS & Motor Monitoring",
   description:
-    "Simple, transparent pricing. Free maintenance management platform with unlimited users and work orders. $99/mo for Pro. $200/mo per motor for sensor monitoring. 60-day free pilot.",
+    "Free CMMS with unlimited users and work orders. $99/mo Pro. $200/mo per motor for condition monitoring with hardware included. Free 60-day pilot. No contracts.",
+  alternates: {
+    canonical: "https://www.edgepredict.io/pricing",
+  },
+  openGraph: {
+    title: "Pricing — EdgePredict CMMS & Motor Monitoring",
+    description:
+      "Free CMMS with unlimited users. $99/mo Pro. $200/mo motor monitoring with hardware included. Free 60-day pilot.",
+    url: "https://www.edgepredict.io/pricing",
+    type: "website",
+  },
 };
 
 const tiers = [

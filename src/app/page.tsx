@@ -7,6 +7,16 @@ export const metadata = {
   title: "EdgePredict — Maintenance Management & Motor Monitoring",
   description:
     "The only platform where your CMMS and your sensors are one system. Free maintenance management. $200/mo motor monitoring. Built by the engineers who designed the hardware.",
+  alternates: {
+    canonical: "https://www.edgepredict.io",
+  },
+  openGraph: {
+    title: "EdgePredict — Maintenance Management & Motor Monitoring",
+    description:
+      "The only platform where your CMMS and your sensors are one system. Free maintenance management. $200/mo motor monitoring.",
+    url: "https://www.edgepredict.io",
+    type: "website",
+  },
 };
 
 /* ── Comparison table data ────────────────────────────────────────────── */

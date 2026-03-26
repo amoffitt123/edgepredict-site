@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   publisher: "EdgePredict",
   metadataBase: new URL("https://www.edgepredict.io"),
   alternates: {
-    canonical: "/",
+    canonical: "https://www.edgepredict.io",
   },
   openGraph: {
     title: "EdgePredict — Maintenance Management & Motor Monitoring",

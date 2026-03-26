@@ -7,13 +7,17 @@ import {
 import FadeIn from "@/components/FadeIn";
 
 export const metadata = {
-  title: "Motor Monitoring — EdgePredict",
+  title: "Motor Condition Monitoring — EdgePredict",
   description:
-    "Non-invasive motor condition monitoring using Electrical Signature Analysis. Edge-computed health scores every 2 seconds. $200/mo per motor. Free 60-day pilot.",
+    "Non-invasive motor condition monitoring using Electrical Signature Analysis. Edge-computed health scores every 2 seconds. $200/mo per motor. Free 60-day pilot with hardware included.",
+  alternates: {
+    canonical: "https://www.edgepredict.io/monitoring",
+  },
   openGraph: {
-    title: "Motor Monitoring — EdgePredict",
+    title: "Motor Condition Monitoring — EdgePredict",
     description:
-      "Non-invasive ESA monitoring. Edge-computed health scores. $200/mo per motor. Free 60-day pilot.",
+      "Non-invasive ESA monitoring. Edge-computed health scores every 2 seconds. $200/mo per motor. Free 60-day pilot.",
+    url: "https://www.edgepredict.io/monitoring",
     type: "website",
   },
 };

@@ -2,7 +2,16 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Privacy Policy — EdgePredict",
-  description: "EdgePredict privacy policy.",
+  description: "EdgePredict privacy policy. How we collect, use, and protect your data on the EdgePredict maintenance management and motor monitoring platform.",
+  alternates: {
+    canonical: "https://www.edgepredict.io/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy — EdgePredict",
+    description: "How EdgePredict collects, uses, and protects your data.",
+    url: "https://www.edgepredict.io/privacy",
+    type: "website",
+  },
 };
 
 export default function PrivacyPage() {

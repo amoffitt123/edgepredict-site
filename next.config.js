@@ -8,7 +8,6 @@ const nextConfig = {
     return config;
   },
   images: {
-    unoptimized: true,
     domains: [
       "source.unsplash.com",
       "images.unsplash.com",
