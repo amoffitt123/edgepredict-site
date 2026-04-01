@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
 import FeatureSidebar from "@/components/FeatureSidebar";
+import ArcadeInline from "@/components/ArcadeInline";
 
 export const metadata = {
   title: "Features — EdgePredict CMMS",
@@ -69,10 +70,12 @@ function Feat({
 function Module({
   id,
   title,
+  demo,
   children,
 }: {
   id: string;
   title: string;
+  demo?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
@@ -81,6 +84,7 @@ function Module({
         {title}
       </h2>
       <ul className="divide-y-0">{children}</ul>
+      {demo}
     </section>
   );
 }
@@ -102,8 +106,8 @@ export default function FeaturesPage() {
             <span className="text-[#7655d6]">Every feature a maintenance team needs.</span>
           </h1>
           <p className="text-base md:text-lg text-slate-400 max-w-2xl leading-relaxed mb-8">
-            Most CMMS tools make you pay for features we give away free. This is the full list.
-            No paywalls on the features that matter.
+            The complete feature list — what&apos;s free, what&apos;s Pro, and what&apos;s in the Monitor tier.
+            No hidden add-ons. No per-user math.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
@@ -147,7 +151,7 @@ export default function FeaturesPage() {
           <div>
 
             {/* ── Work Orders ───────────────────────────────────────── */}
-            <Module id="work-orders" title="Work Orders">
+            <Module id="work-orders" title="Work Orders" demo={<ArcadeInline src="https://demo.arcade.software/v2hUY27fDKM67Dzs6OwJ?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Create and Assign a Maintenance Work Order Using AI" label="See work orders in action" />}>
               <Feat tier="free" name="Create and assign work orders" desc="Open, assign, prioritize, and close work orders. Full field set: asset, location, type, priority, description, estimated hours, attachments." />
               <Feat tier="free" name="10-status lifecycle" desc="Draft, Open, On Hold, In Progress, Waiting for Parts, Waiting for Approval, Paused, Declined, Completed, Closed. Every transition timestamped." />
               <Feat tier="free" name="Full audit trail" desc="Every field change, status transition, comment, and assignment logged with user and timestamp. Nothing disappears." />
@@ -158,11 +162,11 @@ export default function FeaturesPage() {
               <Feat tier="free" name="Work order comments and activity feed" desc="All comments, status changes, and reassignments in a single thread. Mention teammates." />
               <Feat tier="free" name="Bulk status update" desc="Select multiple work orders and change status in one action. Useful for end-of-shift completions." />
               <Feat tier="free" name="Saved table views and filters" desc="Filter by status, priority, asset, assignee, due date. Save any filter combination as a named view." />
-              <Feat tier="free" name="CSV export of work orders" desc="Export the full filtered work order list to CSV. Includes all fields." />
-              <Feat tier="free" name="PDF generation" desc="Print-ready PDF for any work order. Includes checklist, labor, parts, comments, and signature field." />
+              <Feat tier="pro" name="CSV export of work orders" desc="Export the full filtered work order list to CSV. Includes all fields." />
+              <Feat tier="pro" name="PDF generation" desc="Print-ready PDF for any work order. Includes checklist, labor, parts, comments, and signature field." />
               <Feat tier="pro" name="Unlimited attachments" desc="Remove the 3-attachment limit. Attach full inspection reports, equipment manuals, and photos without restriction." />
               <Feat tier="pro" name="Custom fields" desc="Add facility-specific fields to work orders: production line, shift, contractor name, permit number. Any field type." />
-              <Feat tier="pro" name="Purchase orders from work orders" desc="Create a PO directly from a work order when parts need to be ordered. PO lifecycle tracked through receipt." />
+              <Feat tier="free" name="Purchase orders from work orders" desc="Create a PO directly from a work order when parts need to be ordered. PO lifecycle tracked through receipt." />
             </Module>
 
             {/* ── Preventive Maintenance ────────────────────────────── */}
@@ -179,18 +183,18 @@ export default function FeaturesPage() {
 
             {/* ── Inspections ───────────────────────────────────────── */}
             <Module id="inspections" title="Inspections">
-              <Feat tier="free" name="Inspection templates" desc="Build reusable checklists with pass/fail, numeric, text, and photo capture items. Assign to asset types." />
-              <Feat tier="free" name="Auto-scheduled inspections" desc="Set a frequency once. Inspections generate automatically on schedule. Miss one and it shows as overdue with a compliance hit." />
-              <Feat tier="free" name="Auto-corrective work orders on failure" desc="When a checklist item fails, EdgePredict asks to create a corrective work order. One click: asset, deficiency, priority, and link back to the inspection auto-filled." />
-              <Feat tier="free" name="Inspection PDF report" desc="Generate a formatted PDF of any completed inspection including all item responses, photos, and failure notes." />
-              <Feat tier="free" name="Inspection compliance tracking" desc="PM compliance rate visible in dashboard. See which assets are behind on inspections." />
-              <Feat tier="free" name="Mobile inspection completion" desc="Technicians complete inspections on mobile. Camera capture for photo items. Works offline." />
+              <Feat tier="pro" name="Inspection templates" desc="Build reusable checklists with pass/fail, numeric, text, and photo capture items. Assign to asset types." />
+              <Feat tier="pro" name="Auto-scheduled inspections" desc="Set a frequency once. Inspections generate automatically on schedule. Miss one and it shows as overdue with a compliance hit." />
+              <Feat tier="pro" name="Auto-corrective work orders on failure" desc="When a checklist item fails, EdgePredict asks to create a corrective work order. One click: asset, deficiency, priority, and link back to the inspection auto-filled." />
+              <Feat tier="pro" name="Inspection PDF report" desc="Generate a formatted PDF of any completed inspection including all item responses, photos, and failure notes." />
+              <Feat tier="pro" name="Inspection compliance tracking" desc="Inspection compliance rate visible in dashboard. See which assets are behind on inspections." />
+              <Feat tier="pro" name="Mobile inspection completion" desc="Technicians complete inspections on mobile. Camera capture for photo items. Works offline." />
             </Module>
 
             {/* ── Scheduling ────────────────────────────────────────── */}
-            <Module id="scheduling" title="Scheduling">
+            <Module id="scheduling" title="Scheduling" demo={<ArcadeInline src="https://demo.arcade.software/eBFucsmGB2uJ1yRrqBp9?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Schedule and Update Maintenance Work Orders" label="See scheduling in action" />}>
               <Feat tier="free" name="Schedule board" desc="Week view with each technician in a lane. Unscheduled work orders in a side panel. See workload distribution at a glance." />
-              <Feat tier="pro" name="Drag-and-drop assignment" desc="Drag any unscheduled work order onto a technician and day. Instantly assigned. Technician gets notified." />
+              <Feat tier="free" name="Drag-and-drop assignment" desc="Drag any unscheduled work order onto a technician and day. Instantly assigned. Technician gets notified." />
               <Feat tier="pro" name="AI scheduling suggestions" desc="One-click AI optimization. Looks at work order priority, due dates, technician availability, and workload balance. Suggests an optimized week. Review and confirm." />
               <Feat tier="pro" name="Break-in work tracking" desc="Flag reactive work orders that break into planned schedules. Dashboard shows ratio of reactive to planned over time. Most supervisors are surprised by this number." />
               <Feat tier="pro" name="Schedule PDF export" desc="Print the week's schedule as a PDF for shift handoffs and planning meetings." />
@@ -206,7 +210,7 @@ export default function FeaturesPage() {
               <Feat tier="free" name="Equipment kits" desc="Group related assets or components into kits for inspection or PM purposes. Useful for packaged equipment with multiple sub-components." />
               <Feat tier="free" name="QR code generation per asset" desc="Generate a QR code for any asset. Print and attach to the equipment. Scanning opens the asset record immediately." />
               <Feat tier="free" name="QR scan workflows" desc="Scan to view asset info, report a problem, start a PM, or start an inspection. No typing required on the floor." />
-              <Feat tier="free" name="Floor plan upload and asset pinning" desc="Upload a facility floor plan image. Pin assets to their physical location. Visual plant map always current." />
+              <Feat tier="pro" name="Floor plan upload and asset pinning" desc="Upload a facility floor plan image. Pin assets to their physical location. Visual plant map always current." />
               <Feat tier="free" name="Asset summary PDF" desc="Printable summary for any asset: nameplate data, PM history, open work orders, parts list, and risk score." />
             </Module>
 
@@ -217,9 +221,10 @@ export default function FeaturesPage() {
               <Feat tier="free" name="Reorder alerts" desc="Get notified when any part drops below its reorder point. Never be caught without a critical spare." />
               <Feat tier="free" name="Parts usage history" desc="See which work orders consumed each part, when, and how much. Track consumption rate to improve reorder points." />
               <Feat tier="free" name="Associate parts with assets" desc="Link parts to the assets they belong to. When you open a work order for a pump, its BOM parts are suggested." />
-              <Feat tier="free" name="CSV import and export" desc="Import your existing parts list. Export current inventory for audits or purchasing." />
-              <Feat tier="pro" name="Purchase orders" desc="Create POs directly from parts needs. Vendor, line items, quantities, expected delivery date. PO lifecycle: Draft, Submitted, Partially Received, Received, Closed." />
-              <Feat tier="pro" name="Receive against PO" desc="Log receipt of parts against open POs. Partial receipts handled. Stock updates automatically on receipt." />
+              <Feat tier="free" name="CSV import" desc="Import your existing parts list from a spreadsheet. Bring your data in without manual re-entry." />
+              <Feat tier="pro" name="CSV export" desc="Export current inventory to CSV for audits, purchasing reviews, or external reporting." />
+              <Feat tier="free" name="Purchase orders" desc="Create POs directly from parts needs. Vendor, line items, quantities, expected delivery date. PO lifecycle: Draft, Submitted, Partially Received, Received, Closed." />
+              <Feat tier="free" name="Receive against PO" desc="Log receipt of parts against open POs. Partial receipts handled. Stock updates automatically on receipt." />
             </Module>
 
             {/* ── Team & Roles ──────────────────────────────────────── */}
@@ -237,10 +242,10 @@ export default function FeaturesPage() {
 
             {/* ── Automation & Notifications ────────────────────────── */}
             <Module id="automation" title="Automation &amp; Notifications">
-              <Feat tier="free" name="Email notifications" desc="Notify assignees when work orders are created, updated, or due. Configurable per event type and role." />
               <Feat tier="free" name="In-app notifications" desc="Bell notification center. All events in one place. Mark as read individually or in bulk." />
-              <Feat tier="free" name="Downtime tracking" desc="Log downtime events against assets. Duration, cause category, and affected production. Roll up to OEE calculations." />
-              <Feat tier="free" name="Production and shift logs" desc="End-of-shift log entries. What ran, what broke, what was completed. Searchable. Linked to assets and work orders." />
+              <Feat tier="pro" name="Email notifications" desc="Notify assignees when work orders are created, updated, or due. Configurable per event type and role." />
+              <Feat tier="pro" name="Downtime tracking" desc="Log downtime events against assets. Duration, cause category, and affected production. Roll up to OEE calculations." />
+              <Feat tier="pro" name="Production and shift logs" desc="End-of-shift log entries. What ran, what broke, what was completed. Searchable. Linked to assets and work orders." />
               <Feat tier="pro" name="Automation rules" desc="Trigger actions from events: work order status change, asset health threshold, inspection failure. Actions include create work order, send notification, update field, assign to user." />
               <Feat tier="pro" name="SOPs library" desc="Write and version standard operating procedures. Link SOPs to asset types so they appear on relevant work orders. Technicians see the right procedure at the right time." />
               <Feat tier="monitor" name="Condition triggers from sensor data" desc="Sensor health score drops below threshold: work order created automatically. Alert sent. PM schedule updated. Zero manual steps." />
@@ -248,11 +253,11 @@ export default function FeaturesPage() {
             </Module>
 
             {/* ── Reporting & Analytics ─────────────────────────────── */}
-            <Module id="reporting" title="Reporting &amp; Analytics">
-              <Feat tier="free" name="MTTR (Mean Time to Repair)" desc="Average time from work order creation to completion, by asset, category, or time period. See where repairs take longest." />
-              <Feat tier="free" name="PM compliance rate" desc="Percentage of scheduled PMs completed on time. Drill down by asset, location, or technician." />
-              <Feat tier="free" name="Work order backlog" desc="Count of open work orders by age bucket. See how long work has been sitting unresolved." />
-              <Feat tier="free" name="Parts usage report" desc="Which parts were consumed, on which assets, over which time period. Informs reorder strategy." />
+            <Module id="reporting" title="Reporting &amp; Analytics" demo={<ArcadeInline src="https://demo.arcade.software/mFrN2IbHottYYIEshVcS?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Review Maintenance Analytics and Take Action from the Reports Dashboard" label="See reports in action" />}>
+              <Feat tier="pro" name="MTTR (Mean Time to Repair)" desc="Average time from work order creation to completion, by asset, category, or time period. See where repairs take longest." />
+              <Feat tier="pro" name="PM compliance rate" desc="Percentage of scheduled PMs completed on time. Drill down by asset, location, or technician." />
+              <Feat tier="pro" name="Work order backlog analysis" desc="Count of open work orders by age bucket. See how long work has been sitting unresolved." />
+              <Feat tier="pro" name="Parts usage report" desc="Which parts were consumed, on which assets, over which time period. Informs reorder strategy." />
               <Feat tier="pro" name="OEE dashboard" desc="Overall Equipment Effectiveness. Availability, performance, and quality inputs. Pulls from downtime logs and production data." />
               <Feat tier="pro" name="KPI dashboard" desc="Configurable KPI tiles: work orders by status, PM compliance trend, MTTR trend, reactive vs. planned ratio, top failing assets." />
               <Feat tier="pro" name="Pulse reports" desc="Weekly or monthly automated summary emailed to managers. Highlights what closed, what is overdue, what is trending worse, and what needs attention." />
@@ -262,13 +267,14 @@ export default function FeaturesPage() {
 
             {/* ── AI Features ───────────────────────────────────────── */}
             <Module id="ai" title="AI Features">
-              <Feat tier="free" name="AI work order generator (Gemini)" desc='Type a paragraph of field notes: "pump 3 grinding noise, bearings probably shot, needs seal kit, before Friday." Get back a structured work order with title, priority, 8-step procedure, parts list, estimated hours, and due date. About 3 seconds.' />
-              <Feat tier="free" name="AI learns from corrections" desc="Change the estimated hours or procedure for a specific asset type and the AI applies that learning to future work orders for similar equipment." />
+              <Feat tier="pro" name="AI work order generator (Gemini)" desc='Type a paragraph of field notes: "pump 3 grinding noise, bearings probably shot, needs seal kit, before Friday." Get back a structured work order with title, priority, 8-step procedure, parts list, estimated hours, and due date. About 3 seconds.' />
+              <Feat tier="pro" name="AI troubleshooter" desc="Describe the symptom and get root cause suggestions, recommended inspection steps, and related failure patterns from similar equipment. Runs on the work order." />
+              <Feat tier="pro" name="AI learns from corrections" desc="Change the estimated hours or procedure for a specific asset type and the AI applies that learning to future work orders for similar equipment." />
               <Feat tier="pro" name="AI scheduling optimization" desc="One-click weekly schedule suggestion. Considers work order priority, due dates, technician workload, availability, and skill match. Returns an optimized schedule for review and confirmation." />
             </Module>
 
             {/* ── Mobile App ────────────────────────────────────────── */}
-            <Module id="mobile" title="Mobile App">
+            <Module id="mobile" title="Mobile App" demo={<ArcadeInline src="https://demo.arcade.software/2s0R9OZES9M7D5pce3Wp?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Track Maintenance Labor Hours in a Mobile Work Order" label="See mobile app in action" />}>
               <Feat tier="free" name="iOS and Android apps" desc="Full-featured mobile apps. Not a mobile web wrapper. Native performance." />
               <Feat tier="free" name="Offline mode" desc="Work orders, PMs, and inspections accessible and completable without a network connection. Sync when back online." />
               <Feat tier="free" name="QR scan from mobile camera" desc="Scan an asset QR code to instantly open its record, start a work order, or begin an inspection. No typing the asset name." />
@@ -279,7 +285,8 @@ export default function FeaturesPage() {
             {/* ── Integrations ──────────────────────────────────────── */}
             <Module id="integrations" title="Integrations">
               <Feat tier="free" name="REST API (158 endpoints)" desc="Full API coverage for every object: assets, work orders, PMs, inspections, parts, users, locations, organizations. Authenticated with API keys." />
-              <Feat tier="free" name="CSV import / export for all objects" desc="Import and export assets, parts, work orders. Bring your existing data in without manual re-entry." />
+              <Feat tier="free" name="CSV import for all objects" desc="Import assets, parts, work orders, and locations from a spreadsheet. Bring your existing data in without manual re-entry." />
+              <Feat tier="pro" name="CSV export for all objects" desc="Export any object — assets, work orders, parts, reports — to CSV for external analysis, audits, or purchasing." />
               <Feat tier="pro" name="QuickBooks Online integration" desc="Sync work order costs, parts expenses, and purchase orders to QuickBooks. Keep accounting and maintenance data aligned without double entry." />
             </Module>
 

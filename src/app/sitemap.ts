@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { getSortedPosts } from "@/lib/blog/posts";
+import { COMPETITORS } from "@/lib/compare/competitors";
 
 const BASE = "https://www.edgepredict.io";
 
@@ -27,5 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const compareRoutes: MetadataRoute.Sitemap = COMPETITORS.map((c) => ({
+    url: `${BASE}/compare/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...compareRoutes, ...blogRoutes];
 }

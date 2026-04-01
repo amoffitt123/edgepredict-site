@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { COMPETITORS } from "@/lib/compare/competitors";
 
 function LogoMark({ className = "" }: { className?: string }) {
   return (
@@ -33,7 +34,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* ── Main columns ───────────────────────────── */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-10 mb-14">
+        <div className="grid sm:grid-cols-2 md:grid-cols-6 gap-10 mb-14">
 
           {/* Brand */}
           <div className="md:col-span-2">
@@ -109,6 +110,25 @@ export default function Footer() {
                       {l.label}
                     </Link>
                   )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Compare */}
+          <div>
+            <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-5">
+              Compare
+            </h4>
+            <ul className="space-y-3">
+              {COMPETITORS.map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    href={`/compare/${c.slug}`}
+                    className="text-sm text-slate-400 hover:text-white transition-colors"
+                  >
+                    vs {c.name}
+                  </Link>
                 </li>
               ))}
             </ul>

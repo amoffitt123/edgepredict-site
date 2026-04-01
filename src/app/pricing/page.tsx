@@ -29,12 +29,14 @@ const tiers = [
     features: [
       "Unlimited users",
       "Unlimited assets & work orders",
-      "PM scheduling",
-      "Inspections with auto-WO creation",
-      "AI work order generator",
-      "Parts inventory",
-      "3 attachments per work order",
-      "CSV import / export",
+      "Full work order lifecycle (10 statuses, audit trail)",
+      "PM scheduling with auto-generated templates",
+      "Parts inventory, purchase orders & receiving",
+      "Drag-and-drop schedule board",
+      "Requests & approval workflow",
+      "Vendor portal",
+      "Team chat — DMs + channels, real-time",
+      "Mobile app — iOS & Android, offline mode",
     ],
     checkColor: "text-green-500",
     textColor: "text-slate-900",
@@ -58,14 +60,15 @@ const tiers = [
       "border-[#7655d6]/40 bg-white shadow-[0_0_0_1px_rgba(118,85,214,0.15)]",
     featuresPrefix: "Everything in Planner, plus:",
     features: [
-      "Unlimited attachments",
-      "Drag-and-drop scheduling",
-      "AI scheduling suggestions",
-      "Advanced reporting & analytics",
-      "Purchase orders",
-      "Workflow automation",
-      "Custom fields",
-      "Priority support",
+      "Inspections with auto-WO from failures",
+      "AI work order generator + troubleshooter",
+      "KPI dashboards, OEE & downtime tracking",
+      "Automation rules & workflow triggers",
+      "SOPs library & floor plans",
+      "PDF & CSV exports + digital signatures",
+      "Email notifications & schedule auto-post",
+      "Custom fields & advanced attachments",
+      "QuickBooks Online integration",
     ],
     checkColor: "text-green-500",
     textColor: "text-slate-900",
@@ -152,7 +155,7 @@ const TABLE_ROWS: {
   },
   {
     feature: "Inspections",
-    ep0: "✓",
+    ep0: "✗",
     ep99: "✓",
     mx: "Add-on",
     up: "Add-on",
@@ -169,8 +172,8 @@ const TABLE_ROWS: {
     aug: "✗",
   },
   {
-    feature: "AI Work Orders",
-    ep0: "✓",
+    feature: "AI Work Orders & AI Tools",
+    ep0: "✗",
     ep99: "✓",
     mx: "✗",
     up: "✗",
@@ -188,7 +191,7 @@ const TABLE_ROWS: {
   },
   {
     feature: "Drag-and-Drop Schedule",
-    ep0: "✗",
+    ep0: "✓",
     ep99: "✓",
     mx: "✗",
     up: "✓",
@@ -196,7 +199,7 @@ const TABLE_ROWS: {
     aug: "✗",
   },
   {
-    feature: "Team Chat",
+    feature: "Team Chat (DMs + Channels)",
     ep0: "✓",
     ep99: "✓",
     mx: "✗",
@@ -206,7 +209,7 @@ const TABLE_ROWS: {
   },
   {
     feature: "SOPs Library",
-    ep0: "✓",
+    ep0: "✗",
     ep99: "✓",
     mx: "✗",
     up: "✗",
@@ -233,7 +236,7 @@ const TABLE_ROWS: {
   },
   {
     feature: "Floor Plans",
-    ep0: "✓",
+    ep0: "✗",
     ep99: "✓",
     mx: "✗",
     up: "✗",
@@ -260,8 +263,8 @@ const TABLE_ROWS: {
   },
   {
     feature: "Reporting / KPIs",
-    ep0: "Basic",
-    ep99: "Full",
+    ep0: "✗",
+    ep99: "✓",
     mx: "Basic",
     up: "Basic",
     fiix: "✓",
@@ -331,11 +334,11 @@ const TABLE_ROWS: {
     aug: "Cloud only",
   },
   {
-    feature: "Price for 10 users",
+    feature: "Price for 25 users",
     ep0: "$0",
     ep99: "$99/mo",
-    mx: "$160/mo",
-    up: "$200/mo",
+    mx: "$400/mo",
+    up: "$500/mo",
     fiix: "Contact",
     aug: "N/A",
   },
@@ -357,7 +360,7 @@ const faqs = [
   },
   {
     q: "What's the difference between free and Pro?",
-    a: "Free includes unlimited users, work orders, PM scheduling, inspections, parts inventory, AI work order generation, and 3 attachments per work order. Pro adds unlimited attachments, drag-and-drop scheduling with AI suggestions, advanced reporting, purchase orders, workflow automation, and custom fields.",
+    a: "Free includes unlimited users, work orders, PM scheduling, parts inventory with purchase orders, drag-and-drop scheduling, requests & approval workflow, vendor portal, team chat, and the full mobile app (iOS & Android with offline mode). Pro adds inspections, AI work order generator & troubleshooter, KPI dashboards, OEE & downtime tracking, automation rules, SOPs library, floor plans, PDF/CSV exports, digital signatures, email notifications, and QuickBooks integration.",
   },
   {
     q: "Do I need sensors to use the platform?",
@@ -373,7 +376,7 @@ const faqs = [
   },
   {
     q: "How does EdgePredict compare to MaintainX or UpKeep?",
-    a: "MaintainX starts at $16/user/month and UpKeep at $20/user/month, and neither builds sensors. EdgePredict's free tier has unlimited users and more features than their paid tiers. And we're the only platform that also does motor monitoring as part of the same system. The CMMS + sensor integration doesn't exist anywhere else.",
+    a: "MaintainX starts at $16/user/month and UpKeep at $20/user/month — a 25-person team pays $400–$500/mo. EdgePredict Pro is $99/mo flat for your entire site. Our free tier covers the full core CMMS workflow. And we're the only platform that also does motor monitoring as part of the same system — the CMMS + sensor integration doesn't exist anywhere else.",
   },
 ];
 
@@ -522,21 +525,37 @@ export default function PricingPage() {
                     MaintainX
                     <br />
                     <span className="text-xs font-normal text-slate-400">($16/user/mo)</span>
+                    <br />
+                    <Link href="/compare/maintainx-alternative" className="text-xs text-[#7655d6] hover:underline font-normal">
+                      Full comparison →
+                    </Link>
                   </th>
                   <th className="text-center py-4 px-4 text-slate-600 font-medium">
                     UpKeep
                     <br />
                     <span className="text-xs font-normal text-slate-400">($20/user/mo)</span>
+                    <br />
+                    <Link href="/compare/upkeep-alternative" className="text-xs text-[#7655d6] hover:underline font-normal">
+                      Full comparison →
+                    </Link>
                   </th>
                   <th className="text-center py-4 px-4 text-slate-600 font-medium">
                     Fiix
                     <br />
                     <span className="text-xs font-normal text-slate-400">(Enterprise)</span>
+                    <br />
+                    <Link href="/compare/fiix-alternative" className="text-xs text-[#7655d6] hover:underline font-normal">
+                      Full comparison →
+                    </Link>
                   </th>
                   <th className="text-center py-4 px-4 text-slate-600 font-medium">
                     Augury
                     <br />
                     <span className="text-xs font-normal text-slate-400">($500+/motor)</span>
+                    <br />
+                    <Link href="/compare/augury-alternative" className="text-xs text-[#7655d6] hover:underline font-normal">
+                      Full comparison →
+                    </Link>
                   </th>
                 </tr>
               </thead>
@@ -577,10 +596,10 @@ export default function PricingPage() {
                     Features included
                   </td>
                   <td className="py-4 px-4 text-center">
-                    <span className="text-sm font-bold text-[#7655d6]">28 features</span>
+                    <span className="text-sm font-bold text-[#7655d6]">Core platform</span>
                   </td>
                   <td className="py-4 px-4 text-center">
-                    <span className="text-sm font-bold text-[#5d3db8]">36 features</span>
+                    <span className="text-sm font-bold text-[#5d3db8]">All features</span>
                   </td>
                   <td className="py-4 px-4 text-center">
                     <span className="text-sm font-semibold text-slate-500">12 features</span>

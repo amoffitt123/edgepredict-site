@@ -25,19 +25,19 @@ const TABLE_ROWS: { feature: string; ep0: Cell; ep99: Cell; mx: Cell; up: Cell; 
   { feature: "Users",                   ep0: "Unlimited", ep99: "Unlimited",    mx: "Per-user",    up: "Per-user",    fiix: "Per-user",    aug: "Per-user"    },
   { feature: "Work Orders",             ep0: "Unlimited", ep99: "Unlimited",    mx: "Limited",     up: "Limited",     fiix: "✓",           aug: "✗"           },
   { feature: "PM Scheduling",           ep0: "✓",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
-  { feature: "Inspections",             ep0: "✓",         ep99: "✓",            mx: "Add-on",      up: "Add-on",      fiix: "Add-on",      aug: "✗"           },
+  { feature: "Inspections",             ep0: "✗",         ep99: "✓",            mx: "Add-on",      up: "Add-on",      fiix: "Add-on",      aug: "✗"           },
   { feature: "Parts Inventory",         ep0: "✓",         ep99: "✓",            mx: "Add-on",      up: "Add-on",      fiix: "✓",           aug: "✗"           },
-  { feature: "AI Work Orders",          ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
+  { feature: "AI Work Orders & AI Tools",ep0: "✗",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
   { feature: "AI Scheduling",           ep0: "✗",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
-  { feature: "Drag-and-Drop Schedule",  ep0: "✗",         ep99: "✓",            mx: "✗",           up: "✓",           fiix: "✗",           aug: "✗"           },
-  { feature: "Team Chat",               ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
-  { feature: "SOPs Library",            ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
+  { feature: "Drag-and-Drop Schedule",  ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✓",           fiix: "✗",           aug: "✗"           },
+  { feature: "Team Chat (DMs + Channels)",ep0: "✓",       ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
+  { feature: "SOPs Library",            ep0: "✗",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
   { feature: "Vendor Portal",           ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
   { feature: "QR / NFC Scanning",       ep0: "✓",         ep99: "✓",            mx: "Add-on",      up: "✓",           fiix: "✗",           aug: "✗"           },
-  { feature: "Floor Plans",             ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
+  { feature: "Floor Plans",             ep0: "✗",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
   { feature: "Custom Fields",           ep0: "✗",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
   { feature: "Workflow Automation",     ep0: "✗",         ep99: "✓",            mx: "Add-on",      up: "Add-on",      fiix: "✓",           aug: "✗"           },
-  { feature: "Reporting / KPIs",        ep0: "Basic",     ep99: "Full",         mx: "Basic",       up: "Basic",       fiix: "✓",           aug: "✗"           },
+  { feature: "Reporting / KPIs",        ep0: "✗",         ep99: "✓",            mx: "Basic",       up: "Basic",       fiix: "✓",           aug: "✗"           },
   { feature: "QuickBooks Integration",  ep0: "✗",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
   { feature: "Mobile App",              ep0: "✓",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
   { feature: "Offline Mode",            ep0: "✓",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✗",           aug: "✗"           },
@@ -45,7 +45,7 @@ const TABLE_ROWS: { feature: string; ep0: Cell; ep99: Cell; mx: Cell; up: Cell; 
   { feature: "Built-in Sensor Integration",ep0:"Monitor", ep99:"Monitor",       mx: "✗",           up: "✗",           fiix: "✗",           aug: "N/A"         },
   { feature: "Condition-Based PM",      ep0: "Monitor",   ep99: "Monitor",      mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
   { feature: "Edge-Computed Health Score",ep0:"Monitor",  ep99:"Monitor",       mx: "✗",           up: "✗",           fiix: "✗",           aug: "Cloud only"  },
-  { feature: "Price for 10 users",      ep0: "$0",        ep99: "$99/mo",       mx: "$160/mo",     up: "$200/mo",     fiix: "Contact",     aug: "N/A"         },
+  { feature: "Price for 25 users",      ep0: "$0",        ep99: "$99/mo",       mx: "$400/mo",     up: "$500/mo",     fiix: "Contact",     aug: "N/A"         },
 ];
 
 function cellStyle(val: Cell, col: "ep" | "other") {
@@ -70,21 +70,24 @@ const FLOWS = [
 ];
 
 /* ── Management features ────────────────────────────────────────────── */
-const MGMT_FEATURES = [
+const MGMT_FEATURES_FREE = [
   "Work orders with 10-status lifecycle + full audit trail",
   "PM scheduling with auto-generated templates and risk scoring",
-  "Inspections with auto-corrective work orders on failure",
-  "Asset management: hierarchy, BOM, floor plans, QR codes",
-  "Parts inventory with PO lifecycle and stock tracking",
-  "AI work order generator (Gemini): field notes to structured WO in 3 seconds",
-  "Drag-and-drop scheduling with AI optimization",
-  "Team chat, SOPs library, vendor management",
+  "Asset management: hierarchy, BOM, QR codes",
+  "Parts inventory with purchase orders, receiving & stock tracking",
+  "Drag-and-drop schedule board with crew management",
+  "Team chat — real-time DMs + dedicated channels, web & mobile",
+  "Vendor portal & external maintenance request portal",
   "6 roles, 46 permissions, multi-tenant orgs",
-  "Reporting: KPIs, OEE, Pulse reports, maintenance playbooks",
-  "Email + in-app notifications with automation rules",
-  "Mobile app with offline sync",
-  "QuickBooks integration",
-  "CSV import / export for everything",
+  "Mobile app — iOS & Android, offline mode, QR/NFC scan",
+];
+const MGMT_FEATURES_PRO = [
+  "Inspections with auto-corrective work orders on failure",
+  "AI work order generator + troubleshooter (Gemini)",
+  "KPI dashboards, OEE, MTBF/MTTR, Pulse reports & playbooks",
+  "Automation rules, SOPs library & floor plans",
+  "PDF & CSV exports, digital signatures, email notifications",
+  "QuickBooks Online integration",
 ];
 
 /* ── Monitoring features ────────────────────────────────────────────── */
@@ -110,7 +113,7 @@ const TIERS = [
     price: "$0",
     priceSub: "free forever",
     desc: "Not a trial. Not limited. A real CMMS with unlimited users and unlimited work orders. Because 85% of plants have nothing, and something free is infinitely better than a 30-day trial.",
-    features: ["Unlimited users", "Unlimited assets & WOs", "PM scheduling", "Inspections", "AI work order generation", "3 attachments per WO"],
+    features: ["Unlimited users", "Unlimited assets & work orders", "PM scheduling", "Parts inventory & purchase orders", "Drag-and-drop schedule board", "Team chat — DMs + channels", "Mobile app — iOS & Android, offline"],
     cta: { label: "Get Started Free", href: "https://tools.edgepredict.io/signup", external: true },
     dark: false,
   },
@@ -121,7 +124,7 @@ const TIERS = [
     price: "$99",
     priceSub: "/mo per site",
     desc: "Everything unlocked. Scheduling, automation, advanced reporting, QuickBooks. One price. No per-user fees. No surprises.",
-    features: ["Everything in Planner", "Unlimited attachments", "Drag-and-drop scheduling", "AI scheduling suggestions", "Advanced reporting", "Workflow automation", "Custom fields", "Priority support"],
+    features: ["Everything in Planner", "Inspections with auto-WO from failures", "AI work order generator + troubleshooter", "KPI dashboards & OEE tracking", "Automation rules & SOPs library", "Floor plans, exports & digital signatures", "Email notifications & QuickBooks"],
     cta: { label: "Get Started", href: "https://tools.edgepredict.io/signup", external: true },
     dark: false,
   },
@@ -240,10 +243,20 @@ export default function HomePage() {
               <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-2">
                 Maintenance Management
               </h3>
-              <ul className="space-y-2 mt-4 mb-6">
-                {MGMT_FEATURES.map((f) => (
+              <p className="text-xs font-semibold text-green-600 uppercase tracking-widest mt-4 mb-2">Free</p>
+              <ul className="space-y-2 mb-4">
+                {MGMT_FEATURES_FREE.map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm text-slate-700">
                     <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs font-semibold text-[#7655d6] uppercase tracking-widest mb-2">Pro ($99/mo)</p>
+              <ul className="space-y-2 mb-6">
+                {MGMT_FEATURES_PRO.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm text-slate-700">
+                    <CheckCircle className="w-4 h-4 text-[#7655d6] flex-shrink-0 mt-0.5" />
                     {f}
                   </li>
                 ))}
@@ -278,6 +291,67 @@ export default function HomePage() {
                 Learn About Monitoring <ArrowRight className="w-4 h-4" />
               </Link>
             </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3b. SIDE-BY-SIDE DEMOS ────────────────────────────────────── */}
+      <section className="py-16 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="text-sm font-semibold text-[#7655d6] uppercase tracking-widest mb-3">
+              Live demo
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
+              See it in action — web &amp; mobile
+            </h2>
+            <p className="text-slate-500 text-sm max-w-lg mx-auto">
+              Click through the real product. No sign-up required.
+            </p>
+          </div>
+
+          <div className="space-y-10">
+            {/* Web demo */}
+            <div>
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#7655d6] inline-block" />
+                Web — Create a Work Order
+              </p>
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-lg">
+                <div style={{ position: "relative", paddingBottom: "calc(46.31578947368421% + 41px)", height: 0, width: "100%" }}>
+                  <iframe
+                    src="https://demo.arcade.software/v2hUY27fDKM67Dzs6OwJ?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+                    title="Create and Assign a Maintenance Work Order Using AI"
+                    frameBorder="0"
+                    loading="lazy"
+                    allowFullScreen
+                    allow="clipboard-write"
+                    style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", colorScheme: "light" }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile demo */}
+            <div>
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-500 inline-block" />
+                Mobile — Track Labor Hours
+              </p>
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-lg">
+                <div style={{ position: "relative", paddingBottom: "calc(46.31578947368421% + 41px)", height: 0, width: "100%" }}>
+                  <iframe
+                    src="https://demo.arcade.software/2s0R9OZES9M7D5pce3Wp?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+                    title="Track Maintenance Labor Hours in a Mobile Work Order"
+                    frameBorder="0"
+                    loading="lazy"
+                    allowFullScreen
+                    allow="clipboard-write"
+                    style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", colorScheme: "light" }}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
