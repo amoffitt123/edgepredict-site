@@ -2,16 +2,16 @@ import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Pricing — EdgePredict CMMS & Motor Monitoring",
+  title: "Pricing — EdgePredict Maintenance Platform & Motor Monitoring",
   description:
-    "Free CMMS with unlimited users and work orders. $99/mo Pro. $200/mo per motor for condition monitoring with hardware included. Free 60-day pilot. No contracts.",
+    "Free maintenance platform with unlimited users and work orders. $99/mo Pro. $200/mo per motor for condition monitoring with hardware included. Free 60-day pilot. No contracts.",
   alternates: {
     canonical: "https://www.edgepredict.io/pricing",
   },
   openGraph: {
-    title: "Pricing — EdgePredict CMMS & Motor Monitoring",
+    title: "Pricing — EdgePredict Maintenance Platform & Motor Monitoring",
     description:
-      "Free CMMS with unlimited users. $99/mo Pro. $200/mo motor monitoring with hardware included. Free 60-day pilot.",
+      "Free maintenance platform with unlimited users. $99/mo Pro. $200/mo motor monitoring with hardware included. Free 60-day pilot.",
     url: "https://www.edgepredict.io/pricing",
     type: "website",
   },
@@ -24,7 +24,7 @@ const tiers = [
     price: "$0",
     priceSub: "Free forever",
     description:
-      "Not a trial. Not limited. A real CMMS with unlimited users and unlimited work orders. Because 85% of plants have nothing.",
+      "Not a trial. Not limited. A complete maintenance platform — work orders, PMs, inspections, parts, reporting — with unlimited users. Because 85% of plants have nothing.",
     cardClasses: "border-slate-200 bg-white",
     features: [
       "Unlimited users",
@@ -376,7 +376,7 @@ const faqs = [
   },
   {
     q: "How does EdgePredict compare to MaintainX or UpKeep?",
-    a: "MaintainX starts at $16/user/month and UpKeep at $20/user/month — a 25-person team pays $400–$500/mo. EdgePredict Pro is $99/mo flat for your entire site. Our free tier covers the full core CMMS workflow. And we're the only platform that also does motor monitoring as part of the same system — the CMMS + sensor integration doesn't exist anywhere else.",
+    a: "MaintainX starts at $16/user/month and UpKeep at $20/user/month — a 25-person team pays $400–$500/mo. EdgePredict Pro is $99/mo flat for your entire site. Our free tier includes work orders, PMs, inspections, parts inventory, and reporting — not a stripped-down trial. And we're the only platform that also does motor monitoring as part of the same system.",
   },
 ];
 

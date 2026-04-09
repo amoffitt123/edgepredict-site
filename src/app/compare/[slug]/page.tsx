@@ -111,7 +111,7 @@ export default async function ComparePage({
               </p>
               <p className="text-sm text-slate-400 leading-relaxed">
                 {isMonitoring
-                  ? "Hardware included. 60-day free pilot. Cellular connectivity, no IT required. Full CMMS platform also included — unlimited users and work orders."
+                  ? "Hardware included. 60-day free pilot. Cellular connectivity, no IT required. Full maintenance platform also included — unlimited users and work orders."
                   : "Flat rate for your entire site. Unlimited users. Unlimited work orders. No per-user math, no surprise renewals. Free tier also available with no credit card required."}
               </p>
             </div>

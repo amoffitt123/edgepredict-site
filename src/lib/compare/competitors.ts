@@ -108,7 +108,7 @@ export const COMPETITORS: Competitor[] = [
         body: "Inspections, parts inventory, and workflow automation are add-ons in MaintainX. They're included in EdgePredict's free tier or Pro at no extra charge.",
       },
       {
-        title: "We're the only platform with CMMS + sensors",
+        title: "We're the only platform where maintenance and sensors are one system",
         body: "MaintainX has no sensor integration. EdgePredict Monitor connects real-time ESA motor data directly to your PM schedule. No third-party integrations, no manual data entry.",
       },
     ],
@@ -194,7 +194,7 @@ export const COMPETITORS: Competitor[] = [
         body: "Limble has no meaningful free tier. EdgePredict's free plan is unlimited — unlimited users, unlimited work orders, unlimited assets. You can run your full operation on it before spending a dollar.",
       },
       {
-        title: "CMMS and sensors in one system",
+        title: "Maintenance and sensors in one system",
         body: "Limble is CMMS-only. When you want condition monitoring, you're stitching together a third-party sensor platform and hoping the data flows correctly. EdgePredict Monitor is the same platform — sensor data triggers PM automatically.",
       },
     ],
@@ -345,7 +345,7 @@ export const COMPETITORS: Competitor[] = [
     ],
     switchReasons: [
       {
-        title: "You shouldn't need a 3-month sales process for a CMMS",
+        title: "You shouldn't need a 3-month sales process for a maintenance platform",
         body: "Fiix requires discovery calls, scoping sessions, demos, and contracting before you can log in. EdgePredict takes 90 seconds. Start free, no credit card, and be running real work orders before lunch.",
       },
       {
@@ -368,7 +368,7 @@ export const COMPETITORS: Competitor[] = [
       },
       {
         q: "What if we outgrow EdgePredict?",
-        a: "That's a good problem to have. We're actively building. If you reach the scale where you genuinely need enterprise CMMS complexity, you'll know — and by then you'll have years of clean maintenance data, established PM programs, and a team that knows how to use a CMMS. That makes any migration easier.",
+        a: "That's a good problem to have. We're actively building. If you reach the scale where you genuinely need enterprise complexity, you'll know — and by then you'll have years of clean maintenance data, established PM programs, and a trained team. That makes any migration easier.",
       },
     ],
   },
@@ -377,10 +377,10 @@ export const COMPETITORS: Competitor[] = [
     slug: "hippo-cmms-alternative",
     name: "Hippo CMMS",
     category: "cmms",
-    metaTitle: "Hippo CMMS Alternative | EdgePredict — Modern CMMS, No Per-User Fees",
+    metaTitle: "Hippo CMMS Alternative | EdgePredict — Modern Platform, No Per-User Fees",
     metaDescription:
-      "Hippo CMMS charges per user with outdated UX and no sensor integration. EdgePredict Pro is $99 flat — modern interface, AI-powered, with motor monitoring built in.",
-    heroHeadline: "Hippo CMMS is per-user and getting older. We built something new.",
+      "Hippo CMMS charges per user with outdated UX and no sensor integration. EdgePredict Pro is $99 flat — modern maintenance platform, AI-powered, with motor monitoring built in.",
+    heroHeadline: "Hippo is per-user and getting older. We built a complete maintenance platform.",
     heroSubhead:
       "Hippo charges roughly $40/user/mo. A 25-person team runs $1,000/mo — 10x EdgePredict Pro. Over 3 years that's $32,400 in subscription costs for a platform that hasn't shipped a fundamentally new capability in years.",
     pricingLabel: "~$40/user/mo",
@@ -458,10 +458,10 @@ export const COMPETITORS: Competitor[] = [
     slug: "augury-alternative",
     name: "Augury",
     category: "monitoring",
-    metaTitle: "Augury Alternative | EdgePredict — $200/Motor vs $500+/Motor, With CMMS Included",
+    metaTitle: "Augury Alternative | EdgePredict — $200/Motor vs $500+/Motor, Full Platform Included",
     metaDescription:
-      "Augury charges $500+/motor/mo for monitoring only. EdgePredict Monitor is $200/mo per motor with hardware, cellular connectivity, and a full CMMS included in the same platform.",
-    heroHeadline: "Augury is $500+/motor and doesn't include a CMMS. We're $200 and do both.",
+      "Augury charges $500+/motor/mo for monitoring only. EdgePredict Monitor is $200/mo per motor with hardware, cellular connectivity, and a full maintenance platform included.",
+    heroHeadline: "Augury is $500+/motor for monitoring only. We're $200 and include the full platform.",
     heroSubhead:
       "Augury is an enterprise AI monitoring platform designed for Fortune 500 facilities teams. EdgePredict Monitor is built for the plant that wants real motor health data without a six-figure contract — and gets a full maintenance management system alongside it.",
     pricingLabel: "$500+/motor/mo",
@@ -487,7 +487,7 @@ export const COMPETITORS: Competitor[] = [
       totalThem: "$180,000+",
       totalEp: "$72,000",
       totalSavings: "$108,000+",
-      disclaimer: "Augury pricing based on industry estimates of $500+/motor/mo. EdgePredict Monitor at $200/mo per motor includes hardware and a full CMMS platform. Augury pricing requires a sales engagement — contact them for actual figures.",
+      disclaimer: "Augury pricing based on industry estimates of $500+/motor/mo. EdgePredict Monitor at $200/mo per motor includes hardware and a full maintenance platform. Augury pricing requires a sales engagement — contact them for actual figures.",
     },
     featureRows: [
       { feature: "Price per motor",            ep: "$200/mo (hardware included)", them: "$500+/mo (est.)" },
@@ -496,7 +496,7 @@ export const COMPETITORS: Competitor[] = [
       { feature: "Connectivity",               ep: "Cellular, no IT required",    them: "Requires network integration" },
       { feature: "Health score refresh rate",  ep: "Every 2 seconds (edge)",      them: "Cloud-processed (delayed)" },
       { feature: "Free pilot",                 ep: "60 days, hardware included",  them: "No" },
-      { feature: "CMMS included",              ep: "✓ (full platform, free)",     them: "✗ (monitoring only)" },
+      { feature: "Maintenance platform included", ep: "✓ (full platform, free)",     them: "✗ (monitoring only)" },
       { feature: "Work orders",                ep: "✓ (free tier)",               them: "✗" },
       { feature: "PM scheduling",              ep: "✓ (free tier)",               them: "✗" },
       { feature: "Team chat",                  ep: "✓ (free tier)",               them: "✗" },
@@ -511,8 +511,8 @@ export const COMPETITORS: Competitor[] = [
         body: "EdgePredict computes motor health scores every 2 seconds at the edge — on the sensor itself. Augury processes data in the cloud, which introduces latency. When a motor is degrading, two seconds matters more than two minutes.",
       },
       {
-        title: "Your CMMS and sensors are the same system",
-        body: "Augury gives you monitoring data. Then what? You still need a CMMS to create the work order, assign the technician, track the repair, and close the loop. EdgePredict does all of it — sensor data triggers PM automatically, inside the same platform.",
+        title: "Your maintenance platform and sensors are the same system",
+        body: "Augury gives you monitoring data. Then what? You still need a separate system to create the work order, assign the technician, track the repair, and close the loop. EdgePredict does all of it — sensor data triggers PM automatically, inside the same platform.",
       },
       {
         title: "Try it before you commit — for free",
@@ -534,7 +534,7 @@ export const COMPETITORS: Competitor[] = [
       },
       {
         q: "Is EdgePredict right for large enterprise facilities?",
-        a: "EdgePredict is built for plants that have between 5 and 200 critical motors and currently have no monitoring. If you're running a large facility with a full reliability engineering team and enterprise CMMS already in place, Augury's depth may be a better fit for pure monitoring. If you need both monitoring and maintenance management without a six-figure commitment, we're the right call.",
+        a: "EdgePredict is built for plants that have between 5 and 200 critical motors and currently have no monitoring. If you're running a large facility with a full reliability engineering team and enterprise systems already in place, Augury's depth may be a better fit for pure monitoring. If you need both monitoring and a complete maintenance platform without a six-figure commitment, we're the right call.",
       },
     ],
   },

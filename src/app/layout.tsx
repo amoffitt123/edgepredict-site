@@ -9,11 +9,11 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "EdgePredict — Maintenance Management & Motor Monitoring",
+  title: "EdgePredict — The Maintenance Platform Your Plant Actually Needs",
   description:
-    "The only platform where your CMMS and your sensors are one system. Free maintenance management with optional motor monitoring sensors. PM scheduling, work orders, asset tracking, ESA monitoring.",
+    "Work orders, PMs, inspections, playbooks, reporting, and live motor monitoring — one platform, not five. Free to start with optional motor monitoring sensors. Built for small and mid-size plants.",
   keywords:
-    "CMMS, maintenance management, motor monitoring, predictive maintenance, preventive maintenance software, work order management, PM scheduling, electrical signature analysis, free CMMS, MaintainX alternative",
+    "maintenance platform, CMMS, maintenance management, motor monitoring, predictive maintenance, preventive maintenance software, work order management, PM scheduling, inspections, electrical signature analysis, free maintenance platform, MaintainX alternative",
   authors: [{ name: "EdgePredict" }],
   creator: "EdgePredict",
   publisher: "EdgePredict",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     canonical: "https://www.edgepredict.io",
   },
   openGraph: {
-    title: "EdgePredict — Maintenance Management & Motor Monitoring",
+    title: "EdgePredict — The Maintenance Platform Your Plant Actually Needs",
     description:
-      "The only platform where your CMMS and your sensors are one system. Free maintenance management with optional motor monitoring sensors. PM scheduling, work orders, asset tracking, ESA monitoring.",
+      "Work orders, PMs, inspections, playbooks, reporting, and live motor monitoring — one platform, not five. Free to start with optional motor monitoring sensors.",
     url: "https://www.edgepredict.io",
     siteName: "EdgePredict",
     images: [
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "EdgePredict — Maintenance Management & Motor Monitoring",
+    title: "EdgePredict — The Maintenance Platform Your Plant Actually Needs",
     description:
-      "The only platform where your CMMS and your sensors are one system. Free maintenance management with optional motor monitoring sensors.",
+      "Work orders, PMs, inspections, playbooks, reporting, and live motor monitoring — one platform. Free to start.",
     images: ["https://www.edgepredict.io/og-image.jpg"],
   },
   robots: {

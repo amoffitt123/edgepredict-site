@@ -4,14 +4,14 @@ import FeatureSidebar from "@/components/FeatureSidebar";
 import ArcadeInline from "@/components/ArcadeInline";
 
 export const metadata = {
-  title: "Features — EdgePredict CMMS",
+  title: "Features — EdgePredict Maintenance Platform",
   description:
     "158 API endpoints. Work orders, PM scheduling, inspections, asset management, parts inventory, AI work order generation, motor monitoring, and more. Free for any plant size.",
   alternates: {
     canonical: "https://www.edgepredict.io/features",
   },
   openGraph: {
-    title: "Features — EdgePredict CMMS",
+    title: "Features — EdgePredict Maintenance Platform",
     description: "158 API endpoints. Every feature a maintenance team needs. Free for any plant size.",
     url: "https://www.edgepredict.io/features",
     type: "website",
@@ -309,7 +309,7 @@ export default function FeaturesPage() {
               <Feat tier="monitor" name="Live web dashboard" desc="Per-motor health score, phase current traces, load deviation, historical trending. Accessible from any browser." />
               <Feat tier="monitor" name="Real-time and email alerts" desc="In-dashboard alerts and email notifications when health score drops or fault indicators trigger." />
               <Feat tier="monitor" name="Weekly health summary emails" desc="Automated weekly digest: all motors, their scores, any anomalies flagged during the week, recommended actions." />
-              <Feat tier="monitor" name="Auto-created work orders from sensor alerts" desc="Configure condition triggers so that when a specific fault indicator fires, a work order is created in the CMMS automatically with the asset, fault description, and priority pre-filled." />
+              <Feat tier="monitor" name="Auto-created work orders from sensor alerts" desc="Configure condition triggers so that when a specific fault indicator fires, a work order is created automatically with the asset, fault description, and priority pre-filled." />
               <Feat tier="monitor" name="Optional voltage reference" desc="Plug-in transformer tap adds voltage measurement. Unlocks voltage unbalance, undervoltage, power factor, and supply quality monitoring." />
               <Feat tier="monitor" name="Volume discounts for 5+ motors" desc="Contact us for pricing on fleets larger than 5 motors." />
             </Module>

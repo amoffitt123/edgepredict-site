@@ -4,16 +4,16 @@ import HeroDashboard from "@/components/HeroDashboard";
 import FadeIn from "@/components/FadeIn";
 
 export const metadata = {
-  title: "EdgePredict — Maintenance Management & Motor Monitoring",
+  title: "EdgePredict — The Maintenance Platform Your Plant Actually Needs",
   description:
-    "The only platform where your CMMS and your sensors are one system. Free maintenance management. $200/mo motor monitoring. Built by the engineers who designed the hardware.",
+    "Work orders, PMs, inspections, playbooks, reporting, and live motor monitoring — one platform, not five. Free to start. Built by the engineers who designed the hardware.",
   alternates: {
     canonical: "https://www.edgepredict.io",
   },
   openGraph: {
-    title: "EdgePredict — Maintenance Management & Motor Monitoring",
+    title: "EdgePredict — The Maintenance Platform Your Plant Actually Needs",
     description:
-      "The only platform where your CMMS and your sensors are one system. Free maintenance management. $200/mo motor monitoring.",
+      "Work orders, PMs, inspections, playbooks, reporting, and live motor monitoring — one platform, not five. Free to start.",
     url: "https://www.edgepredict.io",
     type: "website",
   },
@@ -101,7 +101,7 @@ const MON_FEATURES = [
   "20-minute clamp-on install, no rewiring",
   "Cellular connectivity, no IT involvement",
   "Live web dashboard with historical trending",
-  "Alerts that automatically create CMMS work orders",
+  "Alerts that automatically create work orders",
 ];
 
 /* ── Pricing tiers ──────────────────────────────────────────────────── */
@@ -112,7 +112,7 @@ const TIERS = [
     badgeClass: "bg-green-100 text-green-700",
     price: "$0",
     priceSub: "free forever",
-    desc: "Not a trial. Not limited. A real CMMS with unlimited users and unlimited work orders. Because 85% of plants have nothing, and something free is infinitely better than a 30-day trial.",
+    desc: "Not a trial. Not limited. A complete maintenance platform with unlimited users and unlimited work orders. Work orders, PMs, inspections, parts, reports — all included. Because 85% of plants have nothing.",
     features: ["Unlimited users", "Unlimited assets & work orders", "PM scheduling", "Parts inventory & purchase orders", "Drag-and-drop schedule board", "Team chat — DMs + channels", "Mobile app — iOS & Android, offline"],
     cta: { label: "Get Started Free", href: "https://tools.edgepredict.io/signup", external: true },
     dark: false,
@@ -159,9 +159,10 @@ export default function HomePage() {
               <span className="text-[#7655d6]">Start knowing.</span>
             </h1>
             <p className="text-lg text-slate-400 leading-relaxed max-w-lg mb-10">
-              The only platform where your CMMS and your sensors are one system.
-              Free maintenance management. $200/mo motor monitoring. Built by the
-              engineers who designed the hardware.
+              The maintenance platform your plant actually needs. Stop duct-taping
+              spreadsheets, clipboards, and disconnected tools together. Work orders,
+              PMs, inspections, playbooks, reporting, and live motor monitoring in one
+              platform. Most of it free. Built by engineers.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10">
@@ -243,7 +244,8 @@ export default function HomePage() {
               <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-2">
                 Maintenance Management
               </h3>
-              <p className="text-xs font-semibold text-green-600 uppercase tracking-widest mt-4 mb-2">Free</p>
+              <p className="text-xs font-semibold text-green-600 uppercase tracking-widest mt-4 mb-1">Free</p>
+              <p className="text-xs text-slate-500 mb-2">More free features than any other platform on the market.</p>
               <ul className="space-y-2 mb-4">
                 {MGMT_FEATURES_FREE.map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm text-slate-700">
@@ -375,7 +377,7 @@ export default function HomePage() {
               </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-white max-w-2xl mx-auto">
-              When your sensors talk to your CMMS, everything changes.
+              When your sensors and your maintenance platform are one system, everything changes.
             </h2>
           </FadeIn>
 
@@ -652,7 +654,7 @@ export default function HomePage() {
               {
                 n: "01",
                 title: "Sign up and add your equipment",
-                body: "Create your account, register assets, and get PM schedules generated automatically. About 10 minutes to a working CMMS.",
+                body: "Create your account, register assets, and get PM schedules generated automatically. About 10 minutes to a fully running maintenance platform.",
               },
               {
                 n: "02",
@@ -662,7 +664,7 @@ export default function HomePage() {
               {
                 n: "03",
                 title: "Add sensors when the data tells you where",
-                body: "Your CMMS shows you which assets fail most. Add monitoring to those first. Time-based maintenance becomes condition-based.",
+                body: "Your data shows you which assets fail most. Add monitoring to those first. Time-based maintenance becomes condition-based.",
               },
             ].map((s, si) => (
               <FadeIn key={s.n} delay={(si + 1) as 1 | 2 | 3}>

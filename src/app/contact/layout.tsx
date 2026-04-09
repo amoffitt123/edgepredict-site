@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact — EdgePredict",
     description:
-      "Talk to an engineer about motor monitoring or CMMS. No sales deck. Direct conversation with the people who built it.",
+      "Talk to an engineer about motor monitoring or maintenance management. No sales deck. Direct conversation with the people who built it.",
     url: "https://www.edgepredict.io/contact",
     type: "website",
   },
