@@ -152,17 +152,17 @@ export default function HomePage() {
           {/* Left */}
           <div>
             <p className="text-sm uppercase tracking-widest font-semibold text-[#a78fe8] mb-5">
-              Maintenance Management + Motor Monitoring
+              For plants that run on whiteboards and gut instinct
             </p>
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] mb-6">
-              Stop guessing.<br />
-              <span className="text-[#7655d6]">Start knowing.</span>
+              Your maintenance program.<br />
+              Your motor health.<br />
+              <span className="text-[#7655d6]">One platform.</span>
             </h1>
             <p className="text-lg text-slate-400 leading-relaxed max-w-lg mb-10">
-              The maintenance platform your plant actually needs. Stop duct-taping
-              spreadsheets, clipboards, and disconnected tools together. Work orders,
-              PMs, inspections, playbooks, reporting, and live motor monitoring in one
-              platform. Most of it free. Built by engineers.
+              A complete maintenance platform — work orders, PMs, inspections,
+              reporting — free for unlimited users. Add motor monitoring if and
+              when you need it. Each works on its own. $200/mo per motor, hardware included.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10">
@@ -184,9 +184,9 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row flex-wrap gap-x-6 gap-y-2">
               {[
                 "Free forever, no credit card",
-                "158+ API endpoints",
-                "Live pilots at manufacturers",
-                "Built by Engineers, not MBAs",
+                "$200/mo per motor, hardware included",
+                "20-minute sensor install on average",
+                "Built by engineers, not MBAs",
               ].map((item) => (
                 <span key={item} className="flex items-center gap-2 text-sm text-slate-500 font-medium">
                   <CheckCircle className="w-4 h-4 text-[#7655d6] flex-shrink-0" />
@@ -196,43 +196,218 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right: animated dashboard */}
-          <div className="w-full">
+          {/* Right: animated dashboard + proof card */}
+          <div className="w-full space-y-4">
             <HeroDashboard />
+            <div className="bg-white/5 backdrop-blur rounded-xl border border-white/10 p-4">
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-green-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-green-400 uppercase tracking-widest mb-1">
+                    From the field
+                  </p>
+                  <p className="text-slate-300 text-sm leading-relaxed">
+                    First fault detected in under 3 weeks. Manufacturer corrected the
+                    issue during planned downtime, avoiding an estimated <span className="font-semibold text-white">$8,000+ emergency repair</span>.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-[#7655d6]/15 border border-[#7655d6]/30 rounded-xl px-4 py-3 text-center">
+              <p className="text-sm font-semibold text-[#a78fe8]">
+                Trusted by 20+ organizations and growing
+              </p>
+              <p className="text-xs text-slate-400 mt-1">
+                Join the community to create and share better maintenance practices
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── 2. SOCIAL PROOF BAR ───────────────────────────────────────── */}
-      <section className="bg-white border-b border-slate-100 py-5">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-slate-500">
-          {[
-            "Free forever, no credit card",
-            "Live pilots at manufacturers",
-            "Built by engineers, not MBAs",
-            "158+ API endpoints",
-          ].map((item) => (
-            <span key={item} className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-[#7655d6] flex-shrink-0" />
-              {item}
-            </span>
-          ))}
+      {/* ── 3. SOLUTION BRIDGE ─────────────────────────────────────────── */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-6">
+          <FadeIn className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              One platform. Two problems solved.
+            </h2>
+            <p className="text-slate-500 text-base mt-3">
+              Use them together or independently. Start with what you need.
+            </p>
+          </FadeIn>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <FadeIn delay={1}>
+              <div className="rounded-2xl border border-slate-200 p-6 md:p-8 h-full">
+                <ClipboardList className="w-7 h-7 text-[#7655d6] mb-4" />
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Maintenance Management</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Everything your team needs to stop running on whiteboards and spreadsheets.
+                  Work orders, PMs, inspections, scheduling, and reporting in one platform.
+                  Upgrade to Pro for AI work orders, automation, and advanced reporting.
+                </p>
+                <p className="text-xs font-semibold text-green-600 uppercase tracking-widest mt-4">Free for your whole team. $0/month.</p>
+              </div>
+            </FadeIn>
+            <FadeIn delay={2}>
+              <div className="rounded-2xl border border-slate-800 bg-[#0a0a0f] p-6 md:p-8 h-full">
+                <Activity className="w-7 h-7 text-cyan-400 mb-4" />
+                <h3 className="text-lg font-bold text-white mb-2">Motor Monitoring</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Non-invasive clamp-on sensors with edge computing deliver real-time health
+                  scores every 2 seconds. Know which motors are developing faults weeks before
+                  they fail. No rewiring, no IT ticket, no plant network required. Hardware
+                  and cellular connectivity included.
+                </p>
+                <p className="text-xs font-semibold text-cyan-400 uppercase tracking-widest mt-4">$200/mo per motor. Hardware included.</p>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
-      {/* ── 3. THE TWO SIDES ──────────────────────────────────────────── */}
+      {/* ── 4. THE COST OF NOT KNOWING (side-by-side pain) ─────────── */}
+      <section className="py-20 md:py-28 bg-[#0a0a0f]">
+        <div className="max-w-7xl mx-auto px-6">
+          <FadeIn className="text-center mb-14">
+            <p className="text-sm uppercase tracking-widest font-semibold text-[#a78fe8] mb-3">
+              The Cost of Not Knowing
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              You&apos;re already paying for it. Just in downtime and overtime instead of software.
+            </h2>
+          </FadeIn>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto items-stretch">
+            {/* Left: No maintenance platform */}
+            <FadeIn delay={1} className="flex">
+              <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6 md:p-8 flex flex-col w-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <ClipboardList className="w-6 h-6 text-red-400" />
+                  <h3 className="text-lg font-bold text-white">Without a maintenance platform</h3>
+                </div>
+                <div className="space-y-5">
+                  <div>
+                    <div className="text-4xl font-bold font-mono text-red-400 mb-1">40-60%</div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      of your maintenance budget goes to emergency repairs instead of planned work
+                    </p>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold font-mono text-amber-400 mb-1">35%</div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      actual wrench time — the rest is paperwork, hunting for parts, and tracking down tribal knowledge
+                    </p>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold font-mono text-amber-400 mb-1">$10K-$50K</div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      per hour — what unplanned downtime actually costs your plant
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Right: No monitoring */}
+            <FadeIn delay={2} className="flex">
+              <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6 md:p-8 flex flex-col w-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <Activity className="w-6 h-6 text-red-400" />
+                  <h3 className="text-lg font-bold text-white">Without motor monitoring</h3>
+                </div>
+                <div className="space-y-5">
+                  <div>
+                    <div className="text-4xl font-bold font-mono text-red-400 mb-1">85%</div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      of small plants run motors with zero condition monitoring at all
+                    </p>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold font-mono text-amber-400 mb-1">3-5x</div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      higher repair cost for emergency failures vs. planned maintenance
+                    </p>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold font-mono text-green-400 mb-1">20 min</div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      to install a sensor. No rewiring. No IT ticket. Most plants just never do.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+
+          <FadeIn className="mt-10 text-center">
+            <p className="text-slate-500 text-base">
+              EdgePredict was built to change both. Here&apos;s how it works.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── 4. HOW IT WORKS ───────────────────────────────────────────── */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn className="text-center mb-16">
             <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
-              One Platform. Two Superpowers.
+              Getting Started
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Management and monitoring. Built as one system.
+              Three steps to a better maintenance program.
+            </h2>
+          </FadeIn>
+
+          <div className="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto">
+            {[
+              {
+                n: "01",
+                title: "Sign up and add your equipment",
+                body: "Create your account, register assets, and get PM schedules generated automatically. About 10 minutes to a fully running maintenance platform.",
+              },
+              {
+                n: "02",
+                title: "Run your maintenance program",
+                body: "Work orders, PM scheduling, inspections, scheduling. Your team stops running on whiteboards and starts running on data.",
+              },
+              {
+                n: "03",
+                title: "Add sensors when the data tells you where",
+                body: "Your data shows you which assets fail most. Add monitoring to those first. Time-based maintenance becomes condition-based.",
+              },
+            ].map((s, si) => (
+              <FadeIn key={s.n} delay={(si + 1) as 1 | 2 | 3}>
+                <div>
+                  <span className="text-6xl font-bold text-[#7655d6]/15 leading-none block mb-4 font-mono">
+                    {s.n}
+                  </span>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-3">{s.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{s.body}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. THE TWO SIDES ──────────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <FadeIn className="text-center mb-16">
+            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
+              What&apos;s included
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Everything under the hood.
             </h2>
             <p className="text-base md:text-lg text-slate-600 mt-4 max-w-2xl mx-auto leading-relaxed">
-              Most plants use separate tools. Many use nothing at all. EdgePredict is the only
-              platform where both sides share data, share context, and make each other smarter.
+              Most plants use separate tools for management and monitoring. Many use nothing at all.
+              EdgePredict is the only platform where both sides share data, share context, and make each other smarter.
             </p>
           </FadeIn>
 
@@ -297,7 +472,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 3b. SIDE-BY-SIDE DEMOS ────────────────────────────────────── */}
+      {/* ── 6. SIDE-BY-SIDE DEMOS ─────────────────────────────────────── */}
       <section className="py-16 bg-slate-50 border-t border-slate-200">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-10">
@@ -358,7 +533,43 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 4. THE BRIDGE ─────────────────────────────────────────────── */}
+      {/* ── 7. WHY WE BUILT THIS ────────────────────────────────────── */}
+      <section className="py-16 md:py-20 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-6">
+          <FadeIn>
+            <div className="text-center mb-8">
+              <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
+                Why we built this
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+                Enterprise-grade tools shouldn&apos;t require enterprise-grade budgets.
+              </h2>
+            </div>
+            <div className="space-y-4 text-slate-600 text-base leading-relaxed">
+              <p>
+                We believe every manufacturer — whether you run 5 motors or 500 — deserves
+                access to the same maintenance and reliability tools that large plants have.
+                But most solutions on the market are either incomplete, overpriced per user,
+                or built for companies with six-figure software budgets.
+              </p>
+              <p>
+                We designed EdgePredict for the average plant. The teams that keep production
+                running on tight budgets and tight margins. The maintenance managers who are
+                the first ones called when something breaks and the last ones considered when
+                budgets are set. The reliability engineers who know exactly which motor is
+                going to fail next but can&apos;t get approval for a $50,000 monitoring system.
+              </p>
+              <p className="text-slate-900 font-medium">
+                So we built a complete maintenance platform that&apos;s free. And motor monitoring
+                that costs less per month than a single emergency callout. Because the plants
+                that everyone else ignores are the ones that need it most.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── 8. THE BRIDGE ─────────────────────────────────────────────── */}
       <section className="py-20 md:py-28 bg-[#0a0a0f] relative overflow-hidden">
         {/* Subtle gradient accent */}
         <div
@@ -412,7 +623,84 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 5. COMPETITOR COMPARISON ──────────────────────────────────── */}
+      {/* ── 8. PRICING PREVIEW ────────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <FadeIn className="text-center mb-14">
+            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
+              Pricing
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Start free. Add sensors when you&apos;re ready.
+            </h2>
+          </FadeIn>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {TIERS.map((tier, ti) => (
+              <FadeIn key={tier.name} delay={(ti + 1) as 1 | 2 | 3}>
+                <div
+                  className={`rounded-2xl border p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 h-full flex flex-col ${
+                    tier.dark
+                      ? "bg-[#0a0a0f] border-[#7655d6]/40"
+                      : "bg-white border-slate-200"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className={`text-xl font-bold ${tier.dark ? "text-white" : "text-slate-900"}`}>
+                      {tier.name}
+                    </h3>
+                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${tier.badgeClass}`}>
+                      {tier.badge}
+                    </span>
+                  </div>
+                  <div className="mb-2">
+                    <span className={`text-4xl font-bold ${tier.dark ? "text-white" : "text-slate-900"}`}>
+                      {tier.price}
+                    </span>
+                    <span className={`text-sm ml-1 ${tier.dark ? "text-slate-400" : "text-slate-500"}`}>
+                      {tier.priceSub}
+                    </span>
+                  </div>
+                  <p className={`text-sm leading-relaxed mb-6 ${tier.dark ? "text-slate-400" : "text-slate-600"}`}>
+                    {tier.desc}
+                  </p>
+                  <ul className="space-y-2 mb-8 flex-1">
+                    {tier.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-sm">
+                        <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${tier.dark ? "text-[#a78fe8]" : "text-green-500"}`} />
+                        <span className={tier.dark ? "text-slate-300" : "text-slate-700"}>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {tier.cta.external ? (
+                    <a
+                      href={tier.cta.href}
+                      className="block w-full text-center px-4 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#7655d6]/25 hover:scale-[1.01]"
+                    >
+                      {tier.cta.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={tier.cta.href}
+                      className="block w-full text-center px-4 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#7655d6]/25 hover:scale-[1.01]"
+                    >
+                      {tier.cta.label}
+                    </Link>
+                  )}
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <p className="text-sm text-center mt-8">
+            <Link href="/pricing" className="text-[#7655d6] hover:underline font-medium">
+              See full pricing details and comparison table
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* ── 9. COMPETITOR COMPARISON ──────────────────────────────────── */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn className="text-center mb-14">
@@ -505,179 +793,6 @@ export default function HomePage() {
               Explore Demo <ArrowRight className="w-4 h-4" />
             </a>
           </FadeIn>
-        </div>
-      </section>
-
-      {/* ── 6. WHY IT MATTERS ─────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-[#0a0a0f]">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-14">
-            <p className="text-sm uppercase tracking-widest font-semibold text-[#a78fe8] mb-3">
-              The Cost of Not Knowing
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Unplanned downtime is 3 to 5 times more expensive than planned maintenance.
-            </h2>
-          </FadeIn>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {[
-              {
-                stat: "85%",
-                label: "of small plants run motors with no condition monitoring at all",
-                color: "text-red-400",
-              },
-              {
-                stat: "3-5x",
-                label: "higher repair cost for emergency failures vs. planned maintenance",
-                color: "text-amber-400",
-              },
-              {
-                stat: "20 min",
-                label: "to install a sensor. No rewiring. No IT ticket. No downtime.",
-                color: "text-green-400",
-              },
-            ].map((item) => (
-              <FadeIn key={item.stat}>
-                <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6 text-center">
-                  <div className={`text-5xl font-bold font-mono mb-3 ${item.color}`}>
-                    {item.stat}
-                  </div>
-                  <p className="text-slate-400 text-sm leading-relaxed">{item.label}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-
-          <FadeIn className="mt-10 text-center">
-            <Link
-              href="/pilot"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#7655d6] text-white font-semibold rounded-xl hover:bg-[#5d3db8] transition-all duration-200 hover:shadow-xl hover:shadow-[#7655d6]/30 hover:scale-[1.02]"
-            >
-              Start Your Free Pilot <ArrowRight className="w-4 h-4" />
-            </Link>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ── 7. PRICING PREVIEW ────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-14">
-            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
-              Pricing
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Start free. Add sensors when you&apos;re ready.
-            </h2>
-          </FadeIn>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {TIERS.map((tier, ti) => (
-              <FadeIn key={tier.name} delay={(ti + 1) as 1 | 2 | 3}>
-                <div
-                  className={`rounded-2xl border p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 h-full flex flex-col ${
-                    tier.dark
-                      ? "bg-[#0a0a0f] border-[#7655d6]/40"
-                      : "bg-white border-slate-200"
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className={`text-xl font-bold ${tier.dark ? "text-white" : "text-slate-900"}`}>
-                      {tier.name}
-                    </h3>
-                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${tier.badgeClass}`}>
-                      {tier.badge}
-                    </span>
-                  </div>
-                  <div className="mb-2">
-                    <span className={`text-4xl font-bold ${tier.dark ? "text-white" : "text-slate-900"}`}>
-                      {tier.price}
-                    </span>
-                    <span className={`text-sm ml-1 ${tier.dark ? "text-slate-400" : "text-slate-500"}`}>
-                      {tier.priceSub}
-                    </span>
-                  </div>
-                  <p className={`text-sm leading-relaxed mb-6 ${tier.dark ? "text-slate-400" : "text-slate-600"}`}>
-                    {tier.desc}
-                  </p>
-                  <ul className="space-y-2 mb-8 flex-1">
-                    {tier.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-sm">
-                        <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${tier.dark ? "text-[#a78fe8]" : "text-green-500"}`} />
-                        <span className={tier.dark ? "text-slate-300" : "text-slate-700"}>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  {tier.cta.external ? (
-                    <a
-                      href={tier.cta.href}
-                      className="block w-full text-center px-4 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#7655d6]/25 hover:scale-[1.01]"
-                    >
-                      {tier.cta.label}
-                    </a>
-                  ) : (
-                    <Link
-                      href={tier.cta.href}
-                      className="block w-full text-center px-4 py-3 bg-[#7655d6] hover:bg-[#5d3db8] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#7655d6]/25 hover:scale-[1.01]"
-                    >
-                      {tier.cta.label}
-                    </Link>
-                  )}
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-
-          <p className="text-sm text-center mt-8">
-            <Link href="/pricing" className="text-[#7655d6] hover:underline font-medium">
-              See full pricing details and comparison table
-            </Link>
-          </p>
-        </div>
-      </section>
-
-      {/* ── 8. HOW IT WORKS ───────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-16">
-            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
-              Getting Started
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Three steps to a better maintenance program.
-            </h2>
-          </FadeIn>
-
-          <div className="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto">
-            {[
-              {
-                n: "01",
-                title: "Sign up and add your equipment",
-                body: "Create your account, register assets, and get PM schedules generated automatically. About 10 minutes to a fully running maintenance platform.",
-              },
-              {
-                n: "02",
-                title: "Run your maintenance program",
-                body: "Work orders, PM scheduling, inspections, scheduling. Your team stops running on whiteboards and starts running on data.",
-              },
-              {
-                n: "03",
-                title: "Add sensors when the data tells you where",
-                body: "Your data shows you which assets fail most. Add monitoring to those first. Time-based maintenance becomes condition-based.",
-              },
-            ].map((s, si) => (
-              <FadeIn key={s.n} delay={(si + 1) as 1 | 2 | 3}>
-                <div>
-                  <span className="text-6xl font-bold text-[#7655d6]/15 leading-none block mb-4 font-mono">
-                    {s.n}
-                  </span>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-3">{s.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{s.body}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
         </div>
       </section>
 

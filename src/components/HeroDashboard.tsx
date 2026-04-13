@@ -77,21 +77,21 @@ export default function HeroDashboard() {
       <div className="grid md:grid-cols-2">
         {/* ── Left: Maintenance ───────────────────── */}
         <div className="bg-slate-900 p-5 border-r border-white/10">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <p className="text-xs font-bold tracking-widest text-slate-500 uppercase mb-0.5">
+          <div className="mb-4">
+            <div className="flex items-center justify-between mb-1">
+              <p className="text-xs font-bold tracking-widest text-slate-500 uppercase">
                 Maintenance
               </p>
-              <p className="text-sm font-semibold text-white">Today&apos;s Work Orders</p>
+              <div className="flex gap-1">
+                <span className="text-[10px] bg-amber-400/10 text-amber-400 px-1.5 py-0.5 rounded-full font-mono border border-amber-400/20 leading-none">
+                  3 due
+                </span>
+                <span className="text-[10px] bg-red-400/10 text-red-400 px-1.5 py-0.5 rounded-full font-mono border border-red-400/20 leading-none">
+                  1 overdue
+                </span>
+              </div>
             </div>
-            <div className="flex gap-1.5">
-              <span className="text-xs bg-amber-400/10 text-amber-400 px-2 py-0.5 rounded-full font-mono border border-amber-400/20">
-                3 due
-              </span>
-              <span className="text-xs bg-red-400/10 text-red-400 px-2 py-0.5 rounded-full font-mono border border-red-400/20">
-                1 overdue
-              </span>
-            </div>
+            <p className="text-sm font-semibold text-white">Today&apos;s Work Orders</p>
           </div>
 
           <div className="space-y-2">
