@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CheckCircle, Zap, ArrowRight, ClipboardList, Activity } from "lucide-react";
 import HeroDashboard from "@/components/HeroDashboard";
+import PlatformFlowCard from "@/components/PlatformFlowCard";
 import FadeIn from "@/components/FadeIn";
 
 export const metadata = {
@@ -227,45 +228,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 3. SOLUTION BRIDGE ─────────────────────────────────────────── */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-6">
-          <FadeIn className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              One platform. Two problems solved.
+      {/* ── PLATFORM FLOW MOCK (preview) ───────────────────────────────── */}
+      <section className="py-16 md:py-20 bg-slate-950">
+        <div className="max-w-[1320px] mx-auto px-6">
+          <FadeIn className="text-center mb-10">
+            <span className="inline-block text-xs tracking-widest uppercase text-violet-300 bg-violet-500/10 border border-violet-400/30 px-3 py-1.5 rounded-full mb-4">
+              One platform · Two problems solved
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              Your maintenance program. Your motor health. One platform.
             </h2>
-            <p className="text-slate-500 text-base mt-3">
-              Use them together or independently. Start with what you need.
+            <p className="text-slate-400 text-base mt-3 max-w-2xl mx-auto">
+              A complete maintenance platform — free for unlimited users. Add motor monitoring if and when you need it. Each works on its own.
             </p>
           </FadeIn>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <FadeIn delay={1}>
-              <div className="rounded-2xl border border-slate-200 p-6 md:p-8 h-full">
-                <ClipboardList className="w-7 h-7 text-[#7655d6] mb-4" />
-                <h3 className="text-lg font-bold text-slate-900 mb-2">Maintenance Management</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  Everything your team needs to stop running on whiteboards and spreadsheets.
-                  Work orders, PMs, inspections, scheduling, and reporting in one platform.
-                  Upgrade to Pro for AI work orders, automation, and advanced reporting.
-                </p>
-                <p className="text-xs font-semibold text-green-600 uppercase tracking-widest mt-4">Free for your whole team. $0/month.</p>
-              </div>
-            </FadeIn>
-            <FadeIn delay={2}>
-              <div className="rounded-2xl border border-slate-800 bg-[#0a0a0f] p-6 md:p-8 h-full">
-                <Activity className="w-7 h-7 text-cyan-400 mb-4" />
-                <h3 className="text-lg font-bold text-white mb-2">Motor Monitoring</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  Non-invasive clamp-on sensors with edge computing deliver real-time health
-                  scores every 2 seconds. Know which motors are developing faults weeks before
-                  they fail. No rewiring, no IT ticket, no plant network required. Hardware
-                  and cellular connectivity included.
-                </p>
-                <p className="text-xs font-semibold text-cyan-400 uppercase tracking-widest mt-4">$200/mo per motor. Hardware included.</p>
-              </div>
-            </FadeIn>
-          </div>
+          <FadeIn delay={1}>
+            <PlatformFlowCard />
+          </FadeIn>
         </div>
       </section>
 

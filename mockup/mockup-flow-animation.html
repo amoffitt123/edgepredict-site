@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>EdgePredict — Platform + Monitoring</title>
+<style>
+  :root {
+    --bg: #020617;               /* slate-950 */
+    --panel: #0f172a;             /* slate-900 */
+    --stroke: #1e1e2e;
+    --text: #e6e6f0;
+    --muted: #8a8aa3;
+    --primary: #7655d6;           /* site brand */
+    --primary-soft: #a78bfa;
+    --accent: #22d3ee;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --red: #f87171;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1400px 700px at 50% 0%, #1a1030 0%, var(--bg) 55%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 56px 24px 80px; }
+  .eyebrow {
+    display: inline-block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--primary-soft); background: rgba(118,85,214,0.14);
+    border: 1px solid rgba(118,85,214,0.4);
+    padding: 6px 10px; border-radius: 999px; margin-bottom: 16px;
+  }
+  h1 { font-size: 40px; line-height: 1.1; margin: 0 0 12px; font-weight: 600; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(90deg, #a78bfa, #22d3ee);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  p.lede { color: var(--muted); font-size: 16px; max-width: 720px; margin: 0 0 32px; }
+
+  .cards {
+    display: grid; grid-template-columns: 1fr; gap: 28px;
+    position: relative;
+  }
+  @media (min-width: 1100px) { .cards { grid-template-columns: 1.25fr 0.95fr; } }
+
+  .card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(30,20,60,0.4), rgba(8,10,20,0.85));
+    border: 1px solid var(--stroke);
+    border-radius: 20px;
+    padding: 24px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px -40px rgba(118,85,214,0.35);
+  }
+  .card.addon {
+    background: linear-gradient(180deg, rgba(20,40,60,0.35), rgba(8,10,20,0.85));
+    border-color: rgba(34,211,238,0.25);
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(600px 200px at 20% 0%, rgba(118,85,214,0.18), transparent 60%),
+      radial-gradient(500px 200px at 90% 100%, rgba(34,211,238,0.12), transparent 60%);
+    pointer-events: none;
+  }
+  .card.addon::before {
+    background:
+      radial-gradient(600px 200px at 50% 0%, rgba(34,211,238,0.22), transparent 60%),
+      radial-gradient(500px 200px at 50% 100%, rgba(118,85,214,0.12), transparent 60%);
+  }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; gap: 12px; }
+  .card-title { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+  .card-kicker { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .pill {
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 8px; border-radius: 999px; white-space: nowrap;
+    background: rgba(118,85,214,0.18); color: var(--primary-soft);
+    border: 1px solid rgba(118,85,214,0.35);
+  }
+  .pill.addon { background: rgba(34,211,238,0.12); color: var(--accent); border-color: rgba(34,211,238,0.3); }
+  .card-sub { font-size: 13px; color: var(--muted); margin: 4px 0 18px; }
+
+  /* Phase labels over Card 1 clusters */
+  .phase-row {
+    display: none;
+    position: absolute; top: 12px; left: 24px; right: 24px;
+    pointer-events: none; z-index: 2;
+  }
+  .phase-row .phase {
+    position: absolute;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--primary-soft);
+    background: rgba(118,85,214,0.12);
+    border: 1px solid rgba(118,85,214,0.35);
+    padding: 3px 8px; border-radius: 6px;
+  }
+  .phase-row .phase.intake  { left: 30px; }
+  .phase-row .phase.triage  { left: 300px; }
+  .phase-row .phase.close   { left: 560px; }
+  @media (min-width: 1100px) { .phase-row { display: block; } }
+
+  .stage { position: relative; width: 100%; }
+  .stage-platform { height: 520px; }
+  .stage-monitor  { height: 520px; }
+
+  .node {
+    position: absolute;
+    background: rgba(15,23,42,0.88);
+    border: 1px solid var(--stroke);
+    border-radius: 14px;
+    padding: 10px 12px;
+    min-width: 150px;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .node.active {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(118,85,214,0.2), 0 20px 40px -20px rgba(118,85,214,0.6);
+    transform: translateY(-2px);
+  }
+  .node.active.cyan {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(34,211,238,0.18), 0 20px 40px -20px rgba(34,211,238,0.6);
+  }
+  .node .row { display: flex; align-items: center; gap: 10px; }
+  .node .ico {
+    width: 30px; height: 30px; border-radius: 8px;
+    display: grid; place-items: center;
+    background: rgba(118,85,214,0.18); color: var(--primary-soft);
+    flex: 0 0 30px;
+  }
+  .node.cyan .ico { background: rgba(34,211,238,0.12); color: var(--accent); }
+  .node .label { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .node .title { font-size: 13px; font-weight: 600; color: var(--text); margin-top: 2px; }
+  .node .meta  { font-size: 11px; color: var(--muted); margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .node .tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 10px; padding: 2px 6px; border-radius: 6px;
+    background: rgba(118,85,214,0.16); color: var(--primary-soft); margin-top: 6px;
+  }
+  .node .tag.green { background: rgba(52,211,153,0.12); color: var(--green); }
+  .node .tag.amber { background: rgba(251,191,36,0.14); color: var(--amber); }
+  .node .tag.cyan  { background: rgba(34,211,238,0.14); color: var(--accent); }
+
+  /* PLATFORM layout (3 columns: INTAKE / TRIAGE / CLOSE) */
+  .p-request  { top: 60px;  left: 30px;  width: 220px; }
+  .p-pm       { top: 190px; left: 30px;  width: 220px; }
+  .p-insp     { top: 330px; left: 30px;  width: 220px; }
+  .p-wo       { top: 90px;  left: 300px; width: 220px; }
+  .p-parts    { top: 230px; left: 300px; width: 220px; }
+  .p-schedule { top: 360px; left: 300px; width: 220px; }
+  .p-complete { top: 90px;  left: 560px; width: 220px; }
+  .p-reports  { top: 360px; left: 560px; width: 220px; }
+
+  /* MONITORING layout */
+  .m-sensor  { top: 60px;  left: 30px; width: 240px; }
+  .m-ai      { top: 220px; left: 30px; width: 240px; }
+  .m-trigger { top: 380px; left: 30px; width: 240px; }
+
+  svg.lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .edge { stroke: #2b2b40; stroke-width: 1.5; fill: none; }
+  .edge-anim {
+    stroke-width: 2; fill: none;
+    stroke-dasharray: 6 220; stroke-dashoffset: 0;
+    animation: dash 3.6s linear infinite;
+  }
+  .edge-anim.purple { stroke: url(#gradP); filter: drop-shadow(0 0 6px rgba(118,85,214,0.55)); }
+  .edge-anim.cyan   { stroke: url(#gradC); filter: drop-shadow(0 0 6px rgba(34,211,238,0.55)); }
+  .edge-anim.d1 { animation-delay: 0.3s; }
+  .edge-anim.d2 { animation-delay: 0.6s; }
+  .edge-anim.d3 { animation-delay: 0.9s; }
+  .edge-anim.d4 { animation-delay: 1.2s; }
+  .edge-anim.d5 { animation-delay: 1.5s; }
+  .edge-anim.d6 { animation-delay: 1.8s; }
+  .edge-anim.d7 { animation-delay: 2.1s; }
+  @keyframes dash { to { stroke-dashoffset: -226; } }
+
+  /* Cross-card handoff arrow (Card 2 → Card 1) */
+  .handoff {
+    display: none; position: absolute; z-index: 3; pointer-events: none;
+  }
+  @media (min-width: 1100px) {
+    .handoff { display: block; }
+  }
+  .handoff .handoff-label {
+    position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(2,6,23,0.9);
+    border: 1px solid rgba(34,211,238,0.35);
+    padding: 3px 8px; border-radius: 6px;
+  }
+
+  .pulse {
+    position: absolute; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(34,211,238,0.7);
+    animation: pulse 1.6s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(34,211,238,0.6); }
+    70%  { box-shadow: 0 0 0 14px rgba(34,211,238,0); }
+    100% { box-shadow: 0 0 0 0 rgba(34,211,238,0); }
+  }
+
+  .spark { display: block; width: 100%; height: 36px; margin-top: 8px; }
+  .spark path {
+    stroke: var(--accent); stroke-width: 1.5; fill: none;
+    stroke-dasharray: 200;
+    animation: draw 4s linear infinite;
+  }
+  @keyframes draw {
+    0%   { stroke-dashoffset: 200; }
+    50%  { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -200; }
+  }
+
+  .footnote { color: var(--muted); font-size: 13px; margin-top: 14px; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; font-size: 12px; color: var(--muted); }
+  .legend .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; vertical-align: middle; }
+
+  /* ── Mobile / narrow fallback: stacked list layout ─────────── */
+  @media (max-width: 900px) {
+    .stage-platform, .stage-monitor { height: auto; }
+    .stage svg.lines { display: none; }
+    .stage .node {
+      position: static !important;
+      width: 100% !important;
+      margin-bottom: 10px;
+      transform: none !important;
+    }
+    .stage .node.active { transform: none !important; }
+    .phase-row { display: none !important; }
+    .handoff { display: none !important; }
+  }
+
+  /* ── Reduced motion ───────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .edge-anim { animation: none !important; stroke-dasharray: 0 !important; opacity: 0.55; }
+    .pulse { animation: none !important; }
+    .spark path { animation: none !important; stroke-dasharray: 0 !important; }
+    .node { transition: none !important; }
+    .node.active { transform: none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="eyebrow">One platform · Two problems solved</span>
+    <h1>Your maintenance program.<br/>Your <span class="grad">motor health</span>. One platform.</h1>
+    <p class="lede">A complete maintenance platform — work orders, PMs, inspections, parts, reporting — <strong>free for unlimited users</strong>. Add motor monitoring if and when you need it. Each works on its own.</p>
+
+    <div class="cards">
+
+      <!-- ============ CARD 1: PLATFORM (self-contained) ============ -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-kicker">Maintenance Management · Free</div>
+            <h2 class="card-title">The Maintenance Platform</h2>
+          </div>
+          <span class="pill">$0 · unlimited users</span>
+        </div>
+        <p class="card-sub">Stop running on whiteboards. Requests, work orders, PMs, inspections, parts, and scheduling — one connected loop. No sensors required.</p>
+
+        <!-- Phase labels -->
+        <div class="phase-row">
+          <span class="phase intake">① Intake</span>
+          <span class="phase triage">② Triage &amp; Schedule</span>
+          <span class="phase close">③ Close &amp; Learn</span>
+        </div>
+
+        <div class="stage stage-platform">
+          <svg class="lines" viewBox="0 0 800 520" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="gradP" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%"   stop-color="#7655d6" stop-opacity="0"/>
+                <stop offset="50%"  stop-color="#a78bfa" stop-opacity="1"/>
+                <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Intake column → WO -->
+            <path class="edge"                d="M 250 100 C 275 100, 285 125, 300 125" />
+            <path class="edge-anim purple"    d="M 250 100 C 275 100, 285 125, 300 125" />
+
+            <path class="edge"                d="M 250 225 C 275 225, 285 135, 300 135" />
+            <path class="edge-anim purple d1" d="M 250 225 C 275 225, 285 135, 300 135" />
+
+            <path class="edge"                d="M 250 365 C 275 365, 285 145, 300 145" />
+            <path class="edge-anim purple d2" d="M 250 365 C 275 365, 285 145, 300 145" />
+
+            <!-- WO → Parts -->
+            <path class="edge"                d="M 410 170 C 410 210, 410 230, 410 260" />
+            <path class="edge-anim purple d3" d="M 410 170 C 410 210, 410 230, 410 260" />
+
+            <!-- Parts → Schedule -->
+            <path class="edge"                d="M 410 300 C 410 330, 410 360, 410 395" />
+            <path class="edge-anim purple d4" d="M 410 300 C 410 330, 410 360, 410 395" />
+
+            <!-- WO → Complete (direct top path) -->
+            <path class="edge"                d="M 520 120 L 560 120" />
+            <path class="edge-anim purple d3" d="M 520 120 L 560 120" />
+
+            <!-- Schedule → Complete -->
+            <path class="edge"                d="M 520 395 C 560 395, 600 250, 625 170" />
+            <path class="edge-anim purple d5" d="M 520 395 C 560 395, 600 250, 625 170" />
+
+            <!-- Complete → Reports -->
+            <path class="edge"                d="M 670 170 C 670 250, 670 320, 670 395" />
+            <path class="edge-anim purple d6" d="M 670 170 C 670 250, 670 320, 670 395" />
+
+            <!-- Reports → PM (feedback: condition-based improvement) -->
+            <path class="edge"                d="M 560 410 C 400 460, 150 460, 140 265" />
+            <path class="edge-anim purple d7" d="M 560 410 C 400 460, 150 460, 140 265" />
+          </svg>
+
+          <div class="node p-request" id="p-request">
+            <div class="row">
+              <div class="ico">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div>
+                <div class="label">Request</div>
+                <div class="title">Operator submits</div>
+              </div>
+            </div>
+            <div class="meta">"Pump-14 making noise"</div>
+          </div>
+
+          <div class="node p-pm" id="p-pm">
+            <div class="row">
+              <div class="ico">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              </div>
+              <div>
+                <div class="label">PM plan</div>
+                <div class="title">Lube · 30 day</div>
+              </div>
+            </div>
+            <div class="meta">Auto-generates WOs</div>
+          </div>
+
+          <div class="node p-insp" id="p-insp">
+            <div class="row">
+              <div class="ico">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              </div>
+              <div>
+                <div class="label">Inspection</div>
+                <div class="title">Weekly walkdown</div>
+              </div>
+            </div>
+            <div class="meta">Failures → WOs</div>
+          </div>
+
+          <div class="node p-wo" id="p-wo">
+            <div class="row">
+              <div class="ico">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+              </div>
+              <div>
+                <div class="label">Work order</div>
+                <div class="title">WO-4821</div>
+              </div>
+            </div>
+            <div class="meta">Approved · 2.5 hr est.</div>
+            <span class="tag">Open</span>
+          </div>
+
+          <div class="node p-parts" id="p-parts">
+            <div class="row">
+              <div class="ico">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15M21 8 12 13 3 8M12 22V13M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <div>
+                <div class="label">Parts</div>
+                <div class="title">SKF-6205 · in stock</div>
+              </div>
+            </div>
+            <div class="meta">Reserved · Bin B-12</div>
+          </div>
+
+          <div class="node p-schedule" id="p-schedule">
+            <div class="row">
+              <div class="ico">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+              </div>
+              <div>
+                <div class="label">Schedule</div>
+                <div class="title">Tue · 9:30 AM</div>
+              </div>
+            </div>
+            <div class="meta">J. Alvarez · Crew A</div>
+            <span class="tag">Scheduled</span>
+          </div>
+
+          <div class="node p-complete" id="p-complete">
+            <div class="row">
+              <div class="ico">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <div>
+                <div class="label">Complete</div>
+                <div class="title">Closed &amp; costed</div>
+              </div>
+            </div>
+            <div class="meta">Parts · labor · downtime</div>
+            <span class="tag green">Resolved</span>
+          </div>
+
+          <div class="node p-reports" id="p-reports">
+            <div class="row">
+              <div class="ico">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 4 3 5-6"/></svg>
+              </div>
+              <div>
+                <div class="label">Reports</div>
+                <div class="title">MTBF · PM compliance</div>
+              </div>
+            </div>
+            <div class="meta">Tunes the PM plan →</div>
+          </div>
+        </div>
+
+        <div class="legend">
+          <span><span class="dot" style="background:var(--primary-soft)"></span>Platform work</span>
+          <span><span class="dot" style="background:var(--green)"></span>Closed loop</span>
+          <span><span class="dot" style="background:var(--accent)"></span>Condition-based feedback</span>
+        </div>
+        <div class="footnote">10-status WO lifecycle · PM compliance tracking · parts &amp; inventory · iOS + Android · offline mode. About 10 minutes from sign-up to a running program.</div>
+      </div>
+
+      <!-- ============ CARD 2: MONITORING (optional amplifier) ============ -->
+      <div class="card addon">
+        <div class="card-head">
+          <div>
+            <div class="card-kicker">Motor Monitoring · Optional</div>
+            <h2 class="card-title">Add Motor Monitoring</h2>
+          </div>
+          <span class="pill addon">$200/mo · hardware included</span>
+        </div>
+        <p class="card-sub">Non-invasive clamp-on sensors. Health score every 2 seconds. 20-minute install. When something drifts, the platform creates the work — automatically.</p>
+
+        <div class="stage stage-monitor">
+          <svg class="lines" viewBox="0 0 520 520" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="gradC" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%"   stop-color="#22d3ee" stop-opacity="0"/>
+                <stop offset="50%"  stop-color="#22d3ee" stop-opacity="1"/>
+                <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Sensor → AI -->
+            <path class="edge"              d="M 150 180 L 150 220" />
+            <path class="edge-anim cyan"    d="M 150 180 L 150 220" />
+
+            <!-- AI → Trigger -->
+            <path class="edge"              d="M 150 340 L 150 380" />
+            <path class="edge-anim cyan d1" d="M 150 340 L 150 380" />
+          </svg>
+
+          <div class="node cyan m-sensor" id="m-sensor">
+            <div class="row">
+              <div class="ico">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <div>
+                <div class="label">Motor monitor</div>
+                <div class="title">Pump-14 · live</div>
+              </div>
+            </div>
+            <svg class="spark" viewBox="0 0 200 36" preserveAspectRatio="none">
+              <path d="M0 22 L20 20 L35 18 L50 22 L70 14 L85 16 L100 8 L120 24 L140 10 L160 6 L180 22 L200 12"/>
+            </svg>
+            <span class="tag amber">Vibration +32%</span>
+            <div style="position:absolute; top:-4px; right:-4px;" class="pulse"></div>
+          </div>
+
+          <div class="node cyan m-ai" id="m-ai">
+            <div class="row">
+              <div class="ico">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 3-2 5-2 7v2H7v-2c0-2-2-4-2-7a7 7 0 0 1 7-7z"/><path d="M9 20h6"/></svg>
+              </div>
+              <div>
+                <div class="label">AI / rules</div>
+                <div class="title">Anomaly detected</div>
+              </div>
+            </div>
+            <div class="meta">ESA fault signature<br/>Health score: 71.4 / 100</div>
+            <span class="tag cyan">Predicted</span>
+          </div>
+
+          <div class="node cyan m-trigger" id="m-trigger">
+            <div class="row">
+              <div class="ico">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>
+              </div>
+              <div>
+                <div class="label">Auto-trigger → Platform</div>
+                <div class="title">Creates WO-4822</div>
+              </div>
+            </div>
+            <div class="meta">Hands off to Card 1 →<br/>No operator needed</div>
+            <span class="tag cyan">Same platform, same workflow</span>
+          </div>
+        </div>
+
+        <div class="legend">
+          <span><span class="dot" style="background:var(--accent)"></span>Live telemetry</span>
+          <span><span class="dot" style="background:var(--amber)"></span>Anomaly</span>
+          <span><span class="dot" style="background:var(--primary-soft)"></span>Hands off to platform</span>
+        </div>
+        <div class="footnote">Add sensors when the data tells you where. Time-based maintenance becomes condition-based — same platform, no new workflow to learn.</div>
+      </div>
+
+      <!-- Cross-card handoff arrow: visible on desktop only -->
+      <svg class="handoff" style="top: 470px; left: 50%; width: 120px; height: 80px; transform: translateX(-50%);" viewBox="0 0 120 80" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrowC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#22d3ee"/>
+          </marker>
+        </defs>
+        <path d="M 110 40 C 80 40, 40 40, 10 40" stroke="#22d3ee" stroke-width="2" fill="none" stroke-dasharray="5 5" marker-end="url(#arrowC)" opacity="0.8"/>
+        <text x="60" y="28" text-anchor="middle" fill="#22d3ee" font-size="10" font-family="-apple-system, Inter, sans-serif" letter-spacing="1.2">WO-4822 →</text>
+      </svg>
+
+    </div>
+  </div>
+
+<script>
+  const platformSteps = [
+    ['p-request'],
+    ['p-request', 'p-wo'],
+    ['p-pm', 'p-wo'],
+    ['p-insp', 'p-wo'],
+    ['p-wo', 'p-parts'],
+    ['p-parts', 'p-schedule'],
+    ['p-schedule', 'p-complete'],
+    ['p-complete', 'p-reports'],
+    ['p-reports', 'p-pm'],
+  ];
+  const monitorSteps = [
+    ['m-sensor'],
+    ['m-sensor', 'm-ai'],
+    ['m-ai', 'm-trigger'],
+    ['m-trigger'],
+  ];
+  let pi = 0, mi = 0;
+  function tickPlatform() {
+    document.querySelectorAll('.stage-platform .node').forEach(n => n.classList.remove('active'));
+    platformSteps[pi].forEach(id => document.getElementById(id)?.classList.add('active'));
+    pi = (pi + 1) % platformSteps.length;
+  }
+  function tickMonitor() {
+    document.querySelectorAll('.stage-monitor .node').forEach(n => n.classList.remove('active'));
+    monitorSteps[mi].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('active');
+    });
+    mi = (mi + 1) % monitorSteps.length;
+  }
+  tickPlatform(); tickMonitor();
+  setInterval(tickPlatform, 1300);
+  setInterval(tickMonitor, 1500);
+</script>
+</body>
+</html>
