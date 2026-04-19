@@ -6,13 +6,13 @@ import ArcadeInline from "@/components/ArcadeInline";
 export const metadata = {
   title: "Features — EdgePredict Maintenance Platform",
   description:
-    "158 API endpoints. Work orders, PM scheduling, inspections, asset management, parts inventory, AI work order generation, motor monitoring, and more. Free for any plant size.",
+    "Every feature a maintenance team needs — work orders, PMs, inspections, scheduling, parts, reporting, mobile, and motor monitoring. What's free, what's Pro, what's Monitor. No add-ons. No per-user math.",
   alternates: {
     canonical: "https://www.edgepredict.io/features",
   },
   openGraph: {
     title: "Features — EdgePredict Maintenance Platform",
-    description: "158 API endpoints. Every feature a maintenance team needs. Free for any plant size.",
+    description: "Every feature a maintenance team needs. In one place. Free for any plant size.",
     url: "https://www.edgepredict.io/features",
     type: "website",
   },
@@ -102,12 +102,13 @@ export default function FeaturesPage() {
             Platform Features
           </p>
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
-            158 API endpoints.<br />
-            <span className="text-[#7655d6]">Every feature a maintenance team needs.</span>
+            Every feature a maintenance team needs.<br />
+            <span className="text-[#7655d6]">In one place.</span>
           </h1>
           <p className="text-base md:text-lg text-slate-400 max-w-2xl leading-relaxed mb-8">
-            The complete feature list — what&apos;s free, what&apos;s Pro, and what&apos;s in the Monitor tier.
-            No hidden add-ons. No per-user math.
+            The full list — work orders, PMs, inspections, scheduling, parts, reporting, mobile,
+            and motor monitoring. What&apos;s free, what&apos;s Pro, what&apos;s Monitor.
+            No add-ons. No per-user math.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
@@ -150,10 +151,21 @@ export default function FeaturesPage() {
           {/* Feature modules */}
           <div>
 
+            {/* ── Orientation ───────────────────────────────────────── */}
+            <section className="mb-12 p-6 bg-slate-50 rounded-xl border border-slate-200">
+              <p className="text-sm text-slate-600 leading-relaxed">
+                About 100 features below.{" "}
+                <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-500" /><span className="font-semibold text-slate-900">Green</span> = free forever.</span>{" "}
+                <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#7655d6]" /><span className="font-semibold text-slate-900">Purple</span> = Pro ($99/mo).</span>{" "}
+                <span className="inline-flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-cyan-500" /><span className="font-semibold text-slate-900">Cyan</span> = sensors (Monitor).</span>{" "}
+                Use the sidebar to jump to whatever matters to you.
+              </p>
+            </section>
+
             {/* ── Work Orders ───────────────────────────────────────── */}
             <Module id="work-orders" title="Work Orders" demo={<ArcadeInline src="https://demo.arcade.software/v2hUY27fDKM67Dzs6OwJ?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Create and Assign a Maintenance Work Order Using AI" label="See work orders in action" />}>
               <Feat tier="free" name="Create and assign work orders" desc="Open, assign, prioritize, and close work orders. Full field set: asset, location, type, priority, description, estimated hours, attachments." />
-              <Feat tier="free" name="10-status lifecycle" desc="Draft, Open, On Hold, In Progress, Waiting for Parts, Waiting for Approval, Paused, Declined, Completed, Closed. Every transition timestamped." />
+              <Feat tier="free" name="10-stage work order flow" desc="From Draft to Closed, including Waiting for Parts and Waiting for Approval. Every handoff timestamped so nothing falls through the cracks." />
               <Feat tier="free" name="Full audit trail" desc="Every field change, status transition, comment, and assignment logged with user and timestamp. Nothing disappears." />
               <Feat tier="free" name="Checklists within work orders" desc="Add step-by-step task checklists. Technicians check off steps as they go. Required or optional. Fails block completion if marked required." />
               <Feat tier="free" name="Labor hours tracking" desc="Log hours per technician per work order. Compare estimated vs. actual. Roll up to asset and category." />
@@ -181,6 +193,24 @@ export default function FeaturesPage() {
               <Feat tier="monitor" name="Dynamic PM scheduling" desc="Sensor data adjusts intervals in real time. A motor running clean at 100% health can extend its interval. A degrading motor gets bumped forward." />
             </Module>
 
+            {/* ── Mobile App ────────────────────────────────────────── */}
+            <Module id="mobile" title="Mobile App" demo={<ArcadeInline src="https://demo.arcade.software/2s0R9OZES9M7D5pce3Wp?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Track Maintenance Labor Hours in a Mobile Work Order" label="See mobile app in action" />}>
+              <Feat tier="free" name="iOS and Android apps" desc="Full-featured mobile apps. Not a mobile web wrapper. Native performance." />
+              <Feat tier="free" name="Offline mode" desc="Work orders, PMs, and inspections accessible and completable without a network connection. Sync when back online." />
+              <Feat tier="free" name="QR scan from mobile camera" desc="Scan an asset QR code to instantly open its record, start a work order, or begin an inspection. No typing the asset name." />
+              <Feat tier="free" name="Photo capture on work orders and inspections" desc="Attach photos directly from mobile camera on any work order or inspection item. Compressed and uploaded automatically." />
+              <Feat tier="free" name="Push notifications" desc="Work order assigned, PM due, inspection overdue. Configurable per event type." />
+            </Module>
+
+            {/* ── Scheduling ────────────────────────────────────────── */}
+            <Module id="scheduling" title="Scheduling" demo={<ArcadeInline src="https://demo.arcade.software/eBFucsmGB2uJ1yRrqBp9?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Schedule and Update Maintenance Work Orders" label="See scheduling in action" />}>
+              <Feat tier="free" name="Schedule board" desc="Week view with each technician in a lane. Unscheduled work orders in a side panel. See workload distribution at a glance." />
+              <Feat tier="free" name="Drag-and-drop assignment" desc="Drag any unscheduled work order onto a technician and day. Instantly assigned. Technician gets notified." />
+              <Feat tier="pro" name="AI scheduling suggestions" desc="One-click AI optimization. Looks at work order priority, due dates, technician availability, and workload balance. Suggests an optimized week. Review and confirm." />
+              <Feat tier="pro" name="Break-in work tracking" desc="Flag reactive work orders that break into planned schedules. Dashboard shows ratio of reactive to planned over time. Most supervisors are surprised by this number." />
+              <Feat tier="pro" name="Schedule PDF export" desc="Print the week's schedule as a PDF for shift handoffs and planning meetings." />
+            </Module>
+
             {/* ── Inspections ───────────────────────────────────────── */}
             <Module id="inspections" title="Inspections">
               <Feat tier="pro" name="Inspection templates" desc="Build reusable checklists with pass/fail, numeric, text, and photo capture items. Assign to asset types." />
@@ -191,13 +221,25 @@ export default function FeaturesPage() {
               <Feat tier="pro" name="Mobile inspection completion" desc="Technicians complete inspections on mobile. Camera capture for photo items. Works offline." />
             </Module>
 
-            {/* ── Scheduling ────────────────────────────────────────── */}
-            <Module id="scheduling" title="Scheduling" demo={<ArcadeInline src="https://demo.arcade.software/eBFucsmGB2uJ1yRrqBp9?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Schedule and Update Maintenance Work Orders" label="See scheduling in action" />}>
-              <Feat tier="free" name="Schedule board" desc="Week view with each technician in a lane. Unscheduled work orders in a side panel. See workload distribution at a glance." />
-              <Feat tier="free" name="Drag-and-drop assignment" desc="Drag any unscheduled work order onto a technician and day. Instantly assigned. Technician gets notified." />
-              <Feat tier="pro" name="AI scheduling suggestions" desc="One-click AI optimization. Looks at work order priority, due dates, technician availability, and workload balance. Suggests an optimized week. Review and confirm." />
-              <Feat tier="pro" name="Break-in work tracking" desc="Flag reactive work orders that break into planned schedules. Dashboard shows ratio of reactive to planned over time. Most supervisors are surprised by this number." />
-              <Feat tier="pro" name="Schedule PDF export" desc="Print the week's schedule as a PDF for shift handoffs and planning meetings." />
+            {/* ── Reporting & Analytics ─────────────────────────────── */}
+            <Module id="reporting" title="Reporting &amp; Analytics" demo={<ArcadeInline src="https://demo.arcade.software/mFrN2IbHottYYIEshVcS?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Review Maintenance Analytics and Take Action from the Reports Dashboard" label="See reports in action" />}>
+              <Feat tier="pro" name="MTTR (Mean Time to Repair)" desc="Average time from work order creation to completion, by asset, category, or time period. See where repairs take longest." />
+              <Feat tier="pro" name="PM compliance rate" desc="Percentage of scheduled PMs completed on time. Drill down by asset, location, or technician." />
+              <Feat tier="pro" name="Work order backlog analysis" desc="Count of open work orders by age bucket. See how long work has been sitting unresolved." />
+              <Feat tier="pro" name="Parts usage report" desc="Which parts were consumed, on which assets, over which time period. Informs reorder strategy." />
+              <Feat tier="pro" name="OEE dashboard" desc="Overall Equipment Effectiveness. Availability, performance, and quality inputs. Pulls from downtime logs and production data." />
+              <Feat tier="pro" name="KPI dashboard" desc="Configurable KPI tiles: work orders by status, PM compliance trend, MTTR trend, reactive vs. planned ratio, top failing assets." />
+              <Feat tier="pro" name="Pulse reports" desc="Weekly or monthly automated summary emailed to managers. Highlights what closed, what is overdue, what is trending worse, and what needs attention." />
+              <Feat tier="pro" name="Maintenance playbooks" desc="Export a comprehensive maintenance summary for any asset: full PM history, failure history, cost totals, parts consumed. Useful for reliability audits." />
+              <Feat tier="pro" name="Reactive vs. planned ratio" desc="Track how much of your team's time goes to break-in work vs. planned maintenance. The single most important leading indicator of program health." />
+            </Module>
+
+            {/* ── AI Features ───────────────────────────────────────── */}
+            <Module id="ai" title="AI Features">
+              <Feat tier="pro" name="AI work order generator (Gemini)" desc='Type a paragraph of field notes: "pump 3 grinding noise, bearings probably shot, needs seal kit, before Friday." Get back a structured work order with title, priority, 8-step procedure, parts list, estimated hours, and due date. About 3 seconds.' />
+              <Feat tier="pro" name="AI troubleshooter" desc="Describe the symptom and get root cause suggestions, recommended inspection steps, and related failure patterns from similar equipment. Runs on the work order." />
+              <Feat tier="pro" name="AI learns from corrections" desc="Change the estimated hours or procedure for a specific asset type and the AI applies that learning to future work orders for similar equipment." />
+              <Feat tier="pro" name="AI scheduling optimization" desc="One-click weekly schedule suggestion. Considers work order priority, due dates, technician workload, availability, and skill match. Returns an optimized schedule for review and confirmation." />
             </Module>
 
             {/* ── Assets & Locations ────────────────────────────────── */}
@@ -230,8 +272,8 @@ export default function FeaturesPage() {
             {/* ── Team & Roles ──────────────────────────────────────── */}
             <Module id="team" title="Team &amp; Roles">
               <Feat tier="free" name="6 RBAC roles" desc="Admin, Supervisor, Planner, Scheduler, Technician, and Requestor. Each role has a specific permission set tailored to what that person actually needs." />
-              <Feat tier="free" name="46 granular permissions" desc="Fine-grained control beyond role defaults. Modify permissions per user if needed." />
-              <Feat tier="free" name="Multi-tenant organizations" desc="Multiple sites or business units under one account. Users can belong to one or multiple orgs. Data is fully isolated between orgs." />
+              <Feat tier="free" name="46 permissions you can tune per person" desc="If your planner shouldn't be able to close work orders, turn it off. Done. Fine-grained control beyond role defaults." />
+              <Feat tier="free" name="Multi-site support" desc="Run two plants or twenty under one account. Users can belong to one site or several. Data stays separated unless you choose otherwise." />
               <Feat tier="free" name="Team chat with channels" desc="Dedicated channels per team, asset, or project. Direct messages. No need for a separate Slack workspace for maintenance." />
               <Feat tier="free" name="Message reactions and forwarding" desc="React to messages with emoji. Forward a message to another channel or DM. Keep conversations organized." />
               <Feat tier="free" name="Vendor portal" desc="Give external contractors or vendors secure, tokenized access to specific work orders. No full account required. They see only what they need." />
@@ -252,39 +294,9 @@ export default function FeaturesPage() {
               <Feat tier="monitor" name="Sensor-auto-detected downtime" desc="When a motor transitions from running to stopped unexpectedly, EdgePredict can flag a potential unplanned downtime event for review." />
             </Module>
 
-            {/* ── Reporting & Analytics ─────────────────────────────── */}
-            <Module id="reporting" title="Reporting &amp; Analytics" demo={<ArcadeInline src="https://demo.arcade.software/mFrN2IbHottYYIEshVcS?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Review Maintenance Analytics and Take Action from the Reports Dashboard" label="See reports in action" />}>
-              <Feat tier="pro" name="MTTR (Mean Time to Repair)" desc="Average time from work order creation to completion, by asset, category, or time period. See where repairs take longest." />
-              <Feat tier="pro" name="PM compliance rate" desc="Percentage of scheduled PMs completed on time. Drill down by asset, location, or technician." />
-              <Feat tier="pro" name="Work order backlog analysis" desc="Count of open work orders by age bucket. See how long work has been sitting unresolved." />
-              <Feat tier="pro" name="Parts usage report" desc="Which parts were consumed, on which assets, over which time period. Informs reorder strategy." />
-              <Feat tier="pro" name="OEE dashboard" desc="Overall Equipment Effectiveness. Availability, performance, and quality inputs. Pulls from downtime logs and production data." />
-              <Feat tier="pro" name="KPI dashboard" desc="Configurable KPI tiles: work orders by status, PM compliance trend, MTTR trend, reactive vs. planned ratio, top failing assets." />
-              <Feat tier="pro" name="Pulse reports" desc="Weekly or monthly automated summary emailed to managers. Highlights what closed, what is overdue, what is trending worse, and what needs attention." />
-              <Feat tier="pro" name="Maintenance playbooks" desc="Export a comprehensive maintenance summary for any asset: full PM history, failure history, cost totals, parts consumed. Useful for reliability audits." />
-              <Feat tier="pro" name="Reactive vs. planned ratio" desc="Track how much of your team's time goes to break-in work vs. planned maintenance. The single most important leading indicator of program health." />
-            </Module>
-
-            {/* ── AI Features ───────────────────────────────────────── */}
-            <Module id="ai" title="AI Features">
-              <Feat tier="pro" name="AI work order generator (Gemini)" desc='Type a paragraph of field notes: "pump 3 grinding noise, bearings probably shot, needs seal kit, before Friday." Get back a structured work order with title, priority, 8-step procedure, parts list, estimated hours, and due date. About 3 seconds.' />
-              <Feat tier="pro" name="AI troubleshooter" desc="Describe the symptom and get root cause suggestions, recommended inspection steps, and related failure patterns from similar equipment. Runs on the work order." />
-              <Feat tier="pro" name="AI learns from corrections" desc="Change the estimated hours or procedure for a specific asset type and the AI applies that learning to future work orders for similar equipment." />
-              <Feat tier="pro" name="AI scheduling optimization" desc="One-click weekly schedule suggestion. Considers work order priority, due dates, technician workload, availability, and skill match. Returns an optimized schedule for review and confirmation." />
-            </Module>
-
-            {/* ── Mobile App ────────────────────────────────────────── */}
-            <Module id="mobile" title="Mobile App" demo={<ArcadeInline src="https://demo.arcade.software/2s0R9OZES9M7D5pce3Wp?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Track Maintenance Labor Hours in a Mobile Work Order" label="See mobile app in action" />}>
-              <Feat tier="free" name="iOS and Android apps" desc="Full-featured mobile apps. Not a mobile web wrapper. Native performance." />
-              <Feat tier="free" name="Offline mode" desc="Work orders, PMs, and inspections accessible and completable without a network connection. Sync when back online." />
-              <Feat tier="free" name="QR scan from mobile camera" desc="Scan an asset QR code to instantly open its record, start a work order, or begin an inspection. No typing the asset name." />
-              <Feat tier="free" name="Photo capture on work orders and inspections" desc="Attach photos directly from mobile camera on any work order or inspection item. Compressed and uploaded automatically." />
-              <Feat tier="free" name="Push notifications" desc="Work order assigned, PM due, inspection overdue. Configurable per event type." />
-            </Module>
-
             {/* ── Integrations ──────────────────────────────────────── */}
             <Module id="integrations" title="Integrations">
-              <Feat tier="free" name="REST API (158 endpoints)" desc="Full API coverage for every object: assets, work orders, PMs, inspections, parts, users, locations, organizations. Authenticated with API keys." />
+              <Feat tier="free" name="REST API" desc="Connect to anything: ERPs, BI tools, historian systems. Full API access to every object in the platform — assets, work orders, PMs, inspections, parts, users, locations, organizations. API keys included." />
               <Feat tier="free" name="CSV import for all objects" desc="Import assets, parts, work orders, and locations from a spreadsheet. Bring your existing data in without manual re-entry." />
               <Feat tier="pro" name="CSV export for all objects" desc="Export any object — assets, work orders, parts, reports — to CSV for external analysis, audits, or purchasing." />
               <Feat tier="pro" name="QuickBooks Online integration" desc="Sync work order costs, parts expenses, and purchase orders to QuickBooks. Keep accounting and maintenance data aligned without double entry." />
@@ -292,26 +304,30 @@ export default function FeaturesPage() {
 
             {/* ── Motor Monitoring ──────────────────────────────────── */}
             <Module id="motor-monitoring" title="Motor Monitoring">
-              <Feat tier="monitor" name="3-phase current monitoring" desc="Split-core CTs clamp onto motor feeder conductors. Non-invasive. No rewiring. No shaft access. Handles line-fed and VFD-driven motors." />
-              <Feat tier="monitor" name="ATM90E32 metering IC" desc="Three-phase metering chip with per-phase RMS current, voltage, power factor, and harmonic content. Accurate to 0.1% for energy, sub-percent for current." />
-              <Feat tier="monitor" name="ESP32 edge processor" desc="Waveform data processed on the edge device. Health score computed locally every 2 seconds. Only summary metrics transmitted." />
-              <Feat tier="monitor" name="EWMA baseline learning with state bucketing" desc="Exponentially weighted moving average baselines updated continuously. Separate baselines per motor operating state (loaded, unloaded, VFD speed bands) prevent false alarms during normal load variation." />
-              <Feat tier="monitor" name="Z-score deviation scoring" desc="Health score derived from z-score deviation from baseline. Abnormal current patterns produce statistically meaningful alerts, not threshold crossings." />
-              <Feat tier="monitor" name="Transition lockout" desc="Prevents false alerts during motor start and stop transients. Alert window opens only after stable operating conditions are confirmed." />
-              <Feat tier="monitor" name="Phase imbalance detection" desc="Persistent current imbalance across phases indicates winding degradation, supply issues, or mechanical coupling problems. Flagged before damage occurs." />
-              <Feat tier="monitor" name="Phase loss detection" desc="Single-phasing destroys motors in minutes. EdgePredict catches it within seconds." />
+              <Feat tier="monitor" name="Phase loss detection" desc="Single-phasing destroys motors in minutes. EdgePredict catches it in seconds." />
               <Feat tier="monitor" name="Overload and near-stall detection" desc="Current persistently above baseline indicates seized bearing, blocked impeller, or mechanical overload. Alert generated immediately." />
+              <Feat tier="monitor" name="Phase imbalance detection" desc="Persistent current imbalance across phases indicates winding degradation, supply issues, or mechanical coupling problems. Flagged before damage occurs." />
               <Feat tier="monitor" name="Load instability detection" desc="Cyclic current fluctuations indicate intermittent mechanical problems: intermittent binding, coupling wear, impeller cavitation." />
               <Feat tier="monitor" name="Mechanical and electrical fault indicators" desc="Current signature patterns correlate with bearing wear, rotor bar cracks, and air gap eccentricity. Indicators flagged for maintenance confirmation." />
-              <Feat tier="monitor" name="Cellular connectivity (4G LTE)" desc="No plant network required. No IT ticket. No firewall changes. The edge gateway connects on cellular. Default for all pilots." />
-              <Feat tier="monitor" name="MQTT to InfluxDB pipeline" desc="Data flows: edge device publishes via MQTT to a Telegraf listener, which writes to InfluxDB time-series database. Grafana dashboards optional for advanced users." />
-              <Feat tier="monitor" name="Cloudflare Tunnel for remote access" desc="Secure outbound-only tunnel for remote diagnostics. No inbound ports. No VPN required." />
+              <Feat tier="monitor" name="3-phase current monitoring" desc="Clamps onto the motor's feed wires in about 10 minutes. No rewiring. No shaft access. Works on VFD and line-fed motors." />
+              <Feat tier="monitor" name="Cellular out of the box" desc="No IT ticket. No firewall rules. No begging the network admin. Plug it in, it connects." />
+              <Feat tier="monitor" name="Smart alerts, not dumb thresholds" desc="The system flags a motor only when its behavior is genuinely abnormal for that motor. You get fewer alerts, and the ones you get mean something." />
+              <Feat tier="monitor" name="No false alarms on startup" desc="Startups and shutdowns look weird on paper. We wait until the motor is actually running before scoring it." />
+              <Feat tier="monitor" name="Auto-created work orders from sensor alerts" desc="Configure condition triggers so that when a specific fault indicator fires, a work order is created automatically with the asset, fault description, and priority pre-filled." />
               <Feat tier="monitor" name="Live web dashboard" desc="Per-motor health score, phase current traces, load deviation, historical trending. Accessible from any browser." />
               <Feat tier="monitor" name="Real-time and email alerts" desc="In-dashboard alerts and email notifications when health score drops or fault indicators trigger." />
               <Feat tier="monitor" name="Weekly health summary emails" desc="Automated weekly digest: all motors, their scores, any anomalies flagged during the week, recommended actions." />
-              <Feat tier="monitor" name="Auto-created work orders from sensor alerts" desc="Configure condition triggers so that when a specific fault indicator fires, a work order is created automatically with the asset, fault description, and priority pre-filled." />
+              <Feat tier="monitor" name="Secure remote support" desc="If you want help reading an alert, we can look at your dashboard without asking IT to open a port." />
               <Feat tier="monitor" name="Optional voltage reference" desc="Plug-in transformer tap adds voltage measurement. Unlocks voltage unbalance, undervoltage, power factor, and supply quality monitoring." />
               <Feat tier="monitor" name="Volume discounts for 5+ motors" desc="Contact us for pricing on fleets larger than 5 motors." />
+              <li className="flex items-start gap-3 py-3 mt-2 border-t border-slate-200">
+                <div className="text-sm text-slate-600">
+                  Want the engineering details — chipset, edge compute, baselining math, data pipeline?{" "}
+                  <Link href="/monitoring/how-it-works" className="font-semibold text-[#7655d6] hover:underline">
+                    See how it works →
+                  </Link>
+                </div>
+              </li>
             </Module>
 
           </div>
