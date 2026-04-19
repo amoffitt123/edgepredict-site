@@ -10,6 +10,91 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: 'reactive-to-planned-ratio',
+    title: "The One Number That Tells You If You're Winning",
+    excerpt: "Most maintenance managers think they're 60/40 planned. The data says 20/80. The gap between those two numbers is the whole job.",
+    category: 'Industry',
+    date: '2026-04-19',
+    readingTime: 5,
+    content: `## Dave's Monday Standup
+
+Dave manages maintenance at a food packaging plant outside Grand Rapids. Monday, 7am standup. He asks the room, "how'd we do last week?" Three techs nod. Somebody says "busy." Dave nods back. The meeting moves on.
+
+Dave has been running this meeting for eleven years. He doesn't know whether last week was better than the fifty before it. He has a feeling. The feeling is wrong.
+
+This is the core problem. The meeting happens. The data doesn't.
+
+[[IMG:blog-reactive-ratio-hero-whiteboard.jpg|Maintenance supervisor facing a chaotic whiteboard in a plant maintenance office|The meeting happens. The data doesn't.]]
+
+## What the Ratio Actually Is
+
+There are two kinds of work in a maintenance department.
+
+Planned work is the work you scheduled in advance. Preventive maintenance on the calendar. Inspections on the list. Repairs you saw coming.
+
+Reactive work is the work that broke into your week. A bearing that failed at 2am. A belt that slipped on the second shift. The compressor that's been "fine" for three months until it wasn't.
+
+World-class programs run 80% planned, 20% reactive. Most plants are flipped. The industry average sits closer to 30/70. Some plants are at 20/80 and don't know it.
+
+Most plants aren't at 30/70 because their techs are lazy. They're at 30/70 because nobody is measuring it.
+
+## Why You Can't Feel the Ratio
+
+Every maintenance manager we talk to has an estimate. "I'd say we're about 60/40." When they actually run the numbers, it's 20/80.
+
+The gap isn't denial. It's that reactive work feels small in the moment.
+
+The bearing swap on Tuesday. The belt that slipped on Wednesday. The motor that had to come off at 2am on Thursday. The afternoon someone spent cleaning up after a coupling sheared. None of them felt like break-in work while they were happening. All of them were.
+
+You can't feel a ratio. You have to count it.
+
+## Why This Beats MTBF and PM Compliance
+
+MTBF tells you what already broke. Useful, but lagging. By the time the number moves, the motor is already in the shop.
+
+PM compliance tells you whether you did the PMs. But were they the right PMs on the right assets at the right frequency? PM compliance is a process metric dressed up as a strategic one.
+
+The reactive-to-planned ratio is the only KPI that tells you whether your strategy is working. When it trends down, everything else follows: MTBF extends, overtime drops, parts spend steadies, OEE climbs.
+
+MTBF tells you what broke. PM compliance tells you what you did. The reactive ratio tells you whether you're getting anywhere.
+
+## The Counting Problem
+
+The ratio is almost always wrong because the logging system is almost always broken.
+
+Most CMMS platforms require a technician to log a work order for every task. On paper that sounds fine. In practice, a tech isn't going to open a laptop, click through three screens, and type a description for a fifteen-minute bearing repair. So the fifteen-minute jobs go uncounted. The ratio reflects only the work that was painful enough to log.
+
+[[IMG:blog-reactive-ratio-clipboard-detail.jpg|Close-up of a weathered maintenance clipboard on an industrial workbench, with handwritten notes, a coffee ring stain, and oily thumbprints|This is where the ratio goes wrong. Not in the office. At the clipboard.]]
+
+If your system makes logging a fifteen-minute repair feel like a fifteen-minute punishment, your reactive ratio is going to lie to you forever.
+
+Every plant that ever fixed its reactive ratio fixed its logging first. Usually the fix is mobile-first work orders. A phone in the tech's pocket. Voice-to-text that turns a sentence into a structured WO in three seconds. The goal is to make logging a fifteen-minute job feel like a thirty-second job, because that is the only way it actually happens.
+
+[The AI work order generator](/features#ai) was built for exactly this. A paragraph of field notes becomes a structured work order with title, priority, procedure, parts list, hours, and due date. We built it because the logging problem was the first thing every pilot plant surfaced.
+
+## What to Do With the Number
+
+At 70% reactive, you are in crisis. A PM schedule probably exists but isn't being run. Don't go buy a better CMMS. Go find out which PMs the team has been skipping, and why.
+
+At 50% reactive, your PM frequencies are probably wrong. Some assets are getting PM'd monthly that should be weekly. Others are getting weekly PMs that could run quarterly. The work order data tells you which is which, once you start counting.
+
+At 30% reactive, you are doing well. This is where you've earned the right to invest in condition-based monitoring. Time-based PMs max out around here. You cannot get lower than 30% by adding more PMs. You need sensors that tell you when a motor actually needs attention instead of when the calendar says it should.
+
+Under 20% reactive, you are in the top 5% of plants. Tell other plant managers how you did it. They need to hear it.
+
+## The Honest Upsell
+
+Condition-based monitoring is how you break the 20% floor. Time-based PMs can't tell the healthy motor from the degrading one. They treat both the same. A real sensor on the motor can tell the difference. [Motor Monitor](/monitoring) does exactly this: a clamp-on sensor reads current, scores motor health every two seconds, and adjusts PM frequency based on what the motor is actually doing. You still run PMs. You just stop running them on motors that don't need one yet.
+
+But that is chapter two. Chapter one is counting.
+
+## Next Monday
+
+[[IMG:blog-reactive-ratio-dashboard-payoff.jpg|A maintenance manager and a technician reviewing a dashboard on a wall-mounted monitor in a clean modern maintenance control room|Same meeting. Different number.]]
+
+Next Monday, Dave will still walk into the standup and ask "how'd we do last week?" The only difference is this time, when the room nods, he'll have the number.`,
+  },
+  {
     slug: 'free-cmms-for-plants-that-need-it',
     title: 'We Built a Free CMMS. Here\'s What\'s In It.',
     excerpt: 'EdgePredict is a full maintenance management platform: work orders, PM scheduling, inspections, asset management, parts inventory, reporting, and AI-generated work orders. The base plan is free. Not a trial. Free.',
@@ -20,7 +105,7 @@ export const posts: BlogPost[] = [
 
 Why? Because 85% of small plants run maintenance on whiteboards. Not because they don't care about their equipment. Because enterprise CMMS software costs $50-100K to implement, and the cheap stuff is still $16-49 per user per month. That math doesn't work for a plant with a 3-person maintenance team.
 
-We're electrical engineers and reliability professionals who've been on plant floors. Our founder designed the sensor PCB, wrote the ESP32 firmware, and deployed the first pilot at a pharmaceutical plant by hand. We built this because we needed it and couldn't find it.
+We're electrical engineers and reliability professionals who've been on plant floors. We designed the sensor PCB, wrote the ESP32 firmware, and deployed the first pilot at a pharmaceutical plant by hand. We built this because we needed it and couldn't find it.
 
 Here's what's actually in the free plan: work orders with full lifecycle tracking, PM scheduling with auto-generated templates, inspections with pass/fail checklists that auto-create corrective work orders, asset management with risk scoring, parts inventory with purchase orders, a reporting dashboard showing MTTR and PM compliance, and an AI work order generator that turns a paragraph of field notes into a structured work order in about 3 seconds.
 

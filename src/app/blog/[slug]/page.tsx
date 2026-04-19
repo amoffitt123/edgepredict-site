@@ -134,11 +134,85 @@ export default async function BlogPostPage({
 
         {/* Content */}
         <article className="prose prose-gray max-w-none">
-          {paragraphs.map((para, i) => (
-            <p key={i} className="text-gray-700 leading-relaxed mb-5 text-base">
-              {para.trim()}
-            </p>
-          ))}
+          {paragraphs.map((para, i) => {
+            const trimmed = para.trim();
+
+            const imgMatch = trimmed.match(/^\[\[IMG:([^|\]]+)\|([^|\]]*)(?:\|([^\]]*))?\]\]$/);
+            if (imgMatch) {
+              const [, src, alt, caption] = imgMatch;
+              return (
+                <figure key={i} className="my-10">
+                  <img
+                    src={`/blog/${src}`}
+                    alt={alt}
+                    loading="lazy"
+                    className="w-full rounded-xl border border-gray-200"
+                  />
+                  {caption && (
+                    <figcaption className="text-sm text-gray-500 mt-3 text-center italic">
+                      {caption}
+                    </figcaption>
+                  )}
+                </figure>
+              );
+            }
+
+            if (trimmed.startsWith("## ")) {
+              return (
+                <h2 key={i} className="text-2xl font-bold text-gray-900 mt-10 mb-4">
+                  {trimmed.slice(3)}
+                </h2>
+              );
+            }
+
+            if (trimmed.startsWith("### ")) {
+              return (
+                <h3 key={i} className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+                  {trimmed.slice(4)}
+                </h3>
+              );
+            }
+
+            const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+            if (linkPattern.test(trimmed)) {
+              const parts: (string | React.ReactElement)[] = [];
+              let lastIndex = 0;
+              let match: RegExpExecArray | null;
+              linkPattern.lastIndex = 0;
+              while ((match = linkPattern.exec(trimmed)) !== null) {
+                if (match.index > lastIndex) {
+                  parts.push(trimmed.slice(lastIndex, match.index));
+                }
+                const [, label, href] = match;
+                const isExternal = href.startsWith("http");
+                parts.push(
+                  <Link
+                    key={`${i}-${match.index}`}
+                    href={href}
+                    className="text-[#7655d6] hover:underline font-medium"
+                    {...(isExternal ? { target: "_blank", rel: "noopener" } : {})}
+                  >
+                    {label}
+                  </Link>
+                );
+                lastIndex = match.index + match[0].length;
+              }
+              if (lastIndex < trimmed.length) {
+                parts.push(trimmed.slice(lastIndex));
+              }
+              return (
+                <p key={i} className="text-gray-700 leading-relaxed mb-5 text-base">
+                  {parts}
+                </p>
+              );
+            }
+
+            return (
+              <p key={i} className="text-gray-700 leading-relaxed mb-5 text-base">
+                {trimmed}
+              </p>
+            );
+          })}
         </article>
 
         {/* Bottom CTA */}
