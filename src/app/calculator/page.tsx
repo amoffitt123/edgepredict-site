@@ -46,7 +46,7 @@ function calcResults(i: Inputs) {
     i.strategy === "reactive" ? 0.75 : i.strategy === "preventive" ? 0.5 : 0.3;
   const avoidableLoss = annualRisk * preventablePct;
 
-  const epAnnualCost = i.numMotors * 200 * 12;
+  const epAnnualCost = i.numMotors * 89 * 12;
 
   const netBenefit = avoidableLoss - epAnnualCost;
   const roi = epAnnualCost > 0 ? (avoidableLoss / epAnnualCost) * 100 : 0;
@@ -335,7 +335,7 @@ export default function CalculatorPage() {
                 {[
                   { label: "Annual Risk Exposure", value: fmt(r.annualRisk), sub: "total failure costs/year", color: "text-red-400" },
                   { label: "Avoidable Loss", value: fmt(r.avoidableLoss), sub: `${fmtPct(r.preventablePct * 100)} preventable`, color: "text-yellow-400" },
-                  { label: "EdgePredict / Year", value: fmt(r.epAnnualCost), sub: `${inputs.numMotors} motors × $200/mo`, color: "text-[#a78fe8]" },
+                  { label: "EdgePredict / Year", value: fmt(r.epAnnualCost), sub: `${inputs.numMotors} motors × $89/mo`, color: "text-[#a78fe8]" },
                   { label: "Net Annual Benefit", value: fmt(r.netBenefit), sub: "avoidable − EP cost", color: r.netBenefit >= 0 ? "text-green-400" : "text-red-400" },
                 ].map((m) => (
                   <div key={m.label} className="bg-gray-800 rounded-lg p-4">
@@ -460,7 +460,7 @@ export default function CalculatorPage() {
               >
                 Start Your Free Pilot <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-              <p className="text-xs text-gray-400 mt-2">$200/month per motor · Free 60-day pilot</p>
+              <p className="text-xs text-gray-400 mt-2">$89/month per motor · Free pilot, hardware included</p>
             </div>
           </div>
         </div>

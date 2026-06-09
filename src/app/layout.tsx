@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Work orders, PMs, inspections, playbooks, reporting, and live motor monitoring — one platform, not five. Free to start with optional motor monitoring sensors. Built for small and mid-size plants.",
   keywords:
-    "maintenance platform, CMMS, maintenance management, motor monitoring, predictive maintenance, preventive maintenance software, work order management, PM scheduling, inspections, electrical signature analysis, free maintenance platform, MaintainX alternative",
+    "maintenance platform, CMMS, maintenance management, motor monitoring, condition monitoring, preventive maintenance software, work order management, PM scheduling, inspections, motor health monitoring, free maintenance platform, MaintainX alternative",
   authors: [{ name: "EdgePredict" }],
   creator: "EdgePredict",
   publisher: "EdgePredict",

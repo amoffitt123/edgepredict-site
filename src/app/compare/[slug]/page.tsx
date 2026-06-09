@@ -107,11 +107,11 @@ export default async function ComparePage({
                 EdgePredict pricing
               </p>
               <p className="text-4xl font-bold text-white mb-3">
-                {isMonitoring ? "$200/mo per motor" : "$99/mo per site"}
+                {isMonitoring ? "$89/mo per motor" : "$99/mo per site"}
               </p>
               <p className="text-sm text-slate-400 leading-relaxed">
                 {isMonitoring
-                  ? "Hardware included. 60-day free pilot. Cellular connectivity, no IT required. Full maintenance platform also included — unlimited users and work orders."
+                  ? "Hardware included. Free pilot. Cellular connectivity, no IT required. Full maintenance platform also included — unlimited users and work orders."
                   : "Flat rate for your entire site. Unlimited users. Unlimited work orders. No per-user math, no surprise renewals. Free tier also available with no credit card required."}
               </p>
             </div>

@@ -109,7 +109,7 @@ export const COMPETITORS: Competitor[] = [
       },
       {
         title: "We're the only platform where maintenance and sensors are one system",
-        body: "MaintainX has no sensor integration. EdgePredict Monitor connects real-time ESA motor data directly to your PM schedule. No third-party integrations, no manual data entry.",
+        body: "MaintainX has no sensor integration. EdgePredict Monitor connects real-time condition monitoring data directly to your PM schedule. No third-party integrations, no manual data entry.",
       },
     ],
     faqs: [
@@ -276,7 +276,7 @@ export const COMPETITORS: Competitor[] = [
       },
       {
         title: "UpKeep is built for facilities. We're built for plants.",
-        body: "UpKeep focuses on facilities management — commercial buildings, office campuses. EdgePredict is built for industrial maintenance: motors, conveyors, pumps, production equipment. Our sensor tier does ESA motor monitoring that UpKeep has no equivalent for.",
+        body: "UpKeep focuses on facilities management — commercial buildings, office campuses. EdgePredict is built for industrial maintenance: motors, conveyors, pumps, production equipment. Our sensor tier does current-based condition monitoring that UpKeep has no equivalent for.",
       },
     ],
     faqs: [
@@ -350,7 +350,7 @@ export const COMPETITORS: Competitor[] = [
       },
       {
         title: "Annual contracts lock you in before you know if it works",
-        body: "Fiix sells annual agreements, which means you're committed before you've seen the system handle real volume. EdgePredict is month-to-month. Cancel anytime. The Monitor tier pilot is 60 days free — if it doesn't prove value, send the hardware back.",
+        body: "Fiix sells annual agreements, which means you're committed before you've seen the system handle real volume. EdgePredict is month-to-month. Cancel anytime. The Monitor tier pilot is free - if it doesn't prove value, send the hardware back.",
       },
       {
         title: "Fiix has no path to sensor integration",
@@ -435,7 +435,7 @@ export const COMPETITORS: Competitor[] = [
       },
       {
         title: "A path to predictive maintenance",
-        body: "Hippo has no sensor roadmap. EdgePredict Monitor connects ESA-based motor health data directly to your PM schedule — condition-based triggers, real-time health scores every 2 seconds, and 20-minute non-invasive installation.",
+        body: "Hippo has no sensor roadmap. EdgePredict Monitor connects current-based motor health data directly to your PM schedule -- condition-based triggers, real-time health scores every 2 seconds, and 20-minute non-invasive installation.",
       },
     ],
     faqs: [
@@ -458,10 +458,10 @@ export const COMPETITORS: Competitor[] = [
     slug: "augury-alternative",
     name: "Augury",
     category: "monitoring",
-    metaTitle: "Augury Alternative | EdgePredict — $200/Motor vs $500+/Motor, Full Platform Included",
+    metaTitle: "Augury Alternative | EdgePredict — $89/Motor vs $500+/Motor, Full Platform Included",
     metaDescription:
-      "Augury charges $500+/motor/mo for monitoring only. EdgePredict Monitor is $200/mo per motor with hardware, cellular connectivity, and a full maintenance platform included.",
-    heroHeadline: "Augury is $500+/motor for monitoring only. We're $200 and include the full platform.",
+      "Augury charges $500+/motor/mo for monitoring only. EdgePredict Monitor is $89/mo per motor with hardware, cellular connectivity, and a full maintenance platform included.",
+    heroHeadline: "Augury is $500+/motor for monitoring only. We're $89 and include the full platform.",
     heroSubhead:
       "Augury is an enterprise AI monitoring platform designed for Fortune 500 facilities teams. EdgePredict Monitor is built for the plant that wants real motor health data without a six-figure contract — and gets a full maintenance management system alongside it.",
     pricingLabel: "$500+/motor/mo",
@@ -472,30 +472,30 @@ export const COMPETITORS: Competitor[] = [
     hasPricingScale: true,
     pricingScaleLabel: "motors",
     pricingScale: [
-      { size: "3 motors",  them: "$1,500+/mo",  ep: "$600/mo",   savings: "$900+/mo",    epWins: true },
-      { size: "10 motors", them: "$5,000+/mo",  ep: "$2,000/mo", savings: "$3,000+/mo",  epWins: true },
-      { size: "25 motors", them: "$12,500+/mo", ep: "$5,000/mo", savings: "$7,500+/mo",  epWins: true },
-      { size: "50 motors", them: "$25,000+/mo", ep: "$10,000/mo",savings: "$15,000+/mo", epWins: true },
+      { size: "3 motors",  them: "$1,500+/mo",  ep: "$267/mo",    savings: "$1,233+/mo",   epWins: true },
+      { size: "10 motors", them: "$5,000+/mo",  ep: "$890/mo",    savings: "$4,110+/mo",  epWins: true },
+      { size: "25 motors", them: "$12,500+/mo", ep: "$2,225/mo",  savings: "$10,275+/mo", epWins: true },
+      { size: "50 motors", them: "$25,000+/mo", ep: "$4,450/mo",  savings: "$20,550+/mo", epWins: true },
     ],
     tco: {
       context: "10 motors monitored, 3-year total cost",
       rows: [
-        { label: "Year 1", them: "$60,000+", ep: "$24,000" },
-        { label: "Year 2", them: "$60,000+", ep: "$24,000" },
-        { label: "Year 3", them: "$60,000+", ep: "$24,000" },
+        { label: "Year 1", them: "$60,000+", ep: "$10,680" },
+        { label: "Year 2", them: "$60,000+", ep: "$10,680" },
+        { label: "Year 3", them: "$60,000+", ep: "$10,680" },
       ],
       totalThem: "$180,000+",
-      totalEp: "$72,000",
-      totalSavings: "$108,000+",
-      disclaimer: "Augury pricing based on industry estimates of $500+/motor/mo. EdgePredict Monitor at $200/mo per motor includes hardware and a full maintenance platform. Augury pricing requires a sales engagement — contact them for actual figures.",
+      totalEp: "$32,040",
+      totalSavings: "$147,960+",
+      disclaimer: "Augury pricing based on industry estimates of $500+/motor/mo. EdgePredict Monitor at $89/mo per motor includes hardware and a full maintenance platform. Augury pricing requires a sales engagement -- contact them for actual figures.",
     },
     featureRows: [
-      { feature: "Price per motor",            ep: "$200/mo (hardware included)", them: "$500+/mo (est.)" },
+      { feature: "Price per motor",            ep: "$89/mo (hardware included)", them: "$500+/mo (est.)" },
       { feature: "Hardware included",          ep: "✓",                           them: "Varies" },
       { feature: "Installation",               ep: "20 min, non-invasive",        them: "Professional install required" },
       { feature: "Connectivity",               ep: "Cellular, no IT required",    them: "Requires network integration" },
       { feature: "Health score refresh rate",  ep: "Every 2 seconds (edge)",      them: "Cloud-processed (delayed)" },
-      { feature: "Free pilot",                 ep: "60 days, hardware included",  them: "No" },
+      { feature: "Free pilot",                 ep: "Yes, hardware included",  them: "No" },
       { feature: "Maintenance platform included", ep: "✓ (full platform, free)",     them: "✗ (monitoring only)" },
       { feature: "Work orders",                ep: "✓ (free tier)",               them: "✗" },
       { feature: "PM scheduling",              ep: "✓ (free tier)",               them: "✗" },
@@ -516,17 +516,17 @@ export const COMPETITORS: Competitor[] = [
       },
       {
         title: "Try it before you commit — for free",
-        body: "Augury requires a contract before you see value. EdgePredict's 60-day pilot ships hardware, you install it in 20 minutes, and if we don't surface useful data, you return the hardware. No contract, no obligation.",
+        body: "Augury requires a contract before you see value. EdgePredict's free pilot ships hardware, you install it in 20 minutes, and if we don't surface useful data, you return the hardware. No contract, no obligation.",
       },
     ],
     faqs: [
       {
         q: "Does EdgePredict use vibration sensors like Augury?",
-        a: "No. EdgePredict uses Electrical Signature Analysis (ESA) — 3-phase current monitoring via split-core CTs that clamp around the motor leads. No vibration sensors, no accelerometers, no physical contact with the motor. 20-minute installation, no rewiring, no downtime. ESA detects phase imbalance, electrical faults, bearing degradation (via current harmonics), and load instability.",
+        a: "No. EdgePredict uses current-based condition monitoring -- 3-phase current monitoring via split-core CTs that clamp around the motor leads. No vibration sensors, no accelerometers, no physical contact with the motor. 20-minute installation, no rewiring, no downtime. Current-based monitoring detects phase imbalance, load anomalies, current instability, and abnormal operating conditions.",
       },
       {
-        q: "Is ESA as accurate as vibration analysis?",
-        a: "For electrical faults, load anomalies, and phase conditions — yes, often more sensitive than vibration. For pure mechanical faults like early-stage bearing damage, vibration has an edge in specific scenarios. The practical difference: ESA installs in 20 minutes without touching the motor. Vibration sensors require physical mounting on the motor housing, which can require permits, downtime, and access that isn't always available.",
+        q: "Is current-based monitoring as accurate as vibration analysis?",
+        a: "For electrical faults, load anomalies, and phase conditions -- yes, often more sensitive than vibration. For pure mechanical faults like early-stage bearing damage, vibration has an edge in specific scenarios. The practical difference: current-based monitoring installs in 20 minutes without touching the motor. Vibration sensors require physical mounting on the motor housing, which can require permits, downtime, and access that isn't always available.",
       },
       {
         q: "What does EdgePredict's motor health score actually measure?",

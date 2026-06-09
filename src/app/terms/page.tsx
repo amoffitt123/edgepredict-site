@@ -23,7 +23,7 @@ export default function TermsPage() {
             Legal
           </p>
           <h1 className="text-4xl font-bold mb-6">Terms of Service</h1>
-          <p className="text-slate-500 text-sm mb-10">Last updated: March 2025</p>
+          <p className="text-slate-500 text-sm mb-10">Last updated: June 2026</p>
 
           <div className="prose prose-slate max-w-none space-y-8 text-slate-700 text-sm leading-relaxed">
             <section>
@@ -55,7 +55,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-900 mb-3">Motor Monitoring Pilot Program</h2>
               <p>
-                The 60-day free pilot provides hardware on a loan basis. Hardware must be returned
+                The free pilot provides hardware on a loan basis. Hardware must be returned
                 in working condition if you elect not to continue after the pilot period. You are
                 responsible for hardware during the pilot. Intentional damage or loss will be billed
                 at cost.
@@ -65,7 +65,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-900 mb-3">Paid Subscriptions</h2>
               <p>
-                Pro ($99/mo) and Monitor ($200/mo per motor) subscriptions are billed monthly.
+                Pro ($99/mo) and Monitor ($89/mo per motor) subscriptions are billed monthly.
                 You may cancel at any time. No refunds are issued for partial billing periods.
                 Volume discounts are available for 5 or more monitored motors.
               </p>

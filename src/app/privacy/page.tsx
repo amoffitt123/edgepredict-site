@@ -23,7 +23,7 @@ export default function PrivacyPage() {
             Legal
           </p>
           <h1 className="text-4xl font-bold mb-6">Privacy Policy</h1>
-          <p className="text-slate-500 text-sm mb-10">Last updated: March 2025</p>
+          <p className="text-slate-500 text-sm mb-10">Last updated: June 2026</p>
 
           <div className="prose prose-slate max-w-none space-y-8 text-slate-700 text-sm leading-relaxed">
             <section>

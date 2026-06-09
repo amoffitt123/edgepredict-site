@@ -51,7 +51,7 @@ With EdgePredict (5 yr):${fmt(results.fiveYrWithEP)}
 5-year estimated savings:${fmt(results.fiveYrSavings)}
 
 ---
-To start a free 60-day pilot: https://edgepredict.io/pilot
+To start a free pilot: https://edgepredict.io/pilot
 Questions? anderson@edgepredict.io · (703) 401-6262
 `.trim();
 

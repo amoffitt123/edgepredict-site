@@ -105,7 +105,7 @@ Next Monday, Dave will still walk into the standup and ask "how'd we do last wee
 
 Why? Because 85% of small plants run maintenance on whiteboards. Not because they don't care about their equipment. Because enterprise CMMS software costs $50-100K to implement, and the cheap stuff is still $16-49 per user per month. That math doesn't work for a plant with a 3-person maintenance team.
 
-We're electrical engineers and reliability professionals who've been on plant floors. We designed the sensor PCB, wrote the ESP32 firmware, and deployed the first pilot at a pharmaceutical plant by hand. We built this because we needed it and couldn't find it.
+We're electrical engineers and reliability professionals who've been on plant floors. We designed the hardware, wrote the firmware, and deployed the first pilot at a pharmaceutical plant by hand. We built this because we needed it and couldn't find it.
 
 Here's what's actually in the free plan: work orders with full lifecycle tracking, PM scheduling with auto-generated templates, inspections with pass/fail checklists that auto-create corrective work orders, asset management with risk scoring, parts inventory with purchase orders, a reporting dashboard showing MTTR and PM compliance, and an AI work order generator that turns a paragraph of field notes into a structured work order in about 3 seconds.
 
@@ -139,7 +139,7 @@ The AI also learns from corrections. Change the estimated hours for a specific p
 
 One motor. One failure. One bad day.
 
-EdgePredict sensor monitoring runs $200/month per motor. $40,000 divided by $200 equals 200 months. That's over 16 years of monitoring paid for by one prevented failure. And the management platform is free.
+EdgePredict sensor monitoring runs $89/month per motor. $40,000 divided by $89 equals about 450 months -- over 37 years of monitoring paid for by one prevented failure. And the management platform is free.
 
 Most plants don't think they have a $40,000 problem. They do. They just haven't seen it yet.`,
   },
@@ -179,14 +179,14 @@ The scheduler also tracks break-in work. Over time you can see exactly how much 
   },
   {
     slug: 'electrical-signature-analysis-explained',
-    title: 'What Electrical Signature Analysis Actually Detects',
-    excerpt: 'ESA reads the current flowing through your motor leads. Three clamp-on CTs, no rewiring, no shaft access, no accelerometer mounting on hot rotating equipment.',
+    title: 'What Current-Based Condition Monitoring Actually Detects',
+    excerpt: 'Condition monitoring reads the current flowing through your motor leads. Three clamp-on CTs, no rewiring, no shaft access, no accelerometer mounting on hot rotating equipment.',
     category: 'Engineering',
     date: '2026-03-08',
     readingTime: 5,
-    content: `ESA reads the current flowing through your motor leads. Three clamp-on CTs. No rewiring. No shaft access. No accelerometer mounting on hot rotating equipment.
+    content: `Condition monitoring reads the current flowing through your motor leads. Three clamp-on CTs. No rewiring. No shaft access. No accelerometer mounting on hot rotating equipment.
 
-Here's what current can tell you. Phase imbalance is an early indicator of winding degradation or supply issues. Phase loss happens when single-phasing destroys motors in minutes. ESA catches it instantly. Overload means current above baseline, which could indicate a seized bearing or blocked impeller. Load instability shows up as current fluctuations from intermittent mechanical problems. Certain current patterns also correlate with bearing wear, rotor bar cracks, and eccentricity.
+Here's what current can tell you. Phase imbalance is an early indicator of winding degradation or supply issues. Phase loss happens when single-phasing destroys motors in minutes. Current-based monitoring catches it instantly. Overload means current above baseline, which could indicate higher-than-normal mechanical load. Load instability shows up as current fluctuations from intermittent mechanical problems. The system detects when behavior changes, quantifies the deviation, and gives maintenance teams a clear timeline for investigation.
 
 All of this from a non-invasive clamp installed in about 20 minutes.
 
@@ -241,18 +241,18 @@ Nothing: 85% of small plants. Whiteboards. No data. Run to failure and hope for 
 
 And then the gap: plants that know they should be monitoring equipment but can't justify the enterprise price tag. By our estimate, that's over 100,000 facilities.
 
-EdgePredict was built for the gap. $200/month per motor. 20-minute install. Cellular connection, no IT involvement. And the entire maintenance management platform is free.
+EdgePredict was built for the gap. $89/month per motor. 20-minute install. Cellular connection, no IT involvement. And the entire maintenance management platform is free.
 
 The gap isn't a market failure. It's a market that enterprise vendors are too expensive to serve and CMMS-only vendors don't have hardware to fill.`,
   },
   {
     slug: 'why-we-give-the-platform-away',
     title: 'Why Our CMMS Is Free (The Honest Answer)',
-    excerpt: 'We make money on sensors. $200/month per motor for hardware that monitors equipment and feeds condition data into maintenance schedules. But nobody buys sensors for a problem they don\'t know they have.',
+    excerpt: 'We make money on sensors. $89/month per motor for hardware that monitors equipment and feeds condition data into maintenance schedules. But nobody buys sensors for a problem they don\'t know they have.',
     category: 'Company',
     date: '2026-03-12',
     readingTime: 4,
-    content: `We make money on sensors. $200/month per motor for hardware that monitors equipment and feeds condition data back into the maintenance schedule.
+    content: `We make money on sensors. $89/month per motor for hardware that monitors equipment and feeds condition data back into the maintenance schedule.
 
 But nobody buys sensors for a problem they don't know they have.
 
@@ -298,7 +298,7 @@ EdgePredict was built as one system from day one. Not a CMMS that bolted on sens
 
 Here's what that looks like in practice:
 
-**A sensor flags a bearing fault on Pump P-101.** The platform automatically creates a work order with the asset, fault description, and priority pre-filled. The technician gets a push notification on their phone. They pull up the work order, see the sensor trend data right there, grab the replacement bearing from parts inventory (which updates automatically), complete the repair, and close the work order. The asset history updates. Your MTTR dashboard updates. Your PM schedule adjusts.
+**A sensor flags a load anomaly on Pump P-101.** The platform automatically creates a work order with the asset, fault description, and priority pre-filled. The technician gets a push notification on their phone. They pull up the work order, see the sensor trend data right there, grab the replacement bearing from parts inventory (which updates automatically), complete the repair, and close the work order. The asset history updates. Your MTTR dashboard updates. Your PM schedule adjusts.
 
 No copy-paste. No switching tabs. No "I'll update the spreadsheet later."
 
@@ -314,7 +314,7 @@ On the other end, the affordable CMMS tools — MaintainX, UpKeep, Limble — ar
 
 We built EdgePredict because we saw that gap. Our team comes from plant floors — electrical engineers and reliability professionals who got tired of explaining to software vendors what a maintenance program actually needs.
 
-The result: work orders, PM scheduling, inspections, playbooks, parts inventory, reporting, team chat, AI work order generation, and live motor monitoring. One login. One platform. Free to start, $99/mo for Pro, $200/mo per motor for condition monitoring with hardware included.
+The result: work orders, PM scheduling, inspections, playbooks, parts inventory, reporting, team chat, AI work order generation, and live motor monitoring. One login. One platform. Free to start, $99/mo for Pro, $89/mo per motor for condition monitoring with hardware included.
 
 ## The Playbook No One Else Gives You
 

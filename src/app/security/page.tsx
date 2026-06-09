@@ -20,7 +20,7 @@ const doesDo = [
   "Reads current data from split-core CT sensors clamped on motor feeder conductors",
   "Sends trend data and alert notifications to the monitoring dashboard over encrypted HTTPS",
   "Generates weekly motor health summaries delivered by email",
-  "Processes waveform data locally on the edge device before transmitting summary metrics",
+  "Processes current data locally on the edge device before transmitting summary metrics",
 ]
 
 const doesNotDo = [
@@ -148,7 +148,7 @@ export default function SecurityPage() {
                 <div>
                   <span className="font-medium text-gray-900">Processed locally on the edge device</span>
                   <p className="text-gray-600 mt-1 text-sm">
-                    Motor current waveforms and derived metrics are analyzed on the edge device. Raw waveforms are not continuously transmitted.
+                    Motor current readings and derived metrics are analyzed on the edge device. Only summary health data is transmitted to the cloud.
                   </p>
                 </div>
               </li>

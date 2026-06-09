@@ -94,7 +94,7 @@ const MGMT_FEATURES_PRO = [
 /* ── Monitoring features ────────────────────────────────────────────── */
 const MON_FEATURES = [
   "Non-invasive 3-phase current monitoring via split-core CTs",
-  "Electrical Signature Analysis (ESA) at the edge",
+  "Edge-computed health scoring every 2 seconds",
   "Health score computed locally every 2 seconds",
   "Bucketed baselines for VFD-driven and line-fed motors",
   "Phase loss, overcurrent, and load instability detection",
@@ -133,10 +133,10 @@ const TIERS = [
     name: "Monitor",
     badge: "Sensors",
     badgeClass: "bg-[#7655d6] text-white",
-    price: "$200",
+    price: "$89",
     priceSub: "/mo per motor",
-    desc: "Hardware included. 20-minute install. Cellular. 60-day pilot is truly free. If we don't find anything useful, return the hardware.",
-    features: ["Sensor hardware included", "Real-time ESA monitoring", "Condition-based PM triggers", "Dynamic PM scheduling", "Cellular connectivity", "60-day free pilot"],
+    desc: "Hardware included. 20-minute install. Cellular. Free pilot, no risk. If we don't find anything useful, return the hardware.",
+    features: ["Sensor hardware included", "Real-time condition monitoring", "Condition-based PM triggers", "Dynamic PM scheduling", "Cellular connectivity", "Free pilot"],
     cta: { label: "Start Free Pilot", href: "/pilot", external: false },
     dark: true,
   },
@@ -163,7 +163,7 @@ export default function HomePage() {
             <p className="text-lg text-slate-400 leading-relaxed max-w-lg mb-10">
               A complete maintenance platform — work orders, PMs, inspections,
               reporting — free for unlimited users. Add motor monitoring if and
-              when you need it. Each works on its own. $200/mo per motor, hardware included.
+              when you need it. Each works on its own. $89/mo per motor, hardware included.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10">
@@ -185,7 +185,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row flex-wrap gap-x-6 gap-y-2">
               {[
                 "Free forever, no credit card",
-                "$200/mo per motor, hardware included",
+                "$89/mo per motor, hardware included",
                 "20-minute sensor install on average",
                 "Built by engineers, not MBAs",
               ].map((item) => (
@@ -218,10 +218,10 @@ export default function HomePage() {
             </div>
             <div className="bg-[#7655d6]/15 border border-[#7655d6]/30 rounded-xl px-4 py-3 text-center">
               <p className="text-sm font-semibold text-[#a78fe8]">
-                Trusted by 20+ organizations and growing
+                Deployed at manufacturing facilities today
               </p>
               <p className="text-xs text-slate-400 mt-1">
-                Join the community to create and share better maintenance practices
+                Real condition data from real motors on real production lines
               </p>
             </div>
           </div>

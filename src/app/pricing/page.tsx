@@ -4,14 +4,14 @@ import { CheckCircle, ArrowRight } from "lucide-react";
 export const metadata = {
   title: "Pricing — EdgePredict Maintenance Platform & Motor Monitoring",
   description:
-    "Free maintenance platform with unlimited users and work orders. $99/mo Pro. $200/mo per motor for condition monitoring with hardware included. Free 60-day pilot. No contracts.",
+    "Free maintenance platform with unlimited users and work orders. $99/mo Pro. $89/mo per motor for condition monitoring with hardware included. Free pilot. No contracts.",
   alternates: {
     canonical: "https://www.edgepredict.io/pricing",
   },
   openGraph: {
     title: "Pricing — EdgePredict Maintenance Platform & Motor Monitoring",
     description:
-      "Free maintenance platform with unlimited users. $99/mo Pro. $200/mo motor monitoring with hardware included. Free 60-day pilot.",
+      "Free maintenance platform with unlimited users. $99/mo Pro. $89/mo motor monitoring with hardware included. Free pilot.",
     url: "https://www.edgepredict.io/pricing",
     type: "website",
   },
@@ -84,21 +84,21 @@ const tiers = [
   {
     name: "Monitor",
     badge: { label: "Sensors", classes: "bg-[#7655d6] text-white" },
-    price: "$200",
+    price: "$89",
     priceSub: "/mo per motor",
     description:
-      "Hardware ships pre-configured. 20-minute install. Cellular, no IT needed. If we don't surface useful data in 60 days, return the hardware. No obligation.",
+      "Hardware ships pre-configured. 20-minute install. Cellular, no IT needed. If we don't surface useful data during the pilot, return the hardware. No obligation.",
     cardClasses:
       "border-[#7655d6]/30 bg-[#0a0a0f] shadow-[0_0_0_1px_rgba(118,85,214,0.2)]",
     featuresPrefix: "Everything in Pro, plus:",
     features: [
       "Sensor hardware kit included",
-      "Real-time ESA monitoring",
+      "Real-time condition monitoring",
       "Condition-based PM triggers",
       "Dynamic PM scheduling",
       "Cellular connectivity, no IT required",
       "20-minute non-invasive install",
-      "60-day free pilot",
+      "Free pilot, hardware included",
       "Return hardware if no value",
       "Engineer-level support",
     ],
@@ -364,11 +364,11 @@ const faqs = [
   },
   {
     q: "Do I need sensors to use the platform?",
-    a: "No. The management platform works completely standalone. Sensors are an optional upgrade that change time-based PM schedules to condition-based, driven by real electrical signature data from the motor itself. Start free, add sensors when you're ready.",
+    a: "No. The management platform works completely standalone. Sensors are an optional upgrade that change time-based PM schedules to condition-based, driven by real electrical data from the motor itself. Start free, add sensors when you're ready.",
   },
   {
-    q: "What happens after the 60-day pilot?",
-    a: "If the sensors prove value, you continue at $200/mo per motor. If not, send the hardware back. No obligation, no contract, no pressure. The pilot is genuinely free.",
+    q: "What happens after the pilot?",
+    a: "If the sensors prove value, you continue at $89/mo per motor. If not, send the hardware back. No obligation, no contract, no pressure. The pilot is genuinely free.",
   },
   {
     q: "Can I start free and add sensors later?",
@@ -401,7 +401,7 @@ export default function PricingPage() {
           <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-[#7655d6]/10 border border-[#7655d6]/20">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-live-dot flex-shrink-0" />
             <span className="text-sm text-slate-300">
-              Monitor tier: <span className="text-white font-semibold">60-day free pilot</span> with hardware included
+              Monitor tier: <span className="text-white font-semibold">Free pilot</span> with hardware included
             </span>
           </div>
         </div>
@@ -441,7 +441,7 @@ export default function PricingPage() {
                       Free Pilot
                     </p>
                     <p className="text-sm text-slate-300">
-                      Hardware included. 60 days free. Return it if we don&apos;t prove value.
+                      Hardware included. Free pilot. Return it if we don&apos;t prove value.
                     </p>
                   </div>
                 )}

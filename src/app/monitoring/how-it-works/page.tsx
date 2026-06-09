@@ -4,7 +4,7 @@ import { ArrowRight, Cpu, Database, Radio, Shield, Activity, Gauge } from "lucid
 export const metadata = {
   title: "How EdgePredict Monitoring Works — Engineering Details",
   description:
-    "The engineering behind EdgePredict motor monitoring: ATM90E32 metering, ESP32 edge compute, EWMA baselines with state bucketing, z-score scoring, MQTT to InfluxDB pipeline, and Cloudflare Tunnel remote access.",
+    "The engineering behind EdgePredict motor monitoring: utility-grade metering, edge-computed health scores, adaptive baselines with state bucketing, z-score scoring, time-series data pipeline, and secure remote access.",
   alternates: {
     canonical: "https://www.edgepredict.io/monitoring/how-it-works",
   },
@@ -27,32 +27,32 @@ type Section = {
 const SECTIONS: Section[] = [
   {
     Icon: Gauge,
-    title: "ATM90E32 metering IC",
-    lead: "Utility-grade current and power measurement. Catches the stuff cheap sensors miss — imbalance, harmonics, power factor drift.",
+    title: "EdgePredict Meter",
+    lead: "Utility-grade current and power measurement. Catches the stuff cheap sensors miss -- imbalance, harmonics, power factor drift.",
     details: [
-      "Three-phase metering chip with per-phase RMS current, voltage, power factor, and harmonic content.",
-      "Accurate to 0.1% for energy and sub-percent for current across the operating range.",
-      "Runs on the EdgePredict gateway in parallel with the edge compute layer — no sampling compromises.",
+      "Purpose-built three-phase metering board with per-phase RMS current, voltage, power factor, and harmonic content.",
+      "Sub-percent accuracy for current across the operating range. Sampling rate: 8 kHz per channel.",
+      "Metering and edge compute run on the same board -- no sampling compromises, no separate data acquisition layer.",
     ],
   },
   {
     Icon: Cpu,
-    title: "ESP32 edge processor",
-    lead: "The gateway does the thinking on-site. You get a motor health score every 2 seconds — no cloud lag, no bandwidth bills.",
+    title: "Edge compute",
+    lead: "All the thinking happens on-site. You get a motor health score every 2 seconds -- no cloud lag, no bandwidth bills.",
     details: [
-      "Waveform data processed on the edge device. Health score computed locally.",
-      "Only summary metrics transmitted, not raw waveforms.",
-      "Works on intermittent connectivity — buffers locally if the network drops.",
+      "RMS current, power factor, and derived metrics processed on the edge device. Health score computed locally.",
+      "Only summary metrics transmitted to the cloud, not raw sample data.",
+      "Works on intermittent connectivity -- buffers locally if the network drops.",
     ],
   },
   {
     Icon: Activity,
-    title: "EWMA baseline learning with state bucketing",
+    title: "Adaptive baseline learning with state bucketing",
     lead: "Learns what normal looks like for each motor, including loaded vs unloaded and VFD speed ranges. Doesn't cry wolf when your press ramps up.",
     details: [
-      "Exponentially weighted moving average baselines updated continuously.",
+      "Exponentially weighted moving average (EWMA) baselines updated continuously.",
       "Separate baselines per motor operating state (loaded, unloaded, VFD speed bands).",
-      "Prevents false alarms during normal load variation — the biggest cause of alert fatigue with threshold-based monitoring.",
+      "Prevents false alarms during normal load variation -- the biggest cause of alert fatigue with threshold-based monitoring.",
     ],
   },
   {
@@ -61,26 +61,26 @@ const SECTIONS: Section[] = [
     lead: "Health score derived from statistical deviation, not fixed thresholds. Abnormal current patterns produce statistically meaningful alerts.",
     details: [
       "Each sample's z-score is computed relative to the active baseline bucket.",
-      "Persistent deviation across multiple samples triggers scoring changes — transient noise is filtered.",
+      "Persistent deviation across multiple samples triggers scoring changes -- transient noise is filtered.",
       "Transition lockout prevents spurious scoring during motor start and stop transients. Alert window opens only after stable operating conditions are confirmed.",
     ],
   },
   {
     Icon: Database,
-    title: "MQTT → Telegraf → InfluxDB pipeline",
-    lead: "Data flows on open standards. Bring your own tooling if you want to — or use the EdgePredict dashboard out of the box.",
+    title: "Time-series data pipeline",
+    lead: "Data flows on open standards. Bring your own tooling if you want to -- or use the EdgePredict dashboard out of the box.",
     details: [
-      "Edge device publishes via MQTT to a Telegraf listener.",
-      "Telegraf writes to InfluxDB time-series database on the EdgePredict cloud.",
-      "Grafana dashboards optional for advanced users who want custom views or to integrate with existing observability stacks.",
+      "Edge device publishes metrics to a time-series ingestion layer on the EdgePredict cloud.",
+      "Historical trending, alerting, and dashboards built on top of the time-series store.",
+      "Custom dashboards available for advanced users who want to integrate with existing observability stacks.",
     ],
   },
   {
     Icon: Radio,
-    title: "Cloudflare Tunnel for remote access",
+    title: "Secure remote access",
     lead: "Secure outbound-only tunnel for remote diagnostics. No inbound ports. No VPN required.",
     details: [
-      "Tunnel initiated from the gateway — nothing inbound to your network.",
+      "Tunnel initiated from the gateway -- nothing inbound to your network.",
       "Used for remote diagnostics only, with per-pilot credentials.",
       "If your IT policy requires it, we can disable remote access entirely and run the gateway in isolated mode.",
     ],
@@ -161,8 +161,8 @@ export default function HowItWorksPage() {
             Pilot it on one motor first.
           </h2>
           <p className="text-slate-400 text-base leading-relaxed mb-8">
-            60 days. Hardware included. If it isn&apos;t catching things your current program misses,
-            you send it back.
+            Hardware included. If it isn&apos;t catching things your current program misses,
+            send it back.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

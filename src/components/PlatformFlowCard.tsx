@@ -215,9 +215,9 @@ export default function PlatformFlowCard() {
         })}
 
         <div className="pf-monitor" style={{ left: `${(1120 / 1280) * 100}%`, top: `${(380 / 760) * 100}%` }}>
-          <div className="pf-monitor-badge">OPTIONAL · $200/MO</div>
+          <div className="pf-monitor-badge">OPTIONAL · $89/MO</div>
           <div className="pf-monitor-title"><span className="pf-monitor-dot" />Motor Monitoring</div>
-          <div className="pf-monitor-sub">Clamp-on sensors · ESA · 2-sec health score</div>
+          <div className="pf-monitor-sub">Clamp-on sensors · current monitoring · 2-sec health score</div>
           <svg className="pf-spark" viewBox="0 0 200 36" preserveAspectRatio="none">
             <path d="M0 22 L20 20 L35 18 L50 22 L70 14 L85 16 L100 8 L120 24 L140 10 L160 6 L180 22 L200 12" />
           </svg>
@@ -249,7 +249,7 @@ export default function PlatformFlowCard() {
           </div>
         ))}
         <div className="pf-stacked-monitor">
-          <div className="pf-monitor-badge">OPTIONAL · $200/MO</div>
+          <div className="pf-monitor-badge">OPTIONAL · $89/MO</div>
           <div className="pf-monitor-title"><span className="pf-monitor-dot" /> Motor Monitoring</div>
           <div className="pf-monitor-sub">When sensors detect drift, the platform creates the work automatically.</div>
         </div>

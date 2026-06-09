@@ -3,16 +3,16 @@ import { CheckCircle, ArrowRight, AlertTriangle, Package, Zap } from "lucide-rea
 import FadeIn from "@/components/FadeIn";
 
 export const metadata = {
-  title: "Free 60-Day Motor Monitoring Pilot — EdgePredict",
+  title: "Free Motor Monitoring Pilot — EdgePredict",
   description:
-    "Start a free 60-day motor condition monitoring pilot. Hardware included, $0 upfront. If we don't surface useful condition data, ship it back. No contract, no sales pressure.",
+    "Start a free motor condition monitoring pilot. Hardware included, $0 upfront. If we don't surface useful condition data, ship it back. No contract, no sales pressure.",
   alternates: {
     canonical: "https://www.edgepredict.io/pilot",
   },
   openGraph: {
-    title: "Free 60-Day Motor Monitoring Pilot — EdgePredict",
+    title: "Free Motor Monitoring Pilot — EdgePredict",
     description:
-      "Hardware included. $0 upfront. 60 days of motor condition monitoring on your critical assets. Return it if we don't prove value.",
+      "Hardware included. $0 upfront. Motor condition monitoring on your critical assets. Return it if we don't prove value.",
     url: "https://www.edgepredict.io/pilot",
     type: "website",
   },
@@ -29,12 +29,12 @@ export default function PilotPage() {
             Free Pilot Program
           </p>
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-6">
-            60 days. Your motors.<br />
+            Your motors.<br />
             <span className="text-[#7655d6]">Our hardware. Zero risk.</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10">
             We ship pre-configured hardware to your facility. Your electrician clamps it on in 20 minutes.
-            We monitor for 60 days. If we don&apos;t surface anything useful, you ship it back.
+            We monitor your motors. If we don&apos;t surface anything useful, you ship it back.
             That&apos;s the whole deal.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -68,7 +68,7 @@ export default function PilotPage() {
                 What we risk
               </p>
               <p className="text-slate-300 text-sm leading-relaxed">
-                Hardware. Shipping. Engineering time. 60 days of monitoring infrastructure.
+                Hardware. Shipping. Engineering time. Weeks of monitoring infrastructure.
                 All on us.
               </p>
             </div>
@@ -130,10 +130,10 @@ export default function PilotPage() {
                   color: "bg-green-500",
                 },
                 {
-                  day: "Day 60",
+                  day: "Pilot end",
                   side: "right",
                   title: "We review the findings together",
-                  body: "We walk through what the data showed: any anomalies flagged, which motors are healthy, which ones showed early warning signs. Then you decide. Continue at $200/mo per motor, or ship the hardware back. No hard sell.",
+                  body: "We walk through what the data showed: any anomalies flagged, which motors are healthy, which ones showed early warning signs. Then you decide. Continue at $89/mo per motor, or ship the hardware back. No hard sell.",
                   color: "bg-[#7655d6]",
                 },
               ].map((item, i) => (
@@ -233,7 +233,7 @@ export default function PilotPage() {
                   </p>
                   <p className="text-sm text-slate-300 leading-relaxed">
                     Inspect motor and feeder connections. Pattern is consistent with developing
-                    rotor or bearing fault, or loose connection at the MCC. Schedule inspection
+                    mechanical issue or loose connection at the MCC. Schedule inspection
                     before next planned production stop.
                   </p>
                   <div className="mt-3 flex items-center gap-2 text-xs text-slate-500">
@@ -261,10 +261,10 @@ export default function PilotPage() {
               The Outcome
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              What you know at day 60.
+              What you know at pilot end.
             </h2>
             <p className="text-slate-600 mt-4 max-w-xl mx-auto leading-relaxed">
-              Regardless of whether you continue, the 60 days leaves you with real information
+              Regardless of whether you continue, the pilot leaves you with real information
               about your equipment.
             </p>
           </FadeIn>
@@ -277,7 +277,7 @@ export default function PilotPage() {
               },
               {
                 title: "Which motors showed warning signs",
-                body: "Any anomalies flagged during the 60 days come with timestamps, deviation metrics, and recommended actions. Not just \"something happened\" but what, when, and how serious.",
+                body: "Any anomalies flagged during the pilot come with timestamps, deviation metrics, and recommended actions. Not just \"something happened\" but what, when, and how serious.",
               },
               {
                 title: "How your PM schedule compares to actual condition",
@@ -285,7 +285,7 @@ export default function PilotPage() {
               },
               {
                 title: "Whether condition-based PM is worth it for your facility",
-                body: "You have real data now. If the 60 days showed clean motors and no anomalies, that's useful. If it caught something developing, that's the ROI case made for you.",
+                body: "You have real data now. If the pilot showed clean motors and no anomalies, that's useful. If it caught something developing, that's the ROI case made for you.",
               },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
@@ -399,14 +399,14 @@ export default function PilotPage() {
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-slate-900 mb-2">After the pilot</h2>
               <p className="text-slate-600 text-sm leading-relaxed">
-                If you see value, continue at $200/mo per motor. No minimum contract.
+                If you see value, continue at $89/mo per motor. No minimum contract.
                 Volume discounts for 5+ motors. If you don&apos;t, a prepaid return label
                 handles the hardware. No invoice, no awkward call, no pressure.
               </p>
             </div>
             <div className="flex-shrink-0 text-center bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
               <p className="text-xs text-slate-500 uppercase tracking-widest mb-1">After pilot</p>
-              <p className="text-4xl font-bold text-[#7655d6]">$200</p>
+              <p className="text-4xl font-bold text-[#7655d6]">$89</p>
               <p className="text-slate-500 text-sm mt-1">per motor / month</p>
               <p className="text-xs text-slate-400 mt-2">No contract required</p>
             </div>

@@ -305,10 +305,10 @@ export default function FeaturesPage() {
             {/* ── Motor Monitoring ──────────────────────────────────── */}
             <Module id="motor-monitoring" title="Motor Monitoring">
               <Feat tier="monitor" name="Phase loss detection" desc="Single-phasing destroys motors in minutes. EdgePredict catches it in seconds." />
-              <Feat tier="monitor" name="Overload and near-stall detection" desc="Current persistently above baseline indicates seized bearing, blocked impeller, or mechanical overload. Alert generated immediately." />
+              <Feat tier="monitor" name="Overload detection" desc="Current persistently above baseline indicates higher-than-normal mechanical load. Alert generated immediately." />
               <Feat tier="monitor" name="Phase imbalance detection" desc="Persistent current imbalance across phases indicates winding degradation, supply issues, or mechanical coupling problems. Flagged before damage occurs." />
               <Feat tier="monitor" name="Load instability detection" desc="Cyclic current fluctuations indicate intermittent mechanical problems: intermittent binding, coupling wear, impeller cavitation." />
-              <Feat tier="monitor" name="Mechanical and electrical fault indicators" desc="Current signature patterns correlate with bearing wear, rotor bar cracks, and air gap eccentricity. Indicators flagged for maintenance confirmation." />
+              <Feat tier="monitor" name="Abnormal condition detection" desc="Sustained changes in load, phase balance, or current stability are detected and flagged for maintenance investigation. The system quantifies the deviation and gives your team a clear timeline." />
               <Feat tier="monitor" name="3-phase current monitoring" desc="Clamps onto the motor's feed wires in about 10 minutes. No rewiring. No shaft access. Works on VFD and line-fed motors." />
               <Feat tier="monitor" name="Cellular out of the box" desc="No IT ticket. No firewall rules. No begging the network admin. Plug it in, it connects." />
               <Feat tier="monitor" name="Smart alerts, not dumb thresholds" desc="The system flags a motor only when its behavior is genuinely abnormal for that motor. You get fewer alerts, and the ones you get mean something." />
@@ -322,7 +322,7 @@ export default function FeaturesPage() {
               <Feat tier="monitor" name="Volume discounts for 5+ motors" desc="Contact us for pricing on fleets larger than 5 motors." />
               <li className="flex items-start gap-3 py-3 mt-2 border-t border-slate-200">
                 <div className="text-sm text-slate-600">
-                  Want the engineering details — chipset, edge compute, baselining math, data pipeline?{" "}
+                  Want the engineering details — edge compute, baselining math, data pipeline?{" "}
                   <Link href="/monitoring/how-it-works" className="font-semibold text-[#7655d6] hover:underline">
                     See how it works →
                   </Link>

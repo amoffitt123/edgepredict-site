@@ -9,14 +9,14 @@ import FadeIn from "@/components/FadeIn";
 export const metadata = {
   title: "Motor Condition Monitoring — EdgePredict",
   description:
-    "Non-invasive motor condition monitoring using Electrical Signature Analysis. Edge-computed health scores every 2 seconds. $200/mo per motor. Free 60-day pilot with hardware included.",
+    "Non-invasive motor condition monitoring using electrical health monitoring. Edge-computed health scores every 2 seconds. $89/mo per motor. Free pilot with hardware included.",
   alternates: {
     canonical: "https://www.edgepredict.io/monitoring",
   },
   openGraph: {
     title: "Motor Condition Monitoring — EdgePredict",
     description:
-      "Non-invasive ESA monitoring. Edge-computed health scores every 2 seconds. $200/mo per motor. Free 60-day pilot.",
+      "Non-invasive condition monitoring. Edge-computed health scores every 2 seconds. $89/mo per motor. Free pilot with hardware included.",
     url: "https://www.edgepredict.io/monitoring",
     type: "website",
   },
@@ -25,7 +25,7 @@ export const metadata = {
 /* ── Included list ─────────────────────────────────────────────────── */
 const INCLUDED = [
   "3-phase current monitoring via split-core CTs",
-  "ESA / MCSA analysis, processed locally on the edge device",
+  "Condition monitoring analysis, processed locally on the edge device",
   "Health score computed at the edge every 2 seconds",
   "Web-based monitoring dashboard with historical trending",
   "Real-time alerts (email, dashboard)",
@@ -60,8 +60,8 @@ const DETECTION = [
   { label: "Phase loss",                  current: true,  voltage: true  },
   { label: "Load anomalies",              current: true,  voltage: true  },
   { label: "Overload / near-stall",       current: true,  voltage: true  },
-  { label: "Mechanical fault indicators*",current: true,  voltage: true  },
-  { label: "Electrical fault indicators*",current: true,  voltage: true  },
+  { label: "Abnormal load conditions",    current: true,  voltage: true  },
+  { label: "Current instability",         current: true,  voltage: true  },
   { label: "Voltage unbalance",           current: false, voltage: true  },
   { label: "Undervoltage",                current: false, voltage: true  },
   { label: "Power factor / kVAR",         current: false, voltage: true  },
@@ -73,12 +73,12 @@ const TECH_STACK = [
   {
     Icon: Cpu,
     name: "EdgePredict Meter board",
-    desc: "Custom metering board measuring per-phase RMS current, voltage, power factor, and harmonic content. Accurate and purpose-built for continuous motor health monitoring.",
+    desc: "Custom metering board measuring per-phase RMS current, voltage, power factor, and harmonic content. Health score computed on-board every 2 seconds. Purpose-built for continuous motor health monitoring.",
   },
   {
     Icon: Database,
     name: "EdgePredict Gateway",
-    desc: "Edge compute unit running ESA algorithms locally. Health score computed every 2 seconds without cloud round-trips. Waveform data stays on-device until meaningful events are detected.",
+    desc: "Communications hub connecting the meter boards to the cloud. Receives summary metrics from each meter and transmits to the EdgePredict dashboard. Supports cellular or Wi-Fi backhaul.",
   },
   {
     Icon: Activity,
@@ -144,20 +144,20 @@ export default function MonitoringPage() {
         </div>
       </section>
 
-      {/* ── ESA Comparison ──────────────────────────────────────────── */}
+      {/* ── Monitoring Comparison ──────────────────────────────────── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn className="text-center mb-12">
             <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
-              Why Current Signature Analysis
+              Why current-based monitoring
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
               Current analysis vs. vibration vs. nothing.
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto mt-4 leading-relaxed">
               Most plants either run to failure, use vibration sensors they cannot afford,
-              or have enterprise systems that cost $50K to deploy. Here is how electrical
-              signature analysis stacks up.
+              or have enterprise systems that cost $50K to deploy. Here is how current-based
+              condition monitoring stacks up.
             </p>
           </FadeIn>
 
@@ -217,17 +217,17 @@ export default function MonitoringPage() {
             <FadeIn delay={3} className="bg-[#7655d6]/5 rounded-2xl p-6 border border-[#7655d6]/25">
               <Zap className="text-[#7655d6] w-8 h-8 mb-3" />
               <h3 className="text-lg font-bold text-[#7655d6] mb-4">
-                Current Signature Analysis
+                Current-Based Condition Monitoring
               </h3>
               <ul className="space-y-3">
                 {[
                   "Phase imbalance and phase loss detection",
                   "Overload and load instability",
-                  "Mechanical fault indicators from current",
+                  "Abnormal load and current instability detection",
                   "Supply quality and power factor monitoring",
                   "Non-invasive clamp-on install in 20 minutes",
                   "Cellular connectivity, no plant network",
-                  "No capital project. $200/mo per motor.",
+                  "No capital project. $89/mo per motor.",
                   "Adaptive baseline learning per motor",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
@@ -237,7 +237,7 @@ export default function MonitoringPage() {
                 ))}
               </ul>
               <p className="text-xs text-[#7655d6] font-semibold mt-4">
-                Sees electrical AND mechanical fault indicators from the current alone.
+                Detects abnormal conditions from the motor's current alone.
               </p>
             </FadeIn>
           </div>
@@ -250,8 +250,8 @@ export default function MonitoringPage() {
           <FadeIn>
             <h2 className="text-3xl font-bold mb-4 text-center">What Gets Detected</h2>
             <p className="text-slate-600 mb-8 text-center max-w-2xl mx-auto leading-relaxed">
-              Electrical Signature Analysis (ESA) and MCSA methods applied locally on the edge
-              device. No cloud processing required for detection.
+              Statistical health scoring applied locally on the edge device. No cloud
+              processing required for detection.
             </p>
           </FadeIn>
           <FadeIn>
@@ -288,7 +288,7 @@ export default function MonitoringPage() {
               </table>
             </div>
             <p className="text-xs text-slate-500 mt-4 text-center max-w-2xl mx-auto">
-              * Indicators consistent with bearing or rotor faults require maintenance confirmation.
+              All conditions flagged should be verified by maintenance personnel on-site.
             </p>
           </FadeIn>
         </div>
@@ -302,7 +302,7 @@ export default function MonitoringPage() {
               Optional Voltage Reference
             </h2>
             <p className="text-slate-600 mb-10 text-center leading-relaxed">
-              Current-only monitoring catches the majority of motor fault indicators.
+              Current-only monitoring catches the majority of abnormal motor conditions.
               Adding a voltage reference unlocks additional supply-side visibility.
             </p>
             <div className="grid md:grid-cols-2 gap-10">
@@ -441,7 +441,7 @@ export default function MonitoringPage() {
                 Motor Monitoring Subscription
               </h2>
               <p className="text-4xl font-bold text-[#7655d6] mt-4 mb-1">
-                $200
+                $89
                 <span className="text-lg font-normal text-slate-500 ml-1">/ month per motor</span>
               </p>
               <p className="text-slate-600 mb-8">
@@ -482,7 +482,7 @@ export default function MonitoringPage() {
               Ready to get started?
             </h2>
             <p className="text-slate-400 mb-10 max-w-xl mx-auto leading-relaxed">
-              60 days free. Return the hardware if we don&apos;t surface useful condition data.
+              Free pilot. Return the hardware if we don&apos;t surface useful condition data.
               No hard sell. No minimum contract.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
