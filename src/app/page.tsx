@@ -5,55 +5,40 @@ import PlatformFlowCard from "@/components/PlatformFlowCard";
 import FadeIn from "@/components/FadeIn";
 
 export const metadata = {
-  title: "EdgePredict — The Maintenance Platform Your Plant Actually Needs",
+  title: "EdgePredict — Motor Health Monitoring That Installs in 20 Minutes",
   description:
-    "Work orders, PMs, inspections, playbooks, reporting, and live motor monitoring — one platform, not five. Free to start. Built by the engineers who designed the hardware.",
+    "Clamp-on current monitoring for industrial motors. Health scores every 2 seconds, weekly reports, and alerts that create work orders automatically. $89/mo per motor, hardware included. Free pilot.",
   alternates: {
     canonical: "https://www.edgepredict.io",
   },
   openGraph: {
-    title: "EdgePredict — The Maintenance Platform Your Plant Actually Needs",
+    title: "EdgePredict — Motor Health Monitoring That Installs in 20 Minutes",
     description:
-      "Work orders, PMs, inspections, playbooks, reporting, and live motor monitoring — one platform, not five. Free to start.",
+      "Clamp-on current monitoring for industrial motors. Health scores every 2 seconds, weekly reports, alerts that create work orders. $89/mo per motor, hardware included.",
     url: "https://www.edgepredict.io",
     type: "website",
   },
 };
 
-/* ── Comparison table data ────────────────────────────────────────────── */
+/* ── Monitoring comparison table (what monitoring buyers actually cross-shop) ── */
 type Cell = string;
-const TABLE_ROWS: { feature: string; ep0: Cell; ep99: Cell; mx: Cell; up: Cell; fiix: Cell; aug: Cell }[] = [
-  { feature: "Users",                   ep0: "Unlimited", ep99: "Unlimited",    mx: "Per-user",    up: "Per-user",    fiix: "Per-user",    aug: "Per-user"    },
-  { feature: "Work Orders",             ep0: "Unlimited", ep99: "Unlimited",    mx: "Limited",     up: "Limited",     fiix: "✓",           aug: "✗"           },
-  { feature: "PM Scheduling",           ep0: "✓",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
-  { feature: "Inspections",             ep0: "✗",         ep99: "✓",            mx: "Add-on",      up: "Add-on",      fiix: "Add-on",      aug: "✗"           },
-  { feature: "Parts Inventory",         ep0: "✓",         ep99: "✓",            mx: "Add-on",      up: "Add-on",      fiix: "✓",           aug: "✗"           },
-  { feature: "AI Work Orders & AI Tools",ep0: "✗",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
-  { feature: "AI Scheduling",           ep0: "✗",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
-  { feature: "Drag-and-Drop Schedule",  ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✓",           fiix: "✗",           aug: "✗"           },
-  { feature: "Team Chat (DMs + Channels)",ep0: "✓",       ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
-  { feature: "SOPs Library",            ep0: "✗",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
-  { feature: "Vendor Portal",           ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
-  { feature: "QR / NFC Scanning",       ep0: "✓",         ep99: "✓",            mx: "Add-on",      up: "✓",           fiix: "✗",           aug: "✗"           },
-  { feature: "Floor Plans",             ep0: "✗",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
-  { feature: "Custom Fields",           ep0: "✗",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
-  { feature: "Workflow Automation",     ep0: "✗",         ep99: "✓",            mx: "Add-on",      up: "Add-on",      fiix: "✓",           aug: "✗"           },
-  { feature: "Reporting / KPIs",        ep0: "✗",         ep99: "✓",            mx: "Basic",       up: "Basic",       fiix: "✓",           aug: "✗"           },
-  { feature: "QuickBooks Integration",  ep0: "✗",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
-  { feature: "Mobile App",              ep0: "✓",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✓",           aug: "✗"           },
-  { feature: "Offline Mode",            ep0: "✓",         ep99: "✓",            mx: "✓",           up: "✓",           fiix: "✗",           aug: "✗"           },
-  { feature: "Motor Monitoring Sensors",ep0: "✓",         ep99: "✓",            mx: "✗",           up: "✗",           fiix: "✗",           aug: "✓"           },
-  { feature: "Built-in Sensor Integration",ep0:"Monitor", ep99:"Monitor",       mx: "✗",           up: "✗",           fiix: "✗",           aug: "N/A"         },
-  { feature: "Condition-Based PM",      ep0: "Monitor",   ep99: "Monitor",      mx: "✗",           up: "✗",           fiix: "✗",           aug: "✗"           },
-  { feature: "Edge-Computed Health Score",ep0:"Monitor",  ep99:"Monitor",       mx: "✗",           up: "✗",           fiix: "✗",           aug: "Cloud only"  },
-  { feature: "Price for 25 users",      ep0: "$0",        ep99: "$99/mo",       mx: "$400/mo",     up: "$500/mo",     fiix: "Contact",     aug: "N/A"         },
+const MON_TABLE_ROWS: { feature: string; ep: Cell; vib: Cell; nothing: Cell }[] = [
+  { feature: "What it senses",           ep: "3-phase current at the starter",      vib: "Vibration at the motor housing",     nothing: "Operator ears and luck" },
+  { feature: "Install location",         ep: "Inside the MCC / starter cabinet",    vib: "On the motor, often in the field",   nothing: "N/A" },
+  { feature: "Install time",             ep: "~20 minutes, clamp-on",               vib: "Mounting, permits, sometimes downtime", nothing: "N/A" },
+  { feature: "Touches the motor",        ep: "Never",                               vib: "Physical mounting required",          nothing: "Only when it breaks" },
+  { feature: "Sampling",                 ep: "Continuous, health score every 2s",   vib: "Often periodic snapshots (battery)",  nothing: "None" },
+  { feature: "Electrical faults & load", ep: "✓ Phase imbalance, overcurrent, load drift", vib: "✗ Not visible in vibration",   nothing: "✗" },
+  { feature: "Early bearing signatures", ep: "Later, once they load the motor",     vib: "✓ Earlier for some mechanical faults", nothing: "✗" },
+  { feature: "Weekly written report",    ep: "✓ Included",                          vib: "Usually an extra service tier",       nothing: "✗" },
+  { feature: "Creates work orders",      ep: "✓ Automatically",                     vib: "Separate CMMS integration",           nothing: "✗" },
+  { feature: "Cost per point",           ep: "$89/mo, hardware included",           vib: "$500+ per motor per year",            nothing: "$10K-$50K per downtime hour" },
 ];
 
-function cellStyle(val: Cell, col: "ep" | "other") {
+function monCellStyle(col: "ep" | "other", val: Cell) {
   if (col === "ep") return "text-[#5d3db8] font-semibold";
-  if (val === "✓") return "text-green-600 font-semibold";
-  if (val === "✗") return "text-slate-300";
-  if (val === "Add-on" || val === "Contact" || val === "N/A") return "text-slate-400 text-xs";
+  if (val.startsWith("✓")) return "text-green-600";
+  if (val.startsWith("✗")) return "text-slate-300";
   return "text-slate-600";
 }
 
@@ -70,75 +55,86 @@ const FLOWS = [
   },
 ];
 
-/* ── Management features ────────────────────────────────────────────── */
-const MGMT_FEATURES_FREE = [
-  "Work orders with 10-status lifecycle + full audit trail",
-  "PM scheduling with auto-generated templates and risk scoring",
-  "Asset management: hierarchy, BOM, QR codes",
-  "Parts inventory with purchase orders, receiving & stock tracking",
-  "Drag-and-drop schedule board with crew management",
-  "Team chat — real-time DMs + dedicated channels, web & mobile",
-  "Vendor portal & external maintenance request portal",
-  "6 roles, 46 permissions, multi-tenant orgs",
-  "Mobile app — iOS & Android, offline mode, QR/NFC scan",
-];
-const MGMT_FEATURES_PRO = [
-  "Inspections with auto-corrective work orders on failure",
-  "AI work order generator + troubleshooter (Gemini)",
-  "KPI dashboards, OEE, MTBF/MTTR, Pulse reports & playbooks",
-  "Automation rules, SOPs library & floor plans",
-  "PDF & CSV exports, digital signatures, email notifications",
-  "QuickBooks Online integration",
-];
-
-/* ── Monitoring features ────────────────────────────────────────────── */
+/* ── Monitoring features (claims-safe) ──────────────────────────────── */
 const MON_FEATURES = [
   "Non-invasive 3-phase current monitoring via split-core CTs",
-  "Edge-computed health scoring every 2 seconds",
-  "Health score computed locally every 2 seconds",
-  "Bucketed baselines for VFD-driven and line-fed motors",
-  "Phase loss, overcurrent, and load instability detection",
+  "Health score computed on the device every 2 seconds",
+  "Baselines learned automatically for VFD-driven and across-the-line motors",
+  "Phase imbalance, overcurrent, and load instability detection",
   "Transition lockout to prevent false alarms during start/stop",
-  "20-minute clamp-on install, no rewiring",
-  "Cellular connectivity, no IT involvement",
-  "Live web dashboard with historical trending",
+  "20-minute clamp-on install, no rewiring, no downtime",
+  "Cellular option available, no plant network access required",
+  "Live dashboard with historical trending",
+  "Weekly plain-English report, written for the maintenance meeting",
   "Alerts that automatically create work orders",
 ];
 
-/* ── Pricing tiers ──────────────────────────────────────────────────── */
+/* ── Platform-included features (curated, monitoring-first story) ──── */
+const PLATFORM_FEATURES = [
+  "Work orders with full lifecycle and audit trail",
+  "PM scheduling with auto-generated templates",
+  "Asset management: hierarchy, BOM, QR codes",
+  "Inspections with corrective work orders",
+  "KPI reports: MTBF, MTTR, PM compliance",
+  "Mobile app, iOS and Android, offline mode",
+];
+
+/* ── Pricing tiers (monitoring first) ───────────────────────────────── */
 const TIERS = [
+  {
+    name: "Monitor",
+    badge: "Most Popular",
+    badgeClass: "bg-[#7655d6] text-white",
+    price: "$89",
+    priceSub: "/mo per motor",
+    desc: "Hardware included. 20-minute clamp-on install. Free pilot with zero risk: if we don't surface anything useful, return the hardware.",
+    features: [
+      "Sensor hardware included",
+      "Health score every 2 seconds",
+      "Weekly written report",
+      "Alerts that create work orders",
+      "Live dashboard and trending",
+      "Cellular option available",
+      "Free pilot",
+    ],
+    cta: { label: "Start Free Pilot", href: "/pilot", external: false },
+    dark: true,
+  },
   {
     name: "Planner",
     badge: "Free",
     badgeClass: "bg-green-100 text-green-700",
     price: "$0",
     priceSub: "free forever",
-    desc: "Not a trial. Not limited. A complete maintenance platform with unlimited users and unlimited work orders. Work orders, PMs, inspections, parts, reports — all included. Because 85% of plants have nothing.",
-    features: ["Unlimited users", "Unlimited assets & work orders", "PM scheduling", "Parts inventory & purchase orders", "Drag-and-drop schedule board", "Team chat — DMs + channels", "Mobile app — iOS & Android, offline"],
+    desc: "Not a trial. A complete maintenance platform with unlimited users and unlimited work orders, because 85% of plants have nothing.",
+    features: [
+      "Unlimited users",
+      "Unlimited assets & work orders",
+      "PM scheduling",
+      "Parts inventory",
+      "Drag-and-drop schedule board",
+      "Mobile app, iOS & Android, offline",
+    ],
     cta: { label: "Get Started Free", href: "https://tools.edgepredict.io/signup", external: true },
     dark: false,
   },
   {
     name: "Pro",
-    badge: "Most Popular",
+    badge: "Platform",
     badgeClass: "bg-[#7655d6]/10 text-[#7655d6]",
     price: "$99",
     priceSub: "/mo per site",
-    desc: "Everything unlocked. Scheduling, automation, advanced reporting, QuickBooks. One price. No per-user fees. No surprises.",
-    features: ["Everything in Planner", "Inspections with auto-WO from failures", "AI work order generator + troubleshooter", "KPI dashboards & OEE tracking", "Automation rules & SOPs library", "Floor plans, exports & digital signatures", "Email notifications & QuickBooks"],
+    desc: "Everything in Planner unlocked further. Inspections, advanced reporting, automation. One price, no per-user fees.",
+    features: [
+      "Everything in Planner",
+      "Inspections with auto-WO from failures",
+      "KPI dashboards & OEE tracking",
+      "Automation rules & SOPs library",
+      "Exports & digital signatures",
+      "QuickBooks integration",
+    ],
     cta: { label: "Get Started", href: "https://tools.edgepredict.io/signup", external: true },
     dark: false,
-  },
-  {
-    name: "Monitor",
-    badge: "Sensors",
-    badgeClass: "bg-[#7655d6] text-white",
-    price: "$89",
-    priceSub: "/mo per motor",
-    desc: "Hardware included. 20-minute install. Cellular. Free pilot, no risk. If we don't find anything useful, return the hardware.",
-    features: ["Sensor hardware included", "Real-time condition monitoring", "Condition-based PM triggers", "Dynamic PM scheduling", "Cellular connectivity", "Free pilot"],
-    cta: { label: "Start Free Pilot", href: "/pilot", external: false },
-    dark: true,
   },
 ];
 
@@ -153,41 +149,42 @@ export default function HomePage() {
           {/* Left */}
           <div>
             <p className="text-sm uppercase tracking-widest font-semibold text-[#a78fe8] mb-5">
-              For plants that run on whiteboards and gut instinct
+              Motor health monitoring for plants that run lean
             </p>
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] mb-6">
-              Your maintenance program.<br />
-              Your motor health.<br />
-              <span className="text-[#7655d6]">One platform.</span>
+              Know your motors<br />
+              are healthy.<br />
+              <span className="text-[#7655d6]">Not hope they are.</span>
             </h1>
             <p className="text-lg text-slate-400 leading-relaxed max-w-lg mb-10">
-              A complete maintenance platform — work orders, PMs, inspections,
-              reporting — free for unlimited users. Add motor monitoring if and
-              when you need it. Each works on its own. $89/mo per motor, hardware included.
+              Clamp-on current sensors install at the starter in about 20 minutes.
+              A health score that updates every two seconds, a weekly report your
+              team actually reads, and alerts that create work orders automatically.
+              $89/mo per motor, hardware included.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10">
-              <a
-                href="https://tools.edgepredict.io/signup"
+              <Link
+                href="/pilot"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#7655d6] text-white font-semibold rounded-xl hover:bg-[#5d3db8] transition-all duration-200 hover:shadow-xl hover:shadow-[#7655d6]/30 hover:scale-[1.02]"
               >
-                Get Started Free
-              </a>
+                Start a Free Pilot
+              </Link>
               <a
                 href="https://tools.edgepredict.io/login"
                 className="inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-700 text-white font-semibold rounded-xl hover:border-[#a78fe8] hover:text-[#a78fe8] transition-all duration-200"
               >
-                Explore Demo
+                Explore the Live Demo
               </a>
             </div>
 
             {/* Trust bar */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-x-6 gap-y-2">
               {[
-                "Free forever, no credit card",
-                "$89/mo per motor, hardware included",
-                "20-minute sensor install on average",
-                "Built by engineers, not MBAs",
+                "Hardware included",
+                "20-minute clamp-on install",
+                "Free pilot, return the hardware if we find nothing",
+                "Full maintenance platform included, free",
               ].map((item) => (
                 <span key={item} className="flex items-center gap-2 text-sm text-slate-500 font-medium">
                   <CheckCircle className="w-4 h-4 text-[#7655d6] flex-shrink-0" />
@@ -210,15 +207,18 @@ export default function HomePage() {
                     From the field
                   </p>
                   <p className="text-slate-300 text-sm leading-relaxed">
-                    First fault detected in under 3 weeks. Manufacturer corrected the
-                    issue during planned downtime, avoiding an estimated <span className="font-semibold text-white">$8,000+ emergency repair</span>.
+                    In continuous production use at a{" "}
+                    <span className="font-semibold text-white">global medical device manufacturer</span>,
+                    monitoring critical process equipment. Every detection confirmed by the
+                    customer&apos;s own engineers, now expanding to a fleet evaluation
+                    alongside their vibration program.
                   </p>
                 </div>
               </div>
             </div>
             <div className="bg-[#7655d6]/15 border border-[#7655d6]/30 rounded-xl px-4 py-3 text-center">
               <p className="text-sm font-semibold text-[#a78fe8]">
-                Deployed at manufacturing facilities today
+                Deployed at manufacturing facilities in the US and Europe
               </p>
               <p className="text-xs text-slate-400 mt-1">
                 Real condition data from real motors on real production lines
@@ -228,27 +228,269 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── PLATFORM FLOW MOCK (preview) ───────────────────────────────── */}
+      {/* ── 2. HOW MONITORING WORKS ───────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <FadeIn className="text-center mb-16">
+            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
+              How it works
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Clamp on. Let it learn. Know first.
+            </h2>
+          </FadeIn>
+
+          <div className="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto">
+            {[
+              {
+                n: "01",
+                title: "Clamp on at the starter",
+                body: "Split-core CTs clip around the motor leads inside the MCC. No rewiring, no production downtime, no contact with the motor itself. About 20 minutes per motor.",
+              },
+              {
+                n: "02",
+                title: "It learns your motor",
+                body: "The system builds a baseline of your motor's normal operating behavior automatically, including multiple operating points for variable loads. Days, not months.",
+              },
+              {
+                n: "03",
+                title: "Health, alerts, reports",
+                body: "A health score updates every 2 seconds. Anomalies get flagged, work orders get created, and every week a plain-English report lands in your inbox.",
+              },
+            ].map((s, si) => (
+              <FadeIn key={s.n} delay={(si + 1) as 1 | 2 | 3}>
+                <div>
+                  <span className="text-6xl font-bold text-[#7655d6]/15 leading-none block mb-4 font-mono">
+                    {s.n}
+                  </span>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-3">{s.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{s.body}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. WHAT IT DOES (features) ────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-[#0a0a0f]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <FadeIn>
+              <p className="text-sm uppercase tracking-widest font-semibold text-[#a78fe8] mb-3">
+                Motor Monitoring
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
+                Built for the starter cabinet, not the lab.
+              </h2>
+              <p className="text-slate-400 text-base leading-relaxed mb-6">
+                EdgePredict surfaces electrical faults, load behavior, and abnormal
+                operating conditions from the current signature alone. It works on
+                across-the-line motors and VFD-driven equipment, and it knows the
+                difference, so the scoring adapts to how each motor actually runs.
+              </p>
+              <p className="text-slate-400 text-base leading-relaxed">
+                No motor access required. No production downtime to install.
+                And when something drifts, you get a work order, not a raw waveform.
+              </p>
+            </FadeIn>
+            <FadeIn delay={1}>
+              <div className="bg-white/5 backdrop-blur rounded-2xl p-8 border border-white/10">
+                <Activity className="w-8 h-8 text-cyan-400 mb-4" />
+                <ul className="space-y-2.5">
+                  {MON_FEATURES.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-slate-300">
+                      <CheckCircle className="w-4 h-4 text-cyan-500 flex-shrink-0 mt-0.5" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/monitoring"
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-cyan-400 hover:underline mt-6"
+                >
+                  How the monitoring works <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. HONEST COMPARISON (monitoring buyer's view) ────────────── */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeIn className="text-center mb-14">
+            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
+              The Honest Comparison
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Current monitoring vs. vibration vs. nothing.
+            </h2>
+            <p className="text-base md:text-lg text-slate-600 mt-4 max-w-2xl mx-auto">
+              Vibration systems are excellent at what they do, and they cost like it.
+              Most plants have neither. Here is the honest picture.
+            </p>
+          </FadeIn>
+
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+            <table className="w-full text-sm border-collapse min-w-[680px]">
+              <thead>
+                <tr className="border-b border-slate-200">
+                  <th className="sticky left-0 bg-white text-left py-4 px-4 text-slate-500 font-medium w-48">
+                    &nbsp;
+                  </th>
+                  <th className="py-4 px-4 text-center font-bold text-white bg-[#7655d6] min-w-[170px]">
+                    EdgePredict<br />
+                    <span className="font-normal text-purple-200 text-xs">$89/mo per motor</span>
+                  </th>
+                  <th className="py-4 px-4 text-center text-slate-600 font-medium min-w-[170px]">
+                    Vibration systems<br />
+                    <span className="text-slate-400 font-normal text-xs">$500+/motor/yr</span>
+                  </th>
+                  <th className="py-4 px-4 text-center text-slate-600 font-medium min-w-[150px]">
+                    Run to failure<br />
+                    <span className="text-slate-400 font-normal text-xs">85% of small plants</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {MON_TABLE_ROWS.map((row, i) => (
+                  <tr
+                    key={row.feature}
+                    className={`border-b border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
+                  >
+                    <td className="sticky left-0 bg-inherit py-3 px-4 font-medium text-slate-700">
+                      {row.feature}
+                    </td>
+                    <td className={`py-3 px-4 text-center bg-[#7655d6]/5 ${monCellStyle("ep", row.ep)}`}>
+                      {row.ep}
+                    </td>
+                    <td className={`py-3 px-4 text-center ${monCellStyle("other", row.vib)}`}>
+                      {row.vib}
+                    </td>
+                    <td className={`py-3 px-4 text-center ${monCellStyle("other", row.nothing)}`}>
+                      {row.nothing}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <FadeIn className="mt-8 text-center">
+            <p className="text-slate-500 text-sm max-w-2xl mx-auto mb-6">
+              Already running vibration? The two see different things and work well
+              together. We&apos;re running that exact side-by-side evaluation with a
+              global manufacturer today.
+            </p>
+            <Link
+              href="/compare/augury-alternative"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-[#7655d6] hover:underline"
+            >
+              Full comparison details <ArrowRight className="w-4 h-4" />
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── 5. THE BRIDGE (detection to done) ─────────────────────────── */}
+      <section className="py-20 md:py-28 bg-[#0a0a0f] relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 50% 100%, rgba(118,85,214,0.12) 0%, transparent 70%)",
+          }}
+        />
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <FadeIn className="text-center mb-14">
+            <div className="flex justify-center mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-[#7655d6]/20 flex items-center justify-center">
+                <Zap className="w-6 h-6 text-[#a78fe8]" />
+              </div>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white max-w-2xl mx-auto">
+              Detection is half the job. EdgePredict finishes it.
+            </h2>
+            <p className="text-slate-400 text-base mt-4 max-w-2xl mx-auto">
+              Most monitoring tools stop at an alert. EdgePredict turns the alert
+              into scheduled, assigned, tracked work.
+            </p>
+          </FadeIn>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {FLOWS.map((flow, fi) => (
+              <FadeIn key={fi} delay={(fi + 1) as 1 | 2 | 3}>
+                <div className="bg-white/5 backdrop-blur rounded-2xl p-6 border border-white/10 hover:bg-white/8 hover:-translate-y-1 transition-all duration-200">
+                  {flow.steps.map((step, si) => (
+                    <div key={si}>
+                      <p className={`text-sm font-medium ${si === 0 ? "text-slate-300" : si === 1 ? "text-[#a78fe8]" : "text-green-400"}`}>
+                        {step}
+                      </p>
+                      {si < flow.steps.length - 1 && (
+                        <div className="flex items-center gap-1 my-2 pl-1">
+                          <div className="w-3 h-px bg-slate-700" />
+                          <ArrowRight className="w-3 h-3 text-slate-600" />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn className="mt-12 text-center">
+            <p className="text-slate-500 text-base max-w-2xl mx-auto leading-relaxed">
+              This is not an integration. This is one system. No middleware,
+              no third-party connectors, no data silos.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── 6. PLATFORM FLOW MOCK ─────────────────────────────────────── */}
       <section className="py-16 md:py-20 bg-slate-950">
         <div className="max-w-[1320px] mx-auto px-6">
           <FadeIn className="text-center mb-10">
             <span className="inline-block text-xs tracking-widest uppercase text-violet-300 bg-violet-500/10 border border-violet-400/30 px-3 py-1.5 rounded-full mb-4">
-              One platform · Two problems solved
+              Included with every sensor
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Your maintenance program. Your motor health. One platform.
+              A full maintenance platform comes with it. Free.
             </h2>
             <p className="text-slate-400 text-base mt-3 max-w-2xl mx-auto">
-              A complete maintenance platform — free for unlimited users. Add motor monitoring if and when you need it. Each works on its own.
+              Work orders, PM scheduling, inspections, parts, reporting, and a mobile
+              app. Free for unlimited users, whether you monitor one motor or none.
             </p>
           </FadeIn>
           <FadeIn delay={1}>
             <PlatformFlowCard />
           </FadeIn>
+          <FadeIn className="mt-10 text-center">
+            <div className="inline-flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
+              {PLATFORM_FEATURES.map((f) => (
+                <span key={f} className="flex items-center gap-2 text-sm text-slate-400">
+                  <CheckCircle className="w-4 h-4 text-[#7655d6] flex-shrink-0" />
+                  {f}
+                </span>
+              ))}
+            </div>
+            <p>
+              <Link
+                href="/features"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-[#a78fe8] hover:underline"
+              >
+                Everything in the platform <ArrowRight className="w-4 h-4" />
+              </Link>
+            </p>
+          </FadeIn>
         </div>
       </section>
 
-      {/* ── 4. THE COST OF NOT KNOWING (side-by-side pain) ─────────── */}
+      {/* ── 7. THE COST OF NOT KNOWING ────────────────────────────────── */}
       <section className="py-20 md:py-28 bg-[#0a0a0f]">
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn className="text-center mb-14">
@@ -261,38 +503,8 @@ export default function HomePage() {
           </FadeIn>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto items-stretch">
-            {/* Left: No maintenance platform */}
+            {/* Monitoring pain first */}
             <FadeIn delay={1} className="flex">
-              <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6 md:p-8 flex flex-col w-full">
-                <div className="flex items-center gap-3 mb-6">
-                  <ClipboardList className="w-6 h-6 text-red-400" />
-                  <h3 className="text-lg font-bold text-white">Without a maintenance platform</h3>
-                </div>
-                <div className="space-y-5">
-                  <div>
-                    <div className="text-4xl font-bold font-mono text-red-400 mb-1">40-60%</div>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      of your maintenance budget goes to emergency repairs instead of planned work
-                    </p>
-                  </div>
-                  <div>
-                    <div className="text-4xl font-bold font-mono text-amber-400 mb-1">35%</div>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      actual wrench time — the rest is paperwork, hunting for parts, and tracking down tribal knowledge
-                    </p>
-                  </div>
-                  <div>
-                    <div className="text-4xl font-bold font-mono text-amber-400 mb-1">$10K-$50K</div>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      per hour — what unplanned downtime actually costs your plant
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Right: No monitoring */}
-            <FadeIn delay={2} className="flex">
               <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6 md:p-8 flex flex-col w-full">
                 <div className="flex items-center gap-3 mb-6">
                   <Activity className="w-6 h-6 text-red-400" />
@@ -314,144 +526,47 @@ export default function HomePage() {
                   <div>
                     <div className="text-4xl font-bold font-mono text-green-400 mb-1">20 min</div>
                     <p className="text-slate-400 text-sm leading-relaxed">
-                      to install a sensor. No rewiring. No IT ticket. Most plants just never do.
+                      to install a sensor. No rewiring. No production downtime. Most plants just never do.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Platform pain second */}
+            <FadeIn delay={2} className="flex">
+              <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6 md:p-8 flex flex-col w-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <ClipboardList className="w-6 h-6 text-red-400" />
+                  <h3 className="text-lg font-bold text-white">Without a maintenance program</h3>
+                </div>
+                <div className="space-y-5">
+                  <div>
+                    <div className="text-4xl font-bold font-mono text-red-400 mb-1">40-60%</div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      of your maintenance budget goes to emergency repairs instead of planned work
+                    </p>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold font-mono text-amber-400 mb-1">35%</div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      actual wrench time. The rest is paperwork, hunting for parts, and tracking down tribal knowledge
+                    </p>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold font-mono text-amber-400 mb-1">$10K-$50K</div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      per hour, what unplanned downtime actually costs your plant
                     </p>
                   </div>
                 </div>
               </div>
             </FadeIn>
           </div>
-
-          <FadeIn className="mt-10 text-center">
-            <p className="text-slate-500 text-base">
-              EdgePredict was built to change both. Here&apos;s how it works.
-            </p>
-          </FadeIn>
         </div>
       </section>
 
-      {/* ── 4. HOW IT WORKS ───────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-16">
-            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
-              Getting Started
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Three steps to a better maintenance program.
-            </h2>
-          </FadeIn>
-
-          <div className="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto">
-            {[
-              {
-                n: "01",
-                title: "Sign up and add your equipment",
-                body: "Create your account, register assets, and get PM schedules generated automatically. About 10 minutes to a fully running maintenance platform.",
-              },
-              {
-                n: "02",
-                title: "Run your maintenance program",
-                body: "Work orders, PM scheduling, inspections, scheduling. Your team stops running on whiteboards and starts running on data.",
-              },
-              {
-                n: "03",
-                title: "Add sensors when the data tells you where",
-                body: "Your data shows you which assets fail most. Add monitoring to those first. Time-based maintenance becomes condition-based.",
-              },
-            ].map((s, si) => (
-              <FadeIn key={s.n} delay={(si + 1) as 1 | 2 | 3}>
-                <div>
-                  <span className="text-6xl font-bold text-[#7655d6]/15 leading-none block mb-4 font-mono">
-                    {s.n}
-                  </span>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-3">{s.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{s.body}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 5. THE TWO SIDES ──────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-16">
-            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
-              What&apos;s included
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Everything under the hood.
-            </h2>
-            <p className="text-base md:text-lg text-slate-600 mt-4 max-w-2xl mx-auto leading-relaxed">
-              Most plants use separate tools for management and monitoring. Many use nothing at all.
-              EdgePredict is the only platform where both sides share data, share context, and make each other smarter.
-            </p>
-          </FadeIn>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Management card */}
-            <FadeIn delay={1} className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
-              <div className="w-10 h-1 rounded-full bg-[#7655d6] mb-6" />
-              <ClipboardList className="w-8 h-8 text-[#7655d6] mb-4" />
-              <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-2">
-                Maintenance Management
-              </h3>
-              <p className="text-xs font-semibold text-green-600 uppercase tracking-widest mt-4 mb-1">Free</p>
-              <p className="text-xs text-slate-500 mb-2">More free features than any other platform on the market.</p>
-              <ul className="space-y-2 mb-4">
-                {MGMT_FEATURES_FREE.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-slate-700">
-                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-xs font-semibold text-[#7655d6] uppercase tracking-widest mb-2">Pro ($99/mo)</p>
-              <ul className="space-y-2 mb-6">
-                {MGMT_FEATURES_PRO.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-slate-700">
-                    <CheckCircle className="w-4 h-4 text-[#7655d6] flex-shrink-0 mt-0.5" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/features"
-                className="inline-flex items-center gap-1 text-sm font-semibold text-[#7655d6] hover:underline"
-              >
-                Explore Features <ArrowRight className="w-4 h-4" />
-              </Link>
-            </FadeIn>
-
-            {/* Monitoring card */}
-            <FadeIn delay={2} className="bg-[#0a0a0f] rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 border border-slate-800">
-              <div className="w-10 h-1 rounded-full bg-cyan-500 mb-6" />
-              <Activity className="w-8 h-8 text-cyan-400 mb-4" />
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">
-                Motor Monitoring
-              </h3>
-              <ul className="space-y-2 mt-4 mb-6">
-                {MON_FEATURES.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-slate-400">
-                    <CheckCircle className="w-4 h-4 text-cyan-500 flex-shrink-0 mt-0.5" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/monitoring"
-                className="inline-flex items-center gap-1 text-sm font-semibold text-cyan-400 hover:underline"
-              >
-                Learn About Monitoring <ArrowRight className="w-4 h-4" />
-              </Link>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6. SIDE-BY-SIDE DEMOS ─────────────────────────────────────── */}
+      {/* ── 8. LIVE DEMOS ─────────────────────────────────────────────── */}
       <section className="py-16 bg-slate-50 border-t border-slate-200">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-10">
@@ -512,7 +627,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 7. WHY WE BUILT THIS ────────────────────────────────────── */}
+      {/* ── 9. WHY WE BUILT THIS ──────────────────────────────────────── */}
       <section className="py-16 md:py-20 bg-slate-50">
         <div className="max-w-3xl mx-auto px-6">
           <FadeIn>
@@ -521,15 +636,15 @@ export default function HomePage() {
                 Why we built this
               </p>
               <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-                Enterprise-grade tools shouldn&apos;t require enterprise-grade budgets.
+                Condition monitoring shouldn&apos;t require a six-figure budget.
               </h2>
             </div>
             <div className="space-y-4 text-slate-600 text-base leading-relaxed">
               <p>
-                We believe every manufacturer — whether you run 5 motors or 500 — deserves
-                access to the same maintenance and reliability tools that large plants have.
-                But most solutions on the market are either incomplete, overpriced per user,
-                or built for companies with six-figure software budgets.
+                We believe every manufacturer, whether you run 5 motors or 500, deserves
+                access to the same reliability tools that large plants have. But most
+                monitoring on the market is either priced for the Fortune 500 or so
+                stripped-down it tells you nothing you didn&apos;t already know.
               </p>
               <p>
                 We designed EdgePredict for the average plant. The teams that keep production
@@ -539,8 +654,8 @@ export default function HomePage() {
                 going to fail next but can&apos;t get approval for a $50,000 monitoring system.
               </p>
               <p className="text-slate-900 font-medium">
-                So we built a complete maintenance platform that&apos;s free. And motor monitoring
-                that costs less per month than a single emergency callout. Because the plants
+                So we built monitoring that costs less per month than a single emergency
+                callout, and gave the maintenance platform away free. Because the plants
                 that everyone else ignores are the ones that need it most.
               </p>
             </div>
@@ -548,69 +663,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 8. THE BRIDGE ─────────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-[#0a0a0f] relative overflow-hidden">
-        {/* Subtle gradient accent */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 40% at 50% 100%, rgba(118,85,214,0.12) 0%, transparent 70%)",
-          }}
-        />
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <FadeIn className="text-center mb-14">
-            <div className="flex justify-center mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-[#7655d6]/20 flex items-center justify-center">
-                <Zap className="w-6 h-6 text-[#a78fe8]" />
-              </div>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white max-w-2xl mx-auto">
-              When your sensors and your maintenance platform are one system, everything changes.
-            </h2>
-          </FadeIn>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {FLOWS.map((flow, fi) => (
-              <FadeIn key={fi} delay={(fi + 1) as 1 | 2 | 3}>
-                <div className="bg-white/5 backdrop-blur rounded-2xl p-6 border border-white/10 hover:bg-white/8 hover:-translate-y-1 transition-all duration-200">
-                  {flow.steps.map((step, si) => (
-                    <div key={si}>
-                      <p className={`text-sm font-medium ${si === 0 ? "text-slate-300" : si === 1 ? "text-[#a78fe8]" : "text-green-400"}`}>
-                        {step}
-                      </p>
-                      {si < flow.steps.length - 1 && (
-                        <div className="flex items-center gap-1 my-2 pl-1">
-                          <div className="w-3 h-px bg-slate-700" />
-                          <ArrowRight className="w-3 h-3 text-slate-600" />
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-
-          <FadeIn className="mt-12 text-center">
-            <p className="text-slate-500 text-base max-w-2xl mx-auto leading-relaxed">
-              This is not integration. This is one system. No middleware. No third-party
-              connectors. No data silos.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ── 8. PRICING PREVIEW ────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-slate-50">
+      {/* ── 10. PRICING ───────────────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn className="text-center mb-14">
             <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
               Pricing
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Start free. Add sensors when you&apos;re ready.
+              $89/mo per motor. Hardware included. Platform free.
             </h2>
           </FadeIn>
 
@@ -679,126 +740,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 9. COMPETITOR COMPARISON ──────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-14">
-            <p className="text-sm uppercase tracking-widest font-semibold text-[#7655d6] mb-3">
-              The Honest Comparison
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              We checked. Nobody else does this.
-            </h2>
-            <p className="text-base md:text-lg text-slate-600 mt-4 max-w-xl mx-auto">
-              Named competitors because buyers are already comparing. We have nothing to hide.
-            </p>
-          </FadeIn>
-
-          {/* Scroll wrapper for mobile sticky column */}
-          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
-            <table className="w-full text-sm border-collapse min-w-[780px]">
-              <thead>
-                <tr className="border-b border-slate-200">
-                  <th className="sticky left-0 bg-white text-left py-4 px-4 text-slate-500 font-medium w-44">
-                    Feature
-                  </th>
-                  <th className="py-4 px-4 text-center font-bold text-white bg-[#7655d6] min-w-[120px]">
-                    EdgePredict<br />
-                    <span className="font-normal text-purple-200 text-xs">Free</span>
-                  </th>
-                  <th className="py-4 px-4 text-center font-bold text-white bg-[#5d3db8] min-w-[120px]">
-                    EdgePredict<br />
-                    <span className="font-normal text-purple-200 text-xs">Pro $99/mo</span>
-                  </th>
-                  <th className="py-4 px-4 text-center text-slate-600 font-medium min-w-[110px]">
-                    MaintainX<br />
-                    <span className="text-slate-400 font-normal text-xs">$16/user/mo</span>
-                  </th>
-                  <th className="py-4 px-4 text-center text-slate-600 font-medium min-w-[110px]">
-                    UpKeep<br />
-                    <span className="text-slate-400 font-normal text-xs">$20/user/mo</span>
-                  </th>
-                  <th className="py-4 px-4 text-center text-slate-600 font-medium min-w-[90px]">
-                    Fiix<br />
-                    <span className="text-slate-400 font-normal text-xs">Enterprise</span>
-                  </th>
-                  <th className="py-4 px-4 text-center text-slate-600 font-medium min-w-[100px]">
-                    Augury<br />
-                    <span className="text-slate-400 font-normal text-xs">$500+/motor</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {TABLE_ROWS.map((row, i) => (
-                  <tr
-                    key={row.feature}
-                    className={`border-b border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
-                  >
-                    <td className="sticky left-0 bg-inherit py-3 px-4 font-medium text-slate-700">
-                      {row.feature}
-                    </td>
-                    <td className={`py-3 px-4 text-center bg-[#7655d6]/5 ${cellStyle(row.ep0, "ep")}`}>
-                      {row.ep0}
-                    </td>
-                    <td className={`py-3 px-4 text-center bg-[#7655d6]/8 ${cellStyle(row.ep99, "ep")}`}>
-                      {row.ep99}
-                    </td>
-                    <td className={`py-3 px-4 text-center ${cellStyle(row.mx, "other")}`}>
-                      {row.mx}
-                    </td>
-                    <td className={`py-3 px-4 text-center ${cellStyle(row.up, "other")}`}>
-                      {row.up}
-                    </td>
-                    <td className={`py-3 px-4 text-center ${cellStyle(row.fiix, "other")}`}>
-                      {row.fiix}
-                    </td>
-                    <td className={`py-3 px-4 text-center ${cellStyle(row.aug, "other")}`}>
-                      {row.aug}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <FadeIn className="mt-8 text-center">
-            <p className="text-slate-500 text-sm mb-4">
-              Still comparing? Try the live demo. No signup required.
-            </p>
-            <a
-              href="https://tools.edgepredict.io/login"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#7655d6] text-white font-semibold rounded-xl hover:bg-[#5d3db8] transition-all duration-200 hover:shadow-lg hover:shadow-[#7655d6]/25 hover:scale-[1.02]"
-            >
-              Explore Demo <ArrowRight className="w-4 h-4" />
-            </a>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ── 9. FINAL CTA ──────────────────────────────────────────────── */}
+      {/* ── 11. FINAL CTA ─────────────────────────────────────────────── */}
       <section className="py-20 md:py-28 bg-[#0a0a0f]">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <FadeIn>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Your plant deserves better than guesswork.
+              Your motors are telling you something. Start listening.
             </h2>
             <p className="text-base md:text-lg text-slate-400 leading-relaxed mb-10">
-              Built by engineers. Deployed at manufacturing facilities.
-              Designed for the plants that everyone else ignores.
+              Built by the engineers who designed the hardware. Deployed at
+              manufacturing facilities in the US and Europe. Free pilot,
+              return the hardware if we find nothing.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-10">
-              <a
-                href="https://tools.edgepredict.io/signup"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#7655d6] text-white font-semibold rounded-xl hover:bg-[#5d3db8] transition-all duration-200 hover:shadow-xl hover:shadow-[#7655d6]/30 hover:scale-[1.02]"
-              >
-                Get Started Free
-              </a>
               <Link
                 href="/pilot"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#7655d6] text-white font-semibold rounded-xl hover:bg-[#5d3db8] transition-all duration-200 hover:shadow-xl hover:shadow-[#7655d6]/30 hover:scale-[1.02]"
+              >
+                Start a Free Pilot
+              </Link>
+              <a
+                href="https://tools.edgepredict.io/signup"
                 className="inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-700 text-white font-semibold rounded-xl hover:border-[#a78fe8] hover:text-[#a78fe8] transition-all duration-200"
               >
-                Start Free Pilot
-              </Link>
+                Get the Free Platform
+              </a>
             </div>
             <p className="text-sm text-slate-600">
               <a href="mailto:anderson@edgepredict.io" className="hover:text-white transition-colors">

@@ -87,7 +87,7 @@ const tiers = [
     price: "$89",
     priceSub: "/mo per motor",
     description:
-      "Hardware ships pre-configured. 20-minute install. Cellular, no IT needed. If we don't surface useful data during the pilot, return the hardware. No obligation.",
+      "Hardware ships pre-configured. 20-minute install. Cellular, no plant network needed. If we don't surface useful data during the pilot, return the hardware. No obligation.",
     cardClasses:
       "border-[#7655d6]/30 bg-[#0a0a0f] shadow-[0_0_0_1px_rgba(118,85,214,0.2)]",
     featuresPrefix: "Everything in Pro, plus:",
@@ -96,7 +96,7 @@ const tiers = [
       "Real-time condition monitoring",
       "Condition-based PM triggers",
       "Dynamic PM scheduling",
-      "Cellular connectivity, no IT required",
+      "Cellular connectivity, no plant network required",
       "20-minute non-invasive install",
       "Free pilot, hardware included",
       "Return hardware if no value",
@@ -410,7 +410,7 @@ export default function PricingPage() {
       {/* ── TIER CARDS ───────────────────────────────────────────── */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-3 gap-8 items-start">
+          <div className="grid lg:grid-cols-3 gap-8 items-stretch">
             {tiers.map((tier) => (
               <div
                 key={tier.name}
@@ -487,6 +487,29 @@ export default function PricingPage() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* ── Enterprise band (multi-site / fleets) ─────────────────── */}
+          <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <h2 className="text-xl font-bold text-slate-900">Enterprise</h2>
+                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">
+                  Multi-site &amp; fleets
+                </span>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed max-w-2xl">
+                Running multiple plants or monitoring a larger motor fleet? We offer volume
+                pricing and dedicated onboarding. Tell us about your operation and we&apos;ll
+                put together a plan that fits.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap bg-[#0a0a0f] text-white hover:bg-[#7655d6] transition-all duration-200"
+            >
+              Contact Sales <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

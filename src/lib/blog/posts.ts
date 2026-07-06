@@ -298,7 +298,7 @@ EdgePredict was built as one system from day one. Not a CMMS that bolted on sens
 
 Here's what that looks like in practice:
 
-**A sensor flags a load anomaly on Pump P-101.** The platform automatically creates a work order with the asset, fault description, and priority pre-filled. The technician gets a push notification on their phone. They pull up the work order, see the sensor trend data right there, grab the replacement bearing from parts inventory (which updates automatically), complete the repair, and close the work order. The asset history updates. Your MTTR dashboard updates. Your PM schedule adjusts.
+**A sensor flags a load anomaly on Pump P-101.** The platform automatically creates a work order with the asset, anomaly description, and priority pre-filled. The technician gets a push notification on their phone. They pull up the work order, see the sensor trend data right there, grab the replacement bearing from parts inventory (which updates automatically), complete the repair, and close the work order. The asset history updates. Your MTTR dashboard updates. Your PM schedule adjusts.
 
 No copy-paste. No switching tabs. No "I'll update the spreadsheet later."
 

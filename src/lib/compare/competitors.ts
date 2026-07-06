@@ -493,7 +493,7 @@ export const COMPETITORS: Competitor[] = [
       { feature: "Price per motor",            ep: "$89/mo (hardware included)", them: "$500+/mo (est.)" },
       { feature: "Hardware included",          ep: "✓",                           them: "Varies" },
       { feature: "Installation",               ep: "20 min, non-invasive",        them: "Professional install required" },
-      { feature: "Connectivity",               ep: "Cellular, no IT required",    them: "Requires network integration" },
+      { feature: "Connectivity",               ep: "Cellular, no plant network required", them: "Requires network integration" },
       { feature: "Health score refresh rate",  ep: "Every 2 seconds (edge)",      them: "Cloud-processed (delayed)" },
       { feature: "Free pilot",                 ep: "Yes, hardware included",  them: "No" },
       { feature: "Maintenance platform included", ep: "✓ (full platform, free)",     them: "✗ (monitoring only)" },
@@ -507,7 +507,7 @@ export const COMPETITORS: Competitor[] = [
     ],
     switchReasons: [
       {
-        title: "Edge processing means faster fault detection",
+        title: "Edge processing means faster anomaly detection",
         body: "EdgePredict computes motor health scores every 2 seconds at the edge — on the sensor itself. Augury processes data in the cloud, which introduces latency. When a motor is degrading, two seconds matters more than two minutes.",
       },
       {

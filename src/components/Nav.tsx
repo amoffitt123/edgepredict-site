@@ -7,16 +7,16 @@ import { usePathname } from "next/navigation";
 
 const desktopLinks = [
   { label: "Home",       href: "/" },
-  { label: "Features",   href: "/features" },
   { label: "Monitoring", href: "/monitoring" },
+  { label: "Platform",   href: "/features" },
   { label: "Pricing",    href: "/pricing" },
   { label: "Blog",       href: "/blog" },
 ];
 
 const mobileLinks = [
   { label: "Home",         href: "/" },
-  { label: "Features",     href: "/features" },
   { label: "Monitoring",   href: "/monitoring" },
+  { label: "Platform",     href: "/features" },
   { label: "Pricing",      href: "/pricing" },
   { label: "Blog",         href: "/blog" },
   { label: "Calculator",   href: "/calculator" },
@@ -64,9 +64,8 @@ export default function Nav() {
 
         {/* ── Wordmark ───────────────────────────── */}
         <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-          <div className="w-7 h-7 rounded-lg bg-[#7655d6] flex items-center justify-center group-hover:bg-[#5d3db8] transition-colors duration-200">
-            <LogoMark className="w-4 h-4 text-white" />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-mark.png" alt="EdgePredict" className="h-8 w-auto group-hover:opacity-80 transition-opacity duration-200" />
           <span className="font-bold text-xl tracking-tight text-slate-900 leading-none">
             Edge<span className="text-[#7655d6]">Predict</span>
           </span>

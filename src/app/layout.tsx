@@ -9,11 +9,11 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "EdgePredict — The Maintenance Platform Your Plant Actually Needs",
+  title: "EdgePredict — Motor Health Monitoring That Installs in 20 Minutes",
   description:
-    "Work orders, PMs, inspections, playbooks, reporting, and live motor monitoring — one platform, not five. Free to start with optional motor monitoring sensors. Built for small and mid-size plants.",
+    "Clamp-on current monitoring for industrial motors. Health scores every 2 seconds, weekly reports, and alerts that create work orders automatically. $89/mo per motor, hardware included. Built for small and mid-size plants.",
   keywords:
-    "maintenance platform, CMMS, maintenance management, motor monitoring, condition monitoring, preventive maintenance software, work order management, PM scheduling, inspections, motor health monitoring, free maintenance platform, MaintainX alternative",
+    "motor monitoring, condition monitoring, motor health monitoring, current-based monitoring, electrical signature analysis, predictive maintenance, motor current monitoring, condition-based maintenance, maintenance platform, CMMS, PM scheduling, free maintenance platform",
   authors: [{ name: "EdgePredict" }],
   creator: "EdgePredict",
   publisher: "EdgePredict",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     canonical: "https://www.edgepredict.io",
   },
   openGraph: {
-    title: "EdgePredict — The Maintenance Platform Your Plant Actually Needs",
+    title: "EdgePredict — Motor Health Monitoring That Installs in 20 Minutes",
     description:
-      "Work orders, PMs, inspections, playbooks, reporting, and live motor monitoring — one platform, not five. Free to start with optional motor monitoring sensors.",
+      "Clamp-on current monitoring for industrial motors. Health scores every 2 seconds, weekly reports, alerts that create work orders. $89/mo per motor, hardware included.",
     url: "https://www.edgepredict.io",
     siteName: "EdgePredict",
     images: [
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "EdgePredict — The Maintenance Platform Your Plant Actually Needs",
+    title: "EdgePredict — Motor Health Monitoring That Installs in 20 Minutes",
     description:
-      "Work orders, PMs, inspections, playbooks, reporting, and live motor monitoring — one platform. Free to start.",
+      "Clamp-on current monitoring for industrial motors. Health scores, weekly reports, work orders created automatically. Hardware included.",
     images: ["https://www.edgepredict.io/og-image.jpg"],
   },
   robots: {

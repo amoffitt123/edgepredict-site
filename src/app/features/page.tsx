@@ -313,9 +313,9 @@ export default function FeaturesPage() {
               <Feat tier="monitor" name="Cellular out of the box" desc="No IT ticket. No firewall rules. No begging the network admin. Plug it in, it connects." />
               <Feat tier="monitor" name="Smart alerts, not dumb thresholds" desc="The system flags a motor only when its behavior is genuinely abnormal for that motor. You get fewer alerts, and the ones you get mean something." />
               <Feat tier="monitor" name="No false alarms on startup" desc="Startups and shutdowns look weird on paper. We wait until the motor is actually running before scoring it." />
-              <Feat tier="monitor" name="Auto-created work orders from sensor alerts" desc="Configure condition triggers so that when a specific fault indicator fires, a work order is created automatically with the asset, fault description, and priority pre-filled." />
+              <Feat tier="monitor" name="Auto-created work orders from sensor alerts" desc="Configure condition triggers so that when a specific anomaly indicator fires, a work order is created automatically with the asset, condition description, and priority pre-filled." />
               <Feat tier="monitor" name="Live web dashboard" desc="Per-motor health score, phase current traces, load deviation, historical trending. Accessible from any browser." />
-              <Feat tier="monitor" name="Real-time and email alerts" desc="In-dashboard alerts and email notifications when health score drops or fault indicators trigger." />
+              <Feat tier="monitor" name="Real-time and email alerts" desc="In-dashboard alerts and email notifications when health score drops or anomaly indicators trigger." />
               <Feat tier="monitor" name="Weekly health summary emails" desc="Automated weekly digest: all motors, their scores, any anomalies flagged during the week, recommended actions." />
               <Feat tier="monitor" name="Secure remote support" desc="If you want help reading an alert, we can look at your dashboard without asking IT to open a port." />
               <Feat tier="monitor" name="Optional voltage reference" desc="Plug-in transformer tap adds voltage measurement. Unlocks voltage unbalance, undervoltage, power factor, and supply quality monitoring." />

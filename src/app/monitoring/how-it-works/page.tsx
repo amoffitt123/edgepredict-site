@@ -38,7 +38,7 @@ const SECTIONS: Section[] = [
   {
     Icon: Cpu,
     title: "Edge compute",
-    lead: "All the thinking happens on-site. You get a motor health score every 2 seconds -- no cloud lag, no bandwidth bills.",
+    lead: "All the thinking happens on-site. The health score is computed right on the device, with a fresh value about every 2 seconds.",
     details: [
       "RMS current, power factor, and derived metrics processed on the edge device. Health score computed locally.",
       "Only summary metrics transmitted to the cloud, not raw sample data.",

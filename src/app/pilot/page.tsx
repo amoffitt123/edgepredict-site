@@ -105,7 +105,7 @@ export default function PilotPage() {
                   day: "Day 3-5",
                   side: "right",
                   title: "Hardware arrives, pre-configured",
-                  body: "EdgePredict Meter boards and Gateway ship configured for your specific motors. No IT involvement. No network diagram. The box contains everything including the CTs.",
+                  body: "EdgePredict Meter boards and Gateway ship configured for your specific motors. No plant network access needed. No network diagram. The box contains everything including the CTs.",
                   color: "bg-[#7655d6]",
                 },
                 {
@@ -170,7 +170,7 @@ export default function PilotPage() {
             </h2>
             <p className="text-slate-400 mt-4 max-w-xl mx-auto leading-relaxed">
               This is what shows up in your dashboard when the system catches something developing.
-              You see it days or weeks before the motor trips.
+              You see it while it&apos;s still a maintenance item, not an emergency.
             </p>
           </FadeIn>
 

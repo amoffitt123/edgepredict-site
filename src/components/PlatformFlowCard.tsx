@@ -59,7 +59,7 @@ function Preview({ id }: { id: SpokeId }) {
           </div>
           <div className="pm-row pm-row-1">
             <span className="pm-date">+3d</span>
-            <span className="pm-task">Motor M-02 · Vibration</span>
+            <span className="pm-task">Motor M-02 · Alignment</span>
             <span className="pm-int">90d</span>
           </div>
           <div className="pm-row pm-row-2">
@@ -223,7 +223,7 @@ export default function PlatformFlowCard() {
           </svg>
           <div className="mon-metrics">
             <div><span className="mon-k">71.4</span><span className="mon-l">health</span></div>
-            <div><span className="mon-k">+32%</span><span className="mon-l">vibration</span></div>
+            <div><span className="mon-k">+32%</span><span className="mon-l">load dev</span></div>
           </div>
           <div className="pf-monitor-flag">Anomaly → auto-creates <span className="pf-wo">WO</span></div>
         </div>

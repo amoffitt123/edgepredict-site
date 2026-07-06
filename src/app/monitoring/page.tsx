@@ -37,7 +37,7 @@ const INCLUDED = [
 
 /* ── Pilot kit ─────────────────────────────────────────────────────── */
 const PILOT_KIT = [
-  { Icon: Package, text: "Pre-configured EdgePredict Gateway (plug-in, no IT setup)" },
+  { Icon: Package, text: "Pre-configured EdgePredict Gateway (plug in, cellular out of the box)" },
   { Icon: Wrench,  text: "EdgePredict Meter board with split-core CTs for motor feeder conductors" },
   { Icon: Wifi,    text: "Cellular connectivity for pilots, no plant network required" },
   { Icon: Monitor, text: "Dashboard access from day one" },
@@ -73,7 +73,7 @@ const TECH_STACK = [
   {
     Icon: Cpu,
     name: "EdgePredict Meter board",
-    desc: "Custom metering board measuring per-phase RMS current, voltage, power factor, and harmonic content. Health score computed on-board every 2 seconds. Purpose-built for continuous motor health monitoring.",
+    desc: "Custom metering board measuring per-phase RMS current with utility-grade accuracy, with an optional voltage reference for supply-side metrics. Health score computed on-board every 2 seconds. Purpose-built for continuous motor health monitoring.",
   },
   {
     Icon: Database,
@@ -224,7 +224,7 @@ export default function MonitoringPage() {
                   "Phase imbalance and phase loss detection",
                   "Overload and load instability",
                   "Abnormal load and current instability detection",
-                  "Supply quality and power factor monitoring",
+                  "Ripple and phase spread analysis",
                   "Non-invasive clamp-on install in 20 minutes",
                   "Cellular connectivity, no plant network",
                   "No capital project. $89/mo per motor.",
@@ -250,8 +250,8 @@ export default function MonitoringPage() {
           <FadeIn>
             <h2 className="text-3xl font-bold mb-4 text-center">What Gets Detected</h2>
             <p className="text-slate-600 mb-8 text-center max-w-2xl mx-auto leading-relaxed">
-              Statistical health scoring applied locally on the edge device. No cloud
-              processing required for detection.
+              Statistical health scoring runs locally on the edge device, producing a
+              fresh score about every 2 seconds.
             </p>
           </FadeIn>
           <FadeIn>
@@ -302,8 +302,11 @@ export default function MonitoringPage() {
               Optional Voltage Reference
             </h2>
             <p className="text-slate-600 mb-10 text-center leading-relaxed">
-              Current-only monitoring catches the majority of abnormal motor conditions.
-              Adding a voltage reference unlocks additional supply-side visibility.
+              Current-only monitoring catches the majority of abnormal motor conditions,
+              and installs in 20 minutes with clamp-on CTs. The voltage reference is an
+              available option for facilities that need supply-side visibility. It requires
+              a more involved electrical install, so most deployments start current-only
+              and add it where the data justifies it.
             </p>
             <div className="grid md:grid-cols-2 gap-10">
               <div>
